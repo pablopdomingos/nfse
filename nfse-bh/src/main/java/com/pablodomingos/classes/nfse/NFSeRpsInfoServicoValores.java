@@ -9,164 +9,165 @@ import com.thoughtworks.xstream.annotations.XStreamConverter;
 public class NFSeRpsInfoServicoValores {
 
   @XStreamAlias("ValorServicos")
-  private Double valorServicos;
+  private Double valorServicos = 0.0;
 
   @XStreamAlias("ValorDeducoes")
-  private Double valorDeducoes;
+  private Double valorDeducoes = 0.0;
 
   @XStreamAlias("ValorPis")
-  private Double valorPis;
+  private Double valorPis = 0.0;
 
   @XStreamAlias("ValorCofins")
-  private Double valorCofins;
+  private Double valorCofins = 0.0;
 
   @XStreamAlias("ValorInss")
-  private Double valorInss;
+  private Double valorInss = 0.0;
 
   @XStreamAlias("ValorIr")
-  private Double valorIr;
+  private Double valorIr = 0.0;
 
   @XStreamAlias("ValorCsll")
-  private Double valorCsll;
+  private Double valorCsll = 0.0;
 
   @XStreamAlias("IssRetido")
-  private NFSeRpsInfoServicoValoresIssRetido issRetido;
+  private NFSeRpsInfoServicoValoresIssRetido issRetido = NFSeRpsInfoServicoValoresIssRetido.NAO;
 
   @XStreamAlias("ValorIss")
-  private Double valorIss;
+  private Double valorIss = 0.0;
 
   @XStreamAlias("OutrasRetencoes")
-  private Double outrasRetencoes;
+  private Double outrasRetencoes = 0.0;
 
   @XStreamAlias("Aliquota")
-  private Double aliquota;
+  private Double aliquota = 0.0;
 
   @XStreamAlias("DescontoIncondicionado")
-  private Double descontoIncondicionado;
+  private Double descontoIncondicionado = 0.0;
 
   @XStreamAlias("DescontoCondicionado")
-  private Double descontoCondicionado;
+  private Double descontoCondicionado = 0.0;
 
   public NFSeRpsInfoServicoValores() {
     super();
-    valorDeducoes = 0.0;
-    valorPis = 0.0;
-    valorCofins = 0.0;
-    valorInss = 0.0;
-    valorIr = 0.0;
-    valorCsll = 0.0;
-    issRetido = NFSeRpsInfoServicoValoresIssRetido.NAO;
-    valorIss = 0.0;
-    outrasRetencoes = 0.0;
-    valorIss = 0.0;
-    aliquota = 0.0;
-
   }
 
   public Double getValorServicos() {
     return valorServicos;
   }
 
-  public void setValorServicos(Double valorServicos) {
+  public NFSeRpsInfoServicoValores comValorServicos(Double valorServicos) {
     this.valorServicos = ValidadorDecimal.tamanho15Com2CasasDecimais(valorServicos);
     calculoIss();
+    return this;
   }
 
   public Double getValorDeducoes() {
     return valorDeducoes;
   }
 
-  public void setValorDeducoes(Double valorDeducoes) {
+  public NFSeRpsInfoServicoValores comValorDeducoes(Double valorDeducoes) {
     this.valorDeducoes = ValidadorDecimal.tamanho15Com2CasasDecimais(valorDeducoes);
+    return this;
   }
 
   public Double getValorPis() {
     return valorPis;
   }
 
-  public void setValorPis(Double valorPis) {
+  public NFSeRpsInfoServicoValores comValorPis(Double valorPis) {
     this.valorPis = ValidadorDecimal.tamanho15Com2CasasDecimais(valorPis);
+    return this;
   }
 
   public Double getValorCofins() {
     return valorCofins;
   }
 
-  public void setValorCofins(Double valorCofins) {
+  public NFSeRpsInfoServicoValores comValorCofins(Double valorCofins) {
     this.valorCofins = ValidadorDecimal.tamanho15Com2CasasDecimais(valorCofins);
+    return this;
   }
 
   public Double getValorInss() {
     return valorInss;
   }
 
-  public void setValorInss(Double valorInss) {
+  public NFSeRpsInfoServicoValores comValorInss(Double valorInss) {
     this.valorInss = ValidadorDecimal.tamanho15Com2CasasDecimais(valorInss);
+    return this;
   }
 
   public Double getValorIr() {
     return valorIr;
   }
 
-  public void setValorIr(Double valorIr) {
+  public NFSeRpsInfoServicoValores comValorIr(Double valorIr) {
     this.valorIr = ValidadorDecimal.tamanho15Com2CasasDecimais(valorIr);
+    return this;
   }
 
   public Double getValorCsll() {
     return valorCsll;
   }
 
-  public void setValorCsll(Double valorCsll) {
+  public NFSeRpsInfoServicoValores comValorCsll(Double valorCsll) {
     this.valorCsll = ValidadorDecimal.tamanho15Com2CasasDecimais(valorCsll);
+    return this;
   }
 
   public Double getOutrasRetencoes() {
     return outrasRetencoes;
   }
 
-  public void setOutrasRetencoes(Double outrasRetencoes) {
+  public NFSeRpsInfoServicoValores comOutrasRetencoes(Double outrasRetencoes) {
     this.outrasRetencoes = ValidadorDecimal.tamanho15Com2CasasDecimais(outrasRetencoes);
+    return this;
   }
 
   public Double getValorIss() {
     return valorIss;
   }
 
-  public void setValorIss(Double valorIss) {
+  public NFSeRpsInfoServicoValores comValorIss(Double valorIss) {
     this.valorIss = ValidadorDecimal.tamanho15Com2CasasDecimais(valorIss);
+    return this;
   }
 
   public Double getAliquota() {
     return aliquota;
   }
 
-  public void setAliquota(Double aliquota) {
+  public NFSeRpsInfoServicoValores comAliquota(Double aliquota) {
     this.aliquota = ValidadorDecimal.tamanho5Com4CasasDecimais(aliquota / 100.0);
     calculoIss();
+    return this;
   }
 
   public Double getDescontoIncondicionado() {
     return descontoIncondicionado;
   }
 
-  public void setDescontoIncondicionado(Double descontoIncondicionado) {
+  public NFSeRpsInfoServicoValores comDescontoIncondicionado(Double descontoIncondicionado) {
     this.descontoIncondicionado = ValidadorDecimal.tamanho15Com2CasasDecimais(descontoIncondicionado);
+    return this;
   }
 
   public Double getDescontoCondicionado() {
     return descontoCondicionado;
   }
 
-  public void setDescontoCondicionado(Double descontoCondicionado) {
+  public NFSeRpsInfoServicoValores comDescontoCondicionado(Double descontoCondicionado) {
     this.descontoCondicionado = ValidadorDecimal.tamanho15Com2CasasDecimais(descontoCondicionado);
+    return this;
   }
 
   public NFSeRpsInfoServicoValoresIssRetido getIssRetido() {
     return issRetido;
   }
 
-  public void setIssRetido(NFSeRpsInfoServicoValoresIssRetido issRetido) {
-    this.issRetido = issRetido;
+  public NFSeRpsInfoServicoValores comIssRetido(boolean issRetido) {
+    this.issRetido  = issRetido ? NFSeRpsInfoServicoValoresIssRetido.SIM : NFSeRpsInfoServicoValoresIssRetido.NAO;
+    return this;
   }
 
   private void calculoIss() {

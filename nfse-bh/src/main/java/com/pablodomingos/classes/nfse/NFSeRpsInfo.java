@@ -40,10 +40,10 @@ public class NFSeRpsInfo {
   private NFSeRpsInfoServico servico;
 
   @XStreamAlias("Prestador")
-  private NFSeRpsInfoServicoPrestador prestador;
+  private Prestador prestador;
 
   @XStreamAlias("Tomador")
-  private NFSeRpsInfoServicoTomador tomador;
+  private Tomador tomador;
 
   @XStreamAlias("Intermediario")
   private NFSeRpsInfoServicoIntermediario intermediario;
@@ -74,19 +74,19 @@ public class NFSeRpsInfo {
     this.servico = servico;
   }
 
-  public NFSeRpsInfoServicoPrestador getPrestador() {
+  public Prestador getPrestador() {
     return prestador;
   }
 
-  public void setPrestador(NFSeRpsInfoServicoPrestador prestador) {
+  public void setPrestador(Prestador prestador) {
     this.prestador = prestador;
   }
 
-  public NFSeRpsInfoServicoTomador getTomador() {
+  public Tomador getTomador() {
     return tomador;
   }
 
-  public void setTomador(NFSeRpsInfoServicoTomador tomador) {
+  public void setTomador(Tomador tomador) {
     this.tomador = tomador;
   }
 

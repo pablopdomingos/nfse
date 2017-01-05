@@ -32,9 +32,9 @@ import java.util.List;
 public class AssinaturaDigital {
   private static String INFRPS = "InfRps";
   private static String LOTERPS = "LoteRps";
-  private ConfigCertificadoDigital config;
+  private CertificadoConfig config;
 
-  public AssinaturaDigital(ConfigCertificadoDigital config) {
+  public AssinaturaDigital(CertificadoConfig config) {
     this.config = config;
   }
 
