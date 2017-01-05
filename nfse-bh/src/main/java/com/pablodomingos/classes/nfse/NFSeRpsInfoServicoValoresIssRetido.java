@@ -7,7 +7,7 @@ import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
 public enum NFSeRpsInfoServicoValoresIssRetido {
 	
   SIM(1, "Sim"), 
-  NAO(2, "N�o");
+  NAO(2, "Não");
 
   private int codigo;
   private String descricao;

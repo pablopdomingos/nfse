@@ -11,7 +11,7 @@ public class NFSeRpsInfoServico {
   private NFSeRpsInfoServicoValores valores;
 
   @XStreamAlias("ItemListaServico")
-  private String itemListaServico;
+  private String codigoItemListaServico;
 
   @XStreamAlias("CodigoCnae")
   private Integer codigoCnae;
@@ -26,57 +26,60 @@ public class NFSeRpsInfoServico {
   private Integer codigoMunicipio;
 
 
-  public NFSeRpsInfoServico() {
-    valores = new NFSeRpsInfoServicoValores();
-    valores.setIssRetido(NFSeRpsInfoServicoValoresIssRetido.NAO);
-  }
+  public NFSeRpsInfoServico() {}
 
   public NFSeRpsInfoServicoValores getValores() {
     return valores;
   }
 
-  public void setValores(NFSeRpsInfoServicoValores valores) {
+  public NFSeRpsInfoServico comValores(NFSeRpsInfoServicoValores valores) {
     this.valores = valores;
+    return this;
   }
 
-  public String getItemListaServico() {
-    return itemListaServico;
+  public String getCodigoItemListaServico() {
+    return codigoItemListaServico;
   }
 
-  public void setItemListaServico(String itemListaServico) {
-    this.itemListaServico = ValidadorString.comTamanhoMaximoEMinimo(5, 1, itemListaServico, "Item da lista de servico");
+  public NFSeRpsInfoServico comCodigoItemListaServico(String codigoItemListaServico) {
+    this.codigoItemListaServico = ValidadorString.comTamanhoMaximoEMinimo(5, 1, codigoItemListaServico, "Codigo de item da lista de servico");
+    return this;
   }
 
   public Integer getCodigoCnae() {
     return codigoCnae;
   }
 
-  public void setCodigoCnae(Integer codigoCnae) {
+  public NFSeRpsInfoServico comCodigoCnae(Integer codigoCnae) {
     this.codigoCnae = ValidadorInteiro.comTamanhoMaximo(7, codigoCnae, "Cnae do servico");
+    return this;
   }
 
   public String getDiscriminacao() {
     return discriminacao;
   }
 
-  public void setDiscriminacao(String discriminacao) {
+  public NFSeRpsInfoServico comDiscriminacao(String discriminacao) {
     this.discriminacao = ValidadorString.comTamanhoMaximoEMinimo(2000, 1, StringUtil.removeAcentos(discriminacao), "Descricao do servico");
+    return this;
   }
 
   public Integer getCodigoMunicipio() {
     return codigoMunicipio;
   }
 
-  public void setCodigoMunicipio(Integer codigoMunicipio) {
-    this.codigoMunicipio = ValidadorInteiro.comTamanhoMaximo(7, codigoMunicipio, "Código do municipio");
+  public NFSeRpsInfoServico comCodigoMunicipio(Integer codigoMunicipio) {
+    this.codigoMunicipio = ValidadorInteiro.comTamanhoMaximo(7, codigoMunicipio, "Codigo do municipio");
+    return this;
   }
 
   public String getCodigoTributacaoMunicipio() {
     return codigoTributacaoMunicipio;
   }
 
-  public void setCodigoTributacaoMunicipio(String codigoTributacaoMunicipio) {
+  public NFSeRpsInfoServico comCodigoTributacaoMunicipio(String codigoTributacaoMunicipio) {
     this.codigoTributacaoMunicipio = ValidadorString.comTamanhoMaximoEMinimo(20, 1, codigoTributacaoMunicipio, "Codigo tributacao do municipio");
+    return this;
   }
 
 }
