@@ -4,7 +4,7 @@ import com.pablodomingos.conversores.StringUtil;
 import com.pablodomingos.validadores.ValidadorString;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public class TomadorContato {
+public class NFSeTomadorContato {
 
   @XStreamAlias("Telefone")
   private String telefone;
@@ -12,13 +12,13 @@ public class TomadorContato {
   @XStreamAlias("Email")
   private String email;
 
-  public TomadorContato(){}
+  public NFSeTomadorContato(){}
   
   public String getEmail() {
     return email;
   }
 
-  public TomadorContato comEmail(String email) {
+  public NFSeTomadorContato comEmail(String email) {
     this.email = StringUtil.removeAcentos(email);
     return this;
   }
@@ -27,7 +27,7 @@ public class TomadorContato {
     return telefone;
   }
 
-  public TomadorContato comTelefone(String telefone) {
+  public NFSeTomadorContato comTelefone(String telefone) {
     telefone = telefone.replaceAll("[^0-9]", "");
     this.telefone = ValidadorString.comTamanhoMaximoEMinimo(11, 1, telefone, "Telefone");
     return this;

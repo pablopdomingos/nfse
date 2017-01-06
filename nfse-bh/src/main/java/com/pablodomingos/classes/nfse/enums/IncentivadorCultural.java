@@ -1,17 +1,17 @@
-package com.pablodomingos.classes.nfse;
+package com.pablodomingos.classes.nfse.enums;
 
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
 
 @XStreamConverter(EnumToStringConverter.class)
-public enum NFSeRpsInfoIncentivadorCultural {
+public enum IncentivadorCultural {
 
   SIM(1, "Sim"), NAO(2, "N�o");
 
   private int codigo;
   private String descricao;
 
-  NFSeRpsInfoIncentivadorCultural(int codigo, String descricao) {
+  IncentivadorCultural(int codigo, String descricao) {
     this.codigo = codigo;
     this.descricao = descricao;
   }
@@ -24,9 +24,9 @@ public enum NFSeRpsInfoIncentivadorCultural {
     return this.descricao;
   }
   
-  public static NFSeRpsInfoIncentivadorCultural fromInt(int codigo) {
+  public static IncentivadorCultural fromInt(int codigo) {
     if (codigo > 0 && codigo < 2) {
-      for (NFSeRpsInfoIncentivadorCultural incentivadorCultural : NFSeRpsInfoIncentivadorCultural
+      for (IncentivadorCultural incentivadorCultural : IncentivadorCultural
           .values()) {
         if (incentivadorCultural.getCodigo().equals(String.valueOf(codigo))) {
           return incentivadorCultural;

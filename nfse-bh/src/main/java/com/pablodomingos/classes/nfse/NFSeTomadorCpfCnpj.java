@@ -1,10 +1,9 @@
 package com.pablodomingos.classes.nfse;
 
-import javax.management.InvalidAttributeValueException;
-
+import com.pablodomingos.validadores.ValidadorString;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public class TomadorCpfCnpj {
+public class NFSeTomadorCpfCnpj {
 
   @XStreamAlias("Cnpj")
   private String cnpj;
@@ -12,16 +11,14 @@ public class TomadorCpfCnpj {
   @XStreamAlias("Cpf")
   private String cpf;
 
-  public TomadorCpfCnpj() {}
+  public NFSeTomadorCpfCnpj() {}
 
-  public TomadorCpfCnpj comDocumento(String documento) throws InvalidAttributeValueException{
-    documento = documento.replaceAll("[^0-9]", "");
+  public NFSeTomadorCpfCnpj comDocumento(String documento){
+    documento = ValidadorString.cpfCnpj(documento);
     if(documento.length() == 11){
       setCpf(documento);
     }else if (documento.length() == 14){
       setCnpj(documento);
-    }else {
-      throw new InvalidAttributeValueException("CPF ou CNPJ excedeu o tamanho do campo");
     }
     return this;
   }

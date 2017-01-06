@@ -3,21 +3,21 @@ package com.pablodomingos.classes.nfse;
 import com.pablodomingos.validadores.ValidadorString;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public class TomadorIdentificacao {
+public class NFSeTomadorIdentificacao {
 
   @XStreamAlias("CpfCnpj")
-  private TomadorCpfCnpj cpfCnpj;
+  private NFSeTomadorCpfCnpj cpfCnpj;
 
   @XStreamAlias("InscricaoMunicipal")
   private String inscricaoMunicipal;
 
-  public TomadorIdentificacao() {}
+  public NFSeTomadorIdentificacao() {}
 
-  public TomadorCpfCnpj getCpfCnpj() {
+  public NFSeTomadorCpfCnpj getCpfCnpj() {
     return cpfCnpj;
   }
 
-  public TomadorIdentificacao comCpfCnpj(TomadorCpfCnpj cpfCnpj) {
+  public NFSeTomadorIdentificacao comCpfCnpj(NFSeTomadorCpfCnpj cpfCnpj) {
     this.cpfCnpj = cpfCnpj;
     return this;
   }
@@ -26,7 +26,7 @@ public class TomadorIdentificacao {
     return inscricaoMunicipal;
   }
 
-  public TomadorIdentificacao comInscricaoMunicipal(String inscricaoMunicipal) {
+  public NFSeTomadorIdentificacao comInscricaoMunicipal(String inscricaoMunicipal) {
     this.inscricaoMunicipal = ValidadorString.comTamanhoMaximoEMinimo(15, 1, inscricaoMunicipal, "Inscricao municipal tomador");
     return this;
   }

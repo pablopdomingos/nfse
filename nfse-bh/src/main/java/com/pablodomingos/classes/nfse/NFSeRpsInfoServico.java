@@ -8,7 +8,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 public class NFSeRpsInfoServico {
 
   @XStreamAlias("Valores")
-  private NFSeRpsInfoServicoValores valores;
+  private NFSeValores valores;
 
   @XStreamAlias("ItemListaServico")
   private String codigoItemListaServico;
@@ -28,11 +28,11 @@ public class NFSeRpsInfoServico {
 
   public NFSeRpsInfoServico() {}
 
-  public NFSeRpsInfoServicoValores getValores() {
+  public NFSeValores getValores() {
     return valores;
   }
 
-  public NFSeRpsInfoServico comValores(NFSeRpsInfoServicoValores valores) {
+  public NFSeRpsInfoServico comValores(NFSeValores valores) {
     this.valores = valores;
     return this;
   }
