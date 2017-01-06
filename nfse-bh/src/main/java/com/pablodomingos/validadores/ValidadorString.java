@@ -21,11 +21,20 @@ public class ValidadorString {
   }
   
   public static String comTamanhoExato(int tamanho, String valor, String info) {
-    if (valor.length() == tamanho) {
+    if (valor.length() != tamanho) {
       throw new NumberFormatException("Valor do campo "+info+" deve ter o tamanho igual a " + tamanho);
     } else {
       return valor;
     }
   }
 
+  public static String cpfCnpj(String documento) {
+    documento = documento.replaceAll("[^0-9]", "");
+    if(documento.length() != 14 && documento.length() != 11){
+      throw new NumberFormatException("CPF ou CNPJ com o tamanho irregular");
+    }else{
+      return documento;
+    }
+  }
+  
 }

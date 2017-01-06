@@ -1,13 +1,13 @@
-package com.pablodomingos.classes.nfse;
+package com.pablodomingos.classes.nfse.enums;
 
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
 
 @XStreamConverter(EnumToStringConverter.class)
-public enum NFSeRpsInfoNaturezaOperacao {
+public enum NaturezaOperacao {
 	
-  TRIBUTACAO_MUNICIPIO(1, "Tributa��o no munic�pio"), 
-  TRIBUTACAO_FORA_MUNICIPIO(2, "Tributa��o fora do munic�pio"),
+  TRIBUTACAO_MUNICIPIO(1, "Tributacao no municipio"), 
+  TRIBUTACAO_FORA_MUNICIPIO(2, "Tributacao fora do municipio"),
   ISENTO(3, "Isento"),
   IMUNE(4, "Imune"),
   EXIGIBILIDADE_SUSPENSA_JUDICIALMENTE(5, "Exigibilidade suspensa judicialmente"),
@@ -16,7 +16,7 @@ public enum NFSeRpsInfoNaturezaOperacao {
   private int codigo;
   private String descricao;
 
-  NFSeRpsInfoNaturezaOperacao(int codigo, String descricao) {
+  NaturezaOperacao(int codigo, String descricao) {
     this.codigo = codigo;
     this.descricao = descricao;
   }
@@ -29,9 +29,9 @@ public enum NFSeRpsInfoNaturezaOperacao {
     return this.descricao;
   }
   
-  public static NFSeRpsInfoNaturezaOperacao fromInt(int codigo) {
+  public static NaturezaOperacao fromInt(int codigo) {
     if (codigo > 0 && codigo < 7) {
-      for (NFSeRpsInfoNaturezaOperacao naturezaOperacao : NFSeRpsInfoNaturezaOperacao.values()) {
+      for (NaturezaOperacao naturezaOperacao : NaturezaOperacao.values()) {
         if (naturezaOperacao.getCodigo().equals(String.valueOf(codigo))) {
           return naturezaOperacao;
         }

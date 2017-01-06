@@ -3,6 +3,11 @@ package com.pablodomingos.classes.nfse;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.pablodomingos.classes.nfse.enums.IncentivadorCultural;
+import com.pablodomingos.classes.nfse.enums.NaturezaOperacao;
+import com.pablodomingos.classes.nfse.enums.OptanteSimplesNacional;
+import com.pablodomingos.classes.nfse.enums.RegimeEspecialTributacao;
+import com.pablodomingos.classes.nfse.enums.RpsStatus;
 import com.pablodomingos.conversores.LocalDateTimeConversor;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
@@ -12,51 +17,43 @@ public class NFSeRpsInfo {
 
   @XStreamAlias("Id")
   @XStreamAsAttribute
-  private String id;
+  private String id = UUID.randomUUID().toString();
 
   @XStreamAlias("IdentificacaoRps")
-  private NFSeRpsInfoIdentificacaoRps identificacaoRps;
+  private NFSeRpsInfoIdentificacaoRps identificacaoRps ;
 
   @XStreamAlias("DataEmissao")
   @XStreamConverter(LocalDateTimeConversor.class)
-  private LocalDateTime dataEmissao;
+  private LocalDateTime dataEmissao = LocalDateTime.now();
 
   @XStreamAlias("NaturezaOperacao")
-  private NFSeRpsInfoNaturezaOperacao naturezaOperacao;
+  private NaturezaOperacao naturezaOperacao = NaturezaOperacao.TRIBUTACAO_MUNICIPIO;
 
   @XStreamAlias("RegimeEspecialTributacao")
-  private NFSeRpsInfoRegimeEspecialTributacao regimeEspecialTributacao;
+  private RegimeEspecialTributacao regimeEspecialTributacao;
 
   @XStreamAlias("OptanteSimplesNacional")
-  private NFSeRpsInfoOptanteSimplesNacional optanteSimplesNacional;
+  private OptanteSimplesNacional optanteSimplesNacional = OptanteSimplesNacional.NAO;
 
   @XStreamAlias("IncentivadorCultural")
-  private NFSeRpsInfoIncentivadorCultural incentivadorCultural;
+  private IncentivadorCultural incentivadorCultural  = IncentivadorCultural.NAO;
 
   @XStreamAlias("Status")
-  private NFSeRpsInfoStatus status;
+  private RpsStatus status = RpsStatus.NORMAL;
 
   @XStreamAlias("Servico")
   private NFSeRpsInfoServico servico;
 
   @XStreamAlias("Prestador")
-  private Prestador prestador;
+  private NFSePrestador prestador;
 
   @XStreamAlias("Tomador")
-  private Tomador tomador;
+  private NFSeTomador tomador;
 
   @XStreamAlias("Intermediario")
   private NFSeRpsInfoServicoIntermediario intermediario;
 
-  public NFSeRpsInfo() {
-    identificacaoRps = new NFSeRpsInfoIdentificacaoRps();
-    dataEmissao = LocalDateTime.now();
-    naturezaOperacao = NFSeRpsInfoNaturezaOperacao.TRIBUTACAO_MUNICIPIO;
-    optanteSimplesNacional = NFSeRpsInfoOptanteSimplesNacional.NAO;
-    incentivadorCultural = NFSeRpsInfoIncentivadorCultural.NAO;
-    status = NFSeRpsInfoStatus.NORMAL;
-    id = UUID.randomUUID().toString();
-  }
+  public NFSeRpsInfo() {}
 
   public String getId() {
     return id;
@@ -74,19 +71,19 @@ public class NFSeRpsInfo {
     this.servico = servico;
   }
 
-  public Prestador getPrestador() {
+  public NFSePrestador getPrestador() {
     return prestador;
   }
 
-  public void setPrestador(Prestador prestador) {
+  public void setPrestador(NFSePrestador prestador) {
     this.prestador = prestador;
   }
 
-  public Tomador getTomador() {
+  public NFSeTomador getTomador() {
     return tomador;
   }
 
-  public void setTomador(Tomador tomador) {
+  public void setTomador(NFSeTomador tomador) {
     this.tomador = tomador;
   }
 
@@ -98,19 +95,19 @@ public class NFSeRpsInfo {
     this.intermediario = intermediario;
   }
 
-  public NFSeRpsInfoOptanteSimplesNacional getOptanteSimplesNacional() {
+  public OptanteSimplesNacional getOptanteSimplesNacional() {
     return optanteSimplesNacional;
   }
 
-  public void setOptanteSimplesNacional(NFSeRpsInfoOptanteSimplesNacional optanteSimplesNacional) {
+  public void setOptanteSimplesNacional(OptanteSimplesNacional optanteSimplesNacional) {
     this.optanteSimplesNacional = optanteSimplesNacional;
   }
 
-  public NFSeRpsInfoIncentivadorCultural getIncentivadorCultural() {
+  public IncentivadorCultural getIncentivadorCultural() {
     return incentivadorCultural;
   }
 
-  public void setIncentivadorCultural(NFSeRpsInfoIncentivadorCultural IncentivadorCultural) {
+  public void setIncentivadorCultural(IncentivadorCultural IncentivadorCultural) {
     this.incentivadorCultural = IncentivadorCultural;
   }
 
@@ -130,28 +127,28 @@ public class NFSeRpsInfo {
     this.dataEmissao = dataEmissao;
   }
 
-  public NFSeRpsInfoStatus getStatus() {
+  public RpsStatus getStatus() {
     return status;
   }
 
-  public void setStatus(NFSeRpsInfoStatus status) {
+  public void setStatus(RpsStatus status) {
     this.status = status;
   }
 
-  public NFSeRpsInfoNaturezaOperacao getNaturezaOperacao() {
+  public NaturezaOperacao getNaturezaOperacao() {
     return naturezaOperacao;
   }
 
-  public void setNaturezaOperacao(NFSeRpsInfoNaturezaOperacao naturezaOperacao) {
+  public void setNaturezaOperacao(NaturezaOperacao naturezaOperacao) {
     this.naturezaOperacao = naturezaOperacao;
   }
 
-  public NFSeRpsInfoRegimeEspecialTributacao getRegimeEspecialTributacao() {
+  public RegimeEspecialTributacao getRegimeEspecialTributacao() {
     return regimeEspecialTributacao;
   }
 
   public void setRegimeEspecialTributacao(
-      NFSeRpsInfoRegimeEspecialTributacao regimeEspecialTributacao) {
+      RegimeEspecialTributacao regimeEspecialTributacao) {
     this.regimeEspecialTributacao = regimeEspecialTributacao;
   }
 

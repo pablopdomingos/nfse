@@ -5,7 +5,7 @@ import javax.management.InvalidAttributeValueException;
 import com.pablodomingos.validadores.ValidadorString;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public class Prestador {
+public class NFSePrestador {
 
   @XStreamAlias("Cnpj")
   private String cnpj;
@@ -13,13 +13,13 @@ public class Prestador {
   @XStreamAlias("InscricaoMunicipal")
   private String inscricaoMunicipal;
 
-  public Prestador() {}
+  public NFSePrestador() {}
 
   public String getCnpj() {
     return cnpj;
   }
 
-  public Prestador comCnpj(String cnpj) throws InvalidAttributeValueException {
+  public NFSePrestador comCnpj(String cnpj) throws InvalidAttributeValueException {
     cnpj = cnpj.replaceAll("[^0-9]", "");
     if (cnpj.length() == 14){
       this.cnpj = cnpj;
@@ -33,7 +33,7 @@ public class Prestador {
     return inscricaoMunicipal;
   }
 
-  public Prestador comInscricaoMunicipal(String inscricaoMunicipal) {
+  public NFSePrestador comInscricaoMunicipal(String inscricaoMunicipal) {
     this.inscricaoMunicipal = ValidadorString.comTamanhoMaximoEMinimo(15, 1, inscricaoMunicipal, "Inscricao municipal prestador");
     return this;
   }

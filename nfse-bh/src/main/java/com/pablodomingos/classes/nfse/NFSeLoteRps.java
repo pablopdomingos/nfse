@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
+import com.pablodomingos.classes.nfse.enums.LoteRpsVersao;
 import com.pablodomingos.validadores.ValidadorInteiro;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
@@ -19,7 +20,7 @@ public class NFSeLoteRps {
 
   @XStreamAlias("versao")
   @XStreamAsAttribute
-  private NFSeLoteRpsVersao versao;
+  private LoteRpsVersao versao;
 
   @XStreamAlias("NumeroLote")
   private BigInteger numeroLote;
@@ -40,7 +41,7 @@ public class NFSeLoteRps {
   public NFSeLoteRps() {
     id = UUID.randomUUID().toString();
     listaRps = new ArrayList<NFSeRps>();
-    versao = NFSeLoteRpsVersao.V1_00;
+    versao = LoteRpsVersao.V1_00;
   }
 
   public void setId(String id) {
@@ -51,11 +52,11 @@ public class NFSeLoteRps {
     return id;
   }
 
-  public NFSeLoteRpsVersao getVersao() {
+  public LoteRpsVersao getVersao() {
     return versao;
   }
 
-  public void setVersao(NFSeLoteRpsVersao versao) {
+  public void setVersao(LoteRpsVersao versao) {
     this.versao = versao;
   }
 

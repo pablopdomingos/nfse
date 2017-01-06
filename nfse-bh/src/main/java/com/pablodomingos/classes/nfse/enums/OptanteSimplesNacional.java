@@ -1,18 +1,17 @@
-package com.pablodomingos.classes.nfse;
+package com.pablodomingos.classes.nfse.enums;
 
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
 
 @XStreamConverter(EnumToStringConverter.class)
-public enum NFSeRpsInfoServicoValoresIssRetido {
-	
-  SIM(1, "Sim"), 
-  NAO(2, "Não");
+public enum OptanteSimplesNacional {
+
+  SIM(1, "Sim"), NAO(2, "Nao");
 
   private int codigo;
   private String descricao;
 
-  NFSeRpsInfoServicoValoresIssRetido(int codigo, String descricao) {
+  OptanteSimplesNacional(int codigo, String descricao) {
     this.codigo = codigo;
     this.descricao = descricao;
   }
@@ -25,12 +24,12 @@ public enum NFSeRpsInfoServicoValoresIssRetido {
     return this.descricao;
   }
   
-  public static NFSeRpsInfoServicoValoresIssRetido fromInt(int codigo) {
+  public static OptanteSimplesNacional fromInt(int codigo) {
     if (codigo > 0 && codigo < 2) {
-      for (NFSeRpsInfoServicoValoresIssRetido issRetido : NFSeRpsInfoServicoValoresIssRetido
+      for (OptanteSimplesNacional optanteSimplesNacional : OptanteSimplesNacional
           .values()) {
-        if (issRetido.getCodigo().equals(String.valueOf(codigo))) {
-          return issRetido;
+        if (optanteSimplesNacional.getCodigo().equals(String.valueOf(codigo))) {
+          return optanteSimplesNacional;
         }
       }
     }
@@ -41,5 +40,5 @@ public enum NFSeRpsInfoServicoValoresIssRetido {
   public String toString() {
     return String.valueOf(codigo);
   }
-	
+
 }

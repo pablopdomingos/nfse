@@ -1,10 +1,10 @@
-package com.pablodomingos.classes.nfse;
+package com.pablodomingos.classes.nfse.enums;
 
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
 
 @XStreamConverter(EnumToStringConverter.class)
-public enum NFSeRpsInfoStatus {
+public enum RpsStatus {
 	
   NORMAL(1, "Normal"), 
   CANCELADO(2, "Cancelado");
@@ -12,7 +12,7 @@ public enum NFSeRpsInfoStatus {
   private final int codigo;
   private final String descricao;
 
-  NFSeRpsInfoStatus(int codigo, String descricao) {
+  RpsStatus(int codigo, String descricao) {
     this.codigo = codigo;
     this.descricao = descricao;
   }

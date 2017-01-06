@@ -1,10 +1,10 @@
-package com.pablodomingos.classes.nfse;
+package com.pablodomingos.classes.nfse.enums;
 
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
 
 @XStreamConverter(EnumToStringConverter.class)
-public enum NFSeLoteRpsVersao {
+public enum LoteRpsVersao {
 	
   V1_00{
     @Override
