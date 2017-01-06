@@ -1,7 +1,5 @@
 package com.pablodomingos;
 
-import java.math.BigInteger;
-import java.time.LocalDateTime;
 
 import javax.management.InvalidAttributeValueException;
 
@@ -13,24 +11,22 @@ import com.pablodomingos.classes.nfse.NFSeEnvio;
 import com.pablodomingos.classes.nfse.NFSeLoteRps;
 import com.pablodomingos.classes.nfse.NFSeRps;
 import com.pablodomingos.classes.nfse.NFSeRpsInfo;
-import com.pablodomingos.classes.nfse.NFSeRpsInfoIdentificacaoRps;
-import com.pablodomingos.classes.nfse.NFSeRpsInfoServico;
+import com.pablodomingos.classes.nfse.NFSeServico;
 import com.pablodomingos.classes.nfse.NFSePrestador;
 import com.pablodomingos.classes.nfse.NFSeTomador;
-import com.pablodomingos.classes.nfse.NFSeTomadorContato;
 import com.pablodomingos.classes.nfse.NFSeTomadorEndereco;
-import com.pablodomingos.classes.nfse.NFSeTomadorIdentificacao;
 import com.pablodomingos.classes.nfse.enums.LoteRpsVersao;
-import com.pablodomingos.classes.nfse.enums.RpsSerie;
-import com.pablodomingos.classes.nfse.enums.RpsTipo;
 import com.pablodomingos.classes.nfse.enums.NaturezaOperacao;
-import com.pablodomingos.classes.nfse.enums.OptanteSimplesNacional;
 import com.pablodomingos.classes.nfse.enums.RegimeEspecialTributacao;
 import com.pablodomingos.classes.nfse.enums.RpsStatus;
-import com.pablodomingos.classes.nfse.NFSeTomadorCpfCnpj;
 import com.pablodomingos.classes.nfse.NFSeValores;
-import com.pablodomingos.classes.nfse.builders100.TomadorBuilder100;
-import com.pablodomingos.classes.nfse.builders100.ValoresBuilder100;
+import com.pablodomingos.classes.nfse.builders.LoteRpsBuilder;
+import com.pablodomingos.classes.nfse.builders.PrestadorBuilder;
+import com.pablodomingos.classes.nfse.builders.RpsInfoBuilder;
+import com.pablodomingos.classes.nfse.builders.ServicoBuilder;
+import com.pablodomingos.classes.nfse.builders.TomadorBuilder;
+import com.pablodomingos.classes.nfse.builders.TomadorEnderecoBuilder;
+import com.pablodomingos.classes.nfse.builders.ValoresBuilder;
 
 /**
  * Hello world!
@@ -42,76 +38,68 @@ public class App
     public static void main( String[] args ) throws InvalidAttributeValueException
     {
      
+      //Endereco Tomador
+      NFSeTomadorEndereco endereco = new TomadorEnderecoBuilder()
+        .comLogradouro("Rua teste")
+        .comNumeroEndereco("125")
+        .comComplemento("Apto teste")
+        .comBairro("Bairro teste")
+        .comCep("30000000")
+        .comCodigoMunicipio("1234")
+        .comUf("MG")
+        .build();
+      
       //Tomador
-      NFSeTomador tomador = new TomadorBuilder100("00000000000000")
+      NFSeTomador tomador = new TomadorBuilder("00000000000000")
           .comInscricaoMunicipal("000000000000000")
           .comEmail("teste@teste.com.br")
           .comTelefone("00000000000")
-          .comLogradouro("Rua teste")
-          .comNumeroEndereco("125")
-          .comComplemento("Apto teste")
-          .comBairro("Bairro teste")
-          .comCep("30000000")
-          .comCodigoMunicipio(1234)
-          .comUf("MG")
+          .comEndereco(endereco)
           .build();
       
       //Prestador
-      NFSePrestador prestador = new NFSePrestador()
-        .comCnpj("00000000000000")
-        .comInscricaoMunicipal("000000000000");
+      NFSePrestador prestador = new PrestadorBuilder("00000000000000")
+        .comInscricaoMunicipal("000000000000")
+        .build();
       
       //Servico
-      NFSeValores valores = new ValoresBuilder100(100.00, 1.0)
+      NFSeValores valores = new ValoresBuilder(100.00, 1.0)
         .comIssRetido(false)
         .build();
 
-      NFSeRpsInfoServico servicoPrestado = new NFSeRpsInfoServico()
+      NFSeServico servicoPrestado = new ServicoBuilder(valores, "12345")
         .comCodigoCnae(12345)
         .comCodigoMunicipio(12345)
         .comCodigoTributacaoMunicipio("12345")
         .comDiscriminacao("Servico teste")
-        .comCodigoItemListaServico("12345")
-        .comValores(valores);
+        .build();
       
-      //Identifica��o RPS
-      NFSeRpsInfoIdentificacaoRps identificacaoRps = new NFSeRpsInfoIdentificacaoRps()
-        .comNumero(BigInteger.valueOf(1))
-        .comSerie(RpsSerie.A)
-        .comTipo(RpsTipo.RPS);
-      
-      NFSeRpsInfo rpsInfo = new NFSeRpsInfo();
-      rpsInfo.setDataEmissao(LocalDateTime.now());
-      rpsInfo.setId("1");
-      rpsInfo.setIdentificacaoRps(identificacaoRps);
-      rpsInfo.setNaturezaOperacao(NaturezaOperacao.TRIBUTACAO_MUNICIPIO);
-      rpsInfo.setOptanteSimplesNacional(OptanteSimplesNacional.SIM);
-      rpsInfo.setPrestador(prestador);
-      rpsInfo.setRegimeEspecialTributacao(RegimeEspecialTributacao.ME_EPP_SIMPLES_NACIONAL);
-      rpsInfo.setServico(servicoPrestado);
-      rpsInfo.setStatus(RpsStatus.NORMAL);
-      rpsInfo.setTomador(tomador);
+      NFSeRpsInfo rpsInfo = new RpsInfoBuilder("20170000015")
+        .comId("1")
+        .comNaturezaOperacao(NaturezaOperacao.TRIBUTACAO_MUNICIPIO)
+        .optanteSimplesNacional(true)
+        .comPrestador(prestador)
+        .comRegimeEspecialTributacao(RegimeEspecialTributacao.ME_EPP_SIMPLES_NACIONAL)
+        .comServico(servicoPrestado)
+        .comStatus(RpsStatus.NORMAL)
+        .comTomador(tomador)
+        .build();
       
       //RPS
-      NFSeRps rps = new NFSeRps();
-      rps.setRpsInfo(rpsInfo);
-      
+      NFSeRps rps = new NFSeRps(rpsInfo);
       
       //Lote RPS
-      NFSeLoteRps loteRps = new NFSeLoteRps();
-      loteRps.setCnpj("00000000000000");
-      loteRps.setInscricaoMunicipal("000000000");
-      loteRps.setNumeroLote(1L);
-      loteRps.setVersao(LoteRpsVersao.V1_00);
-      loteRps.addRps(rps);
-
+      NFSeLoteRps loteRps = new LoteRpsBuilder("1000")
+      .comCnpj("00000000000000")
+      .comInscricaoMunicipal("000000000")
+      .comVersao(LoteRpsVersao.V1_00)
+      .addRps(rps)
+      .build();
       
       //Envio
-      NFSeEnvio nfseEnvio = new NFSeEnvio();
-      nfseEnvio.setLoteRps(loteRps);
+      NFSeEnvio nfseEnvio = new NFSeEnvio(loteRps);
       
-      
-      String xml = nfseEnvio.toXml();
+      String xml = nfseEnvio.converterParaXml();
       
 
       CertificadoConfig config = new CertificadoConfigBuilder(TipoCertificado.A1, "12345678")

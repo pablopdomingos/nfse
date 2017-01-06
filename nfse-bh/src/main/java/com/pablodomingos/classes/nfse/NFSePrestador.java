@@ -1,8 +1,6 @@
 package com.pablodomingos.classes.nfse;
 
-import javax.management.InvalidAttributeValueException;
-
-import com.pablodomingos.validadores.ValidadorString;
+import com.pablodomingos.classes.nfse.builders.PrestadorBuilder;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public class NFSePrestador {
@@ -13,29 +11,17 @@ public class NFSePrestador {
   @XStreamAlias("InscricaoMunicipal")
   private String inscricaoMunicipal;
 
-  public NFSePrestador() {}
+  public NFSePrestador(PrestadorBuilder builder) {
+    this.cnpj = builder.getCnpj();
+    this.inscricaoMunicipal = builder.getInscricaoMunicipal();
+  }
 
   public String getCnpj() {
     return cnpj;
   }
 
-  public NFSePrestador comCnpj(String cnpj) throws InvalidAttributeValueException {
-    cnpj = cnpj.replaceAll("[^0-9]", "");
-    if (cnpj.length() == 14){
-      this.cnpj = cnpj;
-    }else {
-      throw new InvalidAttributeValueException("CPF ou CNPJ excedeu o tamanho do campo");
-    }
-    return this;
-  }
-
   public String getInscricaoMunicipal() {
     return inscricaoMunicipal;
-  }
-
-  public NFSePrestador comInscricaoMunicipal(String inscricaoMunicipal) {
-    this.inscricaoMunicipal = ValidadorString.comTamanhoMaximoEMinimo(15, 1, inscricaoMunicipal, "Inscricao municipal prestador");
-    return this;
   }
 
 }

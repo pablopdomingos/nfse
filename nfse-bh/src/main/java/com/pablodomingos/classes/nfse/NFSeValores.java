@@ -1,6 +1,6 @@
 package com.pablodomingos.classes.nfse;
 
-import com.pablodomingos.classes.nfse.builders.interfaces.ValoresBuilder;
+import com.pablodomingos.classes.nfse.builders.ValoresBuilder;
 import com.pablodomingos.classes.nfse.enums.IssRetido;
 import com.pablodomingos.conversores.DoubleConversor;
 import com.pablodomingos.validadores.ValidadorDecimal;

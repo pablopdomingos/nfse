@@ -14,13 +14,10 @@ public class NFSeEnvio {
   @XStreamAlias("LoteRps")
   private NFSeLoteRps loteRps;
 
-  public NFSeEnvio() {}
+  public NFSeEnvio(NFSeLoteRps loteRps) {
+    this.loteRps = loteRps;}
 
-  public void setLoteRps(NFSeLoteRps loteRps) {
-    this.loteRps = loteRps;
-  }
-
-  public String toXml() {
+  public String converterParaXml() {
     String XML_HEADER = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
     
     XStream xstream = new XStream();

@@ -1,50 +1,43 @@
 package com.pablodomingos.classes.nfse;
 
-import java.math.BigInteger;
-
 import com.pablodomingos.classes.nfse.enums.RpsSerie;
 import com.pablodomingos.classes.nfse.enums.RpsTipo;
-import com.pablodomingos.validadores.ValidadorInteiro;
+import com.pablodomingos.validadores.ValidadorString;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public class NFSeRpsInfoIdentificacaoRps {
 
   @XStreamAlias("Numero")
-  private BigInteger numero;
+  private String numero;
 
   @XStreamAlias("Serie")
-  private RpsSerie serie = RpsSerie.NFE;
+  private RpsSerie serie = RpsSerie.A;
 
   @XStreamAlias("Tipo")
   private RpsTipo tipo = RpsTipo.RPS;
 
-  public NFSeRpsInfoIdentificacaoRps() {}
-
-  public BigInteger getNumero() {
-    return numero;
+  public NFSeRpsInfoIdentificacaoRps(String numero) {
+    this.numero = ValidadorString.comTamanhoMaximo(15, numero, "Numero de identificacao RPS");
   }
 
-  public NFSeRpsInfoIdentificacaoRps comNumero(BigInteger numero) {
-    this.numero = ValidadorInteiro.comTamanhoMaximo(15, numero, "Numero de identificacao RPS");
-    return this;
+  public String getNumero() {
+    return numero;
   }
 
   public RpsSerie getSerie() {
     return serie;
   }
 
-  public NFSeRpsInfoIdentificacaoRps comSerie(RpsSerie serie) {
+  public void setSerie(RpsSerie serie) {
     this.serie = serie;
-    return this;
   }
 
   public RpsTipo getTipo() {
     return tipo;
   }
 
-  public NFSeRpsInfoIdentificacaoRps comTipo(RpsTipo tipo) {
+  public void setTipo(RpsTipo tipo) {
     this.tipo = tipo;
-    return this;
   }
 
 }

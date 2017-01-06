@@ -8,16 +8,13 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
   @XStreamAlias("InfRps")
   private NFSeRpsInfo rpsInfo;
 
-  public NFSeRps() {
-      rpsInfo = new NFSeRpsInfo();
+  public NFSeRps(NFSeRpsInfo rpsInfo) {
+    
+    this.rpsInfo = rpsInfo;
+    
   }
 
   public NFSeRpsInfo getRpsInfo() {
     return rpsInfo;
   }
-
-  public void setRpsInfo(NFSeRpsInfo rpsInfo) {
-    this.rpsInfo = rpsInfo;
-  }
-
 }

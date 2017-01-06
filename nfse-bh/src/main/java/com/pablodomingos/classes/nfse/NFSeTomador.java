@@ -1,6 +1,7 @@
 package com.pablodomingos.classes.nfse;
 
-import com.pablodomingos.classes.nfse.builders.interfaces.TomadorBuilder;
+
+import com.pablodomingos.classes.nfse.builders.TomadorBuilder;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public class NFSeTomador {
@@ -20,20 +21,13 @@ public class NFSeTomador {
   public NFSeTomador(TomadorBuilder builder) {
     
     this.nome = builder.getNome();
-    this.endereco = new NFSeTomadorEndereco()
-        .comEndereco(builder.getLogradouro())
-        .comNumero(builder.getNumero())
-        .comBairro(builder.getBairro())
-        .comComplemento(builder.getComplemento())
-        .comCep(builder.getCep())
-        .comUf(builder.getUf())
-        .comCodigoMunicipio(builder.getCodigoMunicipio());
     this.contato = new NFSeTomadorContato()
         .comEmail(builder.getEmail())
         .comTelefone(builder.getTelefone());
     this.identificacaoTomador = new NFSeTomadorIdentificacao()
         .comCpfCnpj(new NFSeTomadorCpfCnpj().comDocumento(builder.getDocumento()))
         .comInscricaoMunicipal(builder.getInscricaoMunicipal());
+    this.endereco = builder.getEndereco();
   }
 
   public NFSeTomadorEndereco getEndereco() {
