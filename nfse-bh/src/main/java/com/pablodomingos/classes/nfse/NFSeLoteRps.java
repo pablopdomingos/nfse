@@ -1,14 +1,10 @@
 package com.pablodomingos.classes.nfse;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
+import com.pablodomingos.classes.nfse.builders.LoteRpsBuilder;
 import com.pablodomingos.classes.nfse.enums.LoteRpsVersao;
-import com.pablodomingos.validadores.ValidadorInteiro;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
@@ -23,7 +19,7 @@ public class NFSeLoteRps {
   private LoteRpsVersao versao;
 
   @XStreamAlias("NumeroLote")
-  private BigInteger numeroLote;
+  private String numeroLote;
 
   @XStreamAlias("Cnpj")
   private String cnpj;
@@ -35,17 +31,16 @@ public class NFSeLoteRps {
   private int quantidadeRps;
 
   @XStreamAlias("ListaRps")
-  
   private final List<NFSeRps> listaRps;
 
-  public NFSeLoteRps() {
-    id = UUID.randomUUID().toString();
-    listaRps = new ArrayList<NFSeRps>();
-    versao = LoteRpsVersao.V1_00;
-  }
-
-  public void setId(String id) {
-    this.id = id;
+  public NFSeLoteRps(LoteRpsBuilder builder) {
+    this.id = builder.getId();
+    this.versao = builder.getVersao();
+    this.numeroLote = builder.getNumeroLote();
+    this.cnpj = builder.getCnpj();
+    this.inscricaoMunicipal = builder.getInscricaoMunicipal();
+    this.quantidadeRps = builder.getQuantidadeRps();
+    this.listaRps = builder.getListaRps();
   }
 
   public String getId() {
@@ -56,36 +51,16 @@ public class NFSeLoteRps {
     return versao;
   }
 
-  public void setVersao(LoteRpsVersao versao) {
-    this.versao = versao;
-  }
-
-  public BigInteger getNumeroLote() {
+  public String getNumeroLote() {
     return numeroLote;
   }
 
-  public void setNumeroLote(BigInteger numeroLote) {
-    this.numeroLote = ValidadorInteiro.comTamanhoMaximo(15, numeroLote, "Numero do Lote Rps");
-  }
-
-  public void setNumeroLote(Long numeroLote) {
-    this.numeroLote = ValidadorInteiro.comTamanhoMaximo(15, BigInteger.valueOf(numeroLote), "Numero do Lote Rps");
-  }
-  
   public String getCnpj() {
     return cnpj;
   }
 
-  public void setCnpj(String cnpj) {
-    this.cnpj = cnpj;
-  }
-
   public String getInscricaoMunicipal() {
     return inscricaoMunicipal;
-  }
-
-  public void setInscricaoMunicipal(String inscricaoMunicipal) {
-    this.inscricaoMunicipal = inscricaoMunicipal;
   }
 
   public Integer getQuantidadeRps() {
@@ -96,12 +71,5 @@ public class NFSeLoteRps {
     return Collections.unmodifiableList(listaRps);
   }
 
-  public void addRps(List<NFSeRps> rps) {
-    listaRps.addAll(rps);
-    quantidadeRps = listaRps.size();
-  }
-
-  public void addRps(NFSeRps... rps) {
-    addRps(Arrays.asList(rps));
-  }
+  
 }

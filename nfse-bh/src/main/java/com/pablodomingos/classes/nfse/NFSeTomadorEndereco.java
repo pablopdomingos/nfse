@@ -1,7 +1,6 @@
 package com.pablodomingos.classes.nfse;
 
-import com.pablodomingos.conversores.StringUtil;
-import com.pablodomingos.validadores.ValidadorString;
+import com.pablodomingos.classes.nfse.builders.TomadorEnderecoBuilder;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public class NFSeTomadorEndereco {
@@ -27,24 +26,24 @@ public class NFSeTomadorEndereco {
   @XStreamAlias("Cep")
   private String cep;
 
-  public NFSeTomadorEndereco(){}
+  public NFSeTomadorEndereco(TomadorEnderecoBuilder builder){
+
+        this.endereco = builder.getLogradouro();
+        this.numero = builder.getNumero();
+        this.bairro = builder.getBairro();
+        this.complemento = builder.getComplemento();
+        this.cep = builder.getCep();
+        this.uf = builder.getUf();
+        this.codigoMunicipio  = builder.getCodigoMunicipio();
+        
+  }
   
   public String getEndereco() {
     return endereco;
   }
 
-  public NFSeTomadorEndereco comEndereco(String endereco) {
-    this.endereco = ValidadorString.comTamanhoMaximoEMinimo(125, 1, StringUtil.removeAcentos(endereco), "Endereco");
-    return this;
-  }
-
   public String getNumero() {
     return numero;
-  }
-
-  public NFSeTomadorEndereco comNumero(String numero) {
-    this.numero = ValidadorString.comTamanhoMaximoEMinimo(10, 1, StringUtil.removeAcentos(numero), "Numero do Endereco");
-    return this;
   }
 
   public String getComplemento() {
@@ -54,45 +53,20 @@ public class NFSeTomadorEndereco {
     return complemento;
   }
 
-  public NFSeTomadorEndereco comComplemento(String complemento) {
-    this.complemento = ValidadorString.comTamanhoMaximoEMinimo(60, 1, StringUtil.removeAcentos(complemento), "Complemento");
-    return this;
-  }
-
   public String getBairro() {
     return bairro;
-  }
-
-  public NFSeTomadorEndereco comBairro(String bairro) {
-    this.bairro = ValidadorString.comTamanhoMaximoEMinimo(60, 1, StringUtil.removeAcentos(bairro), "Bairro");
-    return this;
   }
 
   public String getCodigoMunicipio() {
     return codigoMunicipio;
   }
 
-  public NFSeTomadorEndereco comCodigoMunicipio(String codigoMunicipio) {
-    this.codigoMunicipio = ValidadorString.comTamanhoMaximo(7, codigoMunicipio, "Codigo do municipio");
-    return this;
-  }
-  
   public String getUf() {
     return uf;
   }
 
-  public NFSeTomadorEndereco comUf(String uf) {
-    this.uf = ValidadorString.comTamanhoExato(2, uf, "UF");
-    return this;
-  }
-
   public String getCep() {
     return cep;
-  }
-
-  public NFSeTomadorEndereco comCep(String cep) {
-    this.cep = ValidadorString.comTamanhoExato(8, cep, "CEP");
-    return this;
   }
 
 }
