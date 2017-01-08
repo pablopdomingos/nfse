@@ -1,29 +1,41 @@
 package com.pablodomingos.classes.rps;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import com.pablodomingos.classes.rps.builders.TomadorEnderecoBuilder;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public class RpsTomadorEndereco {
 
   @XStreamAlias("Endereco")
+  @Size(min=1, max=125)
   private String endereco;
 
   @XStreamAlias("Numero")
+  @Size(min=1, max=10)
   private String numero;
 
   @XStreamAlias("Complemento")
+  @Size(min=1, max=60)
   private String complemento;
 
   @XStreamAlias("Bairro")
+  @Size(min=1, max=60)
   private String bairro;
 
   @XStreamAlias("CodigoMunicipio")
+  @Pattern(regexp = "\\d+")
+  @Size(max=7)
   private String codigoMunicipio;
 
   @XStreamAlias("Uf")
+  @Size(min=2, max=2)
   private String uf;
 
   @XStreamAlias("Cep")
+  @Pattern(regexp = "\\d+")
+  @Size(min=8, max=8)
   private String cep;
 
   public RpsTomadorEndereco(TomadorEnderecoBuilder builder){

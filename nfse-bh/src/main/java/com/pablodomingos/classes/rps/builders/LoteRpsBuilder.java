@@ -8,9 +8,9 @@ import java.util.UUID;
 import com.pablodomingos.classes.enums.LoteRpsVersao;
 import com.pablodomingos.classes.rps.LoteRps;
 import com.pablodomingos.classes.rps.Rps;
-import com.pablodomingos.validadores.ValidadorString;
 
-public class LoteRpsBuilder {
+public class LoteRpsBuilder extends AbstractBuilder<LoteRps>{
+
 
   private String id;
   private LoteRpsVersao versao;
@@ -21,17 +21,14 @@ public class LoteRpsBuilder {
   private final List<Rps> listaRps;
 
   public LoteRpsBuilder(String numeroLote) {
-    if (numeroLote == null || numeroLote.isEmpty()) {
-      throw new IllegalArgumentException("Numero do lote não pode ser nulo");
-    }
-    this.numeroLote = ValidadorString.comTamanhoMaximo(15, numeroLote, "Numero do lote");
+    this.numeroLote = numeroLote;
     this.versao = LoteRpsVersao.V1_00;
     this.listaRps = new ArrayList<Rps>();
     this.id = UUID.randomUUID().toString();
   }
   
   public LoteRpsBuilder comId(String id) {
-    this.id = ValidadorString.comTamanhoMaximo(255, id, "Id do lote");
+    this.id = id;
     return this;
   }
   
@@ -41,12 +38,12 @@ public class LoteRpsBuilder {
   }
   
   public LoteRpsBuilder comCnpj(String cnpj) {
-    this.cnpj = ValidadorString.comTamanhoExato(14, cnpj, "Cnpj do lote");
+    this.cnpj = cnpj;
     return this;
   }
 
   public LoteRpsBuilder comInscricaoMunicipal(String inscricaoMunicipal) {
-    this.inscricaoMunicipal = ValidadorString.comTamanhoMaximoEMinimo(15, 1, inscricaoMunicipal, "Inscricao municipal do lote");
+    this.inscricaoMunicipal = inscricaoMunicipal;
     return this;
   }
   
@@ -61,7 +58,8 @@ public class LoteRpsBuilder {
     return this;
   }
   
-  public LoteRps build() {
+  @Override
+  protected LoteRps buildInternal() {
     return new LoteRps(this);
   }
 

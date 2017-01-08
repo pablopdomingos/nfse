@@ -1,18 +1,21 @@
 package com.pablodomingos.classes.rps;
 
-import com.pablodomingos.validadores.ValidadorString;
+import org.hibernate.validator.constraints.br.CNPJ;
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public class RpsIntermediarioCpfCnpj {
 
   @XStreamAlias("Cnpj")
+  @CNPJ
   private String cnpj;
 
   @XStreamAlias("Cpf")
+  @CPF
   private String cpf;
 
   public RpsIntermediarioCpfCnpj(String documento) {
-    documento = ValidadorString.cpfCnpj(documento);
     if(documento.length() == 11){
       setCpf(documento);
     }else if (documento.length() == 14){
