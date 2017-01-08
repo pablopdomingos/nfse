@@ -52,6 +52,7 @@ public class App
         .build();
       
       RpsTomadorContato contato = new TomadorContatoBuilder()
+        .comTelefone("2222222222")
         .comEmail("claudio1dhcp@gmail.com")
         .build();
       
@@ -68,7 +69,7 @@ public class App
         .build();
       
       //Servico
-      RpsValores valores = new ValoresBuilder(80.00, 2.0)
+      RpsValores valores = new ValoresBuilder(10.00, 2.0)
         .comIssRetido(false)
         .build();
 

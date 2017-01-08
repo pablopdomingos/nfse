@@ -3,9 +3,8 @@ package com.pablodomingos.classes.rps.builders;
 import com.pablodomingos.classes.rps.RpsTomador;
 import com.pablodomingos.classes.rps.RpsTomadorContato;
 import com.pablodomingos.classes.rps.RpsTomadorEndereco;
-import com.pablodomingos.validadores.ValidadorString;
 
-public class TomadorBuilder{
+public class TomadorBuilder extends AbstractBuilder<RpsTomador> {
 
   private String documento;
   private String inscricaoMunicipal;
@@ -14,19 +13,16 @@ public class TomadorBuilder{
   private RpsTomadorEndereco endereco;
   
   public TomadorBuilder(String documento) {
-    if (documento == null) {
-      throw new IllegalArgumentException("Documento não pode ser nulo");
-    }
     this.documento = documento;
   }
 
   public TomadorBuilder comInscricaoMunicipal(String inscricaoMunicipal) {
-    this.inscricaoMunicipal = ValidadorString.comTamanhoMaximoEMinimo(15, 1, inscricaoMunicipal, "Inscricao municipal");
+    this.inscricaoMunicipal = inscricaoMunicipal;
     return this;
   }
 
   public TomadorBuilder comNome(String nome) {
-    this.nome = ValidadorString.comTamanhoMaximoEMinimo(115, 1, nome, "Nome Tomador");
+    this.nome = nome;
     return this;
   }
 
@@ -45,8 +41,11 @@ public class TomadorBuilder{
     return this;
   }
   
-  public RpsTomador build() {
-    return new RpsTomador(this);
+  @Override
+  protected RpsTomador buildInternal() {
+    RpsTomador tomador = new RpsTomador(this);
+  
+    return tomador;
   }
 
   public String getDocumento() {

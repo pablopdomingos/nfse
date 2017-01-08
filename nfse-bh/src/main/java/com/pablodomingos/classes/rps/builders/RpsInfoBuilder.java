@@ -17,10 +17,9 @@ import com.pablodomingos.classes.rps.RpsPrestador;
 import com.pablodomingos.classes.rps.RpsInfo;
 import com.pablodomingos.classes.rps.RpsServico;
 import com.pablodomingos.classes.rps.RpsTomador;
-import com.pablodomingos.validadores.ValidadorString;
 
-public class RpsInfoBuilder{
-
+public class RpsInfoBuilder extends AbstractBuilder<RpsInfo>{
+  
   private String id = UUID.randomUUID().toString();
   private RpsIdentificacaoRps identificacaoRps ;
   private LocalDateTime dataEmissao;
@@ -36,9 +35,6 @@ public class RpsInfoBuilder{
   private RpsDadosContrucaoCivil contrucaoCivil;
   
   public RpsInfoBuilder(String numeroRps) {
-    if (numeroRps == null || numeroRps.isEmpty()) {
-      throw new IllegalArgumentException("Numero da RPS não pode ser nulo");
-    }
     this.identificacaoRps = new RpsIdentificacaoRps(numeroRps);
     this.dataEmissao = LocalDateTime.now();
     this.naturezaOperacao = NaturezaOperacao.TRIBUTACAO_MUNICIPIO;
@@ -58,7 +54,7 @@ public class RpsInfoBuilder{
   }
   
   public RpsInfoBuilder comId(String id) {
-    this.id = ValidadorString.comTamanhoMaximoEMinimo(255, 1, id, "Tag ID");
+    this.id = id;
     return this;
   }
 
@@ -112,7 +108,7 @@ public class RpsInfoBuilder{
     return this;
   }
   
-  public RpsInfo build() {
+  protected RpsInfo buildInternal() {
     return new RpsInfo(this);
   }
 

@@ -2,10 +2,9 @@ package com.pablodomingos.classes.rps.builders;
 
 import com.pablodomingos.classes.enums.IssRetido;
 import com.pablodomingos.classes.rps.RpsValores;
-import com.pablodomingos.validadores.ValidadorDecimal;
 
-public class ValoresBuilder {
-
+public class ValoresBuilder extends AbstractBuilder<RpsValores> {
+  
   private Double valorServicos = 0.0;
   private Double valorDeducoes;
   private Double valorPis;
@@ -20,56 +19,52 @@ public class ValoresBuilder {
   private Double descontoCondicionado;
 
   public ValoresBuilder(Double valorServicos, Double aliquota) {
-    if (Double.isNaN(aliquota) || Double.isNaN(valorServicos) || valorServicos == 0) {
-      throw new IllegalArgumentException("Valor do serviço ou aliquota não podem ser nulos");
-    }
-    this.aliquota = ValidadorDecimal.tamanho5Com4CasasDecimais(aliquota / 100.0);
-    this.valorServicos = ValidadorDecimal.tamanho15Com2CasasDecimais(valorServicos);
+    this.aliquota = aliquota / 100.0;
+    this.valorServicos = valorServicos;
   }
 
   public ValoresBuilder comValorDeducoes(Double valorDeducoes) {
-    this.valorDeducoes = ValidadorDecimal.tamanho15Com2CasasDecimais(valorDeducoes);
+    this.valorDeducoes = valorDeducoes;
     return this;
   }
 
   public ValoresBuilder comValorPis(Double valorPis) {
-    this.valorPis = ValidadorDecimal.tamanho15Com2CasasDecimais(valorPis);
+    this.valorPis = valorPis;
     return this;
   }
 
   public ValoresBuilder comValorCofins(Double valorCofins) {
-    this.valorCofins = ValidadorDecimal.tamanho15Com2CasasDecimais(valorCofins);
+    this.valorCofins = valorCofins;
     return this;
   }
 
   public ValoresBuilder comValorInss(Double valorInss) {
-    this.valorInss = ValidadorDecimal.tamanho15Com2CasasDecimais(valorInss);
+    this.valorInss = valorInss;
     return this;
   }
 
   public ValoresBuilder comValorIr(Double valorIr) {
-    this.valorIr = ValidadorDecimal.tamanho15Com2CasasDecimais(valorIr);
+    this.valorIr = valorIr;
     return this;
   }
 
   public ValoresBuilder comValorCsll(Double valorCsll) {
-    this.valorCsll = ValidadorDecimal.tamanho15Com2CasasDecimais(valorCsll);
+    this.valorCsll = valorCsll;
     return this;
   }
 
   public ValoresBuilder comOutrasRetencoes(Double outrasRetencoes) {
-    this.outrasRetencoes = ValidadorDecimal.tamanho15Com2CasasDecimais(outrasRetencoes);
+    this.outrasRetencoes = outrasRetencoes;
     return this;
   }
 
   public ValoresBuilder comDescontoIncondicionado(Double descontoIncondicionado) {
-    this.descontoIncondicionado =
-        ValidadorDecimal.tamanho15Com2CasasDecimais(descontoIncondicionado);
+    this.descontoIncondicionado = descontoIncondicionado;
     return this;
   }
 
   public ValoresBuilder comDescontoCondicionado(Double descontoCondicionado) {
-    this.descontoCondicionado = ValidadorDecimal.tamanho15Com2CasasDecimais(descontoCondicionado);
+    this.descontoCondicionado = descontoCondicionado;
     return this;
   }
 
@@ -77,9 +72,10 @@ public class ValoresBuilder {
     this.issRetido = issRetido ? IssRetido.SIM : IssRetido.NAO;
     return this;
   }
-
-  public RpsValores build() {
-    return new RpsValores(this);
+  
+  @Override
+  protected RpsValores buildInternal() {
+      return new RpsValores(this);
   }
 
   public Double getValorServicos() {

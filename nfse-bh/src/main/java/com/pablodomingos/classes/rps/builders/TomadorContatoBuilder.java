@@ -1,26 +1,27 @@
 package com.pablodomingos.classes.rps.builders;
 
 import com.pablodomingos.classes.rps.RpsTomadorContato;
-import com.pablodomingos.validadores.ValidadorString;
 
-public class TomadorContatoBuilder{
-
+public class TomadorContatoBuilder extends AbstractBuilder<RpsTomadorContato>{
+  
+  
   private String telefone;
   private String email;
   
   public TomadorContatoBuilder() {}
 
   public TomadorContatoBuilder comTelefone(String telefone) {
-    this.telefone = ValidadorString.comTamanhoMaximoEMinimo(15, 1, telefone, "Telefone");
+    this.telefone = telefone;
     return this;
   }
 
   public TomadorContatoBuilder comEmail(String email) {
-    this.email = ValidadorString.comTamanhoMaximoEMinimo(80, 1, email, "Email");
+    this.email = email;
     return this;
   }
    
-  public RpsTomadorContato build() {
+  @Override
+  protected RpsTomadorContato buildInternal() {
     return new RpsTomadorContato(this);
   }
   

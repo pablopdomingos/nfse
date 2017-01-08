@@ -1,5 +1,7 @@
 package com.pablodomingos.classes.rps;
 
+import javax.validation.constraints.Size;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public class RpsTomadorIdentificacao {
@@ -8,6 +10,7 @@ public class RpsTomadorIdentificacao {
   private RpsTomadorCpfCnpj cpfCnpj;
 
   @XStreamAlias("InscricaoMunicipal")
+  @Size(min=1, max=15)
   private String inscricaoMunicipal;
 
   public RpsTomadorIdentificacao() {}

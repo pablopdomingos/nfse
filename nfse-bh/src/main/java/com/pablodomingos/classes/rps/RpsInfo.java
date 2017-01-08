@@ -2,6 +2,9 @@ package com.pablodomingos.classes.rps;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.pablodomingos.classes.enums.IncentivadorCultural;
 import com.pablodomingos.classes.enums.NaturezaOperacao;
 import com.pablodomingos.classes.enums.OptanteSimplesNacional;
@@ -17,34 +20,44 @@ public class RpsInfo {
 
   @XStreamAlias("Id")
   @XStreamAsAttribute
+  @NotNull
+  @Size(min=1, max=255)
   private String id;
 
   @XStreamAlias("IdentificacaoRps")
-  private RpsIdentificacaoRps identificacaoRps ;
+  @NotNull
+  private RpsIdentificacaoRps identificacaoRps;
 
   @XStreamAlias("DataEmissao")
   @XStreamConverter(LocalDateTimeConversor.class)
+  @NotNull
   private LocalDateTime dataEmissao;
 
   @XStreamAlias("NaturezaOperacao")
+  @NotNull
   private NaturezaOperacao naturezaOperacao;
 
   @XStreamAlias("RegimeEspecialTributacao")
   private RegimeEspecialTributacao regimeEspecialTributacao;
 
   @XStreamAlias("OptanteSimplesNacional")
+  @NotNull
   private OptanteSimplesNacional optanteSimplesNacional;
 
   @XStreamAlias("IncentivadorCultural")
+  @NotNull
   private IncentivadorCultural incentivadorCultural;
 
   @XStreamAlias("Status")
+  @NotNull
   private RpsStatus status;
 
   @XStreamAlias("Servico")
+  @NotNull
   private RpsServico servico;
 
   @XStreamAlias("Prestador")
+  @NotNull
   private RpsPrestador prestador;
 
   @XStreamAlias("Tomador")
