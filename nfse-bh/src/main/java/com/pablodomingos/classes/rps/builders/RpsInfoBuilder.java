@@ -3,13 +3,6 @@ package com.pablodomingos.classes.rps.builders;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import com.pablodomingos.classes.enums.IncentivadorCultural;
-import com.pablodomingos.classes.enums.NaturezaOperacao;
-import com.pablodomingos.classes.enums.OptanteSimplesNacional;
-import com.pablodomingos.classes.enums.RegimeEspecialTributacao;
-import com.pablodomingos.classes.enums.RpsSerie;
-import com.pablodomingos.classes.enums.RpsStatus;
-import com.pablodomingos.classes.enums.RpsTipo;
 import com.pablodomingos.classes.rps.RpsDadosContrucaoCivil;
 import com.pablodomingos.classes.rps.RpsIdentificacaoRps;
 import com.pablodomingos.classes.rps.RpsIntermediario;
@@ -17,6 +10,13 @@ import com.pablodomingos.classes.rps.RpsPrestador;
 import com.pablodomingos.classes.rps.RpsInfo;
 import com.pablodomingos.classes.rps.RpsServico;
 import com.pablodomingos.classes.rps.RpsTomador;
+import com.pablodomingos.classes.rps.enums.IncentivadorCultural;
+import com.pablodomingos.classes.rps.enums.NaturezaOperacao;
+import com.pablodomingos.classes.rps.enums.OptanteSimplesNacional;
+import com.pablodomingos.classes.rps.enums.RegimeEspecialTributacao;
+import com.pablodomingos.classes.rps.enums.RpsSerie;
+import com.pablodomingos.classes.rps.enums.RpsStatus;
+import com.pablodomingos.classes.rps.enums.RpsTipo;
 
 public class RpsInfoBuilder extends AbstractBuilder<RpsInfo>{
   

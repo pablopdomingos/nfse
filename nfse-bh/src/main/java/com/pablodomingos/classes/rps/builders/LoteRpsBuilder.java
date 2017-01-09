@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import com.pablodomingos.classes.enums.LoteRpsVersao;
 import com.pablodomingos.classes.rps.LoteRps;
 import com.pablodomingos.classes.rps.Rps;
+import com.pablodomingos.classes.rps.enums.LoteRpsVersao;
 
 public class LoteRpsBuilder extends AbstractBuilder<LoteRps>{
 

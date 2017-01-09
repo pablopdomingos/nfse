@@ -1,7 +1,7 @@
 package com.pablodomingos.classes.rps.builders;
 
-import com.pablodomingos.classes.enums.IssRetido;
 import com.pablodomingos.classes.rps.RpsValores;
+import com.pablodomingos.classes.rps.enums.IssRetido;
 
 public class ValoresBuilder extends AbstractBuilder<RpsValores> {
   

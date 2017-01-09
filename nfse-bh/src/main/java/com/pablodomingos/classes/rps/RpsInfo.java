@@ -5,12 +5,12 @@ import java.time.LocalDateTime;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.pablodomingos.classes.enums.IncentivadorCultural;
-import com.pablodomingos.classes.enums.NaturezaOperacao;
-import com.pablodomingos.classes.enums.OptanteSimplesNacional;
-import com.pablodomingos.classes.enums.RegimeEspecialTributacao;
-import com.pablodomingos.classes.enums.RpsStatus;
 import com.pablodomingos.classes.rps.builders.RpsInfoBuilder;
+import com.pablodomingos.classes.rps.enums.IncentivadorCultural;
+import com.pablodomingos.classes.rps.enums.NaturezaOperacao;
+import com.pablodomingos.classes.rps.enums.OptanteSimplesNacional;
+import com.pablodomingos.classes.rps.enums.RegimeEspecialTributacao;
+import com.pablodomingos.classes.rps.enums.RpsStatus;
 import com.pablodomingos.conversores.LocalDateTimeConversor;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;

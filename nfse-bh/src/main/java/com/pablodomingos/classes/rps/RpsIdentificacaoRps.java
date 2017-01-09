@@ -3,8 +3,8 @@ package com.pablodomingos.classes.rps;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.pablodomingos.classes.enums.RpsSerie;
-import com.pablodomingos.classes.enums.RpsTipo;
+import com.pablodomingos.classes.rps.enums.RpsSerie;
+import com.pablodomingos.classes.rps.enums.RpsTipo;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public class RpsIdentificacaoRps {
