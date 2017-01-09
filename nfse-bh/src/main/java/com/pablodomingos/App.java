@@ -1,16 +1,16 @@
 package com.pablodomingos;
 
 
+import java.io.File;
+
 import javax.management.InvalidAttributeValueException;
+
+import org.apache.commons.io.FileUtils;
 
 import com.pablodomingos.assinatura.AssinaturaDigital;
 import com.pablodomingos.assinatura.CertificadoConfig;
 import com.pablodomingos.assinatura.CertificadoConfig.CertificadoConfigBuilder;
 import com.pablodomingos.assinatura.TipoCertificado;
-import com.pablodomingos.classes.enums.LoteRpsVersao;
-import com.pablodomingos.classes.enums.NaturezaOperacao;
-import com.pablodomingos.classes.enums.RegimeEspecialTributacao;
-import com.pablodomingos.classes.enums.RpsStatus;
 import com.pablodomingos.classes.rps.RpsEnvio;
 import com.pablodomingos.classes.rps.LoteRps;
 import com.pablodomingos.classes.rps.RpsPrestador;
@@ -29,6 +29,13 @@ import com.pablodomingos.classes.rps.builders.TomadorBuilder;
 import com.pablodomingos.classes.rps.builders.TomadorContatoBuilder;
 import com.pablodomingos.classes.rps.builders.TomadorEnderecoBuilder;
 import com.pablodomingos.classes.rps.builders.ValoresBuilder;
+import com.pablodomingos.classes.rps.enums.LoteRpsVersao;
+import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
+import com.pablodomingos.classes.rps.enums.NaturezaOperacao;
+import com.pablodomingos.classes.rps.enums.RegimeEspecialTributacao;
+import com.pablodomingos.classes.rps.enums.RpsStatus;
+import com.pablodomingos.util.NFSeGeraCadeiaCertificados;
+import com.pablodomingos.webservices.WSEnviaLote;
 
 /**
  * Hello world!
@@ -80,7 +87,7 @@ public class App
         .comDiscriminacao("Mes referencia: 11/2016|Honda XRE300 - OWJ9928 (Panico, Historico, Rastreamento, Bloqueio) - R$ 40,00|Honda CG 150 Fan - PWN3011 (Panico, Historico, Rastreamento, Bloqueio) - R$ 40,00")
         .build();
       
-      RpsInfo rpsInfo = new RpsInfoBuilder("20170000015")
+      RpsInfo rpsInfo = new RpsInfoBuilder("100")
         .comNaturezaOperacao(NaturezaOperacao.TRIBUTACAO_MUNICIPIO)
         .optanteSimplesNacional(true)
         .comPrestador(prestador)
@@ -107,13 +114,20 @@ public class App
       String xml = nfseEnvio.converterParaXml();
       
 
-      CertificadoConfig config = new CertificadoConfigBuilder(TipoCertificado.A1, "12345678")
-          .comCaminhoParaOCertificado("c:/certificado/certificado.pfx").build();
+      CertificadoConfig config = new CertificadoConfigBuilder(TipoCertificado.A3_TOKEN, "senha").build();
+          //.comCaminhoParaOCertificado("c:/certificado/certificado.pfx").build();
       
       AssinaturaDigital assinatura = new AssinaturaDigital(config);
       
+     
       try {
-        System.out.println(assinatura.assinarXML(xml));
+        System.out.println();
+        
+        FileUtils.writeByteArrayToFile(new File("nfse-bh.cacerts"), NFSeGeraCadeiaCertificados.geraCadeiaCertificados("senha"));
+       
+        
+        System.out.println(WSEnviaLote.enviarLote(assinatura.assinarXML(xml), NFSeAmbiente.HOMOLOGACAO));
+        
       } catch (Exception e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
