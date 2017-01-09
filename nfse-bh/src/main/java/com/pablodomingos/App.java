@@ -49,49 +49,46 @@ public class App
      
       //Endereco Tomador
       RpsTomadorEndereco endereco = new TomadorEnderecoBuilder()
-        .comLogradouro("Rua Antonio Jose Costa")
+        .comLogradouro("Rua Teste")
         .comNumeroEndereco("195")
-        .comComplemento("Apto teste")
-        .comBairro("Darcy Ribeiro")
-        .comCep("32060528")
+        .comBairro("Bairro Teste")
+        .comCep("32000000")
         .comCodigoMunicipio("3118601")
         .comUf("MG")
         .build();
       
       RpsTomadorContato contato = new TomadorContatoBuilder()
-        .comTelefone("2222222222")
-        .comEmail("claudio1dhcp@gmail.com")
+        .comEmail("email@gmail.com")
         .build();
       
       //Tomador
-      RpsTomador tomador = new TomadorBuilder("56856504691")
-          .comNome("Claudio")
+      RpsTomador tomador = new TomadorBuilder("00000000000")
+          .comNome("Nome Teste")
         .comContato(contato)
         .comEndereco(endereco)
         .build();
     
       //Prestador
-      RpsPrestador prestador = new PrestadorBuilder("17773455000142")
-        .comInscricaoMunicipal("04812760010")
+      RpsPrestador prestador = new PrestadorBuilder("00000000000000")
+        .comInscricaoMunicipal("0000000000")
         .build();
       
       //Servico
-      RpsValores valores = new ValoresBuilder(10.00, 2.0)
+      RpsValores valores = new ValoresBuilder(50.00, 3.0)
         .comIssRetido(false)
         .build();
 
-      RpsServico servicoPrestado = new ServicoBuilder(valores, "11.02")
-        .comCodigoCnae(12312)
+      RpsServico servicoPrestado = new ServicoBuilder(valores, "1.05")
+        .comCodigoCnae(2621300)
         .comCodigoMunicipio(3106200)
-        .comCodigoTributacaoMunicipio("110200188")
-        .comDiscriminacao("Mes referencia: 11/2016|Honda XRE300 - OWJ9928 (Panico, Historico, Rastreamento, Bloqueio) - R$ 40,00|Honda CG 150 Fan - PWN3011 (Panico, Historico, Rastreamento, Bloqueio) - R$ 40,00")
+        .comCodigoTributacaoMunicipio("010500188")
+        .comDiscriminacao("Servico informatica")
         .build();
       
       RpsInfo rpsInfo = new RpsInfoBuilder("100")
         .comNaturezaOperacao(NaturezaOperacao.TRIBUTACAO_MUNICIPIO)
-        .optanteSimplesNacional(true)
+        .optanteSimplesNacional(false)
         .comPrestador(prestador)
-        .comRegimeEspecialTributacao(RegimeEspecialTributacao.ME_EPP_SIMPLES_NACIONAL)
         .comServico(servicoPrestado)
         .comStatus(RpsStatus.NORMAL)
         .comTomador(tomador)
@@ -102,8 +99,8 @@ public class App
       
       //Lote RPS
       LoteRps loteRps = new LoteRpsBuilder("1000")
-        .comCnpj("17773455000142")
-        .comInscricaoMunicipal("04812760010")
+        .comCnpj("00000000000000")
+        .comInscricaoMunicipal("0000000000")
         .comVersao(LoteRpsVersao.V1_00)
         .addRps(rps)
         .build();
@@ -112,21 +109,17 @@ public class App
       RpsEnvio nfseEnvio = new RpsEnvio(loteRps);
       
       String xml = nfseEnvio.converterParaXml();
-      
-
-      CertificadoConfig config = new CertificadoConfigBuilder(TipoCertificado.A3_TOKEN, "senha").build();
-          //.comCaminhoParaOCertificado("c:/certificado/certificado.pfx").build();
-      
-      AssinaturaDigital assinatura = new AssinaturaDigital(config);
-      
-     
       try {
-        System.out.println();
         
-        FileUtils.writeByteArrayToFile(new File("nfse-bh.cacerts"), NFSeGeraCadeiaCertificados.geraCadeiaCertificados("senha"));
-       
+        FileUtils.writeByteArrayToFile(new File("c:/certificado/nfse-bh.cacerts"), NFSeGeraCadeiaCertificados.geraCadeiaCertificados("senha"));
         
-        System.out.println(WSEnviaLote.enviarLote(assinatura.assinarXML(xml), NFSeAmbiente.HOMOLOGACAO));
+        CertificadoConfig config = new CertificadoConfigBuilder(TipoCertificado.A1, "senha")
+            .comAmbiente(NFSeAmbiente.HOMOLOGACAO).build();
+        
+        AssinaturaDigital assinatura = new AssinaturaDigital(config);
+        //System.out.println(xml);
+        
+        System.out.println(WSEnviaLote.enviarLote(assinatura.assinarXML(xml), config));
         
       } catch (Exception e) {
         // TODO Auto-generated catch block

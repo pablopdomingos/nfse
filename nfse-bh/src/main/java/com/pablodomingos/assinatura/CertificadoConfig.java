@@ -3,12 +3,15 @@ package com.pablodomingos.assinatura;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Paths;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.Provider;
 import java.security.Security;
 import java.security.cert.CertificateException;
+
+import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
 
 
 public class CertificadoConfig {
@@ -17,14 +20,19 @@ public class CertificadoConfig {
   private String senhaCertificado;
   private String aliasCertificado;
   private String caminhoParaCertificado;
+  private String caminhoParaCadeiaCertificado;
   private KeyStore keyStoreCertificado;
-
+  private NFSeAmbiente ambiente;
+  
   public CertificadoConfig(CertificadoConfigBuilder builder) {
     super();
     this.senhaCertificado = builder.senhaCertificado;
     this.aliasCertificado = builder.aliasCertificado;
     this.tipoCertificado = builder.tipoCertificado;
     this.caminhoParaCertificado = builder.caminhoParaCertificado;
+    this.caminhoParaCadeiaCertificado = builder.caminhoParaCadeiaCertificado;
+    this.ambiente = builder.ambiente;
+    
   }
 
   public KeyStore getCertificadoKeyStore() throws KeyStoreException {
@@ -55,7 +63,7 @@ public class CertificadoConfig {
 
         }
 
-        this.keyStoreCertificado.load(certificadoStream, this.getCertificadoSenha().toCharArray());
+        this.keyStoreCertificado.load(certificadoStream, this.getSenhaCertificado().toCharArray());
 
       }
 
@@ -66,20 +74,42 @@ public class CertificadoConfig {
     }
   }
 
-  public String getCertificadoAlias() {
-    return this.aliasCertificado;
+  public TipoCertificado getTipoCertificado() {
+    return tipoCertificado;
   }
 
-  public String getCertificadoSenha() {
-    return this.senhaCertificado;
+  public String getSenhaCertificado() {
+    return senhaCertificado;
+  }
+
+  public String getAliasCertificado() {
+    return aliasCertificado;
+  }
+
+  public String getCaminhoParaCertificado() {
+    return caminhoParaCertificado;
+  }
+  
+  public String getCaminhoParaCadeiaCertificado() {
+    return caminhoParaCadeiaCertificado;
+  }
+
+  public KeyStore getKeyStoreCertificado() {
+    return keyStoreCertificado;
+  }
+
+  public NFSeAmbiente getAmbiente() {
+    return ambiente;
   }
 
   public static class CertificadoConfigBuilder {
 
-    public TipoCertificado tipoCertificado;
-    public String senhaCertificado;
-    public String aliasCertificado = null;
-    public String caminhoParaCertificado = "/certificado/certificado.pfx";
+    private TipoCertificado tipoCertificado;
+    private String senhaCertificado;
+    private String aliasCertificado = null;
+    private String caminhoParaCertificado = Paths.get("/certificado/certificado.pfx").toAbsolutePath().toString();
+    private String caminhoParaCadeiaCertificado = Paths.get("/certificado/nfse-bh.cacerts").toAbsolutePath().toString();
+    private NFSeAmbiente ambiente = NFSeAmbiente.HOMOLOGACAO; 
 
     public CertificadoConfigBuilder(TipoCertificado tipoCertificado, String senhaCertificado) {
 
@@ -95,11 +125,21 @@ public class CertificadoConfig {
       return this;
     }
 
-    public CertificadoConfigBuilder comCaminhoParaOCertificado(String caminhoParaCertificado) {
+    public CertificadoConfigBuilder comCaminhoCertificadoCliente(String caminhoParaCertificado) {
       this.caminhoParaCertificado = caminhoParaCertificado;
       return this;
     }
 
+    public CertificadoConfigBuilder comCaminhoCadeiaDeCertificados(String caminhoParaCadeiaCertificado) {
+      this.caminhoParaCadeiaCertificado = caminhoParaCadeiaCertificado;
+      return this;
+    }
+    
+    public CertificadoConfigBuilder comAmbiente(NFSeAmbiente ambiente) {
+      this.ambiente = ambiente;
+      return this;
+    }
+    
     public CertificadoConfig build() {
       return new CertificadoConfig(this);
     }

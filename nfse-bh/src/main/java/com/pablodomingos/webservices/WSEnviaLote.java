@@ -1,19 +1,15 @@
 package com.pablodomingos.webservices;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.rmi.RemoteException;
-import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
-import java.security.Provider;
 import java.security.Security;
 import java.security.cert.CertificateException;
 
 import javax.xml.rpc.ServiceException;
 
-import com.pablodomingos.App;
-import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
+import com.pablodomingos.assinatura.CertificadoConfig;
+import com.pablodomingos.assinatura.TipoCertificado;
 import com.pablodomingos.webservices.pbh.Input;
 import com.pablodomingos.webservices.pbh.Nfse;
 import com.pablodomingos.webservices.pbh.NfseWSService;
@@ -27,23 +23,40 @@ public class WSEnviaLote {
       + "</cabecalho>";
   
   
-  public static String enviarLote(String rpsAssinado, NFSeAmbiente ambiente) throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException, IOException{
-    InputStream inputFile = WSEnviaLote.class.getClassLoader().getResourceAsStream("Token.cfg");
-    Provider p = new sun.security.pkcs11.SunPKCS11(inputFile);  
-    Security.addProvider(p);  
-    char[] pin = "senha".toCharArray();  
-    KeyStore ks = KeyStore.getInstance("pkcs11", p);  
-    ks.load(null, pin);  
+  @SuppressWarnings("restriction")
+  public static String enviarLote(String rpsAssinado, CertificadoConfig configCertificado) throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException, IOException{
     
-    String arquivoCacertsGeradoTodosOsEstados = WSEnviaLote.class.getClassLoader().getResource("nfse-bh.cacerts").getPath();
-    System.out.println(arquivoCacertsGeradoTodosOsEstados);
-    System.setProperty("javax.net.ssl.keyStore", "NONE");  
-    System.setProperty("javax.net.ssl.keyStoreType", "PKCS11");  
-    System.setProperty("javax.net.ssl.keyStoreProvider", "SunPKCS11-eToken");  
+    System.clearProperty("javax.net.ssl.keyStore");  
+    System.clearProperty("javax.net.ssl.keyStorePassword");  
+    System.clearProperty("javax.net.ssl.trustStore");  
+    
+    if(configCertificado.getTipoCertificado().equals(TipoCertificado.A1)){
+      
+      System.setProperty("java.protocol.handler.pkgs", "com.sun.net.ssl.internal.www.protocol");  
+      Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());  
+
+      System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");  
+      System.setProperty("javax.net.ssl.keyStore", configCertificado.getCaminhoParaCertificado());  
+      System.setProperty("javax.net.ssl.keyStorePassword", configCertificado.getSenhaCertificado());  
+      
+    }else if(configCertificado.getTipoCertificado().equals(TipoCertificado.A3_CARD)){
+      
+      System.setProperty("javax.net.ssl.keyStore", "NONE");  
+      System.setProperty("javax.net.ssl.keyStoreType", "PKCS11");  
+      System.setProperty("javax.net.ssl.keyStoreProvider", "SunPKCS11-SmartCard"); 
+      
+    }else if(configCertificado.getTipoCertificado().equals(TipoCertificado.A3_TOKEN)){
+      
+      System.setProperty("javax.net.ssl.keyStore", "NONE");  
+      System.setProperty("javax.net.ssl.keyStoreType", "PKCS11");  
+      System.setProperty("javax.net.ssl.keyStoreProvider", "SunPKCS11-eToken"); 
+      
+    }
+    
     System.setProperty("javax.net.ssl.trustStoreType", "JKS");  
-    System.setProperty("javax.net.ssl.trustStore", arquivoCacertsGeradoTodosOsEstados); 
+    System.setProperty("javax.net.ssl.trustStore", configCertificado.getCaminhoParaCadeiaCertificado());  
     
-    NfseWSService _service = new NfseWSServiceLocator(ambiente);
+    NfseWSService _service = new NfseWSServiceLocator(configCertificado.getAmbiente());
     Nfse nfse = _service.getnfseSOAP();
     
     Input parametro = new Input();
