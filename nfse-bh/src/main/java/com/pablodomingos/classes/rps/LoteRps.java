@@ -3,8 +3,8 @@ package com.pablodomingos.classes.rps;
 import java.util.Collections;
 import java.util.List;
 
-import com.pablodomingos.classes.enums.LoteRpsVersao;
 import com.pablodomingos.classes.rps.builders.LoteRpsBuilder;
+import com.pablodomingos.classes.rps.enums.LoteRpsVersao;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 

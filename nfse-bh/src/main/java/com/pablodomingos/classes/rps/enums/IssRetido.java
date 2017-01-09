@@ -1,17 +1,18 @@
-package com.pablodomingos.classes.enums;
+package com.pablodomingos.classes.rps.enums;
 
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
 
 @XStreamConverter(EnumToStringConverter.class)
-public enum IncentivadorCultural {
-
-  SIM(1, "Sim"), NAO(2, "N�o");
+public enum IssRetido {
+	
+  SIM(1, "Sim"), 
+  NAO(2, "Não");
 
   private int codigo;
   private String descricao;
 
-  IncentivadorCultural(int codigo, String descricao) {
+  IssRetido(int codigo, String descricao) {
     this.codigo = codigo;
     this.descricao = descricao;
   }
@@ -24,12 +25,12 @@ public enum IncentivadorCultural {
     return this.descricao;
   }
   
-  public static IncentivadorCultural fromInt(int codigo) {
+  public static IssRetido fromInt(int codigo) {
     if (codigo > 0 && codigo < 2) {
-      for (IncentivadorCultural incentivadorCultural : IncentivadorCultural
+      for (IssRetido issRetido : IssRetido
           .values()) {
-        if (incentivadorCultural.getCodigo().equals(String.valueOf(codigo))) {
-          return incentivadorCultural;
+        if (issRetido.getCodigo().equals(String.valueOf(codigo))) {
+          return issRetido;
         }
       }
     }
@@ -40,5 +41,5 @@ public enum IncentivadorCultural {
   public String toString() {
     return String.valueOf(codigo);
   }
-
+	
 }

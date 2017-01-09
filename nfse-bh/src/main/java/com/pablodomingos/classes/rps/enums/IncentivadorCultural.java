@@ -1,19 +1,17 @@
-package com.pablodomingos.classes.enums;
+package com.pablodomingos.classes.rps.enums;
 
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
 
 @XStreamConverter(EnumToStringConverter.class)
-public enum RpsTipo {
+public enum IncentivadorCultural {
 
-  RPS(1, "Recibo Provisorio de Servicos"), 
-  MISTA(2, "RPS Nota Fiscal Conjugada (Mista)"), 
-  CUPOM(3, "Cupom");
+  SIM(1, "Sim"), NAO(2, "N�o");
 
   private int codigo;
   private String descricao;
 
-  RpsTipo(int codigo, String descricao) {
+  IncentivadorCultural(int codigo, String descricao) {
     this.codigo = codigo;
     this.descricao = descricao;
   }
@@ -21,16 +19,17 @@ public enum RpsTipo {
   public String getCodigo() {
     return String.valueOf(this.codigo);
   }
-  
+
   public String getDescricao() {
     return this.descricao;
   }
-
-  public static RpsTipo fromInt(int codigo) {
-    if (codigo > 0 && codigo < 4) {
-      for (RpsTipo tipo : RpsTipo.values()) {
-        if (tipo.getCodigo().equals(String.valueOf(codigo))) {
-          return tipo;
+  
+  public static IncentivadorCultural fromInt(int codigo) {
+    if (codigo > 0 && codigo < 2) {
+      for (IncentivadorCultural incentivadorCultural : IncentivadorCultural
+          .values()) {
+        if (incentivadorCultural.getCodigo().equals(String.valueOf(codigo))) {
+          return incentivadorCultural;
         }
       }
     }
@@ -41,4 +40,5 @@ public enum RpsTipo {
   public String toString() {
     return String.valueOf(codigo);
   }
+
 }

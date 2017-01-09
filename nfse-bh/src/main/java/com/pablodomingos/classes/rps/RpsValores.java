@@ -4,8 +4,8 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
-import com.pablodomingos.classes.enums.IssRetido;
 import com.pablodomingos.classes.rps.builders.ValoresBuilder;
+import com.pablodomingos.classes.rps.enums.IssRetido;
 import com.pablodomingos.conversores.DoubleConversor;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
