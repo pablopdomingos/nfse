@@ -39,10 +39,10 @@ public class AssinaturaDigital {
   }
 
   public String assinarXML(String xml) throws Exception {
-    String certificateAlias = config.getCertificadoAlias() != null ? config.getCertificadoAlias()
+    String certificateAlias = config.getAliasCertificado() != null ? config.getAliasCertificado()
         : config.getCertificadoKeyStore().aliases().nextElement();
     KeyStore.PasswordProtection passwordProtection =
-        new KeyStore.PasswordProtection(this.config.getCertificadoSenha().toCharArray());
+        new KeyStore.PasswordProtection(this.config.getSenhaCertificado().toCharArray());
     KeyStore.PrivateKeyEntry pkEntry = (KeyStore.PrivateKeyEntry) config.getCertificadoKeyStore()
         .getEntry(certificateAlias, passwordProtection);
 
