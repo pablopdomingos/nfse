@@ -53,7 +53,18 @@ public class WSPrefeitura {
     return nfse.gerarNfse(geraParametros(loteRpsAssinado)).getOutputXML();
   }
 
+  public static String consultaNFSe(String xml, CertificadoConfig configCertificado)
+      throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
+      IOException {
 
+    configCertificado.carregarCertificados();
+
+    NfseWSService _service = new NfseWSServiceLocator(configCertificado.getAmbiente());
+    Nfse nfse = _service.getnfseSOAP();
+
+    return nfse.consultarNfse(geraParametros(xml)).getOutputXML();
+  }
+  
   private static Input geraParametros(String xml){
     
     Input parametro = new Input();

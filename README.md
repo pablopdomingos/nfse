@@ -9,7 +9,7 @@ nfse-bh
 - [x] Consulta de NFSe por RPS
 - [ ] Recepção de Lote de RPS
 - [x] Consulta de situação de lote
-- [ ] Consulta de NFSe
+- [x] Consulta de NFSe
 - [ ] Consulta de Lote de RPS
 - [ ] Cancelamento de NFSe
 - [x] Gera arquivo de Cadeia de Certificados

@@ -14,7 +14,7 @@ public class LocalDateTimeConversor implements SingleValueConverter {
 
 	private String getConverted(LocalDateTime source) {
 		if (source == null) {
-			throw new IllegalArgumentException("Data não pode ser nula");
+			throw new IllegalArgumentException("Data nao pode ser nula");
 		}
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd'T00:00:00'");
 		return format.format(source);
