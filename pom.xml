@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.pablodomingos</groupId>
+	<artifactId>nfse</artifactId>
+	<packaging>pom</packaging>
+	<version>0.1</version>
+
+	<name>NFSe</name>
+	<description>Api para geração, transmissão e assinatura da Nota Fiscal de Serviços</description>
+	<url>https://github.com/pablopdomingos/nfse</url>
+
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>git@github.com:pablopdomingos/nfse.git</url>
+		<connection>scm:git:git@github.com:pablopdomingos/nfse.git</connection>
+		<developerConnection>scm:git:git@github.com:pablopdomingos/nfse.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.8</jdk.version>
+	</properties>
+
+	<modules>
+     <module>nfse-bh</module>
+	</modules>
+
+	<developers>
+		<developer>
+			<id>pablopdomingos</id>
+			<name>Pablo Pacheco Domingos</name>
+			<url>https://github.com/pablopdomingos</url>
+			<email>pablopdomingos@gmail.com</email>
+			<organization>Sentinela Rastreamento</organization>
+     		<organizationUrl>https://sentinela.net</organizationUrl>
+     		<timezone>-3</timezone>
+		</developer>
+	</developers>
+
+	<build>
+		<plugins>
+			<plugin>
+          <groupId>org.sonatype.plugins</groupId>
+          <artifactId>nexus-staging-maven-plugin</artifactId>
+          <version>1.6.7</version>
+          <extensions>true</extensions>
+          <configuration>
+              <serverId>ossrh</serverId>
+              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+              <autoReleaseAfterClose>true</autoReleaseAfterClose>
+          </configuration>
+      </plugin>
+		</plugins>
+	</build>
+</project>
