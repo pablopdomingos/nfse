@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import com.pablodomingos.classes.rps.builders.ValoresBuilder;
 import com.pablodomingos.classes.rps.enums.IssRetido;
 import com.pablodomingos.conversores.DoubleConversor;
+import com.pablodomingos.util.DoubleUtil;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 
@@ -96,13 +97,13 @@ public class RpsValores {
     this.descontoCondicionado = builder.getDescontoCondicionado();
     
     if(this.issRetido.equals(IssRetido.NAO)){
-      this.valorIss = calcularIss();
+      this.valorIss = DoubleUtil.arredondarDuasCasas(calcularIss());
     }else {
-      this.valorIssRetido = calcularIss();
+      this.valorIssRetido = DoubleUtil.arredondarDuasCasas(calcularIss());
     }
     
-    this.baseCalculo = calcularBaseCalculo();
-    this.valorLiquido = calcularValorLiquido();
+    this.baseCalculo = DoubleUtil.arredondarDuasCasas(calcularBaseCalculo());
+    this.valorLiquido = DoubleUtil.arredondarDuasCasas(calcularValorLiquido());
   }
 
   public Double getValorServicos() {
@@ -155,6 +156,18 @@ public class RpsValores {
 
   public IssRetido getIssRetido() {
     return issRetido;
+  }
+
+  public Double getValorIssRetido() {
+    return valorIssRetido;
+  }
+
+  public Double getBaseCalculo() {
+    return baseCalculo;
+  }
+
+  public Double getValorLiquido() {
+    return valorLiquido;
   }
 
   private Double calcularIss() {

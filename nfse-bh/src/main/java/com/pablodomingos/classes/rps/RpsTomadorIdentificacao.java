@@ -2,6 +2,7 @@ package com.pablodomingos.classes.rps;
 
 import javax.validation.constraints.Size;
 
+import com.pablodomingos.classes.rps.builders.TomadorIdentificacaoBuilder;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public class RpsTomadorIdentificacao {
@@ -13,24 +14,17 @@ public class RpsTomadorIdentificacao {
   @Size(min=1, max=15)
   private String inscricaoMunicipal;
 
-  public RpsTomadorIdentificacao() {}
+  public RpsTomadorIdentificacao(TomadorIdentificacaoBuilder builder) {
+    this.inscricaoMunicipal = builder.getInscricaoMunicipal();
+    this.cpfCnpj = builder.getCpfCnpj();
+  }
 
   public RpsTomadorCpfCnpj getCpfCnpj() {
     return cpfCnpj;
   }
 
-  public RpsTomadorIdentificacao comCpfCnpj(RpsTomadorCpfCnpj cpfCnpj) {
-    this.cpfCnpj = cpfCnpj;
-    return this;
-  }
-
   public String getInscricaoMunicipal() {
     return inscricaoMunicipal;
-  }
-
-  public RpsTomadorIdentificacao comInscricaoMunicipal(String inscricaoMunicipal) {
-    this.inscricaoMunicipal = inscricaoMunicipal;
-    return this;
   }
 
 }

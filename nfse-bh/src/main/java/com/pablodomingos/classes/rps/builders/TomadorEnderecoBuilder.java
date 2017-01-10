@@ -39,10 +39,6 @@ public class TomadorEnderecoBuilder extends AbstractBuilder<RpsTomadorEndereco>{
     this.codigoMunicipio = codigoMunicipio;
     return this;
   }
-
-  public TomadorEnderecoBuilder comCodigoMunicipio(Integer codigoMunicipio) {
-    return comCodigoMunicipio(Integer.toString(codigoMunicipio));
-  }
   
   public TomadorEnderecoBuilder comUf(String uf) {
     this.uf = uf;

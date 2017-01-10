@@ -2,6 +2,7 @@ package com.pablodomingos.classes.rps.builders;
 
 import com.pablodomingos.classes.rps.RpsValores;
 import com.pablodomingos.classes.rps.enums.IssRetido;
+import com.pablodomingos.util.DoubleUtil;
 
 public class ValoresBuilder extends AbstractBuilder<RpsValores> {
   
@@ -19,52 +20,52 @@ public class ValoresBuilder extends AbstractBuilder<RpsValores> {
   private Double descontoCondicionado;
 
   public ValoresBuilder(Double valorServicos, Double aliquota) {
-    this.aliquota = aliquota / 100.0;
-    this.valorServicos = valorServicos;
+    this.aliquota = DoubleUtil.arredondarDuasCasas(aliquota / 100.0);
+    this.valorServicos = DoubleUtil.arredondarDuasCasas(valorServicos);
   }
 
   public ValoresBuilder comValorDeducoes(Double valorDeducoes) {
-    this.valorDeducoes = valorDeducoes;
+    this.valorDeducoes = DoubleUtil.arredondarDuasCasas(valorDeducoes);
     return this;
   }
 
   public ValoresBuilder comValorPis(Double valorPis) {
-    this.valorPis = valorPis;
+    this.valorPis = DoubleUtil.arredondarDuasCasas(valorPis);
     return this;
   }
 
   public ValoresBuilder comValorCofins(Double valorCofins) {
-    this.valorCofins = valorCofins;
+    this.valorCofins = DoubleUtil.arredondarDuasCasas(valorCofins);
     return this;
   }
 
   public ValoresBuilder comValorInss(Double valorInss) {
-    this.valorInss = valorInss;
+    this.valorInss = DoubleUtil.arredondarDuasCasas(valorInss);
     return this;
   }
 
   public ValoresBuilder comValorIr(Double valorIr) {
-    this.valorIr = valorIr;
+    this.valorIr = DoubleUtil.arredondarDuasCasas(valorIr);
     return this;
   }
 
   public ValoresBuilder comValorCsll(Double valorCsll) {
-    this.valorCsll = valorCsll;
+    this.valorCsll = DoubleUtil.arredondarDuasCasas(valorCsll);
     return this;
   }
 
   public ValoresBuilder comOutrasRetencoes(Double outrasRetencoes) {
-    this.outrasRetencoes = outrasRetencoes;
+    this.outrasRetencoes = DoubleUtil.arredondarDuasCasas(outrasRetencoes);
     return this;
   }
 
   public ValoresBuilder comDescontoIncondicionado(Double descontoIncondicionado) {
-    this.descontoIncondicionado = descontoIncondicionado;
+    this.descontoIncondicionado = DoubleUtil.arredondarDuasCasas(descontoIncondicionado);
     return this;
   }
 
   public ValoresBuilder comDescontoCondicionado(Double descontoCondicionado) {
-    this.descontoCondicionado = descontoCondicionado;
+    this.descontoCondicionado = DoubleUtil.arredondarDuasCasas(descontoCondicionado);
     return this;
   }
 
