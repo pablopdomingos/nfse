@@ -47,7 +47,7 @@ public class RpsTomadorEnderecoTest {
   @Test(expected = ConstraintViolationException.class)
   public void naoDevePermitirCodigoMunicipioComTamanhoInvalido() throws Exception {
     try {
-      new TomadorEnderecoBuilder().comCodigoMunicipio(00000000).build();
+      new TomadorEnderecoBuilder().comCodigoMunicipio("").build();
     } catch (final ConstraintViolationException e) {
       new TomadorEnderecoBuilder().comCodigoMunicipio("00000000").build();
     }

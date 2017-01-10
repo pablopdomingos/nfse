@@ -41,7 +41,7 @@ public class WSPrefeitura {
     return nfse.consultarNfsePorRps(geraParametros(xml)).getOutputXML();
   }
 
-  public static String enviarLote(String loteRpsAssinado, CertificadoConfig configCertificado)
+  public static String enviarRps(String loteRpsAssinado, CertificadoConfig configCertificado)
       throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
       IOException {
 
@@ -53,6 +53,18 @@ public class WSPrefeitura {
     return nfse.gerarNfse(geraParametros(loteRpsAssinado)).getOutputXML();
   }
 
+  public static String enviarLoteRps(String loteRpsAssinado, CertificadoConfig configCertificado)
+      throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
+      IOException {
+
+    configCertificado.carregarCertificados();
+
+    NfseWSService _service = new NfseWSServiceLocator(configCertificado.getAmbiente());
+    Nfse nfse = _service.getnfseSOAP();
+
+    return nfse.recepcionarLoteRps(geraParametros(loteRpsAssinado)).getOutputXML();
+  }
+  
   public static String consultaNFSe(String xml, CertificadoConfig configCertificado)
       throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
       IOException {

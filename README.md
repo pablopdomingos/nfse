@@ -7,7 +7,7 @@ nfse-bh
 
 - [x] Geração de NFSe
 - [x] Consulta de NFSe por RPS
-- [ ] Recepção de Lote de RPS
+- [x] Recepção de Lote de RPS
 - [x] Consulta de situação de lote
 - [x] Consulta de NFSe
 - [ ] Consulta de Lote de RPS

@@ -47,9 +47,8 @@ public class FabricaDeObjetosFake {
   }
   
   public static RpsTomador getRpsTomador() {
-    RpsTomador tomador = new TomadorBuilder("00000000000000")
+    RpsTomador tomador = new TomadorBuilder("12345678909")
         .comNome("Nome Tomador")
-        .comInscricaoMunicipal("000000000000000")
         .comEndereco(getRpsTomadorEndereco())
         .comContato(getRpsTomadorContato())
         .build();
@@ -58,7 +57,7 @@ public class FabricaDeObjetosFake {
   }
   
   public static RpsPrestador getRpsPrestador(){
-    RpsPrestador prestador = new PrestadorBuilder("00000000000000")
+    RpsPrestador prestador = new PrestadorBuilder("12345678901230")
         .comInscricaoMunicipal("000000000000000")
         .build();
     
@@ -66,7 +65,7 @@ public class FabricaDeObjetosFake {
   }
   
   public static RpsIntermediario getRpsIntermediario(){
-    RpsIntermediario intermediario = new IntermediarioBuilder("00000000000000", "Nome Intermediario")
+    RpsIntermediario intermediario = new IntermediarioBuilder("12345678901230", "Nome Intermediario")
         .comInscricaoMunicipal("000000000000000")
         .build();
     

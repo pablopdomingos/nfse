@@ -2,18 +2,22 @@ package com.pablodomingos.classes.rps.builders;
 
 import com.pablodomingos.classes.rps.RpsTomador;
 import com.pablodomingos.classes.rps.RpsTomadorContato;
+import com.pablodomingos.classes.rps.RpsTomadorCpfCnpj;
 import com.pablodomingos.classes.rps.RpsTomadorEndereco;
+import com.pablodomingos.classes.rps.RpsTomadorIdentificacao;
 
 public class TomadorBuilder extends AbstractBuilder<RpsTomador> {
 
-  private String documento;
+  private RpsTomadorCpfCnpj cpfCnpj;
+  RpsTomadorIdentificacao tomadorIdentificacao;
   private String inscricaoMunicipal;
   private String nome;
   private RpsTomadorContato contato;
   private RpsTomadorEndereco endereco;
   
   public TomadorBuilder(String documento) {
-    this.documento = documento;
+    this.cpfCnpj = new TomadorCpfCnpjBuilder()
+          .comDocumento(documento).build();
   }
 
   public TomadorBuilder comInscricaoMunicipal(String inscricaoMunicipal) {
@@ -43,13 +47,11 @@ public class TomadorBuilder extends AbstractBuilder<RpsTomador> {
   
   @Override
   protected RpsTomador buildInternal() {
-    RpsTomador tomador = new RpsTomador(this);
-  
-    return tomador;
+    return new RpsTomador(this);
   }
 
-  public String getDocumento() {
-    return documento;
+  public RpsTomadorCpfCnpj getTomadorCpfCnpj() {
+    return this.cpfCnpj;
   }
 
   public String getInscricaoMunicipal() {

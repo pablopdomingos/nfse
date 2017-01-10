@@ -1,5 +1,6 @@
-package com.pablodomingos.classes.rps;
+package com.pablodomingos.classes.rps.servicos;
 
+import com.pablodomingos.classes.rps.LoteRps;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;

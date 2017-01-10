@@ -26,7 +26,7 @@ public class RpsTomadorEndereco {
 
   @XStreamAlias("CodigoMunicipio")
   @Pattern(regexp = "\\d+")
-  @Size(max=7)
+  @Size(min=1, max=7)
   private String codigoMunicipio;
 
   @XStreamAlias("Uf")
