@@ -4,9 +4,28 @@
 	<groupId>com.pablodomingos</groupId>
 	<artifactId>nfse-bh</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>nfse-bh</name>
-	<url>http://maven.apache.org</url>
+	<version>0.1</version>
+
+
+	<name>NFSe Belo Horizonte</name>
+	<description>Api para geração, transmissão e assinatura da Nota Fiscal de Servicços de Belo Horizonte</description>
+	<url>https://github.com/pablopdomingos/nfse</url>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>git@github.com:pablopdomingos/nfse.git</url>
+		<connection>scm:git:git@github.com:pablopdomingos/nfse.git</connection>
+		<developerConnection>scm:git:git@github.com:pablopdomingos/nfse.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,6 +38,9 @@
 			<name>Pablo Pacheco Domingos</name>
 			<url>https://github.com/pablopdomingos</url>
 			<email>pablopdomingos@gmail.com</email>
+			<organization>Sentinela Rastreamento</organization>
+     		<organizationUrl>https://sentinela.net</organizationUrl>
+     		<timezone>-3</timezone>
 		</developer>
 	</developers>
 
@@ -84,7 +106,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -113,8 +134,21 @@
 				<configuration>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
+					<optimize>true</optimize>
+                    <debug>false</debug>
 				</configuration>
 			</plugin>
+			<plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 </project>
