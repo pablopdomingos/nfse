@@ -8,7 +8,7 @@ nfse-bh
 - [x] Geração de NFSe
 - [x] Consulta de NFSe por RPS
 - [ ] Recepção de Lote de RPS
-- [ ] Consulta de situação de lote
+- [x] Consulta de situação de lote
 - [ ] Consulta de NFSe
 - [ ] Consulta de Lote de RPS
 - [ ] Cancelamento de NFSe
@@ -37,7 +37,7 @@ RpsTomadorEndereco endereco = new TomadorEnderecoBuilder()
 RpsTomadorContato contato = new TomadorContatoBuilder()
         .comEmail("email@gmail.com")
         .build();
-        
+
 RpsTomador tomador = new TomadorBuilder("documentoCpfCnpj")
         .comNome("Nome Teste")
         .comContato(contato)
@@ -76,7 +76,7 @@ LoteRps loteRps = new LoteRpsBuilder("1000")
         .comVersao(LoteRpsVersao.V1_00)
         .addRps(rps)
         .build();
-        
+
 RpsEnvio nfseEnvio = new RpsEnvio(loteRps);
 
 String xml = nfseEnvio.converterParaXml();
@@ -108,9 +108,8 @@ Esse serviço assina XML com certificado digital
 CertificadoConfig config = new CertificadoConfigBuilder(TipoCertificado.A3_TOKEN, "senha")
         .comAmbiente(NFSeAmbiente.HOMOLOGACAO)
         .build();
-        
+
 AssinaturaDigital assinatura = new AssinaturaDigital(config);
-        
+
 String xmlAssinado = assinatura.assinarXML(xml);
 ```
-     

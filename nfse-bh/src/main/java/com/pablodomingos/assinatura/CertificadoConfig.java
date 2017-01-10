@@ -76,6 +76,11 @@ public class CertificadoConfig {
 
   @SuppressWarnings("restriction")
   public void carregarCertificados(){
+    try {
+      this.getCertificadoKeyStore();
+    } catch (KeyStoreException e) {
+      e.printStackTrace();
+    }
     System.clearProperty("javax.net.ssl.keyStore");  
     System.clearProperty("javax.net.ssl.keyStorePassword");  
     System.clearProperty("javax.net.ssl.trustStore");  
