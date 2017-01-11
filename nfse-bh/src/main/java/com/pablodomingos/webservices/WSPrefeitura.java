@@ -16,28 +16,28 @@ import com.pablodomingos.webservices.pbh.NfseWSServiceLocator;
 
 public class WSPrefeitura {
 
-  public static String consultarSituacaoLoteRps(String xml, CertificadoConfig configCertificado)
+  public static String consultaSituacaoLoteRps(String xml, CertificadoConfig configCertificado)
       throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
       IOException {
 
     return webService(configCertificado).consultarSituacaoLoteRps(geraParametros(xml)).getOutputXML();
   }
 
-  public static String consultarRps(String xml, CertificadoConfig configCertificado)
+  public static String consultaRps(String xml, CertificadoConfig configCertificado)
       throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
       IOException {
 
     return webService(configCertificado).consultarNfsePorRps(geraParametros(xml)).getOutputXML();
   }
 
-  public static String enviarRps(String loteRpsAssinado, CertificadoConfig configCertificado)
+  public static String enviaRps(String loteRpsAssinado, CertificadoConfig configCertificado)
       throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
       IOException {
 
     return webService(configCertificado).gerarNfse(geraParametros(loteRpsAssinado)).getOutputXML();
   }
 
-  public static String enviarLoteRps(String loteRpsAssinado, CertificadoConfig configCertificado)
+  public static String enviaLoteRps(String loteRpsAssinado, CertificadoConfig configCertificado)
       throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
       IOException {
 
@@ -56,6 +56,13 @@ public class WSPrefeitura {
       IOException {
 
     return webService(configCertificado).consultarLoteRps(geraParametros(xml)).getOutputXML();
+  }
+  
+  public static String cancelaNFSe(String xml, CertificadoConfig configCertificado)
+      throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
+      IOException {
+
+    return webService(configCertificado).cancelarNfse(geraParametros(xml)).getOutputXML();
   }
   
   private static Input geraParametros(String xml){
