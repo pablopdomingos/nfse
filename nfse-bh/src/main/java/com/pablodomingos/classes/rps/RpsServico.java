@@ -15,25 +15,27 @@ public class RpsServico {
 
   @XStreamAlias("ItemListaServico")
   @NotNull
-  @Size(min=1, max=5)
+  @Size(min = 1, max = 5)
   private String codigoItemListaServico;
 
   @XStreamAlias("CodigoCnae")
   @Pattern(regexp = "\\d+")
-  @Size(max=7)
+  @Size(min = 1, max = 7)
   private String codigoCnae;
 
   @XStreamAlias("CodigoTributacaoMunicipio")
-  @Size(min=1, max=20)
+  @Size(min = 1, max = 20)
   private String codigoTributacaoMunicipio;
 
   @XStreamAlias("Discriminacao")
   @NotNull
+  @Size(min = 1, max = 2000)
   private String discriminacao;
 
   @XStreamAlias("CodigoMunicipio")
   @NotNull
-  @Size(max=7)
+  @Pattern(regexp = "\\d+")
+  @Size(min = 1, max = 7)
   private String codigoMunicipioIbge;
 
   public RpsServico(ServicoBuilder builder) {
