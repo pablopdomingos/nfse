@@ -3,11 +3,11 @@ package com.pablodomingos.classes.rps.servicos;
 import javax.validation.constraints.NotNull;
 
 import com.pablodomingos.classes.rps.NFSePedidoCancelamento;
-import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 @XStreamAlias("CancelarNfseEnvio")
+
 public class NFSeCancelamento extends AbstractService{
 
   @XStreamAlias("xmlns")
@@ -22,5 +22,4 @@ public class NFSeCancelamento extends AbstractService{
     super();
     this.pedido = pedido;
   }
-
 }
