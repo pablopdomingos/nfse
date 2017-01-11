@@ -26,7 +26,7 @@ public class RpsInfo {
 
   @XStreamAlias("IdentificacaoRps")
   @NotNull
-  private RpsIdentificacaoRps identificacaoRps;
+  private RpsIdentificacao identificacaoRps;
 
   @XStreamAlias("DataEmissao")
   @XStreamConverter(LocalDateTimeConversor.class)
@@ -112,7 +112,7 @@ public class RpsInfo {
     return incentivadorCultural;
   }
 
-  public RpsIdentificacaoRps getIdentificacaoRps() {
+  public RpsIdentificacao getIdentificacaoRps() {
     return identificacaoRps;
   }
 

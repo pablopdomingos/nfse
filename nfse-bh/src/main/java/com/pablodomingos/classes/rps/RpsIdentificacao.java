@@ -1,5 +1,6 @@
 package com.pablodomingos.classes.rps;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -7,20 +8,23 @@ import com.pablodomingos.classes.rps.enums.RpsSerie;
 import com.pablodomingos.classes.rps.enums.RpsTipo;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public class RpsIdentificacaoRps {
+public class RpsIdentificacao {
 
   @XStreamAlias("Numero")
-  @Pattern(regexp = "[^0-9]")
+  @NotNull
+  @Pattern(regexp = "\\d+")
   @Size(min=1, max=15)
   private String numero;
 
   @XStreamAlias("Serie")
+  @NotNull
   private RpsSerie serie = RpsSerie.A;
 
   @XStreamAlias("Tipo")
+  @NotNull
   private RpsTipo tipo = RpsTipo.RPS;
 
-  public RpsIdentificacaoRps(String numero) {
+  public RpsIdentificacao(String numero) {
     this.numero = numero;
   }
 
