@@ -23,7 +23,7 @@ public class RpsIntermediario {
   public RpsIntermediario(IntermediarioBuilder builder){
     
     this.nome = builder.getNome();
-    this.cpfCnpj = new RpsIntermediarioCpfCnpj(builder.getDocumento());
+    this.cpfCnpj = builder.getCpfCnpj();
     this.inscricaoMunicipal = builder.getInscricaoMunicipal();
 
   }

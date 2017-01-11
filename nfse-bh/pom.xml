@@ -4,7 +4,7 @@
 	<groupId>com.pablodomingos</groupId>
 	<artifactId>nfse-bh</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1</version>
+	<version>0.1-SNAPSHOT</version>
 
 
 	<name>NFSe Belo Horizonte</name>
@@ -26,7 +26,6 @@
 		<tag>HEAD</tag>
 	</scm>
 
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.8</jdk.version>
@@ -39,10 +38,21 @@
 			<url>https://github.com/pablopdomingos</url>
 			<email>pablopdomingos@gmail.com</email>
 			<organization>Sentinela Rastreamento</organization>
-     		<organizationUrl>https://sentinela.net</organizationUrl>
-     		<timezone>-3</timezone>
+			<organizationUrl>https://sentinela.net</organizationUrl>
+			<timezone>-3</timezone>
 		</developer>
 	</developers>
+
+	<distributionManagement>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<dependencies>
 		<!-- XML -->
@@ -135,20 +145,20 @@
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
 					<optimize>true</optimize>
-                    <debug>false</debug>
+					<debug>false</debug>
 				</configuration>
 			</plugin>
 			<plugin>
-          <groupId>org.sonatype.plugins</groupId>
-          <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.6.7</version>
-          <extensions>true</extensions>
-          <configuration>
-              <serverId>ossrh</serverId>
-              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-              <autoReleaseAfterClose>true</autoReleaseAfterClose>
-          </configuration>
-      </plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.7</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

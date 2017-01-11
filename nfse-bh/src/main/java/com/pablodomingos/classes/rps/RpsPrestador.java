@@ -1,5 +1,6 @@
 package com.pablodomingos.classes.rps;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CNPJ;
@@ -10,11 +11,12 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 public class RpsPrestador {
 
   @XStreamAlias("Cnpj")
+  @NotNull
   @CNPJ
   private String cnpj;
 
   @XStreamAlias("InscricaoMunicipal")
-  @Size(min=1, max=15)
+  @Size(min = 1, max = 15)
   private String inscricaoMunicipal;
 
   public RpsPrestador(PrestadorBuilder builder) {

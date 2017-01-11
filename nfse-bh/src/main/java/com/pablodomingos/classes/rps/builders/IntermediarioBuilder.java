@@ -1,17 +1,18 @@
 package com.pablodomingos.classes.rps.builders;
 
 import com.pablodomingos.classes.rps.RpsIntermediario;
+import com.pablodomingos.classes.rps.RpsIntermediarioCpfCnpj;
 
 public class IntermediarioBuilder extends AbstractBuilder<RpsIntermediario>{
 
   
-  private String documento;
+  private RpsIntermediarioCpfCnpj cpfCnpj;
   private String nome;
   private String inscricaoMunicipal;
 
 
   public IntermediarioBuilder(String documento, String nome) {
-    this.documento = documento;
+    this.cpfCnpj = new IntermediarioCpfCnpjBuilder().comDocumento(documento).build();
     this.nome = nome;
   }
 
@@ -25,8 +26,8 @@ public class IntermediarioBuilder extends AbstractBuilder<RpsIntermediario>{
     return new RpsIntermediario(this);
   }
 
-  public String getDocumento() {
-    return documento;
+  public RpsIntermediarioCpfCnpj getCpfCnpj() {
+    return cpfCnpj;
   }
 
   public String getNome() {
