@@ -20,61 +20,42 @@ public class WSPrefeitura {
       throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
       IOException {
 
-    configCertificado.carregarCertificados();
-
-    NfseWSService _service = new NfseWSServiceLocator(configCertificado.getAmbiente());
-    Nfse nfse = _service.getnfseSOAP();
-
-
-    return nfse.consultarSituacaoLoteRps(geraParametros(xml)).getOutputXML();
+    return webService(configCertificado).consultarSituacaoLoteRps(geraParametros(xml)).getOutputXML();
   }
 
   public static String consultarRps(String xml, CertificadoConfig configCertificado)
       throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
       IOException {
 
-    configCertificado.carregarCertificados();
-
-    NfseWSService _service = new NfseWSServiceLocator(configCertificado.getAmbiente());
-    Nfse nfse = _service.getnfseSOAP();
-
-    return nfse.consultarNfsePorRps(geraParametros(xml)).getOutputXML();
+    return webService(configCertificado).consultarNfsePorRps(geraParametros(xml)).getOutputXML();
   }
 
   public static String enviarRps(String loteRpsAssinado, CertificadoConfig configCertificado)
       throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
       IOException {
 
-    configCertificado.carregarCertificados();
-
-    NfseWSService _service = new NfseWSServiceLocator(configCertificado.getAmbiente());
-    Nfse nfse = _service.getnfseSOAP();
-
-    return nfse.gerarNfse(geraParametros(loteRpsAssinado)).getOutputXML();
+    return webService(configCertificado).gerarNfse(geraParametros(loteRpsAssinado)).getOutputXML();
   }
 
   public static String enviarLoteRps(String loteRpsAssinado, CertificadoConfig configCertificado)
       throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
       IOException {
 
-    configCertificado.carregarCertificados();
-
-    NfseWSService _service = new NfseWSServiceLocator(configCertificado.getAmbiente());
-    Nfse nfse = _service.getnfseSOAP();
-
-    return nfse.recepcionarLoteRps(geraParametros(loteRpsAssinado)).getOutputXML();
+    return webService(configCertificado).recepcionarLoteRps(geraParametros(loteRpsAssinado)).getOutputXML();
   }
   
   public static String consultaNFSe(String xml, CertificadoConfig configCertificado)
       throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
       IOException {
 
-    configCertificado.carregarCertificados();
+    return webService(configCertificado).consultarNfse(geraParametros(xml)).getOutputXML();
+  }
+  
+  public static String consultaLote(String xml, CertificadoConfig configCertificado)
+      throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
+      IOException {
 
-    NfseWSService _service = new NfseWSServiceLocator(configCertificado.getAmbiente());
-    Nfse nfse = _service.getnfseSOAP();
-
-    return nfse.consultarNfse(geraParametros(xml)).getOutputXML();
+    return webService(configCertificado).consultarLoteRps(geraParametros(xml)).getOutputXML();
   }
   
   private static Input geraParametros(String xml){
@@ -85,5 +66,13 @@ public class WSPrefeitura {
     parametro.setNfseDadosMsg(xml);
     return parametro;
     
+  }
+  
+  private static Nfse webService(CertificadoConfig configCertificado) throws ServiceException{
+    configCertificado.carregarCertificados();
+
+    NfseWSService _service = new NfseWSServiceLocator(configCertificado.getAmbiente());
+    
+    return _service.getnfseSOAP();
   }
 }

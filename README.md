@@ -12,7 +12,7 @@ Nota Fiscal de Serviços
 - [x] Recepção de Lote de RPS
 - [x] Consulta de situação de lote
 - [x] Consulta de NFSe
-- [ ] Consulta de Lote de RPS
+- [x] Consulta de Lote de RPS
 - [ ] Cancelamento de NFSe
 - [x] Gera arquivo de Cadeia de Certificados
 - [x] Assina XML com certificado digital A1
