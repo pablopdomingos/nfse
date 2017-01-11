@@ -2,39 +2,25 @@ package com.pablodomingos.classes.rps.servicos;
 
 import javax.validation.constraints.NotNull;
 
-import com.pablodomingos.classes.rps.RpsIdentificacao;
-import com.pablodomingos.classes.rps.RpsPrestador;
+import com.pablodomingos.classes.rps.NFSePedidoCancelamento;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
-@XStreamAlias("ConsultarNfseRpsEnvio")
-public class RpsConsulta {
+@XStreamAlias("CancelarNfseEnvio")
+public class NFSeCancelamento {
 
   @XStreamAlias("xmlns")
   @XStreamAsAttribute
   private String xmlns = "http://www.abrasf.org.br/nfse.xsd";
 
-  @XStreamAlias("IdentificacaoRps")
+  @XStreamAlias("Pedido")
   @NotNull
-  private RpsIdentificacao identificacaoRps;
-
-  @XStreamAlias("Prestador")
-  @NotNull
-  private RpsPrestador prestador;
-
-  public RpsConsulta(RpsIdentificacao identificacaoRps, RpsPrestador prestador) {
+  private NFSePedidoCancelamento pedido;
+  
+  public NFSeCancelamento(NFSePedidoCancelamento pedido) {
     super();
-    this.identificacaoRps = identificacaoRps;
-    this.prestador = prestador;
-  }
-
-  public RpsIdentificacao getIdentificacaoRps() {
-    return identificacaoRps;
-  }
-
-  public RpsPrestador getPrestador() {
-    return prestador;
+    this.pedido = pedido;
   }
 
   public String converterParaXml() {
@@ -46,4 +32,5 @@ public class RpsConsulta {
     
     return XML_HEADER + xstream.toXML(this);
   }
+
 }

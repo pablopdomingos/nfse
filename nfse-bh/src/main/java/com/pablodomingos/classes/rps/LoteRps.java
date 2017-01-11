@@ -3,6 +3,12 @@ package com.pablodomingos.classes.rps;
 import java.util.Collections;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.br.CNPJ;
+
 import com.pablodomingos.classes.rps.builders.LoteRpsBuilder;
 import com.pablodomingos.classes.rps.enums.LoteRpsVersao;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -11,26 +17,38 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 public class LoteRps {
 
   @XStreamAlias("Id")
+  @NotNull
   @XStreamAsAttribute
   private String id;
 
   @XStreamAlias("versao")
+  @NotNull
   @XStreamAsAttribute
   private LoteRpsVersao versao;
 
   @XStreamAlias("NumeroLote")
+  @NotNull
+  @Pattern(regexp = "\\d+")
+  @Size(min=1, max=15)
   private String numeroLote;
 
   @XStreamAlias("Cnpj")
+  @NotNull
+  @CNPJ
+  @Size(min = 14, max = 14)
   private String cnpj;
 
   @XStreamAlias("InscricaoMunicipal")
+  @NotNull
+  @Size(min=1, max=15)
   private String inscricaoMunicipal;
 
   @XStreamAlias("QuantidadeRps")
+  @NotNull
   private int quantidadeRps;
 
   @XStreamAlias("ListaRps")
+  @NotNull
   private final List<Rps> listaRps;
 
   public LoteRps(LoteRpsBuilder builder) {
