@@ -9,7 +9,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 @XStreamAlias("ConsultarNfseRpsEnvio")
-public class RpsConsulta {
+public class RpsConsulta extends AbstractService{
 
   @XStreamAlias("xmlns")
   @XStreamAsAttribute
@@ -35,15 +35,5 @@ public class RpsConsulta {
 
   public RpsPrestador getPrestador() {
     return prestador;
-  }
-
-  public String converterParaXml() {
-    String XML_HEADER = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
-    
-    XStream xstream = new XStream();
-    xstream.setMode(XStream.NO_REFERENCES);
-    xstream.autodetectAnnotations(true);
-    
-    return XML_HEADER + xstream.toXML(this);
   }
 }

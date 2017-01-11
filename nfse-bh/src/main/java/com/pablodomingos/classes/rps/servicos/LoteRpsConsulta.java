@@ -4,12 +4,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.pablodomingos.classes.rps.RpsPrestador;
-import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 @XStreamAlias("ConsultarLoteRpsEnvio")
-public class LoteRpsConsulta {
+public class LoteRpsConsulta extends AbstractService{
 
   @XStreamAlias("xmlns")
   @XStreamAsAttribute
@@ -37,14 +36,5 @@ public class LoteRpsConsulta {
   public RpsPrestador getPrestador() {
     return prestador;
   }
-
-  public String converterParaXml() {
-    String XML_HEADER = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
-    
-    XStream xstream = new XStream();
-    xstream.setMode(XStream.NO_REFERENCES);
-    xstream.autodetectAnnotations(true);
-    
-    return XML_HEADER + xstream.toXML(this);
-  }
+  
 }
