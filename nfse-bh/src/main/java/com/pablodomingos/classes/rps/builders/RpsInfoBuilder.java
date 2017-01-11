@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import com.pablodomingos.classes.rps.RpsDadosContrucaoCivil;
-import com.pablodomingos.classes.rps.RpsIdentificacaoRps;
+import com.pablodomingos.classes.rps.RpsIdentificacao;
 import com.pablodomingos.classes.rps.RpsIntermediario;
 import com.pablodomingos.classes.rps.RpsPrestador;
 import com.pablodomingos.classes.rps.RpsInfo;
@@ -21,7 +21,7 @@ import com.pablodomingos.classes.rps.enums.RpsTipo;
 public class RpsInfoBuilder extends AbstractBuilder<RpsInfo>{
   
   private String id = UUID.randomUUID().toString();
-  private RpsIdentificacaoRps identificacaoRps ;
+  private RpsIdentificacao identificacaoRps ;
   private LocalDateTime dataEmissao;
   private NaturezaOperacao naturezaOperacao;
   private RegimeEspecialTributacao regimeEspecialTributacao;
@@ -35,7 +35,7 @@ public class RpsInfoBuilder extends AbstractBuilder<RpsInfo>{
   private RpsDadosContrucaoCivil contrucaoCivil;
   
   public RpsInfoBuilder(String numeroRps) {
-    this.identificacaoRps = new RpsIdentificacaoRps(numeroRps);
+    this.identificacaoRps = new RpsIdentificacao(numeroRps);
     this.dataEmissao = LocalDateTime.now();
     this.naturezaOperacao = NaturezaOperacao.TRIBUTACAO_MUNICIPIO;
     this.optanteSimplesNacional = OptanteSimplesNacional.NAO;
@@ -116,7 +116,7 @@ public class RpsInfoBuilder extends AbstractBuilder<RpsInfo>{
     return id;
   }
 
-  public RpsIdentificacaoRps getIdentificacaoRps() {
+  public RpsIdentificacao getIdentificacaoRps() {
     return identificacaoRps;
   }
 

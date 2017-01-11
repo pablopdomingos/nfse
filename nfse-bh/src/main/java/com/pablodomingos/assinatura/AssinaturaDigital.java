@@ -31,7 +31,7 @@ import java.util.List;
 
 public class AssinaturaDigital {
   private static String INFRPS = "InfRps";
-  private static String LOTERPS = "LoteRps";
+  private static String[] ELEMENTOS_ASSINAVEIS = new String[]{"LoteRps", "InfPedidoCancelamento"};
   private CertificadoConfig config;
 
   public AssinaturaDigital(CertificadoConfig config) {
@@ -79,21 +79,24 @@ public class AssinaturaDigital {
     Document documentAssinado = documentFactory(converteDocParaXml(document));
     
     //Assinando o Lote de RPS
-    NodeList elementsAssinado = documentAssinado.getDocumentElement().getElementsByTagName(LOTERPS);
-    for (int i = 0; i < elementsAssinado.getLength(); i++) {
-      Element element = (Element) elementsAssinado.item(i);
-      
-      String id = element.getAttribute("Id");
-      element.setIdAttribute("Id", true);
+    for (final String elementoAssinavel : AssinaturaDigital.ELEMENTOS_ASSINAVEIS) {
+      NodeList elementsAssinado = documentAssinado.getDocumentElement().getElementsByTagName(elementoAssinavel);
+      for (int i = 0; i < elementsAssinado.getLength(); i++) {
+        Element element = (Element) elementsAssinado.item(i);
+        
+        String id = element.getAttribute("Id");
+        element.setIdAttribute("Id", true);
 
-      Reference reference = signatureFactory.newReference("#" + id, signatureFactory.newDigestMethod(DigestMethod.SHA1, null), transformList, null, null);
-      SignedInfo signedInfo = signatureFactory.newSignedInfo( signatureFactory.newCanonicalizationMethod(CanonicalizationMethod.INCLUSIVE,
-              (C14NMethodParameterSpec) null), signatureFactory.newSignatureMethod(SignatureMethod.RSA_SHA1, null),
-          Collections.singletonList(reference));
+        Reference reference = signatureFactory.newReference("#" + id, signatureFactory.newDigestMethod(DigestMethod.SHA1, null), transformList, null, null);
+        SignedInfo signedInfo = signatureFactory.newSignedInfo( signatureFactory.newCanonicalizationMethod(CanonicalizationMethod.INCLUSIVE,
+                (C14NMethodParameterSpec) null), signatureFactory.newSignatureMethod(SignatureMethod.RSA_SHA1, null),
+            Collections.singletonList(reference));
 
-      XMLSignature signature = signatureFactory.newXMLSignature(signedInfo, keyInfo);
-      signature.sign(new DOMSignContext(pkEntry.getPrivateKey(), element.getParentNode()));
+        XMLSignature signature = signatureFactory.newXMLSignature(signedInfo, keyInfo);
+        signature.sign(new DOMSignContext(pkEntry.getPrivateKey(), element.getParentNode()));
+      }
     }
+    
     
     return converteDocParaXml(documentAssinado);
   }
