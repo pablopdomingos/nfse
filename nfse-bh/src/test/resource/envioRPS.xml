@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <LoteRps Id="id" versao="1.00">
+    <NumeroLote>1</NumeroLote>
+    <Cnpj>12345678901230</Cnpj>
+    <InscricaoMunicipal>000000000000000</InscricaoMunicipal>
+    <QuantidadeRps>1</QuantidadeRps>
+    <ListaRps>
+      <Rps>
+        <InfRps Id="id">
+          <IdentificacaoRps>
+            <Numero>1</Numero>
+            <Serie>A</Serie>
+            <Tipo>1</Tipo>
+          </IdentificacaoRps>
+          <DataEmissao>2017-01-12T00:00:00</DataEmissao>
+          <NaturezaOperacao>1</NaturezaOperacao>
+          <RegimeEspecialTributacao>6</RegimeEspecialTributacao>
+          <OptanteSimplesNacional>1</OptanteSimplesNacional>
+          <IncentivadorCultural>2</IncentivadorCultural>
+          <Status>1</Status>
+          <Servico>
+            <Valores>
+              <ValorServicos>100.00</ValorServicos>
+              <ValorDeducoes>7.00</ValorDeducoes>
+              <ValorPis>2.00</ValorPis>
+              <ValorCofins>3.00</ValorCofins>
+              <ValorInss>4.00</ValorInss>
+              <ValorIr>5.00</ValorIr>
+              <ValorCsll>6.00</ValorCsll>
+              <IssRetido>2</IssRetido>
+              <ValorIss>1.00</ValorIss>
+              <OutrasRetencoes>10.00</OutrasRetencoes>
+              <BaseCalculo>84.00</BaseCalculo>
+              <Aliquota>0.01</Aliquota>
+              <ValorLiquidoNfse>53.00</ValorLiquidoNfse>
+              <DescontoIncondicionado>9.00</DescontoIncondicionado>
+              <DescontoCondicionado>8.00</DescontoCondicionado>
+            </Valores>
+            <ItemListaServico>01.01</ItemListaServico>
+            <CodigoCnae>12345</CodigoCnae>
+            <CodigoTributacaoMunicipio>110200188</CodigoTributacaoMunicipio>
+            <Discriminacao>Discriminacao teste</Discriminacao>
+            <CodigoMunicipio>3106200</CodigoMunicipio>
+          </Servico>
+          <Prestador>
+            <Cnpj>12345678901230</Cnpj>
+            <InscricaoMunicipal>000000000000000</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cpf>12345678909</Cpf>
+              </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>Nome Tomador</RazaoSocial>
+            <Endereco>
+              <Endereco>Logradouro</Endereco>
+              <Numero>1234</Numero>
+              <Complemento>Complemento</Complemento>
+              <Bairro>Bairro</Bairro>
+              <CodigoMunicipio>3118601</CodigoMunicipio>
+              <Uf>MG</Uf>
+              <Cep>00000000</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>00000000000</Telefone>
+              <Email>email@gmail.com</Email>
+            </Contato>
+          </Tomador>
+        </InfRps>
+      </Rps>
+    </ListaRps>
+  </LoteRps>
+</GerarNfseEnvio>

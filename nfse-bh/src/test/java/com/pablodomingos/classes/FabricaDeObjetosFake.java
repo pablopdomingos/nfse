@@ -1,5 +1,8 @@
 package com.pablodomingos.classes;
 
+import com.pablodomingos.classes.rps.LoteRps;
+import com.pablodomingos.classes.rps.NFSeIdentificacao;
+import com.pablodomingos.classes.rps.NFSeInfPedidoCancelamento;
 import com.pablodomingos.classes.rps.Rps;
 import com.pablodomingos.classes.rps.RpsInfo;
 import com.pablodomingos.classes.rps.RpsIntermediario;
@@ -9,7 +12,10 @@ import com.pablodomingos.classes.rps.RpsTomador;
 import com.pablodomingos.classes.rps.RpsTomadorContato;
 import com.pablodomingos.classes.rps.RpsTomadorEndereco;
 import com.pablodomingos.classes.rps.RpsValores;
+import com.pablodomingos.classes.rps.builders.IdentificacaoNFSeBuilder;
 import com.pablodomingos.classes.rps.builders.IntermediarioBuilder;
+import com.pablodomingos.classes.rps.builders.LoteRpsBuilder;
+import com.pablodomingos.classes.rps.builders.PedidoCancelamentoInfBuilder;
 import com.pablodomingos.classes.rps.builders.PrestadorBuilder;
 import com.pablodomingos.classes.rps.builders.RpsInfoBuilder;
 import com.pablodomingos.classes.rps.builders.ServicoBuilder;
@@ -17,6 +23,8 @@ import com.pablodomingos.classes.rps.builders.TomadorBuilder;
 import com.pablodomingos.classes.rps.builders.TomadorContatoBuilder;
 import com.pablodomingos.classes.rps.builders.TomadorEnderecoBuilder;
 import com.pablodomingos.classes.rps.builders.ValoresBuilder;
+import com.pablodomingos.classes.rps.enums.CodigoCancelamento;
+import com.pablodomingos.classes.rps.enums.LoteRpsVersao;
 import com.pablodomingos.classes.rps.enums.NaturezaOperacao;
 import com.pablodomingos.classes.rps.enums.RegimeEspecialTributacao;
 import com.pablodomingos.classes.rps.enums.RpsStatus;
@@ -102,14 +110,15 @@ public class FabricaDeObjetosFake {
   
   public static RpsInfo getRpsInfo(){
     RpsInfo rpsInfo = new RpsInfoBuilder("1")
-    .comNaturezaOperacao(NaturezaOperacao.TRIBUTACAO_MUNICIPIO)
-    .optanteSimplesNacional(true)
-    .comPrestador(getRpsPrestador())
-    .comRegimeEspecialTributacao(RegimeEspecialTributacao.ME_EPP_SIMPLES_NACIONAL)
-    .comServico(getRpsServico())
-    .comStatus(RpsStatus.NORMAL)
-    .comTomador(getRpsTomador())
-    .build();
+        .comId("id")
+        .comNaturezaOperacao(NaturezaOperacao.TRIBUTACAO_MUNICIPIO)
+        .optanteSimplesNacional(true)
+        .comPrestador(getRpsPrestador())
+        .comRegimeEspecialTributacao(RegimeEspecialTributacao.ME_EPP_SIMPLES_NACIONAL)
+        .comServico(getRpsServico())
+        .comStatus(RpsStatus.NORMAL)
+        .comTomador(getRpsTomador())
+        .build();
     
     return rpsInfo;
   }
@@ -118,6 +127,38 @@ public class FabricaDeObjetosFake {
     return new Rps(getRpsInfo());
   }
   
+  public static LoteRps getLoteRps(){
+    LoteRps loteRps = new LoteRpsBuilder("1")
+        .comId("id")
+        .comCnpj("12345678901230")
+        .comInscricaoMunicipal("000000000000000")
+        .comVersao(LoteRpsVersao.V1_00)
+        .addRps(getRps())
+        .build();
+    
+    return loteRps;
+  }
   
+  public static NFSeIdentificacao getNFSeIdentificacao(){
+    NFSeIdentificacao identificacaoNFSe = new IdentificacaoNFSeBuilder()
+        
+        .comCnpj("12345678901230")
+        .comInscricaoMunicipal("000000000000000")
+        .comCodigoMunicipioIbge("3106200")
+        .comNumero("201700000000001")
+        .build();
+    
+    return identificacaoNFSe;
+  }
+  
+  public static NFSeInfPedidoCancelamento getNFSeInfPedidoCancelamento(){
+    
+    NFSeInfPedidoCancelamento pedidoCancelamentoInf = new PedidoCancelamentoInfBuilder()
+        .comCodigoCancelamento(CodigoCancelamento.SERVICO_NAO_CONCLUIDO)
+        .comNFSeIdentificacao(getNFSeIdentificacao())
+        .build();
+    
+    return pedidoCancelamentoInf;
+  }
   
 }
