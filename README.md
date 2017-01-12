@@ -14,7 +14,7 @@ Nota Fiscal de Serviços
 - [x] [Consulta de NFSe por período](https://github.com/pablopdomingos/nfse/wiki/Consulta-de-NFSe-por-per%C3%ADodo)
 - [x] [Consulta de Lote de RPS](https://github.com/pablopdomingos/nfse/wiki/Consulta-de-Lote-de-RPS)
 - [x] [Cancelamento de NFSe](https://github.com/pablopdomingos/nfse/wiki/Cancelamento-de-NFSe)
-- [x] Gera arquivo de Cadeia de Certificados
+- [x] [Gera arquivo de Cadeia de Certificados](https://github.com/pablopdomingos/nfse/wiki/Gerar-cadeia-de-certificados-da-PBH)
 - [x] [Assina XML certificado digital](https://github.com/pablopdomingos/nfse/wiki/Assinar-XML-com-certificado-digital)
 
 Fique à vontade para contribuir ou solicitar melhorias.
