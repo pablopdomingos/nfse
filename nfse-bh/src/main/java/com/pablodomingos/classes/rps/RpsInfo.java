@@ -128,6 +128,10 @@ public class RpsInfo {
     return status;
   }
 
+  public RpsIdentificacao getRpsSubstituido() {
+    return rpsSubstituido;
+  }
+
   public NaturezaOperacao getNaturezaOperacao() {
     return naturezaOperacao;
   }
