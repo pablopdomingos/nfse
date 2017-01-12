@@ -28,6 +28,7 @@ public class RpsInfoBuilder extends AbstractBuilder<RpsInfo>{
   private OptanteSimplesNacional optanteSimplesNacional;
   private IncentivadorCultural incentivadorCultural;
   private RpsStatus status;
+  private RpsIdentificacao rpsSubstituido;
   private RpsServico servico;
   private RpsPrestador prestador;
   private RpsTomador tomador;
@@ -83,6 +84,11 @@ public class RpsInfoBuilder extends AbstractBuilder<RpsInfo>{
     return this;
   }
 
+  public RpsInfoBuilder comRpsSubstituido(String numeroRps) {
+    this.rpsSubstituido = new RpsIdentificacao(numeroRps);
+    return this;
+  }
+  
   public RpsInfoBuilder comServico(RpsServico servico) {
     this.servico = servico;
     return this;
@@ -142,6 +148,10 @@ public class RpsInfoBuilder extends AbstractBuilder<RpsInfo>{
 
   public RpsStatus getStatus() {
     return status;
+  }
+
+  public RpsIdentificacao getRpsSubstituido() {
+    return rpsSubstituido;
   }
 
   public RpsServico getServico() {
