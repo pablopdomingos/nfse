@@ -4,10 +4,6 @@ import javax.validation.constraints.NotNull;
 
 import com.pablodomingos.classes.rps.RpsIdentificacao;
 import com.pablodomingos.classes.rps.RpsPrestador;
-<<<<<<< HEAD
-import com.thoughtworks.xstream.XStream;
-=======
->>>>>>> 043835f05c7e265fd3b9ea061abbef840b63aa14
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
