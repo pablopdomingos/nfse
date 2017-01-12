@@ -162,4 +162,16 @@ public class FabricaDeObjetosFake {
     return pedidoCancelamentoInf;
   }
   
+  public static TomadorEnderecoBuilder getTomadorEnderecoBuilder(){
+    return new TomadorEnderecoBuilder()
+        .comLogradouro("Logradouro")
+        .comNumeroEndereco("1234")
+        .comComplemento("Complemento")
+        .comBairro("Bairro")
+        .comCep("00000000")
+        .comCodigoMunicipio("3118601")
+        .comUf("MG");
+    
+    
+  }
 }
