@@ -4,12 +4,13 @@ import java.util.UUID;
 
 import com.pablodomingos.classes.rps.NFSeIdentificacao;
 import com.pablodomingos.classes.rps.NFSeInfPedidoCancelamento;
+import com.pablodomingos.classes.rps.enums.CodigoCancelamento;
 
 public class PedidoCancelamentoInfBuilder extends AbstractBuilder<NFSeInfPedidoCancelamento>{
 
   private String id;
   private NFSeIdentificacao nfseIdentificacao;
-  private String codigoCancelamento;
+  private CodigoCancelamento codigoCancelamento;
   
   public PedidoCancelamentoInfBuilder() {
     this.id = UUID.randomUUID().toString();
@@ -25,13 +26,13 @@ public class PedidoCancelamentoInfBuilder extends AbstractBuilder<NFSeInfPedidoC
     return this;
   }
   
-  public PedidoCancelamentoInfBuilder comCodigoCancelamento(String codigoCancelamento){
+  public PedidoCancelamentoInfBuilder comCodigoCancelamento(CodigoCancelamento codigoCancelamento){
     this.codigoCancelamento = codigoCancelamento;
     return this;
   }
   
   @Override
-  public NFSeInfPedidoCancelamento buildInternal() {
+  protected NFSeInfPedidoCancelamento buildInternal() {
     return new NFSeInfPedidoCancelamento(this);
   }
 
@@ -43,7 +44,7 @@ public class PedidoCancelamentoInfBuilder extends AbstractBuilder<NFSeInfPedidoC
     return nfseIdentificacao;
   }
 
-  public String getCodigoCancelamento() {
+  public CodigoCancelamento getCodigoCancelamento() {
     return codigoCancelamento;
   }
 

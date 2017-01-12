@@ -1,9 +1,9 @@
 package com.pablodomingos.classes.rps;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.pablodomingos.classes.rps.builders.PedidoCancelamentoInfBuilder;
+import com.pablodomingos.classes.rps.enums.CodigoCancelamento;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
@@ -20,8 +20,7 @@ public class NFSeInfPedidoCancelamento {
   
   @XStreamAlias("CodigoCancelamento")
   @NotNull
-  @Size(min=1, max=4)
-  private String codigoCancelamento;
+  private CodigoCancelamento codigoCancelamento;
   
   public NFSeInfPedidoCancelamento(PedidoCancelamentoInfBuilder builder) {
     this.id = builder.getId();
@@ -37,7 +36,7 @@ public class NFSeInfPedidoCancelamento {
     return nfseIdentificacao;
   }
 
-  public String getCodigoCancelamento() {
+  public CodigoCancelamento getCodigoCancelamento() {
     return codigoCancelamento;
   }
   

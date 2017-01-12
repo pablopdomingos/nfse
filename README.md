@@ -14,7 +14,6 @@ Nota Fiscal de Serviços
 - [x] [Consulta de NFSe por período](https://github.com/pablopdomingos/nfse/wiki/Consulta-de-NFSe-por-per%C3%ADodo)
 - [x] [Consulta de Lote de RPS](https://github.com/pablopdomingos/nfse/wiki/Consulta-de-Lote-de-RPS)
 - [x] [Cancelamento de NFSe](https://github.com/pablopdomingos/nfse/wiki/Cancelamento-de-NFSe)
-- [x] Substituição de NFSe
 - [x] Gera arquivo de Cadeia de Certificados
 - [x] Assina XML com certificado digital A1
 - [x] Assina XML com certificado digital A3

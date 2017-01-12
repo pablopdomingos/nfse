@@ -21,7 +21,7 @@ public class IntermediarioCpfCnpjBuilder extends AbstractBuilder<RpsIntermediari
   }
   
   @Override
-  public RpsIntermediarioCpfCnpj buildInternal() {
+  protected RpsIntermediarioCpfCnpj buildInternal() {
     return new RpsIntermediarioCpfCnpj(this);
   }
 

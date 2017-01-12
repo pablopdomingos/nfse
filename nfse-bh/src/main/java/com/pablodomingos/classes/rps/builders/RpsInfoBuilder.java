@@ -84,7 +84,9 @@ public class RpsInfoBuilder extends AbstractBuilder<RpsInfo>{
     return this;
   }
 
-  public RpsInfoBuilder comRpsSubstituido(String numeroRps) {
+  //BH não aceita substituicao de RPS
+  @SuppressWarnings("unused")
+  private RpsInfoBuilder comRpsSubstituido(String numeroRps) {
     this.rpsSubstituido = new RpsIdentificacao(numeroRps);
     return this;
   }

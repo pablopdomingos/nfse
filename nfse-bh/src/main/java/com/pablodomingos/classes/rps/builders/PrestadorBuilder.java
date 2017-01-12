@@ -17,7 +17,7 @@ public class PrestadorBuilder extends AbstractBuilder<RpsPrestador>{
   }
   
   @Override
-  public RpsPrestador buildInternal() {
+  protected RpsPrestador buildInternal() {
     return new RpsPrestador(this);
   }
 

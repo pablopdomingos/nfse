@@ -22,7 +22,7 @@ public class IntermediarioBuilder extends AbstractBuilder<RpsIntermediario>{
   }
   
   @Override
-  public RpsIntermediario buildInternal() {
+  protected RpsIntermediario buildInternal() {
     return new RpsIntermediario(this);
   }
 

@@ -1,5 +1,6 @@
 package com.pablodomingos.classes.rps;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -9,10 +10,12 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 public class RpsTomadorEndereco {
 
   @XStreamAlias("Endereco")
+  @NotNull
   @Size(min=1, max=125)
   private String endereco;
 
   @XStreamAlias("Numero")
+  @NotNull
   @Size(min=1, max=10)
   private String numero;
 
@@ -21,19 +24,23 @@ public class RpsTomadorEndereco {
   private String complemento;
 
   @XStreamAlias("Bairro")
+  @NotNull
   @Size(min=1, max=60)
   private String bairro;
 
   @XStreamAlias("CodigoMunicipio")
+  @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min=1, max=7)
   private String codigoMunicipio;
 
   @XStreamAlias("Uf")
+  @NotNull
   @Size(min=2, max=2)
   private String uf;
 
   @XStreamAlias("Cep")
+  @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min=8, max=8)
   private String cep;

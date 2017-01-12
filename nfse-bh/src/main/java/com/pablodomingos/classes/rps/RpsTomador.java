@@ -1,6 +1,7 @@
 package com.pablodomingos.classes.rps;
 
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.pablodomingos.classes.rps.builders.TomadorBuilder;
@@ -17,6 +18,7 @@ public class RpsTomador {
   private String nome;
 
   @XStreamAlias("Endereco")
+  @NotNull
   private RpsTomadorEndereco endereco;
 
   @XStreamAlias("Contato")
