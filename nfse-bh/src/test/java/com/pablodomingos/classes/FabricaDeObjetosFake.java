@@ -154,6 +154,7 @@ public class FabricaDeObjetosFake {
   public static NFSeInfPedidoCancelamento getNFSeInfPedidoCancelamento(){
     
     NFSeInfPedidoCancelamento pedidoCancelamentoInf = new PedidoCancelamentoInfBuilder()
+        .comId("id")
         .comCodigoCancelamento(CodigoCancelamento.SERVICO_NAO_CONCLUIDO)
         .comNFSeIdentificacao(getNFSeIdentificacao())
         .build();
