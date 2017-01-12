@@ -9,7 +9,6 @@ import com.pablodomingos.classes.rps.PeriodoEmissao;
 import com.pablodomingos.classes.rps.RpsIntermediario;
 import com.pablodomingos.classes.rps.RpsPrestador;
 import com.pablodomingos.classes.rps.RpsTomadorIdentificacao;
-import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
