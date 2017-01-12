@@ -9,12 +9,20 @@ Nota Fiscal de Serviços
 
 - [x] [Geração de NFSe](https://github.com/pablopdomingos/nfse/wiki/Gera%C3%A7%C3%A3o-de-NFSe)
 - [x] [Consulta de NFSe por RPS](https://github.com/pablopdomingos/nfse/wiki/Consulta-de-NFSe)
+<<<<<<< HEAD
 - [x] Envio de Lote de RPS
+=======
+- [x] [Envio de Lote de RPS](https://github.com/pablopdomingos/nfse/wiki/Envio-de-Lote-de-RPS)
+>>>>>>> 043835f05c7e265fd3b9ea061abbef840b63aa14
 - [x] [Consulta de situação de lote](https://github.com/pablopdomingos/nfse/wiki/Consulta-Situa%C3%A7%C3%A3o-de-Lote-de-NFSe)
 - [x] [Consulta de NFSe por período](https://github.com/pablopdomingos/nfse/wiki/Consulta-de-NFSe-por-per%C3%ADodo)
 - [x] [Consulta de Lote de RPS](https://github.com/pablopdomingos/nfse/wiki/Consulta-de-Lote-de-RPS)
 - [x] [Cancelamento de NFSe](https://github.com/pablopdomingos/nfse/wiki/Cancelamento-de-NFSe)
+<<<<<<< HEAD
 - [ ] Substituição de NFSe
+=======
+- [x] Substituição de NFSe
+>>>>>>> 043835f05c7e265fd3b9ea061abbef840b63aa14
 - [x] Gera arquivo de Cadeia de Certificados
 - [x] Assina XML com certificado digital A1
 - [x] Assina XML com certificado digital A3

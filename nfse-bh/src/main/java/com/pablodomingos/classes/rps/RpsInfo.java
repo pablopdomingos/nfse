@@ -52,6 +52,12 @@ public class RpsInfo {
   @NotNull
   private RpsStatus status;
 
+<<<<<<< HEAD
+=======
+  @XStreamAlias("RpsSubstituido")
+  private RpsIdentificacao rpsSubstituido;
+  
+>>>>>>> 043835f05c7e265fd3b9ea061abbef840b63aa14
   @XStreamAlias("Servico")
   @NotNull
   private RpsServico servico;
@@ -82,6 +88,10 @@ public class RpsInfo {
     prestador = builder.getPrestador();
     tomador = builder.getTomador();
     intermediario = builder.getIntermediario();
+<<<<<<< HEAD
+=======
+    rpsSubstituido = builder.getRpsSubstituido();
+>>>>>>> 043835f05c7e265fd3b9ea061abbef840b63aa14
   }
 
   public String getId() {
