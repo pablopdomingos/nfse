@@ -81,6 +81,7 @@ public class RpsInfo {
     optanteSimplesNacional = builder.getOptanteSimplesNacional();
     incentivadorCultural = builder.getIncentivadorCultural();
     status = builder.getStatus();
+    construcaoCivil = builder.getContrucaoCivil();
     servico = builder.getServico();
     prestador = builder.getPrestador();
     tomador = builder.getTomador();

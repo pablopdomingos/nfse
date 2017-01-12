@@ -10,6 +10,7 @@ public class RpsIntermediario {
 
   @XStreamAlias("RazaoSocial")
   @NotNull
+  @Size(min = 1, max = 115)
   private String nome;
   
   @XStreamAlias("CpfCnpj")

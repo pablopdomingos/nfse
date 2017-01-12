@@ -1,7 +1,5 @@
 package com.pablodomingos.classes.rps;
 
-import javax.validation.constraints.Size;
-
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -12,12 +10,10 @@ public class RpsIntermediarioCpfCnpj {
 
   @XStreamAlias("Cnpj")
   @CNPJ
-  @Size(min = 14, max = 14)
   private String cnpj;
 
   @XStreamAlias("Cpf")
   @CPF
-  @Size(min = 11, max = 11)
   private String cpf;
 
   public RpsIntermediarioCpfCnpj(IntermediarioCpfCnpjBuilder builder) {
