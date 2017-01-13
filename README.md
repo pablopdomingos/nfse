@@ -1,7 +1,7 @@
 Nota Fiscal de Serviços
 ====
 [![Build Status](https://travis-ci.org/pablopdomingos/nfse.svg?branch=master)](http://travis-ci.org/#!/pablopdomingos/nfse)
-[![Apache 2.0 License](https://img.shields.io/badge/license-apache%202.0-green.svg) ](https://github.com/pablopdomingos/nfse/blob/master/LICENSE)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/pablopdomingos/nfse/blob/master/LICENSE)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.pablopdomingos/nfse-bh/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.pablopdomingos/nfse-bh)
 
 ## API para geração, assinatura, envio, consulta e cancelamento de Nota Fiscal de Serviços Eletrônica da Prefeitura de Belo Horizonte
