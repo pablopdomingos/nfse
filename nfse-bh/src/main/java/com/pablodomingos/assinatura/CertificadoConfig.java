@@ -43,7 +43,6 @@ public class CertificadoConfig {
         if (tipoCertificado.equals(TipoCertificado.A3_TOKEN)) {
 
           InputStream inputFile = getClass().getClassLoader().getResourceAsStream("Token.cfg");
-          @SuppressWarnings("restriction")
           Provider provider = new sun.security.pkcs11.SunPKCS11(inputFile);
           Security.addProvider(provider);
           this.keyStoreCertificado = KeyStore.getInstance("pkcs11", provider);
@@ -51,7 +50,6 @@ public class CertificadoConfig {
         } else if (tipoCertificado.equals(TipoCertificado.A3_CARD)) {
 
           InputStream inputFile = getClass().getClassLoader().getResourceAsStream("SmartCard.cfg");
-          @SuppressWarnings("restriction")
           Provider provider = new sun.security.pkcs11.SunPKCS11(inputFile);
           Security.addProvider(provider);
           this.keyStoreCertificado = KeyStore.getInstance("pkcs11", provider);
@@ -74,7 +72,6 @@ public class CertificadoConfig {
     }
   }
 
-  @SuppressWarnings("restriction")
   public void carregarCertificados(){
     try {
       this.getCertificadoKeyStore();
