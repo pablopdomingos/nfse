@@ -19,3 +19,8 @@ Nota Fiscal de Serviços
 - [x] [Assina XML certificado digital](https://github.com/pablopdomingos/nfse/wiki/Assinar-XML-com-certificado-digital)
 
 Fique à vontade para contribuir ou solicitar melhorias.
+
+
+## Changelog
+
+1.0 - Lançamento Inicial (Suporte somente ao ambiente de homologação)
