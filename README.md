@@ -24,17 +24,17 @@ Fique à vontade para contribuir ou solicitar melhorias.
 
 #### Maven
 
-```xml
+```maven
 <dependency>
-		<groupId>com.github.pablopdomingos</groupId>
-		<artifactId>nfse-bh</artifactId>
-		<version>1.0.1</version>
+	<groupId>com.github.pablopdomingos</groupId>
+	<artifactId>nfse-bh</artifactId>
+	<version>1.0.1</version>
 </dependency>
 ```
 
 #### Gradle
 
-```json
+```gradle
 dependencies {
   compile 'com.github.pablopdomingos:nfse-bh:1.0.1'
 }
