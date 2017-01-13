@@ -19,7 +19,7 @@ public class NfseWSServiceLocator extends org.apache.axis.client.Service impleme
 
     public NfseWSServiceLocator(NFSeAmbiente ambiente) {
       if(ambiente.equals(NFSeAmbiente.PRODUCAO)){
-        //nfseSOAP_address = "https://bhissdigital.pbh.gov.br:443/bhiss-ws/nfse";
+        nfseSOAP_address = "https://bhissdigital.pbh.gov.br:443/bhiss-ws/nfse";
       }
       this.ambiente = ambiente;
     }
