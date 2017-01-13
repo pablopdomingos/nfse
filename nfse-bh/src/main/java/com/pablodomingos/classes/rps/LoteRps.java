@@ -16,6 +16,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 public class LoteRps {
 
+  
   @XStreamAlias("Id")
   @NotNull
   @XStreamAsAttribute
