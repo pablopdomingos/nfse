@@ -20,7 +20,28 @@ Nota Fiscal de Serviços
 
 Fique à vontade para contribuir ou solicitar melhorias.
 
+### Utilização
 
-## Changelog
+#### Maven
+
+```maven
+<dependency>
+	<groupId>com.github.pablopdomingos</groupId>
+	<artifactId>nfse-bh</artifactId>
+	<version>1.0.1</version>
+</dependency>
+```
+
+#### Gradle
+
+```gradle
+dependencies {
+  compile 'com.github.pablopdomingos:nfse-bh:1.0.1'
+}
+```
+
+### Changelog
+
+1.0.1 - Lançamento para ambiente de produção
 
 1.0 - Lançamento Inicial (Suporte somente ao ambiente de homologação)
