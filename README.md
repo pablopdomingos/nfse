@@ -1,5 +1,7 @@
 Nota Fiscal de Serviços
 ====
+
+[![Join the chat at https://gitter.im/java-nfse/Lobby](https://badges.gitter.im/java-nfse/Lobby.svg)](https://gitter.im/java-nfse/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/pablopdomingos/nfse.svg?branch=master)](http://travis-ci.org/#!/pablopdomingos/nfse)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/pablopdomingos/nfse/blob/master/LICENSE)
 
