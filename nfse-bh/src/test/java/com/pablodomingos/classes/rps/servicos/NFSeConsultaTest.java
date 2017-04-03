@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.pablodomingos.classes.FabricaDeObjetosFake;
+import org.xmlunit.matchers.CompareMatcher;
 
 public class NFSeConsultaTest {
 
@@ -17,8 +18,8 @@ public class NFSeConsultaTest {
     String xmlTest = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("consultaNFSe.xml"));
     NFSeConsulta consultaNFSe = new NFSeConsulta(FabricaDeObjetosFake.getRpsPrestador(), LocalDate.of(2017, 01, 12), LocalDate.of(2017, 01, 12));
     String xml = consultaNFSe.converterParaXml();
-    
-    Assert.assertEquals(xml, xmlTest);
+
+    Assert.assertThat(xml, CompareMatcher.isIdenticalTo(xmlTest));
   }
   
 }

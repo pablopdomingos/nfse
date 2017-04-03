@@ -1,12 +1,11 @@
 package com.pablodomingos.classes.rps;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.pablodomingos.classes.rps.builders.TomadorContatoBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
-public class RpsTomadorContato {
+public class RpsTomadorContato extends AbstractRPS {
 
   @XStreamAlias("Telefone")
   @Pattern(regexp = "\\d+")
@@ -18,9 +17,9 @@ public class RpsTomadorContato {
   @Size(min=1, max=80)
   private String email;
 
-  public RpsTomadorContato(TomadorContatoBuilder builder){
-    email = builder.getEmail();
-    telefone = builder.getTelefone();
+  public RpsTomadorContato(String telefone, String email) {
+    this.telefone = telefone;
+    this.email = email;
   }
   
   public String getEmail() {

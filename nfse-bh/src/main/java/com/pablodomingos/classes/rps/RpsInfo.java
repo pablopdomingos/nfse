@@ -1,22 +1,18 @@
 package com.pablodomingos.classes.rps;
 
-import java.time.LocalDateTime;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import com.pablodomingos.classes.rps.builders.RpsInfoBuilder;
-import com.pablodomingos.classes.rps.enums.IncentivadorCultural;
-import com.pablodomingos.classes.rps.enums.NaturezaOperacao;
-import com.pablodomingos.classes.rps.enums.OptanteSimplesNacional;
-import com.pablodomingos.classes.rps.enums.RegimeEspecialTributacao;
-import com.pablodomingos.classes.rps.enums.RpsStatus;
+import com.pablodomingos.classes.rps.enums.*;
 import com.pablodomingos.conversores.LocalDateTimeConversor;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 
-public class RpsInfo {
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
+
+public class RpsInfo extends AbstractRPS {
 
   @XStreamAlias("Id")
   @XStreamAsAttribute
@@ -26,6 +22,7 @@ public class RpsInfo {
 
   @XStreamAlias("IdentificacaoRps")
   @NotNull
+  @Valid
   private RpsIdentificacao identificacaoRps;
 
   @XStreamAlias("DataEmissao")
@@ -53,40 +50,49 @@ public class RpsInfo {
   private RpsStatus status;
 
   @XStreamAlias("RpsSubstituido")
+  @Valid
   private RpsIdentificacao rpsSubstituido;
   
   @XStreamAlias("Servico")
   @NotNull
+  @Valid
   private RpsServico servico;
 
   @XStreamAlias("Prestador")
   @NotNull
+  @Valid
   private RpsPrestador prestador;
 
   @XStreamAlias("Tomador")
+  @Valid
   private RpsTomador tomador;
 
   @XStreamAlias("IntermediarioServico")
+  @Valid
   private RpsIntermediario intermediario;
   
   @XStreamAlias("ConstrucaoCivil")
+  @Valid
   private RpsDadosContrucaoCivil construcaoCivil;
 
   public RpsInfo(RpsInfoBuilder builder) {
     id = builder.getId();
-    identificacaoRps = builder.getIdentificacaoRps();
+    identificacaoRps = new RpsIdentificacao(builder.getId(), builder.getSerie());
     dataEmissao = builder.getDataEmissao();
     naturezaOperacao = builder.getNaturezaOperacao();
     regimeEspecialTributacao = builder.getRegimeEspecialTributacao();
     optanteSimplesNacional = builder.getOptanteSimplesNacional();
     incentivadorCultural = builder.getIncentivadorCultural();
     status = builder.getStatus();
-    construcaoCivil = builder.getContrucaoCivil();
-    servico = builder.getServico();
-    prestador = builder.getPrestador();
-    tomador = builder.getTomador();
-    intermediario = builder.getIntermediario();
-    rpsSubstituido = builder.getRpsSubstituido();
+    if (builder.getContrucaoCivil() != null)
+      construcaoCivil = new RpsDadosContrucaoCivil(builder.getContrucaoCivil());
+    servico = new RpsServico(builder.getServico());
+    prestador = new RpsPrestador(builder.getPrestador());
+    tomador = new RpsTomador(builder.getTomador());
+    if (builder.getIntermediario() != null)
+      intermediario = new RpsIntermediario(builder.getIntermediario());
+    if (builder.getIdSubstituido() != null && builder.getSerieSubstituido() != null)
+      rpsSubstituido = new RpsIdentificacao(builder.getIdSubstituido(), builder.getSerieSubstituido());
   }
 
   public String getId() {

@@ -1,14 +1,13 @@
 package com.pablodomingos.classes.rps;
 
 
+import com.pablodomingos.classes.rps.builders.TomadorBuilder;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.pablodomingos.classes.rps.builders.TomadorBuilder;
-import com.pablodomingos.classes.rps.builders.TomadorIdentificacaoBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
-public class RpsTomador {
+public class RpsTomador extends AbstractRPS {
 
   @XStreamAlias("IdentificacaoTomador")
   private RpsTomadorIdentificacao identificacaoTomador;
@@ -25,15 +24,20 @@ public class RpsTomador {
   private RpsTomadorContato contato;
 
   public RpsTomador(TomadorBuilder builder) {
-    
-    RpsTomadorIdentificacao tomadorIdentificacao = new TomadorIdentificacaoBuilder()
-        .comCpfCnpj(builder.getTomadorCpfCnpj())
-        .comInscricaoMunicipal(builder.getInscricaoMunicipal())
-        .build();
-
-    this.contato = builder.getContato();
-    this.identificacaoTomador = tomadorIdentificacao;
-    this.endereco = builder.getEndereco();
+    this.contato = new RpsTomadorContato(builder.getTelefone(), builder.getEmail());
+    this.identificacaoTomador = new RpsTomadorIdentificacao(
+          new RpsTomadorCpfCnpj(builder.getCpf(), builder.getCnpj()),
+          builder.getInscricaoMunicipal()
+    );
+    this.endereco = new RpsTomadorEndereco(
+      builder.getLogradouro(),
+      builder.getNumero(),
+      builder.getComplemento(),
+      builder.getBairro(),
+      builder.getCodigoMunicipio(),
+      builder.getUf(),
+      builder.getCep()
+    );
     this.nome = builder.getNome();
   }
 

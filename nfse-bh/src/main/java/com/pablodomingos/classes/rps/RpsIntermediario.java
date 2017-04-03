@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import com.pablodomingos.classes.rps.builders.IntermediarioBuilder;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public class RpsIntermediario {
+public class RpsIntermediario extends AbstractRPS {
 
   @XStreamAlias("RazaoSocial")
   @NotNull
@@ -22,11 +22,11 @@ public class RpsIntermediario {
   private String inscricaoMunicipal;
   
   public RpsIntermediario(IntermediarioBuilder builder){
-    
+    if (builder == null)
+      return;
     this.nome = builder.getNome();
-    this.cpfCnpj = builder.getCpfCnpj();
+    this.cpfCnpj = new RpsIntermediarioCpfCnpj(builder.getCpf(), builder.getCnpj());
     this.inscricaoMunicipal = builder.getInscricaoMunicipal();
-
   }
 
   public String getNome() {

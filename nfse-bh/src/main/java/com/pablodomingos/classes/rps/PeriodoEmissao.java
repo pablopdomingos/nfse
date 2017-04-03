@@ -10,7 +10,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 
-public class PeriodoEmissao {
+public class PeriodoEmissao extends AbstractRPS {
   @XStreamAlias("DataInicial")
   @XStreamConverter(LocalDateConversor.class)
   @NotNull

@@ -1,11 +1,10 @@
 package com.pablodomingos.classes.rps;
 
-import javax.validation.constraints.Size;
-
-import com.pablodomingos.classes.rps.builders.TomadorIdentificacaoBuilder;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public class RpsTomadorIdentificacao {
+import javax.validation.constraints.Size;
+
+public class RpsTomadorIdentificacao extends AbstractRPS {
 
   @XStreamAlias("CpfCnpj")
   private RpsTomadorCpfCnpj cpfCnpj;
@@ -14,9 +13,9 @@ public class RpsTomadorIdentificacao {
   @Size(min=1, max=15)
   private String inscricaoMunicipal;
 
-  public RpsTomadorIdentificacao(TomadorIdentificacaoBuilder builder) {
-    this.inscricaoMunicipal = builder.getInscricaoMunicipal();
-    this.cpfCnpj = builder.getCpfCnpj();
+  public RpsTomadorIdentificacao(RpsTomadorCpfCnpj cpfCnpj, String inscricaoMunicipal) {
+    this.cpfCnpj = cpfCnpj;
+    this.inscricaoMunicipal = inscricaoMunicipal;
   }
 
   public RpsTomadorCpfCnpj getCpfCnpj() {

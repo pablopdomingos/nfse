@@ -1,13 +1,13 @@
 package com.pablodomingos.classes.rps;
 
+import com.pablodomingos.classes.rps.builders.ServicoBuilder;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.pablodomingos.classes.rps.builders.ServicoBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
-public class RpsServico {
+public class RpsServico extends AbstractRPS {
 
   @XStreamAlias("Valores")
   @NotNull
@@ -39,7 +39,7 @@ public class RpsServico {
   private String codigoMunicipioIbge;
 
   public RpsServico(ServicoBuilder builder) {
-    this.valores = builder.getValores();
+    this.valores = new RpsValores(builder.getValores());
     this.codigoItemListaServico = builder.getCodigoItemListaServico();
     this.codigoCnae = builder.getCodigoCnae();
     this.codigoTributacaoMunicipio = builder.getCodigoTributacaoMunicipio();

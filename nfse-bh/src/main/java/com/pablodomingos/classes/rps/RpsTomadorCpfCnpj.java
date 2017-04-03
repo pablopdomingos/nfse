@@ -1,14 +1,12 @@
 package com.pablodomingos.classes.rps;
 
-import javax.validation.constraints.Size;
-
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
-import com.pablodomingos.classes.rps.builders.TomadorCpfCnpjBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import javax.validation.constraints.Size;
 
-public class RpsTomadorCpfCnpj {
+public class RpsTomadorCpfCnpj extends AbstractRPS {
 
   @XStreamAlias("Cnpj")
   @CNPJ
@@ -20,11 +18,9 @@ public class RpsTomadorCpfCnpj {
   @Size(min = 11, max = 11)
   private String cpf;
 
-  public RpsTomadorCpfCnpj(TomadorCpfCnpjBuilder builder) {
-
-    this.cpf = builder.getCpf();
-    this.cnpj = builder.getCnpj();
-
+  public RpsTomadorCpfCnpj(String cpf, String cnpj) {
+    this.cpf = cpf;
+    this.cnpj = cnpj;
   }
 
   public String getDocumento() {

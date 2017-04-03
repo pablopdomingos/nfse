@@ -8,7 +8,7 @@ import com.pablodomingos.classes.rps.enums.RpsSerie;
 import com.pablodomingos.classes.rps.enums.RpsTipo;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public class RpsIdentificacao {
+public class RpsIdentificacao extends AbstractRPS {
 
   @XStreamAlias("Numero")
   @NotNull
@@ -26,6 +26,13 @@ public class RpsIdentificacao {
 
   public RpsIdentificacao(String numero) {
     this.numero = numero;
+  }
+
+  public RpsIdentificacao(String numero, RpsSerie serie) {
+    System.out.println("numero = " + numero);
+    this.numero = numero;
+    if (serie != null)
+      this.serie = serie;
   }
 
   public String getNumero() {

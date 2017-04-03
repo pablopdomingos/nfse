@@ -1,26 +1,23 @@
 package com.pablodomingos.classes.rps;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
-import com.pablodomingos.classes.rps.builders.IntermediarioCpfCnpjBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
-public class RpsIntermediarioCpfCnpj {
-
-  @XStreamAlias("Cnpj")
-  @CNPJ
-  private String cnpj;
+public class RpsIntermediarioCpfCnpj extends AbstractRPS {
 
   @XStreamAlias("Cpf")
   @CPF
   private String cpf;
 
-  public RpsIntermediarioCpfCnpj(IntermediarioCpfCnpjBuilder builder) {
+  @XStreamAlias("Cnpj")
+  @CNPJ
+  private String cnpj;
 
-    this.cpf = builder.getCpf();
-    this.cnpj = builder.getCnpj();
-
+  public RpsIntermediarioCpfCnpj(String cpf, String cnpj) {
+    super();
+    this.cpf = cpf;
+    this.cnpj = cnpj;
   }
 
   public String getDocumento() {

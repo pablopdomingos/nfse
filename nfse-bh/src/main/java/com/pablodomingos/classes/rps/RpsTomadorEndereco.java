@@ -1,13 +1,12 @@
 package com.pablodomingos.classes.rps;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.pablodomingos.classes.rps.builders.TomadorEnderecoBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
-public class RpsTomadorEndereco {
+public class RpsTomadorEndereco extends AbstractRPS {
 
   @XStreamAlias("Endereco")
   @NotNull
@@ -45,16 +44,14 @@ public class RpsTomadorEndereco {
   @Size(min=8, max=8)
   private String cep;
 
-  public RpsTomadorEndereco(TomadorEnderecoBuilder builder){
-
-        this.endereco = builder.getLogradouro();
-        this.numero = builder.getNumero();
-        this.bairro = builder.getBairro();
-        this.complemento = builder.getComplemento();
-        this.cep = builder.getCep();
-        this.uf = builder.getUf();
-        this.codigoMunicipio  = builder.getCodigoMunicipio();
-        
+  public RpsTomadorEndereco(String endereco, String numero, String complemento, String bairro, String codigoMunicipio, String uf, String cep) {
+    this.endereco = endereco;
+    this.numero = numero;
+    this.complemento = complemento;
+    this.bairro = bairro;
+    this.codigoMunicipio = codigoMunicipio;
+    this.uf = uf;
+    this.cep = cep;
   }
   
   public String getEndereco() {

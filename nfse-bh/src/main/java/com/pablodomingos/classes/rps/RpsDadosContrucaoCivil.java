@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import com.pablodomingos.classes.rps.builders.ConstrucaoCivilBuilder;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public class RpsDadosContrucaoCivil {
+public class RpsDadosContrucaoCivil extends AbstractRPS {
 
   @XStreamAlias("CodigoObra")
   @NotNull

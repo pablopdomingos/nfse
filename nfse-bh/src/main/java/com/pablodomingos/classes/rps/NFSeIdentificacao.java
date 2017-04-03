@@ -1,15 +1,13 @@
 package com.pablodomingos.classes.rps;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.hibernate.validator.constraints.br.CNPJ;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.br.CNPJ;
-
-import com.pablodomingos.classes.rps.builders.IdentificacaoNFSeBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
-public class NFSeIdentificacao {
+public class NFSeIdentificacao extends AbstractRPS {
 
   @XStreamAlias("Numero")
   @NotNull
@@ -32,11 +30,11 @@ public class NFSeIdentificacao {
   @Size(min = 1, max = 7)
   private String codigoMunicipioIbge;
 
-  public NFSeIdentificacao(IdentificacaoNFSeBuilder builder) {
-    this.numero = builder.getNumero();
-    this.cnpj = builder.getCnpj();
-    this.inscricaoMunicipal = builder.getInscricaoMunicipal();
-    this.codigoMunicipioIbge = builder.getCodigoMunicipioIbge();
+  public NFSeIdentificacao(String numero, String cnpj, String inscricaoMunicipal, String codigoMunicipioIbge) {
+    this.numero = numero;
+    this.cnpj = cnpj;
+    this.inscricaoMunicipal = inscricaoMunicipal;
+    this.codigoMunicipioIbge = codigoMunicipioIbge;
   }
 
   public String getNumero() {

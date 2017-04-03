@@ -56,6 +56,11 @@
 	<dependencies>
 		<!-- XML -->
 		<dependency>
+			<groupId>com.github.pablopdomingos</groupId>
+			<artifactId>nfse-core</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
 			<version>1.4.9</version>
@@ -101,6 +106,11 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.xmlunit</groupId>
+			<artifactId>xmlunit-matchers</artifactId>
+			<version>2.3.0</version>
+		</dependency>
 	</dependencies>
 
 	<profiles>
@@ -136,7 +146,7 @@
 	<build>
 		<resources>
 			<resource>
-				<directory>src/main/resources</directory>
+				<directory>../nfse-core/src/main/resources</directory>
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>
@@ -145,11 +155,11 @@
 		<testResources>
 			<testResource>
 				<filtering>false</filtering>
-				<directory>src/test/resources</directory>
+				<directory>../nfse-core/src/test/resources</directory>
 			</testResource>
 			<testResource>
 				<filtering>false</filtering>
-				<directory>src/test/java</directory>
+				<directory>../nfse-core/src/test/java</directory>
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>

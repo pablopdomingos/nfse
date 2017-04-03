@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.pablodomingos.classes.FabricaDeObjetosFake;
+import org.xmlunit.matchers.CompareMatcher;
 
 public class LoteRpsConsultaSituacaoTest {
 
@@ -16,8 +17,8 @@ public class LoteRpsConsultaSituacaoTest {
     String xmlTest = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("loteRpsConsultaSituacao.xml"));
     LoteRpsConsultaSituacao consultaSituacaoLote = new LoteRpsConsultaSituacao("AP1057893n16X103sfhF4RPm", FabricaDeObjetosFake.getRpsPrestador());
     String xml = consultaSituacaoLote.converterParaXml();
-    
-    Assert.assertEquals(xml, xmlTest);
+
+    Assert.assertThat(xml, CompareMatcher.isIdenticalTo(xmlTest));
   }
   
 }

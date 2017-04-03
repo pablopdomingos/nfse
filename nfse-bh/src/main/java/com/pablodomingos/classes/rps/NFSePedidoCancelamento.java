@@ -4,7 +4,7 @@ import javax.validation.constraints.NotNull;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public class NFSePedidoCancelamento {
+public class NFSePedidoCancelamento extends AbstractRPS {
 
   @XStreamAlias("InfPedidoCancelamento")
   @NotNull

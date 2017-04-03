@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import com.pablodomingos.classes.FabricaDeObjetosFake;
 import com.pablodomingos.classes.rps.NFSePedidoCancelamento;
+import org.xmlunit.matchers.CompareMatcher;
 
 public class NFSeCancelamentoTest {
 
@@ -21,7 +22,7 @@ public class NFSeCancelamentoTest {
     String xmlTest = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("identificacaoNFSe.xml"));
     String xml = nfseCancelamento.converterParaXml();
 
-    Assert.assertEquals(xml, xmlTest);
+    Assert.assertThat(xml, CompareMatcher.isIdenticalTo(xmlTest));
   }
   
 }

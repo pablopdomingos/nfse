@@ -12,7 +12,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 @XStreamConverter(DoubleConversor.class)
-public class RpsValores {
+public class RpsValores extends AbstractRPS {
 
   @XStreamAlias("ValorServicos")
   @NotNull

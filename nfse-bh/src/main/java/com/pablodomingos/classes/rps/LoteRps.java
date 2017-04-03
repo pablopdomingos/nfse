@@ -1,22 +1,21 @@
 package com.pablodomingos.classes.rps;
 
-import java.util.Collections;
-import java.util.List;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.br.CNPJ;
-
 import com.pablodomingos.classes.rps.builders.LoteRpsBuilder;
+import com.pablodomingos.classes.rps.builders.RpsInfoBuilder;
 import com.pablodomingos.classes.rps.enums.LoteRpsVersao;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import org.hibernate.validator.constraints.br.CNPJ;
 
-public class LoteRps {
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-  
+public class LoteRps extends AbstractRPS {
   @XStreamAlias("Id")
   @NotNull
   @XStreamAsAttribute
@@ -25,6 +24,7 @@ public class LoteRps {
   @XStreamAlias("versao")
   @NotNull
   @XStreamAsAttribute
+  @Valid
   private LoteRpsVersao versao;
 
   @XStreamAlias("NumeroLote")
@@ -50,7 +50,8 @@ public class LoteRps {
 
   @XStreamAlias("ListaRps")
   @NotNull
-  private final List<Rps> listaRps;
+  @Valid
+  private final List<Rps> listaRps = new ArrayList<>();
 
   public LoteRps(LoteRpsBuilder builder) {
     this.id = builder.getId();
@@ -59,7 +60,11 @@ public class LoteRps {
     this.cnpj = builder.getCnpj();
     this.inscricaoMunicipal = builder.getInscricaoMunicipal();
     this.quantidadeRps = builder.getQuantidadeRps();
-    this.listaRps = builder.getListaRps();
+
+    for (RpsInfoBuilder rpsInfoBuilder : builder.getListaRps()) {
+      this.listaRps.add(new Rps(rpsInfoBuilder));
+    }
+
   }
 
   public String getId() {

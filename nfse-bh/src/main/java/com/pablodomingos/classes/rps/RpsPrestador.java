@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.br.CNPJ;
 import com.pablodomingos.classes.rps.builders.PrestadorBuilder;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public class RpsPrestador {
+public class RpsPrestador extends AbstractRPS {
 
   @XStreamAlias("Cnpj")
   @NotNull
