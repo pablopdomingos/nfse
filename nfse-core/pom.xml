@@ -40,6 +40,13 @@
 			<organizationUrl>https://sentinela.net</organizationUrl>
 			<timezone>-3</timezone>
 		</developer>
+		<developer>
+			<id>rafaelzomer</id>
+			<name>Rafael Zomer Antunes</name>
+			<url>https://github.com/rafaelzomer</url>
+			<email>rafaelzomer@gmail.com</email>
+			<timezone>-3</timezone>
+		</developer>
 	</developers>
 
 	<distributionManagement>
