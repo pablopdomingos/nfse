@@ -5,7 +5,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 @XStreamAlias("EnviarLoteRpsEnvio")
-public class LoteRpsEnvio extends AbstractService{
+public class LoteRpsEnvio extends AbstractServiceBHISS {
 
   @XStreamAlias("xmlns")
   @XStreamAsAttribute

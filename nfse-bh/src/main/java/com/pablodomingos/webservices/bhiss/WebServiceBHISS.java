@@ -2,7 +2,6 @@ package com.pablodomingos.webservices.bhiss;
 
 import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
 import com.pablodomingos.config.CertificadoConfig;
-import com.pablodomingos.util.XmlUtil;
 import com.pablodomingos.webservices.core.NFSeAbstract;
 import com.pablodomingos.webservices.core.NFSeAbstractStub;
 import com.pablodomingos.webservices.core.NFSeLocator;
@@ -17,31 +16,24 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 
 public class WebServiceBHISS {
+    private static final String CABECALHO = "<?xml version='1.0' encoding='UTF-8'?>"
+            + "<cabecalho xmlns=\"http://www.abrasf.org.br/nfse.xsd\" versao=\"1.00\">"
+            + "<versaoDados>1.00</versaoDados>"
+            + "</cabecalho>";
+
     public static String consultarSituacaoLoteRps(String xml, CertificadoConfig configCertificado)
             throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
             IOException {
 
-        return ((Output) webService(configCertificado).consultarLoteRps(geraParametros(xml))).getOutputXML();
+        return ((Output) webService(configCertificado).consultarLoteRps(new Input(CABECALHO, xml))).getOutputXML();
     }
 
     public static String gerarNfse(String xml, CertificadoConfig configCertificado)
             throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
             IOException {
 
-        return ((Output) webService(configCertificado).gerarNfse(geraParametros(xml))).getOutputXML();
+        return ((Output) webService(configCertificado).gerarNfse(new Input(CABECALHO, xml))).getOutputXML();
     }
-
-
-    private static Input geraParametros(String xml){
-
-        Input parametro = new Input();
-        parametro.setNfseCabecMsg(XmlUtil.getCabecMsg());
-
-        parametro.setNfseDadosMsg(xml);
-        return parametro;
-
-    }
-
 
     private static NFSeAbstract webService(CertificadoConfig configCertificado) throws ServiceException{
         configCertificado.carregarCertificados();

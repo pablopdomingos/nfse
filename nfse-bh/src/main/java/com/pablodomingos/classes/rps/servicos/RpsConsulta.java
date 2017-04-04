@@ -8,7 +8,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 @XStreamAlias("ConsultarNfseRpsEnvio")
-public class RpsConsulta extends AbstractService{
+public class RpsConsulta extends AbstractServiceBHISS {
 
   @XStreamAlias("xmlns")
   @XStreamAsAttribute

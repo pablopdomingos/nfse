@@ -5,6 +5,8 @@ import java.security.KeyStore;
 import java.security.MessageDigest;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.net.ssl.SSLContext;
@@ -13,17 +15,19 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
-public class NFSeGeraCadeiaCertificados {
-  private static final int PORT = 443;
+public abstract class NFSeGeraCadeiaCertificados {
   private static final Logger LOGGER = Logger.getLogger("NFSeGeraCadeiaCertificados");
-  
-  public static byte[] geraCadeiaCertificados(String senha) throws Exception {
+
+  public static byte[] geraCadeiaCertificados(Map<String, Integer> enderecos, String senha) throws Exception {
     
     KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());  
-    ks.load(null, senha.toCharArray());   
-      
-    get("bhisshomologa.pbh.gov.br", PORT, ks); 
-    get("bhissdigital.pbh.gov.br", PORT, ks); 
+    ks.load(null, senha.toCharArray());
+
+    Iterator it = enderecos.entrySet().iterator();
+    while (it.hasNext()) {
+      Map.Entry<String, Integer> pair = (Map.Entry)it.next();
+      get(pair.getKey(), pair.getValue(), ks);
+    }
     
     ByteArrayOutputStream out = new ByteArrayOutputStream(); 
     ks.store(out, senha.toCharArray());

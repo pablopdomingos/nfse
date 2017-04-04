@@ -17,8 +17,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 
 public class WebServiceBetha {
-//    private static final String CABECALHO = "<cabecalho xmlns=\"http://www.betha.com.br/e-nota-contribuinte-ws\" versao=\"2.02\"><versaoDados>2.02</versaoDados></cabecalho>";
-
     private static final String CABECALHO = "<?xml version='1.0' encoding='UTF-8'?>"
             + "<cabecalho xmlns=\"http://www.betha.com.br/e-nota-contribuinte-ws\" versao=\"2.02\">"
             + "<versaoDados>2.02</versaoDados>"

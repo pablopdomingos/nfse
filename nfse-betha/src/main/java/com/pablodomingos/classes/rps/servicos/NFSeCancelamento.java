@@ -8,7 +8,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 @XStreamAlias("CancelarNfseEnvio")
 
-public class NFSeCancelamento extends AbstractService{
+public class NFSeCancelamento extends AbstractServiceBetha {
 
   @XStreamAlias("xmlns")
   @XStreamAsAttribute

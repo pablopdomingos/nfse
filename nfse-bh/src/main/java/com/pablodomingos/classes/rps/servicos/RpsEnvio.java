@@ -7,7 +7,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import javax.validation.Valid;
 
 @XStreamAlias("GerarNfseEnvio")
-public class RpsEnvio extends AbstractService{
+public class RpsEnvio extends AbstractServiceBHISS {
 
   @XStreamAlias("xmlns")
   @XStreamAsAttribute

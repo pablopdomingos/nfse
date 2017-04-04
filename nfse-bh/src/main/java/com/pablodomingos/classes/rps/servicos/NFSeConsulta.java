@@ -13,7 +13,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 @XStreamAlias("ConsultarNfseEnvio")
-public class NFSeConsulta extends AbstractService{
+public class NFSeConsulta extends AbstractServiceBHISS {
 
   @XStreamAlias("xmlns")
   @XStreamAsAttribute

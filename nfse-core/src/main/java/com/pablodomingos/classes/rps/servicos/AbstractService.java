@@ -9,7 +9,11 @@ import javax.validation.Validator;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class AbstractService {
+public class AbstractService {
+
+  protected boolean addHeader() {
+    return true;
+  }
 
   private static Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
@@ -28,9 +32,11 @@ public abstract class AbstractService {
       }
       throw new ConstraintViolationException(violationMessages.toString() , violations);
     }
-
-//    return XML_HEADER + xstream.toXML(this);
-    return xstream.toXML(this);
+    String xml = xstream.toXML(this);
+    if (addHeader()) {
+      xml = XML_HEADER + xml;
+    }
+    return xml;
   }
   
 }
