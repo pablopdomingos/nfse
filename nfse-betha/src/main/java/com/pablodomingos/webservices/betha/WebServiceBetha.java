@@ -2,7 +2,6 @@ package com.pablodomingos.webservices.betha;
 
 import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
 import com.pablodomingos.config.CertificadoConfig;
-import com.pablodomingos.util.XmlUtil;
 import com.pablodomingos.webservices.core.NFSeAbstract;
 import com.pablodomingos.webservices.core.NFSeAbstractStub;
 import com.pablodomingos.webservices.core.NFSeLocator;
@@ -26,7 +25,7 @@ public class WebServiceBetha {
             throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
             IOException {
 
-        return ((Output) webService(configCertificado).consultarLoteRps(geraParametros(xml))).getOutputXML();
+        return ((Output) webService(configCertificado).consultarLoteRps(CABECALHO, xml)).getOutputXML();
     }
 
     public static String gerarNfse(String xml, CertificadoConfig configCertificado)
@@ -35,18 +34,6 @@ public class WebServiceBetha {
 
         return ((String) webService(configCertificado).gerarNfse(CABECALHO, xml));
     }
-
-
-    private static Input geraParametros(String xml){
-
-        Input parametro = new Input();
-        parametro.setNfseCabecMsg(XmlUtil.getCabecMsg());
-
-        parametro.setNfseDadosMsg(xml);
-        return parametro;
-
-    }
-
 
     private static NFSeAbstract webService(CertificadoConfig configCertificado) throws ServiceException{
         configCertificado.carregarCertificados();
