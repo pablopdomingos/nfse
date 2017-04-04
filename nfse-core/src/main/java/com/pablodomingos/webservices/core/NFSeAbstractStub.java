@@ -6,10 +6,8 @@ import org.apache.axis.AxisFault;
 import org.apache.axis.NoEndPointException;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Stub;
-import org.apache.axis.description.OperationDesc;
 import org.apache.axis.encoding.ser.*;
 import org.apache.axis.soap.SOAPConstants;
-import org.apache.axis.utils.JavaUtils;
 
 import javax.xml.namespace.QName;
 import javax.xml.rpc.Service;
@@ -25,8 +23,14 @@ public abstract class NFSeAbstractStub<T> extends Stub implements NFSeAbstract<T
     private Vector cachedDeserFactories = new Vector();
     private CertificadoConfig certificadoConfig;
 
-    public abstract OperationDesc consultarLoteRpsOperation();
-    public abstract OperationDesc gerarNfseOperation();
+    protected Call gerarNfseCall() throws RemoteException {
+        return createCall();
+    }
+    protected Call consultarLoteRpsCall() throws RemoteException {
+        return createCall();
+    }
+
+
 
     public NFSeAbstractStub(URL endpointURL, Service service) throws org.apache.axis.AxisFault {
         this(service);
@@ -69,32 +73,19 @@ public abstract class NFSeAbstractStub<T> extends Stub implements NFSeAbstract<T
 
     }
 
-    public T gerarNfse(Object... parameters) throws RemoteException {
+    private T genericCall(Call _call, Object... parameters) throws RemoteException {
         if (super.cachedEndpoint == null) {
             throw new NoEndPointException();
         }
-        System.out.println("parameters1 = " + parameters);
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(gerarNfseOperation());
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("http://ws.bhiss.pbh.gov.br/GerarNfse");
-        _call.setEncodingStyle(null);
-        _call.setProperty(Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new QName("", "GerarNfse"));
-
         setRequestHeaders(_call);
-//        setAttachments(_call);
+        setAttachments(_call);
         try {
-            System.out.println("parameters = " + parameters);
             Object _resp = _call.invoke(parameters);
-            System.out.println("_resp = " + _resp);
             if (_resp instanceof RemoteException) {
                 throw (RemoteException) _resp;
             }
             else {
-//                extractAttachments(_call);
+                extractAttachments(_call);
                 try {
                     return (T)_resp;
                 } catch (Exception _exception) {
@@ -110,47 +101,13 @@ public abstract class NFSeAbstractStub<T> extends Stub implements NFSeAbstract<T
         }
         return null;
     }
+
+    public T gerarNfse(Object... parameters) throws RemoteException {
+        return genericCall(gerarNfseCall(), parameters);
+    }
     
     public T consultarLoteRps(Object... parameters) throws RemoteException {
-        if (super.cachedEndpoint == null) {
-            throw new NoEndPointException();
-        }
-        System.out.println("parameters1 = " + parameters);
-        org.apache.axis.client.Call _call = createCall();
-        _call.setOperation(consultarLoteRpsOperation());
-        _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("http://ws.bhiss.pbh.gov.br/ConsultarLoteRps");
-        _call.setEncodingStyle(null);
-        _call.setProperty(Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new QName("", "ConsultarLoteRps"));
-
-        setRequestHeaders(_call);
-//        setAttachments(_call);
-        try {
-            System.out.println("parameters = " + parameters);
-            Object _resp = _call.invoke(parameters);
-            System.out.println("_resp = " + _resp);
-            if (_resp instanceof RemoteException) {
-                throw (RemoteException) _resp;
-            }
-            else {
-//                extractAttachments(_call);
-                try {
-                    return (T)_resp;
-                } catch (Exception _exception) {
-                    System.out.println("ERRR2 = " + _exception.getMessage());
-                    _exception.printStackTrace(); //fixme
-//                    callback.callback(JavaUtils.convert(_resp, T.class));
-//                    return (Output) org.apache.axis.utils.JavaUtils.convert(_resp, Output.class);
-                }
-            }
-        } catch (AxisFault axisFaultException) {
-            System.out.println("ERRR = " + axisFaultException.getMessage());
-            throw axisFaultException;
-        }
-        return null;
+        return genericCall(consultarLoteRpsCall(), parameters);
     }
 
     protected Call createCall() throws RemoteException {
@@ -209,6 +166,11 @@ public abstract class NFSeAbstractStub<T> extends Stub implements NFSeAbstract<T
                     }
                 }
             }
+            _call.setUseSOAPAction(true);
+            _call.setEncodingStyle(null);
+            _call.setProperty(Call.SEND_TYPE_ATTR, Boolean.FALSE);
+            _call.setProperty(AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+            _call.setSOAPVersion(SOAPConstants.SOAP11_CONSTANTS);
             return _call;
         }
         catch (Throwable _t) {

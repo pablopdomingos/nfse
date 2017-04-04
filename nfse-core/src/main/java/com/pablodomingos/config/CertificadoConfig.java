@@ -1,19 +1,14 @@
 package com.pablodomingos.config;
 
+import com.pablodomingos.assinatura.TipoCertificado;
+import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.Provider;
-import java.security.Security;
+import java.security.*;
 import java.security.cert.CertificateException;
-
-import com.pablodomingos.assinatura.TipoCertificado;
-import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
-import com.pablodomingos.classes.rps.enums.NFSeModelo;
 
 
 public class CertificadoConfig {

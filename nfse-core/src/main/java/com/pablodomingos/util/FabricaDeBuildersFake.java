@@ -48,7 +48,8 @@ public class FabricaDeBuildersFake {
       .comCodigoCnae(12345)
       .comCodigoMunicipio(3106200)
       .comCodigoTributacaoMunicipio("110200188")
-      .comDiscriminacao("Discriminacao teste");
+      .comDiscriminacao("Discriminacao teste")
+      .comExigibilidadeISS(ExigibilidadeIss.EXIGIVEL);
   }
 
   public static RpsInfoBuilder getRpsInfoBuilder(){

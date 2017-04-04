@@ -43,6 +43,7 @@
 	<modules>
 		<module>nfse-core</module>
 		<module>nfse-bh</module>
+		<module>nfse-betha</module>
 	</modules>
 
 	<developers>

@@ -28,8 +28,9 @@ public abstract class AbstractService {
       }
       throw new ConstraintViolationException(violationMessages.toString() , violations);
     }
-    
-    return XML_HEADER + xstream.toXML(this);
+
+//    return XML_HEADER + xstream.toXML(this);
+    return xstream.toXML(this);
   }
   
 }

@@ -15,10 +15,12 @@ import javax.xml.crypto.dsig.spec.C14NMethodParameterSpec;
 import javax.xml.crypto.dsig.spec.TransformParameterSpec;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -30,10 +32,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class AssinaturaDigital {
-  private static String INFRPS = "InfRps";
-  private static String[] ELEMENTOS_ASSINAVEIS = new String[]{"LoteRps", "InfPedidoCancelamento"};
+public abstract class AssinaturaDigital {
   private CertificadoConfig config;
+  protected abstract String informacaoRps();
+  protected abstract String[] elementosAssinaveis();
 
   public AssinaturaDigital(CertificadoConfig config) {
     this.config = config;
@@ -61,7 +63,7 @@ public class AssinaturaDigital {
     Document document = documentFactory(xml);
 
     //Assinando todos RPS
-    NodeList elements = document.getElementsByTagName(INFRPS);
+    NodeList elements = document.getElementsByTagName(informacaoRps());
     for (int i = 0; i < elements.getLength(); i++) {
       Element element = (Element) elements.item(i);
       
@@ -80,7 +82,7 @@ public class AssinaturaDigital {
     Document documentAssinado = documentFactory(converteDocParaXml(document));
     
     //Assinando o Lote de RPS
-    for (final String elementoAssinavel : AssinaturaDigital.ELEMENTOS_ASSINAVEIS) {
+    for (final String elementoAssinavel : elementosAssinaveis()) {
       NodeList elementsAssinado = documentAssinado.getDocumentElement().getElementsByTagName(elementoAssinavel);
       for (int i = 0; i < elementsAssinado.getLength(); i++) {
         Element element = (Element) elementsAssinado.item(i);

@@ -1,5 +1,7 @@
 package com.pablodomingos.classes.rps.builders;
 
+import com.pablodomingos.classes.rps.enums.ExigibilidadeIss;
+
 public class ServicoBuilder extends AbstractBuilder {
 
   private ValoresBuilder valores;
@@ -8,6 +10,7 @@ public class ServicoBuilder extends AbstractBuilder {
   private String codigoTributacaoMunicipio;
   private String discriminacao;
   private String codigoMunicipio;
+  private ExigibilidadeIss exigibilidadeIss;
 
   public ServicoBuilder(ValoresBuilder valores, String codigoItemListaServico) {
     this.valores = valores;
@@ -41,6 +44,10 @@ public class ServicoBuilder extends AbstractBuilder {
     this.codigoTributacaoMunicipio = codigoTributacaoMunicipio;
     return this;
   }
+  public ServicoBuilder comExigibilidadeISS(ExigibilidadeIss exigibilidadeIss) {
+    this.exigibilidadeIss = exigibilidadeIss;
+    return this;
+  }
 
   public ValoresBuilder getValores() {
     return valores;
@@ -66,5 +73,8 @@ public class ServicoBuilder extends AbstractBuilder {
     return codigoMunicipio;
   }
 
+  public ExigibilidadeIss getExigibilidadeIss() {
+    return exigibilidadeIss;
+  }
 }
 
