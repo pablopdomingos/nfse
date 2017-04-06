@@ -1,40 +1,39 @@
 package com.pablodomingos.classes.rps.servicos;
 
-import java.time.LocalDate;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import com.pablodomingos.classes.rps.PeriodoEmissao;
 import com.pablodomingos.classes.rps.RpsIntermediario;
 import com.pablodomingos.classes.rps.RpsPrestador;
 import com.pablodomingos.classes.rps.RpsTomadorIdentificacao;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
 
-@XStreamAlias("ConsultarNfseEnvio")
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.time.LocalDate;
+
+@Root(name="ConsultarNfseEnvio")
 public class NFSeConsulta extends AbstractServiceBetha {
 
-  @XStreamAlias("xmlns")
-  @XStreamAsAttribute
-  private String xmlns = "http://www.abrasf.org.br/nfse.xsd";
+  @Attribute(name="xmlns")
+  private String xmlns = "http://www.betha.com.br/e-nota-contribuinte-ws";
 
-  @XStreamAlias("Prestador")
+  @Element(name="Prestador")
   @NotNull
   private RpsPrestador prestador;
 
-  @XStreamAlias("NumeroNfse")
+  @Element(name="NumeroNfse", required = false)
   @Size(min = 15, max = 15)
   private String numeroNFSe;
   
-  @XStreamAlias("PeriodoEmissao")
+  @Element(name="PeriodoEmissao")
   @NotNull
   private PeriodoEmissao periodoEmissao;
   
-  @XStreamAlias("Tomador")
+  @Element(name="Tomador", required = false)
   private RpsTomadorIdentificacao tomador;
 
-  @XStreamAlias("IntermediarioServico")
+  @Element(name="IntermediarioServico", required = false)
   private RpsIntermediario intermediario;
   
   public NFSeConsulta(RpsPrestador prestador, LocalDate dataInicial, LocalDate dataFinal) {

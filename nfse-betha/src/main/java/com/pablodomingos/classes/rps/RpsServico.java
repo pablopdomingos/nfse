@@ -3,8 +3,7 @@ package com.pablodomingos.classes.rps;
 import com.pablodomingos.classes.rps.builders.ServicoBuilder;
 import com.pablodomingos.classes.rps.enums.ExigibilidadeIss;
 import com.pablodomingos.classes.rps.enums.IssRetido;
-import com.pablodomingos.util.DoubleUtil;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -12,54 +11,54 @@ import javax.validation.constraints.Size;
 
 public class RpsServico extends AbstractRPS {
 
-  @XStreamAlias("Valores")
+  @Element(name="Valores")
   @NotNull
   private RpsValores valores;
 
-  @XStreamAlias("IssRetido")
+  @Element(name="IssRetido")
   @NotNull
   private IssRetido issRetido;
 
-  @XStreamAlias("ItemListaServico")
+  @Element(name="ItemListaServico")
   @NotNull
   @Size(min = 1, max = 5)
   private String codigoItemListaServico;
 
-  @XStreamAlias("CodigoCnae")
+  @Element(name="CodigoCnae", required = false)
   @Pattern(regexp = "\\d+")
   @Size(min = 1, max = 7)
   private String codigoCnae;
 
-  @XStreamAlias("CodigoTributacaoMunicipio")
+  @Element(name="CodigoTributacaoMunicipio", required = false)
   @Size(min = 1, max = 20)
   private String codigoTributacaoMunicipio;
 
-  @XStreamAlias("Discriminacao")
+  @Element(name="Discriminacao")
   @NotNull
   @Size(min = 1, max = 2000)
   private String discriminacao;
 
-  @XStreamAlias("CodigoMunicipio")
+  @Element(name="CodigoMunicipio")
   @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min = 1, max = 7)
   private String codigoMunicipioIbge;
 
-  @XStreamAlias("CodigoPais")
+  @Element(name="CodigoPais", required = false)
   @Pattern(regexp = "\\d+")
   @Size(min = 1, max = 4)
   private String codigoPais = "1058"; //fixo Brasil
 
-  @XStreamAlias("ExigibilidadeISS")
+  @Element(name="ExigibilidadeISS")
   @NotNull
   private ExigibilidadeIss exigibilidadeISS;
 
-  @XStreamAlias("MunicipioIncidencia")
+  @Element(name="MunicipioIncidencia", required = false)
   @Pattern(regexp = "\\d+")
   @Size(min = 1, max = 7)
   private String municipioIncidencia;
 
-  @XStreamAlias("NumeroProcesso")
+  @Element(name="NumeroProcesso", required = false)
   @Size(max = 30)
   private String numeroProcesso;
 

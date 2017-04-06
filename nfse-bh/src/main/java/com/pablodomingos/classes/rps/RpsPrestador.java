@@ -6,16 +6,16 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 import com.pablodomingos.classes.rps.builders.PrestadorBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 
 public class RpsPrestador extends AbstractRPS {
 
-  @XStreamAlias("Cnpj")
+  @Element(name="Cnpj")
   @NotNull
   @CNPJ
   private String cnpj;
 
-  @XStreamAlias("InscricaoMunicipal")
+  @Element(name="InscricaoMunicipal")
   @Size(min = 1, max = 15)
   private String inscricaoMunicipal;
 

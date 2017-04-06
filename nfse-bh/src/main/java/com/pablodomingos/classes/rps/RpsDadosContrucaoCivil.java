@@ -4,16 +4,16 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.pablodomingos.classes.rps.builders.ConstrucaoCivilBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 
 public class RpsDadosContrucaoCivil extends AbstractRPS {
 
-  @XStreamAlias("CodigoObra")
+  @Element(name="CodigoObra")
   @NotNull
   @Size(min=1, max=15)
   private String codigoObra;
 
-  @XStreamAlias("Art")
+  @Element(name="Art")
   @NotNull
   @Size(min=1, max=15)
   private String art;

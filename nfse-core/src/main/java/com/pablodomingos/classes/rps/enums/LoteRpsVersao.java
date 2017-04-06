@@ -1,39 +1,30 @@
 package com.pablodomingos.classes.rps.enums;
 
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
-
-@XStreamConverter(EnumToStringConverter.class)
 public enum LoteRpsVersao {
-	
-  V1_00{
-    @Override
-    public String toString() {
-      return "1.00";
+
+  V1_00("1.00"),
+  V2_00("2.00"),
+  V2_0("2.01"),
+  V2_02("2.02"),
+  V2_03("2.03");
+
+  LoteRpsVersao(String versao) {
+    this.versao = versao;
+  }
+
+  public static LoteRpsVersao fromVersao(String versao) {
+    for (LoteRpsVersao loteRpsVersao : LoteRpsVersao.values()) {
+      if (loteRpsVersao.versao.equals(versao)) {
+        return loteRpsVersao;
+      }
     }
-  }, 
-  V2_00{
-    @Override
-    public String toString() {
-      return "2.00";
-    }
-  }, 
-  V2_01{
-    @Override
-    public String toString() {
-      return "2.01";
-    }
-  }, 
-  V2_02{
-    @Override
-    public String toString() {
-      return "2.02";
-    }
-  }, 
-  V2_03{
-    @Override
-    public String toString() {
-      return "2.03";
-    }
-  };
+    return null;
+  }
+
+  private String versao;
+
+  @Override
+  public String toString() {
+    return versao;
+  }
 }

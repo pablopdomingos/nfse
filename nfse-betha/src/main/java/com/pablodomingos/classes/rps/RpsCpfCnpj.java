@@ -1,6 +1,6 @@
 package com.pablodomingos.classes.rps;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -8,16 +8,27 @@ import javax.validation.constraints.Size;
 
 public class RpsCpfCnpj extends AbstractRPS {
 
-  @XStreamAlias("Cnpj")
+  @Element(name="Cnpj", required = false)
   @CNPJ
   @Size(min = 14, max = 14)
   private String cnpj;
 
-  @XStreamAlias("Cpf")
+  @Element(name="Cpf", required = false)
   @CPF
   @Size(min = 11, max = 11)
   private String cpf;
 
+  public RpsCpfCnpj(String documento) {
+    if (documento != null)
+    {
+      if (documento.length() == 14) {
+        this.cnpj = documento;
+      }
+      else {
+        this.cpf = documento;
+      }
+    }
+  }
   public RpsCpfCnpj(String cpf, String cnpj) {
     this.cpf = cpf;
     this.cnpj = cnpj;

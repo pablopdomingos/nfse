@@ -1,20 +1,19 @@
 package com.pablodomingos.classes.rps.servicos;
 
+import com.pablodomingos.classes.rps.NFSePedidoCancelamento;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
 import javax.validation.constraints.NotNull;
 
-import com.pablodomingos.classes.rps.NFSePedidoCancelamento;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
-@XStreamAlias("CancelarNfseEnvio")
-
+@Root(name="CancelarNfseEnvio")
 public class NFSeCancelamento extends AbstractServiceBetha {
 
-  @XStreamAlias("xmlns")
-  @XStreamAsAttribute
-  private String xmlns = "http://www.abrasf.org.br/nfse.xsd";
+  @Attribute(name="xmlns")
+  private String xmlns = "http://www.betha.com.br/e-nota-contribuinte-ws";
 
-  @XStreamAlias("Pedido")
+  @Element(name="Pedido")
   @NotNull
   private NFSePedidoCancelamento pedido;
   

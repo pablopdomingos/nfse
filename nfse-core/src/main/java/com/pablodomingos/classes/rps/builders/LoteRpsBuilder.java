@@ -13,6 +13,7 @@ public class LoteRpsBuilder extends AbstractBuilder {
   private String id;
   private LoteRpsVersao versao;
   private String numeroLote;
+  private String cpf;
   private String cnpj;
   private String inscricaoMunicipal;
   private int quantidadeRps;
@@ -35,8 +36,11 @@ public class LoteRpsBuilder extends AbstractBuilder {
     return this;
   }
   
-  public LoteRpsBuilder comCnpj(String cnpj) {
-    this.cnpj = cnpj;
+  public LoteRpsBuilder comDocumento(String documento) {
+    if (documento.length() == 14)
+      this.cnpj = documento;
+    else
+      this.cpf = documento;
     return this;
   }
 
@@ -66,6 +70,10 @@ public class LoteRpsBuilder extends AbstractBuilder {
 
   public String getNumeroLote() {
     return this.numeroLote;
+  }
+
+  public String getCpf() {
+    return cpf;
   }
 
   public String getCnpj() {

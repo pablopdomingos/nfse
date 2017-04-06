@@ -11,9 +11,9 @@ import java.io.IOException;
 
 public class RpsConsultaTest {
   @Test
-  public void xmlDeveSerGeradoCorretamente() throws IOException{
-    String xmlTest = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("consultaRPS.xml"));
-    RpsConsulta consultaRPS = new RpsConsulta(new RpsIdentificacao("1"), FabricaDeObjetosFake.getRpsPrestador());
+  public void deveGerarXmlRpsConsultaCorretamente() throws IOException{
+    String xmlTest = IOUtils.toString(RpsConsultaTest.class.getClassLoader().getResourceAsStream("consultaRPS.xml"));
+    RpsConsulta consultaRPS = new RpsConsulta(new RpsIdentificacao("24", "A1"), FabricaDeObjetosFake.getRpsPrestador());
     String xml = consultaRPS.converterParaXml();
     Assert.assertThat(xml, CompareMatcher.isIdenticalTo(xmlTest));
   }

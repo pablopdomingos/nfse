@@ -16,21 +16,12 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
-public abstract class NFSeAbstractStub<T> extends Stub implements NFSeAbstract<T> {
+public abstract class NFSeAbstractStub extends Stub {
     private Vector cachedSerClasses = new Vector();
     private Vector cachedSerQNames = new Vector();
     private Vector cachedSerFactories = new Vector();
     private Vector cachedDeserFactories = new Vector();
     private CertificadoConfig certificadoConfig;
-
-    protected Call gerarNfseCall() throws RemoteException {
-        return createCall();
-    }
-    protected Call consultarLoteRpsCall() throws RemoteException {
-        return createCall();
-    }
-
-
 
     public NFSeAbstractStub(URL endpointURL, Service service) throws org.apache.axis.AxisFault {
         this(service);
@@ -73,7 +64,7 @@ public abstract class NFSeAbstractStub<T> extends Stub implements NFSeAbstract<T
 
     }
 
-    private T genericCall(Call _call, Object... parameters) throws RemoteException {
+    private Object genericCall(Call _call, Object... parameters) throws RemoteException {
         if (super.cachedEndpoint == null) {
             throw new NoEndPointException();
         }
@@ -87,7 +78,7 @@ public abstract class NFSeAbstractStub<T> extends Stub implements NFSeAbstract<T
             else {
                 extractAttachments(_call);
                 try {
-                    return (T)_resp;
+                    return _resp;
                 } catch (Exception _exception) {
                     System.out.println("ERRR2 = " + _exception.getMessage());
                     _exception.printStackTrace(); //fixme
@@ -102,12 +93,73 @@ public abstract class NFSeAbstractStub<T> extends Stub implements NFSeAbstract<T
         return null;
     }
 
-    public T gerarNfse(Object... parameters) throws RemoteException {
+    public Object cancelarNfse(Object... parameters) throws RemoteException {
+        return genericCall(cancelarNfseCall(), parameters);
+    }
+    public Object consultarLoteRps(Object... parameters) throws RemoteException {
+        return genericCall(consultarLoteRpsCall(), parameters);
+    }
+    public Object consultarNfseFaixa(Object... parameters) throws RemoteException {
+        return genericCall(consultarNfseFaixaCall(), parameters);
+    }
+    public Object consultarNfsePorRps(Object... parameters) throws RemoteException {
+        return genericCall(consultarNfsePorRpsCall(), parameters);
+    }
+    public Object consultarNfseServicoPrestado(Object... parameters) throws RemoteException {
+        return genericCall(consultarNfseServicoPrestadoCall(), parameters);
+    }
+    public Object consultarNfseServicoTomado(Object... parameters) throws RemoteException {
+        return genericCall(consultarNfseServicoTomadoCall(), parameters);
+    }
+    public Object consultarSituacaoLoteRps(Object... parameters) throws RemoteException {
+        return genericCall(consultarSituacaoLoteRpsCall(), parameters);
+    }
+    public Object gerarNfse(Object... parameters) throws RemoteException {
         return genericCall(gerarNfseCall(), parameters);
     }
-    
-    public T consultarLoteRps(Object... parameters) throws RemoteException {
-        return genericCall(consultarLoteRpsCall(), parameters);
+    public Object recepcionarLoteRps(Object... parameters) throws RemoteException {
+        return genericCall(recepcionarLoteRpsCall(), parameters);
+    }
+    public Object recepcionarLoteRpsSincrono(Object... parameters) throws RemoteException {
+        return genericCall(recepcionarLoteRpsSincronoCall(), parameters);
+    }
+    public Object substituirNfse(Object... parameters) throws RemoteException {
+        return genericCall(substituirNfseCall(), parameters);
+    }
+
+
+    protected Call cancelarNfseCall() throws RemoteException {
+        return createCall();
+    }
+    protected Call consultarLoteRpsCall() throws RemoteException {
+        return createCall();
+    }
+    protected Call consultarNfseFaixaCall() throws RemoteException {
+        return createCall();
+    }
+    protected Call consultarNfsePorRpsCall() throws RemoteException {
+        return createCall();
+    }
+    protected Call consultarNfseServicoPrestadoCall() throws RemoteException {
+        return createCall();
+    }
+    protected Call consultarNfseServicoTomadoCall() throws RemoteException {
+        return createCall();
+    }
+    protected Call consultarSituacaoLoteRpsCall() throws RemoteException {
+        return createCall();
+    }
+    protected Call gerarNfseCall() throws RemoteException {
+        return createCall();
+    }
+    protected Call recepcionarLoteRpsCall() throws RemoteException {
+        return createCall();
+    }
+    protected Call recepcionarLoteRpsSincronoCall() throws RemoteException {
+        return createCall();
+    }
+    protected Call substituirNfseCall() throws RemoteException {
+        return createCall();
     }
 
     protected Call createCall() throws RemoteException {

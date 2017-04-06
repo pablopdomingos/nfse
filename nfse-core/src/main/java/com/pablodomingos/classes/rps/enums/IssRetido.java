@@ -1,12 +1,8 @@
 package com.pablodomingos.classes.rps.enums;
 
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
-
-@XStreamConverter(EnumToStringConverter.class)
 public enum IssRetido {
-	
-  SIM(1, "Sim"), 
+
+  SIM(1, "Sim"),
   NAO(2, "Não");
 
   private int codigo;
@@ -24,14 +20,12 @@ public enum IssRetido {
   public String getDescricao() {
     return this.descricao;
   }
-  
+
   public static IssRetido fromInt(int codigo) {
-    if (codigo > 0 && codigo < 2) {
-      for (IssRetido issRetido : IssRetido
-          .values()) {
-        if (issRetido.getCodigo().equals(String.valueOf(codigo))) {
-          return issRetido;
-        }
+    for (IssRetido issRetido : IssRetido
+        .values()) {
+      if (issRetido.getCodigo().equals(String.valueOf(codigo))) {
+        return issRetido;
       }
     }
     return null;
@@ -41,5 +35,5 @@ public enum IssRetido {
   public String toString() {
     return String.valueOf(codigo);
   }
-	
+
 }

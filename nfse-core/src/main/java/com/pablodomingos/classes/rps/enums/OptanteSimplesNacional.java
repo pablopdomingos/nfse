@@ -3,7 +3,6 @@ package com.pablodomingos.classes.rps.enums;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
 
-@XStreamConverter(EnumToStringConverter.class)
 public enum OptanteSimplesNacional {
 
   SIM(1, "Sim"), NAO(2, "Nao");
@@ -25,12 +24,10 @@ public enum OptanteSimplesNacional {
   }
   
   public static OptanteSimplesNacional fromInt(int codigo) {
-    if (codigo > 0 && codigo < 2) {
-      for (OptanteSimplesNacional optanteSimplesNacional : OptanteSimplesNacional
-          .values()) {
-        if (optanteSimplesNacional.getCodigo().equals(String.valueOf(codigo))) {
-          return optanteSimplesNacional;
-        }
+    for (OptanteSimplesNacional optanteSimplesNacional : OptanteSimplesNacional
+        .values()) {
+      if (optanteSimplesNacional.getCodigo().equals(String.valueOf(codigo))) {
+        return optanteSimplesNacional;
       }
     }
     return null;

@@ -1,14 +1,14 @@
 package com.pablodomingos.classes.rps;
 
 import com.pablodomingos.classes.rps.builders.RpsInfoBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 
 import javax.validation.Valid;
 
-@XStreamAlias("Rps")
+@Element(name="Rps")
 public class Rps extends AbstractRPS {
     
-  @XStreamAlias("InfRps")
+  @Element(name="InfRps")
   @Valid
   private RpsInfo rpsInfo;
 

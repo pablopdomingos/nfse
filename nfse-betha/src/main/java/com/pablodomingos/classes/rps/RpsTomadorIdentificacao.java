@@ -1,15 +1,15 @@
 package com.pablodomingos.classes.rps;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 
 import javax.validation.constraints.Size;
 
 public class RpsTomadorIdentificacao extends AbstractRPS {
 
-  @XStreamAlias("CpfCnpj")
+  @Element(name="CpfCnpj", required = false)
   private RpsCpfCnpj cpfCnpj;
 
-  @XStreamAlias("InscricaoMunicipal")
+  @Element(name="InscricaoMunicipal", required = false)
   @Size(min=1, max=15)
   private String inscricaoMunicipal;
 

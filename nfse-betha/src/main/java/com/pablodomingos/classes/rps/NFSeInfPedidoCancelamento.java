@@ -1,24 +1,23 @@
 package com.pablodomingos.classes.rps;
 
-import javax.validation.constraints.NotNull;
-
 import com.pablodomingos.classes.rps.builders.PedidoCancelamentoInfBuilder;
 import com.pablodomingos.classes.rps.enums.CodigoCancelamento;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+
+import javax.validation.constraints.NotNull;
 
 public class NFSeInfPedidoCancelamento extends AbstractRPS {
 
-    @XStreamAlias("Id")
+    @Attribute(name="Id")
     @NotNull
-    @XStreamAsAttribute
     private String id;
 
-    @XStreamAlias("IdentificacaoNfse")
+    @Element(name="IdentificacaoNfse")
     @NotNull
     private NFSeIdentificacao nfseIdentificacao;
 
-    @XStreamAlias("CodigoCancelamento")
+    @Element(name="CodigoCancelamento")
     @NotNull
     private CodigoCancelamento codigoCancelamento;
 

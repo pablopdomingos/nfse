@@ -1,26 +1,25 @@
 package com.pablodomingos.classes.rps;
 
+import com.pablodomingos.classes.rps.enums.RpsTipo;
+import org.simpleframework.xml.Element;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.pablodomingos.classes.rps.enums.RpsSerie;
-import com.pablodomingos.classes.rps.enums.RpsTipo;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
 public class RpsIdentificacao extends AbstractRPS {
 
-  @XStreamAlias("Numero")
+  @Element(name="Numero")
   @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min=1, max=15)
   private String numero;
 
-  @XStreamAlias("Serie")
+  @Element(name="Serie")
   @NotNull
-  private RpsSerie serie = RpsSerie.A;
+  private String serie;
 
-  @XStreamAlias("Tipo")
+  @Element(name="Tipo")
   @NotNull
   private RpsTipo tipo = RpsTipo.RPS;
 
@@ -28,7 +27,7 @@ public class RpsIdentificacao extends AbstractRPS {
     this.numero = numero;
   }
 
-  public RpsIdentificacao(String numero, RpsSerie serie) {
+  public RpsIdentificacao(String numero, String serie) {
     System.out.println("numero = " + numero);
     this.numero = numero;
     if (serie != null)
@@ -39,11 +38,11 @@ public class RpsIdentificacao extends AbstractRPS {
     return numero;
   }
 
-  public RpsSerie getSerie() {
+  public String getSerie() {
     return serie;
   }
 
-  public void setSerie(RpsSerie serie) {
+  public void setSerie(String serie) {
     this.serie = serie;
   }
 

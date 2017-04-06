@@ -6,17 +6,17 @@ import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 
 import com.pablodomingos.conversores.LocalDateConversor;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 
 public class PeriodoEmissao extends AbstractRPS {
-  @XStreamAlias("DataInicial")
+  @Element(name="DataInicial")
   @XStreamConverter(LocalDateConversor.class)
   @NotNull
   private LocalDate dataInicial;
 
-  @XStreamAlias("DataFinal")
+  @Element(name="DataFinal")
   @XStreamConverter(LocalDateConversor.class)
   @NotNull
   private LocalDate dataFinal;

@@ -8,77 +8,77 @@ import com.pablodomingos.classes.rps.builders.ValoresBuilder;
 import com.pablodomingos.classes.rps.enums.IssRetido;
 import com.pablodomingos.conversores.DoubleConversor;
 import com.pablodomingos.util.DoubleUtil;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 @XStreamConverter(DoubleConversor.class)
 public class RpsValores extends AbstractRPS {
 
-  @XStreamAlias("ValorServicos")
+  @Element(name="ValorServicos")
   @NotNull
   @Digits(integer=13, fraction=2)
   @DecimalMin("0.01")
   private Double valorServicos;
 
-  @XStreamAlias("ValorDeducoes")
+  @Element(name="ValorDeducoes")
   @Digits(integer=13, fraction=2)
   private Double valorDeducoes;
 
-  @XStreamAlias("ValorPis")
+  @Element(name="ValorPis")
   @Digits(integer=13, fraction=2)
   private Double valorPis;
 
-  @XStreamAlias("ValorCofins")
+  @Element(name="ValorCofins")
   @Digits(integer=13, fraction=2)
   private Double valorCofins;
 
-  @XStreamAlias("ValorInss")
+  @Element(name="ValorInss")
   @Digits(integer=13, fraction=2)
   private Double valorInss;
 
-  @XStreamAlias("ValorIr")
+  @Element(name="ValorIr")
   @Digits(integer=13, fraction=2)
   private Double valorIr;
 
-  @XStreamAlias("ValorCsll")
+  @Element(name="ValorCsll")
   @Digits(integer=13, fraction=2)
   private Double valorCsll;
 
-  @XStreamAlias("IssRetido")
+  @Element(name="IssRetido")
   @NotNull
   private IssRetido issRetido;
 
-  @XStreamAlias("ValorIss")
+  @Element(name="ValorIss")
   @Digits(integer=13, fraction=2)
   private Double valorIss;
 
-  @XStreamAlias("ValorIssRetido")
+  @Element(name="ValorIssRetido")
   @Digits(integer=13, fraction=2)
   private Double valorIssRetido;
   
-  @XStreamAlias("OutrasRetencoes")
+  @Element(name="OutrasRetencoes")
   @Digits(integer=13, fraction=2)
   private Double outrasRetencoes;
 
-  @XStreamAlias("BaseCalculo")
+  @Element(name="BaseCalculo")
   @Digits(integer=13, fraction=2)
   private Double baseCalculo;
   
-  @XStreamAlias("Aliquota")
+  @Element(name="Aliquota")
   @Digits(integer=13, fraction=2)
   private Double aliquota;
 
-  @XStreamAlias("ValorLiquidoNfse")
+  @Element(name="ValorLiquidoNfse")
   @NotNull
   @Digits(integer=13, fraction=2)
   @DecimalMin("0.01")
   private Double valorLiquido;
   
-  @XStreamAlias("DescontoIncondicionado")
+  @Element(name="DescontoIncondicionado")
   @Digits(integer=13, fraction=2)
   private Double descontoIncondicionado;
 
-  @XStreamAlias("DescontoCondicionado")
+  @Element(name="DescontoCondicionado")
   @Digits(integer=13, fraction=2)
   private Double descontoCondicionado;
 

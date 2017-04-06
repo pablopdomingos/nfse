@@ -6,21 +6,21 @@ import javax.validation.constraints.Size;
 
 import com.pablodomingos.classes.rps.enums.RpsSerie;
 import com.pablodomingos.classes.rps.enums.RpsTipo;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 
 public class RpsIdentificacao extends AbstractRPS {
 
-  @XStreamAlias("Numero")
+  @Element(name="Numero")
   @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min=1, max=15)
   private String numero;
 
-  @XStreamAlias("Serie")
+  @Element(name="Serie")
   @NotNull
   private RpsSerie serie = RpsSerie.A;
 
-  @XStreamAlias("Tipo")
+  @Element(name="Tipo")
   @NotNull
   private RpsTipo tipo = RpsTipo.RPS;
 

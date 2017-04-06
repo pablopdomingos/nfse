@@ -22,11 +22,9 @@ public enum NFSeAmbiente {
   }
 
   public static NFSeAmbiente fromInt(int codigo) {
-    if (codigo > 1 && codigo < 2) {
-      for (NFSeAmbiente tipo : NFSeAmbiente.values()) {
-        if (tipo.getCodigo().equals(String.valueOf(codigo))) {
-          return tipo;
-        }
+    for (NFSeAmbiente tipo : NFSeAmbiente.values()) {
+      if (tipo.getCodigo().equals(String.valueOf(codigo))) {
+        return tipo;
       }
     }
     return null;

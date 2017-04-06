@@ -1,41 +1,29 @@
 package com.pablodomingos.webservices.bhiss;
 
 import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
+import com.pablodomingos.classes.rps.respostas.EnviarLoteRpsResposta;
 import com.pablodomingos.config.CertificadoConfig;
-import com.pablodomingos.webservices.core.NFSeAbstract;
 import com.pablodomingos.webservices.core.NFSeAbstractStub;
+import com.pablodomingos.webservices.core.NFSeAbstractWebService;
 import com.pablodomingos.webservices.core.NFSeLocator;
 import com.pablodomingos.webservices.core.NFSeWebService;
 import org.apache.axis.AxisFault;
+import org.apache.axis.client.Service;
 
 import javax.xml.rpc.ServiceException;
-import java.io.IOException;
 import java.net.URL;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
 
-public class WebServiceBHISS {
+public class WebServiceBHISS extends NFSeAbstractWebService {
     private static final String CABECALHO = "<?xml version='1.0' encoding='UTF-8'?>"
             + "<cabecalho xmlns=\"http://www.abrasf.org.br/nfse.xsd\" versao=\"1.00\">"
             + "<versaoDados>1.00</versaoDados>"
             + "</cabecalho>";
 
-    public static String consultarSituacaoLoteRps(String xml, CertificadoConfig configCertificado)
-            throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
-            IOException {
-
-        return ((Output) webService(configCertificado).consultarLoteRps(new Input(CABECALHO, xml))).getOutputXML();
+    public static EnviarLoteRpsResposta enviarLoteRps(String xml, CertificadoConfig configCertificado) throws Exception {
+        return fromXml(EnviarLoteRpsResposta.class, ((Output) webService(configCertificado).recepcionarLoteRps(new Input(CABECALHO, xml))).getOutputXML());
     }
 
-    public static String gerarNfse(String xml, CertificadoConfig configCertificado)
-            throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
-            IOException {
-
-        return ((Output) webService(configCertificado).gerarNfse(new Input(CABECALHO, xml))).getOutputXML();
-    }
-
-    private static NFSeAbstract webService(CertificadoConfig configCertificado) throws ServiceException{
+    private static NFSeAbstractStub webService(CertificadoConfig configCertificado) throws ServiceException{
         configCertificado.carregarCertificados();
 
         NFSeWebService _service = new NFSeLocator(configCertificado) {
@@ -57,7 +45,7 @@ public class WebServiceBHISS {
             }
 
             @Override
-            public NFSeAbstractStub getStub(URL endpointURL, javax.xml.rpc.Service service) throws AxisFault {
+            public NFSeAbstractStub getStub(URL endpointURL, Service service) throws AxisFault {
                 return new StubBHISS(endpointURL, service);
             }
 

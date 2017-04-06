@@ -1,6 +1,6 @@
 package com.pablodomingos.classes.rps;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 import javax.validation.constraints.NotNull;
@@ -9,22 +9,22 @@ import javax.validation.constraints.Size;
 
 public class NFSeIdentificacao extends AbstractRPS {
 
-  @XStreamAlias("Numero")
+  @Element(name="Numero")
   @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min=1, max=15)
   private String numero;
   
-  @XStreamAlias("Cnpj")
+  @Element(name="Cnpj")
   @NotNull
   @CNPJ
   private String cnpj;
  
-  @XStreamAlias("InscricaoMunicipal")
+  @Element(name="InscricaoMunicipal")
   @Size(min = 1, max = 15)
   private String inscricaoMunicipal;
   
-  @XStreamAlias("CodigoMunicipio")
+  @Element(name="CodigoMunicipio")
   @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min = 1, max = 7)

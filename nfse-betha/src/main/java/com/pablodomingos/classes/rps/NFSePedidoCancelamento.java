@@ -1,20 +1,20 @@
 package com.pablodomingos.classes.rps;
 
-import javax.validation.constraints.NotNull;
+import org.simpleframework.xml.Element;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import javax.validation.constraints.NotNull;
 
 public class NFSePedidoCancelamento extends AbstractRPS {
 
-  @XStreamAlias("InfPedidoCancelamento")
-  @NotNull
-  private NFSeInfPedidoCancelamento infPedidoCancelamento;
-  
-  public NFSePedidoCancelamento(NFSeInfPedidoCancelamento infPedidoCancelamento) {
-    this.infPedidoCancelamento = infPedidoCancelamento;
-  }
+    @Element(name = "InfPedidoCancelamento")
+    @NotNull
+    private NFSeInfPedidoCancelamento infPedidoCancelamento;
 
-  public NFSeInfPedidoCancelamento getInfPedidoCancelamento() {
-    return infPedidoCancelamento;
-  }
+    public NFSePedidoCancelamento(NFSeInfPedidoCancelamento infPedidoCancelamento) {
+        this.infPedidoCancelamento = infPedidoCancelamento;
+    }
+
+    public NFSeInfPedidoCancelamento getInfPedidoCancelamento() {
+        return infPedidoCancelamento;
+    }
 }

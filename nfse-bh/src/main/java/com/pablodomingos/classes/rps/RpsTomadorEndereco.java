@@ -1,6 +1,6 @@
 package com.pablodomingos.classes.rps;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -8,37 +8,37 @@ import javax.validation.constraints.Size;
 
 public class RpsTomadorEndereco extends AbstractRPS {
 
-  @XStreamAlias("Endereco")
+  @Element(name="Endereco")
   @NotNull
   @Size(min=1, max=125)
   private String endereco;
 
-  @XStreamAlias("Numero")
+  @Element(name="Numero")
   @NotNull
   @Size(min=1, max=10)
   private String numero;
 
-  @XStreamAlias("Complemento")
+  @Element(name="Complemento")
   @Size(min=1, max=60)
   private String complemento;
 
-  @XStreamAlias("Bairro")
+  @Element(name="Bairro")
   @NotNull
   @Size(min=1, max=60)
   private String bairro;
 
-  @XStreamAlias("CodigoMunicipio")
+  @Element(name="CodigoMunicipio")
   @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min=1, max=7)
   private String codigoMunicipio;
 
-  @XStreamAlias("Uf")
+  @Element(name="Uf")
   @NotNull
   @Size(min=2, max=2)
   private String uf;
 
-  @XStreamAlias("Cep")
+  @Element(name="Cep")
   @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min=8, max=8)

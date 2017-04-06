@@ -1,7 +1,7 @@
 package com.pablodomingos.classes.rps;
 
 import com.pablodomingos.classes.rps.builders.ServicoBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -9,30 +9,30 @@ import javax.validation.constraints.Size;
 
 public class RpsServico extends AbstractRPS {
 
-  @XStreamAlias("Valores")
+  @Element(name="Valores")
   @NotNull
   private RpsValores valores;
 
-  @XStreamAlias("ItemListaServico")
+  @Element(name="ItemListaServico")
   @NotNull
   @Size(min = 1, max = 5)
   private String codigoItemListaServico;
 
-  @XStreamAlias("CodigoCnae")
+  @Element(name="CodigoCnae")
   @Pattern(regexp = "\\d+")
   @Size(min = 1, max = 7)
   private String codigoCnae;
 
-  @XStreamAlias("CodigoTributacaoMunicipio")
+  @Element(name="CodigoTributacaoMunicipio")
   @Size(min = 1, max = 20)
   private String codigoTributacaoMunicipio;
 
-  @XStreamAlias("Discriminacao")
+  @Element(name="Discriminacao")
   @NotNull
   @Size(min = 1, max = 2000)
   private String discriminacao;
 
-  @XStreamAlias("CodigoMunicipio")
+  @Element(name="CodigoMunicipio")
   @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min = 1, max = 7)

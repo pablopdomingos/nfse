@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<CancelarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+<CancelarNfseEnvio xmlns = "http://www.betha.com.br/e-nota-contribuinte-ws">
   <Pedido>
-    <InfPedidoCancelamento Id="id">
+    <InfPedidoCancelamento Id="1">
       <IdentificacaoNfse>
-        <Numero>201700000000001</Numero>
-        <Cnpj>12345678901230</Cnpj>
-        <InscricaoMunicipal>000000000000000</InscricaoMunicipal>
-        <CodigoMunicipio>3106200</CodigoMunicipio>
+        <Numero>58</Numero>
+        <CpfCnpj>
+          <Cnpj>45111111111100</Cnpj>
+        </CpfCnpj>
+        <InscricaoMunicipal>123498</InscricaoMunicipal>
+        <CodigoMunicipio>4204608</CodigoMunicipio>
       </IdentificacaoNfse>
-      <CodigoCancelamento>2</CodigoCancelamento>
+      <CodigoCancelamento>1</CodigoCancelamento>
     </InfPedidoCancelamento>
   </Pedido>
 </CancelarNfseEnvio>

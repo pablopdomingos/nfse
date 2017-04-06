@@ -1,9 +1,5 @@
 package com.pablodomingos.classes.rps.enums;
 
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
-
-@XStreamConverter(EnumToStringConverter.class)
 public enum ExigibilidadeIss {
 
   EXIGIVEL(1, "Exigível"),
@@ -22,17 +18,13 @@ public enum ExigibilidadeIss {
     this.descricao = descricao;
   }
 
-  public String getCodigo() {
-    return String.valueOf(this.codigo);
-  }
-
   public String getDescricao() {
     return this.descricao;
   }
-  
+
   public static ExigibilidadeIss fromInt(int codigo) {
     for (ExigibilidadeIss naturezaOperacao : ExigibilidadeIss.values()) {
-      if (naturezaOperacao.getCodigo().equals(String.valueOf(codigo))) {
+      if (naturezaOperacao.codigo == codigo) {
         return naturezaOperacao;
       }
     }
@@ -43,5 +35,5 @@ public enum ExigibilidadeIss {
   public String toString() {
     return String.valueOf(codigo);
   }
-	
+
 }

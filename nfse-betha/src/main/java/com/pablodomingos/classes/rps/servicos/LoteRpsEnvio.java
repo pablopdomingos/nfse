@@ -1,17 +1,17 @@
 package com.pablodomingos.classes.rps.servicos;
 
 import com.pablodomingos.classes.rps.LoteRps;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
 
-@XStreamAlias("EnviarLoteRpsEnvio")
+@Root(name="EnviarLoteRpsEnvio")
 public class LoteRpsEnvio extends AbstractServiceBetha {
 
-  @XStreamAlias("xmlns")
-  @XStreamAsAttribute
-  private String xmlns = "http://www.abrasf.org.br/nfse.xsd";
+  @Attribute(name="xmlns")
+  private String xmlns = "http://www.betha.com.br/e-nota-contribuinte-ws";
 
-  @XStreamAlias("LoteRps")
+  @Element(name="LoteRps")
   private LoteRps loteRps;
 
   public LoteRpsEnvio(LoteRps loteRps) {

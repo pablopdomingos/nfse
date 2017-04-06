@@ -50,7 +50,7 @@ public enum UfEstados {
     return this.nome;
   }
   
-  public static UfEstados fromInt(String uf) {
+  public static UfEstados fromUf(String uf) {
       for (UfEstados ufEstado : UfEstados.values()) {
         if (ufEstado.getUf().equals(String.valueOf(uf))) {
           return ufEstado;

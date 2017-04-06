@@ -1,18 +1,18 @@
 package com.pablodomingos.classes.rps;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class RpsTomadorContato extends AbstractRPS {
 
-  @XStreamAlias("Telefone")
+  @Element(name="Telefone")
   @Pattern(regexp = "\\d+")
   @Size(min=10, max=11)
   private String telefone;
 
-  @XStreamAlias("Email")
+  @Element(name="Email")
   @Pattern(regexp = "^(.+)@(.+)$")
   @Size(min=1, max=80)
   private String email;

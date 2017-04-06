@@ -13,7 +13,7 @@ import javax.xml.rpc.ServiceException;
 public interface NFSeWebService extends Service {
     String getSOAPAddress();
 
-    NFSeAbstract getSOAP() throws ServiceException;
+    NFSeAbstractStub getSOAP() throws ServiceException;
 
-    NFSeAbstract getSOAP(java.net.URL portAddress) throws ServiceException;
+    NFSeAbstractStub getSOAP(java.net.URL portAddress) throws ServiceException;
 }

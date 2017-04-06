@@ -1,24 +1,24 @@
 package com.pablodomingos.classes.rps.servicos;
 
+import com.pablodomingos.classes.rps.RpsPrestador;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.pablodomingos.classes.rps.RpsPrestador;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
-@XStreamAlias("ConsultarSituacaoLoteRpsEnvio")
+@Root(name="ConsultarSituacaoLoteRpsEnvio")
 public class LoteRpsConsultaSituacao extends AbstractServiceBetha {
 
-  @XStreamAlias("xmlns")
-  @XStreamAsAttribute
+  @Attribute(name="xmlns")
   private String xmlns = "http://www.abrasf.org.br/nfse.xsd";
 
-  @XStreamAlias("Prestador")
+  @Element(name="Prestador")
   @NotNull
   private RpsPrestador prestador;
 
-  @XStreamAlias("Protocolo")
+  @Element(name="Protocolo")
   @NotNull
   @Size(max = 50)
   private String numeroProtocolo;

@@ -4,20 +4,20 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.pablodomingos.classes.rps.builders.IntermediarioBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 
 public class RpsIntermediario extends AbstractRPS {
 
-  @XStreamAlias("RazaoSocial")
+  @Element(name="RazaoSocial")
   @NotNull
   @Size(min = 1, max = 115)
   private String nome;
   
-  @XStreamAlias("CpfCnpj")
+  @Element(name="CpfCnpj")
   @NotNull
   private RpsCpfCnpj cpfCnpj;
   
-  @XStreamAlias("InscricaoMunicipal")
+  @Element(name="InscricaoMunicipal")
   @Size(min=1, max=15)
   private String inscricaoMunicipal;
   

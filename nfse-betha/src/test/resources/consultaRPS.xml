@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ConsultarNfseRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+<ConsultarNfseRpsEnvio xmlns="http://www.betha.com.br/e-nota-contribuinte-ws">
   <IdentificacaoRps>
-    <Numero>1</Numero>
-    <Serie>A</Serie>
+    <Numero>24</Numero>
+    <Serie>A1</Serie>
     <Tipo>1</Tipo>
   </IdentificacaoRps>
   <Prestador>
-    <Cnpj>12345678901230</Cnpj>
-    <InscricaoMunicipal>000000000000000</InscricaoMunicipal>
+    <CpfCnpj>
+      <Cnpj>45111111111100</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>123498</InscricaoMunicipal>
   </Prestador>
 </ConsultarNfseRpsEnvio>

@@ -2,11 +2,11 @@ package com.pablodomingos.classes.rps;
 
 import javax.validation.constraints.NotNull;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 
 public class NFSePedidoCancelamento extends AbstractRPS {
 
-  @XStreamAlias("InfPedidoCancelamento")
+  @Element(name="InfPedidoCancelamento")
   @NotNull
   private NFSeInfPedidoCancelamento infPedidoCancelamento;
   

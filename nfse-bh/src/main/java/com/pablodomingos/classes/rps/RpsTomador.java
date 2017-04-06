@@ -2,25 +2,25 @@ package com.pablodomingos.classes.rps;
 
 
 import com.pablodomingos.classes.rps.builders.TomadorBuilder;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class RpsTomador extends AbstractRPS {
 
-  @XStreamAlias("IdentificacaoTomador")
+  @Element(name="IdentificacaoTomador")
   private RpsTomadorIdentificacao identificacaoTomador;
 
-  @XStreamAlias("RazaoSocial")
+  @Element(name="RazaoSocial")
   @Size(min = 1, max = 115)
   private String nome;
 
-  @XStreamAlias("Endereco")
+  @Element(name="Endereco")
   @NotNull
   private RpsTomadorEndereco endereco;
 
-  @XStreamAlias("Contato")
+  @Element(name="Contato")
   private RpsTomadorContato contato;
 
   public RpsTomador(TomadorBuilder builder) {

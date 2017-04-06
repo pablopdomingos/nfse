@@ -1,19 +1,19 @@
 package com.pablodomingos.classes.rps.servicos;
 
 import com.pablodomingos.classes.rps.LoteRps;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
 
 import javax.validation.Valid;
 
-@XStreamAlias("GerarNfseEnvio")
+@Root(name="GerarNfseEnvio")
 public class RpsEnvio extends AbstractServiceBHISS {
 
-  @XStreamAlias("xmlns")
-  @XStreamAsAttribute
+  @Attribute(name="xmlns")
   private String xmlns = "http://www.abrasf.org.br/nfse.xsd";
 
-  @XStreamAlias("LoteRps")
+  @Element(name="LoteRps")
   @Valid
   private LoteRps loteRps;
 

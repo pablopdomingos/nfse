@@ -3,9 +3,10 @@ package com.pablodomingos.classes.rps;
 import com.pablodomingos.classes.rps.builders.LoteRpsBuilder;
 import com.pablodomingos.classes.rps.builders.RpsInfoBuilder;
 import com.pablodomingos.classes.rps.enums.LoteRpsVersao;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import org.hibernate.validator.constraints.br.CNPJ;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -16,39 +17,37 @@ import java.util.Collections;
 import java.util.List;
 
 public class LoteRps extends AbstractRPS {
-  @XStreamAlias("Id")
+  @Attribute(name="Id")
   @NotNull
-  @XStreamAsAttribute
   private String id;
 
-  @XStreamAlias("versao")
+  @Attribute(name="versao")
   @NotNull
-  @XStreamAsAttribute
   @Valid
   private LoteRpsVersao versao;
 
-  @XStreamAlias("NumeroLote")
+  @Element(name="NumeroLote")
   @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min=1, max=15)
   private String numeroLote;
 
-  @XStreamAlias("Cnpj")
+  @Element(name="Cnpj")
   @NotNull
   @CNPJ
   @Size(min = 14, max = 14)
   private String cnpj;
 
-  @XStreamAlias("InscricaoMunicipal")
+  @Element(name="InscricaoMunicipal")
   @NotNull
   @Size(min=1, max=15)
   private String inscricaoMunicipal;
 
-  @XStreamAlias("QuantidadeRps")
+  @Element(name="QuantidadeRps")
   @NotNull
   private int quantidadeRps;
 
-  @XStreamAlias("ListaRps")
+  @Element(name="ListaRps")
   @NotNull
   @Valid
   private final List<Rps> listaRps = new ArrayList<>();

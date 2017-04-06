@@ -1,24 +1,24 @@
 package com.pablodomingos.classes.rps.servicos;
 
 import com.pablodomingos.classes.rps.Rps;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
 
 import javax.validation.Valid;
 
-@XStreamAlias("GerarNfseEnvio")
+@Root(name = "GerarNfseEnvio")
 public class RpsEnvio extends AbstractServiceBetha {
 
-  @XStreamAlias("xmlns")
-  @XStreamAsAttribute
-  private String xmlns = "http://www.betha.com.br/e-nota-contribuinte-ws";
+    @Attribute(name = "xmlns")
+    private String xmlns = "http://www.betha.com.br/e-nota-contribuinte-ws";
 
-  @XStreamAlias("Rps")
-  @Valid
-  private Rps rps;
+    @Element(name = "Rps")
+    @Valid
+    private Rps rps;
 
-  public RpsEnvio(Rps rps) {
-    this.rps = rps;
-  }
-  
+    public RpsEnvio(Rps rps) {
+        this.rps = rps;
+    }
+
 }

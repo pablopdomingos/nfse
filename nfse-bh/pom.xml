@@ -54,16 +54,10 @@
 	</distributionManagement>
 
 	<dependencies>
-		<!-- XML -->
 		<dependency>
 			<groupId>com.github.pablopdomingos</groupId>
 			<artifactId>nfse-core</artifactId>
 			<version>1.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.thoughtworks.xstream</groupId>
-			<artifactId>xstream</artifactId>
-			<version>1.4.9</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
@@ -85,11 +79,11 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
-		<dependency>
-			<groupId>javax.xml</groupId>
-			<artifactId>jaxrpc-api</artifactId>
-			<version>1.1</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>javax.xml</groupId>-->
+			<!--<artifactId>jaxrpc-api</artifactId>-->
+			<!--<version>1.1</version>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>commons-discovery</groupId>
 			<artifactId>commons-discovery</artifactId>
@@ -110,6 +104,7 @@
 			<groupId>org.xmlunit</groupId>
 			<artifactId>xmlunit-matchers</artifactId>
 			<version>2.3.0</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -146,7 +141,7 @@
 	<build>
 		<resources>
 			<resource>
-				<directory>../nfse-core/src/main/resources</directory>
+				<directory>../nfse-bh/src/main/resources</directory>
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>
@@ -155,11 +150,11 @@
 		<testResources>
 			<testResource>
 				<filtering>false</filtering>
-				<directory>../nfse-core/src/test/resources</directory>
+				<directory>../nfse-bh/src/test/resources</directory>
 			</testResource>
 			<testResource>
 				<filtering>false</filtering>
-				<directory>../nfse-core/src/test/java</directory>
+				<directory>../nfse-bh/src/test/java</directory>
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>

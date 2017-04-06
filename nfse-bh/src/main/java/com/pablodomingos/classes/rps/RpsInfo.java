@@ -3,9 +3,9 @@ package com.pablodomingos.classes.rps;
 import com.pablodomingos.classes.rps.builders.RpsInfoBuilder;
 import com.pablodomingos.classes.rps.enums.*;
 import com.pablodomingos.conversores.LocalDateTimeConversor;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -14,64 +14,64 @@ import java.time.LocalDateTime;
 
 public class RpsInfo extends AbstractRPS {
 
-  @XStreamAlias("Id")
-  @XStreamAsAttribute
+  @Element(name="Id")
+  @Attribute
   @NotNull
   @Size(min=1, max=255)
   private String id;
 
-  @XStreamAlias("IdentificacaoRps")
+  @Element(name="IdentificacaoRps")
   @NotNull
   @Valid
   private RpsIdentificacao identificacaoRps;
 
-  @XStreamAlias("DataEmissao")
+  @Element(name="DataEmissao")
   @XStreamConverter(LocalDateTimeConversor.class)
   @NotNull
   private LocalDateTime dataEmissao;
 
-  @XStreamAlias("NaturezaOperacao")
+  @Element(name="NaturezaOperacao")
   @NotNull
   private NaturezaOperacao naturezaOperacao;
 
-  @XStreamAlias("RegimeEspecialTributacao")
+  @Element(name="RegimeEspecialTributacao")
   private RegimeEspecialTributacao regimeEspecialTributacao;
 
-  @XStreamAlias("OptanteSimplesNacional")
+  @Element(name="OptanteSimplesNacional")
   @NotNull
   private OptanteSimplesNacional optanteSimplesNacional;
 
-  @XStreamAlias("IncentivadorCultural")
+  @Element(name="IncentivadorCultural")
   @NotNull
   private IncentivadorCultural incentivadorCultural;
 
-  @XStreamAlias("Status")
+  @Element(name="Status")
   @NotNull
   private RpsStatus status;
 
-  @XStreamAlias("RpsSubstituido")
+  @Element(name="RpsSubstituido")
   @Valid
   private RpsIdentificacao rpsSubstituido;
   
-  @XStreamAlias("Servico")
+  @Element(name="Servico")
   @NotNull
   @Valid
   private RpsServico servico;
 
-  @XStreamAlias("Prestador")
+  @Element(name="Prestador")
   @NotNull
   @Valid
   private RpsPrestador prestador;
 
-  @XStreamAlias("Tomador")
+  @Element(name="Tomador")
   @Valid
   private RpsTomador tomador;
 
-  @XStreamAlias("IntermediarioServico")
+  @Element(name="IntermediarioServico")
   @Valid
   private RpsIntermediario intermediario;
   
-  @XStreamAlias("ConstrucaoCivil")
+  @Element(name="ConstrucaoCivil")
   @Valid
   private RpsDadosContrucaoCivil construcaoCivil;
 

@@ -1,7 +1,6 @@
 package com.pablodomingos.classes;
 
 import com.pablodomingos.classes.rps.*;
-import com.pablodomingos.util.FabricaDeBuildersFake;
 
 public class FabricaDeObjetosFake {
 

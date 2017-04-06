@@ -4,13 +4,14 @@ import com.pablodomingos.config.CertificadoConfig;
 import org.apache.axis.AxisFault;
 import org.apache.axis.client.Service;
 
+import javax.xml.rpc.ServiceException;
 import java.net.URL;
 
 public abstract class NFSeLocator extends Service implements NFSeWebService {
 
     public abstract String getAddress();
     public abstract String getSoapServiceName();
-    public abstract NFSeAbstractStub getStub(URL endpointURL, javax.xml.rpc.Service service) throws AxisFault;
+    public abstract NFSeAbstractStub getStub(URL endpointURL, Service service) throws AxisFault;
 
     private CertificadoConfig certificadoConfig;
 
@@ -18,18 +19,18 @@ public abstract class NFSeLocator extends Service implements NFSeWebService {
         this.certificadoConfig = certificadoConfig;
     }
 
-    public NFSeAbstract getSOAP() throws javax.xml.rpc.ServiceException {
+    public NFSeAbstractStub getSOAP() throws ServiceException {
         java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(getAddress());
         }
         catch (java.net.MalformedURLException e) {
-            throw new javax.xml.rpc.ServiceException(e);
+            throw new ServiceException(e);
         }
         return getSOAP(endpoint);
     }
 
-    public NFSeAbstract getSOAP(URL portAddress) throws javax.xml.rpc.ServiceException {
+    public NFSeAbstractStub getSOAP(URL portAddress) throws ServiceException {
         try {
             NFSeAbstractStub _stub = getStub(portAddress, this);
             _stub.setPortName(getSoapServiceName());

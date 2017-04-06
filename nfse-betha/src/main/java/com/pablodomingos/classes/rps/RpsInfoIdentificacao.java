@@ -2,30 +2,26 @@ package com.pablodomingos.classes.rps;
 
 import com.pablodomingos.classes.rps.enums.RpsStatus;
 import com.pablodomingos.conversores.LocalDateConversor;
-import com.pablodomingos.conversores.LocalDateTimeConversor;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
+import org.simpleframework.xml.Element;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class RpsInfoIdentificacao extends AbstractRPS {
 
-  @XStreamAlias("IdentificacaoRps")
+  @Element(name="IdentificacaoRps")
   @NotNull
   @Valid
   private RpsIdentificacao identificacaoRps;
 
-  @XStreamAlias("DataEmissao")
+  @Element(name="DataEmissao")
   @XStreamConverter(LocalDateConversor.class)
   @NotNull
   private LocalDate dataEmissao;
 
-  @XStreamAlias("Status")
+  @Element(name="Status")
   @NotNull
   private RpsStatus status;
 

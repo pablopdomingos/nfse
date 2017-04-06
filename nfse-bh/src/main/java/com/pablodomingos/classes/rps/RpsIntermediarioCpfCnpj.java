@@ -1,16 +1,16 @@
 package com.pablodomingos.classes.rps;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
+import org.simpleframework.xml.Element;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
 public class RpsIntermediarioCpfCnpj extends AbstractRPS {
 
-  @XStreamAlias("Cpf")
+  @Element(name="Cpf")
   @CPF
   private String cpf;
 
-  @XStreamAlias("Cnpj")
+  @Element(name="Cnpj")
   @CNPJ
   private String cnpj;
 

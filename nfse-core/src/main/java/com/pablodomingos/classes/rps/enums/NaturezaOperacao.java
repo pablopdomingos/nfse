@@ -1,9 +1,5 @@
 package com.pablodomingos.classes.rps.enums;
 
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
-
-@XStreamConverter(EnumToStringConverter.class)
 public enum NaturezaOperacao {
 	
   TRIBUTACAO_MUNICIPIO(1, "Tributacao no municipio"), 
@@ -30,11 +26,9 @@ public enum NaturezaOperacao {
   }
   
   public static NaturezaOperacao fromInt(int codigo) {
-    if (codigo > 0 && codigo < 7) {
-      for (NaturezaOperacao naturezaOperacao : NaturezaOperacao.values()) {
-        if (naturezaOperacao.getCodigo().equals(String.valueOf(codigo))) {
-          return naturezaOperacao;
-        }
+    for (NaturezaOperacao naturezaOperacao : NaturezaOperacao.values()) {
+      if (naturezaOperacao.getCodigo().equals(String.valueOf(codigo))) {
+        return naturezaOperacao;
       }
     }
     return null;

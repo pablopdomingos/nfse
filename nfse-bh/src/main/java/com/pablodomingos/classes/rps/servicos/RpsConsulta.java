@@ -1,24 +1,24 @@
 package com.pablodomingos.classes.rps.servicos;
 
-import javax.validation.constraints.NotNull;
-
 import com.pablodomingos.classes.rps.RpsIdentificacao;
 import com.pablodomingos.classes.rps.RpsPrestador;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
 
-@XStreamAlias("ConsultarNfseRpsEnvio")
+import javax.validation.constraints.NotNull;
+
+@Root(name="ConsultarNfseRpsEnvio")
 public class RpsConsulta extends AbstractServiceBHISS {
 
-  @XStreamAlias("xmlns")
-  @XStreamAsAttribute
+  @Attribute(name="xmlns")
   private String xmlns = "http://www.abrasf.org.br/nfse.xsd";
 
-  @XStreamAlias("IdentificacaoRps")
+  @Element(name="IdentificacaoRps")
   @NotNull
   private RpsIdentificacao identificacaoRps;
 
-  @XStreamAlias("Prestador")
+  @Element(name="Prestador")
   @NotNull
   private RpsPrestador prestador;
 

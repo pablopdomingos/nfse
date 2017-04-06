@@ -1,7 +1,6 @@
 package com.pablodomingos.classes.rps;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import org.hibernate.validator.constraints.br.CNPJ;
+import org.simpleframework.xml.Element;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -9,48 +8,46 @@ import javax.validation.constraints.Size;
 
 public class NFSeIdentificacao extends AbstractRPS {
 
-  @XStreamAlias("Numero")
-  @NotNull
-  @Pattern(regexp = "\\d+")
-  @Size(min=1, max=15)
-  private String numero;
-  
-  @XStreamAlias("Cnpj")
-  @NotNull
-  @CNPJ
-  private String cnpj;
- 
-  @XStreamAlias("InscricaoMunicipal")
-  @Size(min = 1, max = 15)
-  private String inscricaoMunicipal;
-  
-  @XStreamAlias("CodigoMunicipio")
-  @NotNull
-  @Pattern(regexp = "\\d+")
-  @Size(min = 1, max = 7)
-  private String codigoMunicipioIbge;
+    @Element(name = "Numero")
+    @NotNull
+    @Pattern(regexp = "\\d+")
+    @Size(min = 1, max = 15)
+    private String numero;
 
-  public NFSeIdentificacao(String numero, String cnpj, String inscricaoMunicipal, String codigoMunicipioIbge) {
-    this.numero = numero;
-    this.cnpj = cnpj;
-    this.inscricaoMunicipal = inscricaoMunicipal;
-    this.codigoMunicipioIbge = codigoMunicipioIbge;
-  }
+    @Element(name = "CpfCnpj")
+    @NotNull
+    private RpsCpfCnpj cpfCnpj;
 
-  public String getNumero() {
-    return numero;
-  }
+    @Element(name = "InscricaoMunicipal", required = false)
+    @Size(min = 1, max = 15)
+    private String inscricaoMunicipal;
 
-  public String getCnpj() {
-    return cnpj;
-  }
+    @Element(name = "CodigoMunicipio", required = false)
+    @Pattern(regexp = "\\d+")
+    @Size(min = 1, max = 7)
+    private String codigoMunicipioIbge;
 
-  public String getInscricaoMunicipal() {
-    return inscricaoMunicipal;
-  }
+    public NFSeIdentificacao(String numero, String cnpj, String inscricaoMunicipal, String codigoMunicipioIbge) {
+        this.numero = numero;
+        this.cpfCnpj = new RpsCpfCnpj(cnpj);
+        this.inscricaoMunicipal = inscricaoMunicipal;
+        this.codigoMunicipioIbge = codigoMunicipioIbge;
+    }
 
-  public String getCodigoMunicipioIbge() {
-    return codigoMunicipioIbge;
-  }
-  
+    public String getNumero() {
+        return numero;
+    }
+
+    public RpsCpfCnpj getCnpj() {
+        return cpfCnpj;
+    }
+
+    public String getInscricaoMunicipal() {
+        return inscricaoMunicipal;
+    }
+
+    public String getCodigoMunicipioIbge() {
+        return codigoMunicipioIbge;
+    }
+
 }

@@ -15,14 +15,14 @@ public class RpsInfoBuilder extends AbstractBuilder {
   private IncentivadorCultural incentivadorCultural;
   private RpsStatus status;
   private RpsTipo tipo;
-  private RpsSerie serie;
+  private String serie;
   private ServicoBuilder servico;
   private PrestadorBuilder prestador;
   private TomadorBuilder tomador;
   private IntermediarioBuilder intermediario;
   private ConstrucaoCivilBuilder contrucaoCivil;
   private String idSubstituido;
-  private RpsSerie serieSubstituido;
+  private String serieSubstituido;
 
 
   public RpsInfoBuilder(String numeroRps) {
@@ -34,7 +34,7 @@ public class RpsInfoBuilder extends AbstractBuilder {
     this.status = RpsStatus.NORMAL;
   }
 
-  public RpsInfoBuilder comSerie(RpsSerie serie) {
+  public RpsInfoBuilder comSerie(String serie) {
     this.serie = serie;
     return this;
   }
@@ -79,7 +79,7 @@ public class RpsInfoBuilder extends AbstractBuilder {
     return this;
   }
 
-  public RpsInfoBuilder comSerieSubstituido(RpsSerie serie) {
+  public RpsInfoBuilder comSerieSubstituido(String serieSubstituido) {
     this.serieSubstituido = serieSubstituido;
     return this;
   }
@@ -141,7 +141,7 @@ public class RpsInfoBuilder extends AbstractBuilder {
     return tipo;
   }
 
-  public RpsSerie getSerie() {
+  public String getSerie() {
     return serie;
   }
 
@@ -169,7 +169,7 @@ public class RpsInfoBuilder extends AbstractBuilder {
     return idSubstituido;
   }
 
-  public RpsSerie getSerieSubstituido() {
+  public String getSerieSubstituido() {
     return serieSubstituido;
   }
 }
