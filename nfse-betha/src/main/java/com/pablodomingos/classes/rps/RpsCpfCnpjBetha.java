@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.Size;
 
-public class RpsCpfCnpj extends AbstractRPS {
+public class RpsCpfCnpjBetha extends AbstractRPS {
 
   @Element(name="Cnpj", required = false)
   @CNPJ
@@ -18,7 +18,7 @@ public class RpsCpfCnpj extends AbstractRPS {
   @Size(min = 11, max = 11)
   private String cpf;
 
-  public RpsCpfCnpj(String documento) {
+  public RpsCpfCnpjBetha(String documento) {
     if (documento != null)
     {
       if (documento.length() == 14) {
@@ -29,7 +29,7 @@ public class RpsCpfCnpj extends AbstractRPS {
       }
     }
   }
-  public RpsCpfCnpj(String cpf, String cnpj) {
+  public RpsCpfCnpjBetha(String cpf, String cnpj) {
     this.cpf = cpf;
     this.cnpj = cnpj;
   }

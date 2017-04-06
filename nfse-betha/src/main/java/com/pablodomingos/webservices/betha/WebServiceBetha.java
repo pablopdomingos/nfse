@@ -1,9 +1,9 @@
 package com.pablodomingos.webservices.betha;
 
 import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
-import com.pablodomingos.classes.rps.respostas.CancelarNfseResposta;
-import com.pablodomingos.classes.rps.respostas.ConsultarLoteRpsResposta;
-import com.pablodomingos.classes.rps.respostas.EnviarLoteRpsResposta;
+import com.pablodomingos.classes.rps.respostas.CancelarNfseRespostaBetha;
+import com.pablodomingos.classes.rps.respostas.ConsultarLoteRpsRespostaBetha;
+import com.pablodomingos.classes.rps.respostas.EnviarLoteRpsRespostaBetha;
 import com.pablodomingos.config.CertificadoConfig;
 import com.pablodomingos.webservices.core.NFSeAbstractStub;
 import com.pablodomingos.webservices.core.NFSeAbstractWebService;
@@ -39,16 +39,16 @@ public class WebServiceBetha extends NFSeAbstractWebService {
     return ((String) webService(configCertificado).gerarNfse(CABECALHO, xml));
   }
 
-  public static CancelarNfseResposta cancelarNfse(String xml, CertificadoConfig configCertificado) throws Exception {
-    return fromXml(CancelarNfseResposta.class, webService(configCertificado).cancelarNfse(CABECALHO, xml));
+  public static CancelarNfseRespostaBetha cancelarNfse(String xml, CertificadoConfig configCertificado) throws Exception {
+    return fromXml(CancelarNfseRespostaBetha.class, webService(configCertificado).cancelarNfse(CABECALHO, xml));
   }
 
-  public static EnviarLoteRpsResposta enviarLoteRps(String xml, CertificadoConfig configCertificado) throws Exception {
-    return fromXml(EnviarLoteRpsResposta.class, webService(configCertificado).recepcionarLoteRps(CABECALHO, xml));
+  public static EnviarLoteRpsRespostaBetha enviarLoteRps(String xml, CertificadoConfig configCertificado) throws Exception {
+    return fromXml(EnviarLoteRpsRespostaBetha.class, webService(configCertificado).recepcionarLoteRps(CABECALHO, xml));
   }
 
-  public static ConsultarLoteRpsResposta consultarLoteRps(String xml, CertificadoConfig configCertificado) throws Exception {
-    return fromXml(ConsultarLoteRpsResposta.class, webService(configCertificado).consultarLoteRps(CABECALHO, xml));
+  public static ConsultarLoteRpsRespostaBetha consultarLoteRps(String xml, CertificadoConfig configCertificado) throws Exception {
+    return fromXml(ConsultarLoteRpsRespostaBetha.class, webService(configCertificado).consultarLoteRps(CABECALHO, xml));
   }
 
   private static NFSeAbstractStub webService(CertificadoConfig configCertificado) throws ServiceException {

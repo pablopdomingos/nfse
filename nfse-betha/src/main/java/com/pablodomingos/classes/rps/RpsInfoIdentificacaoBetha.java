@@ -7,12 +7,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-public class RpsInfoIdentificacao extends AbstractRPS {
+public class RpsInfoIdentificacaoBetha extends AbstractRPS {
 
   @Element(name = "IdentificacaoRps")
   @NotNull
   @Valid
-  private RpsIdentificacao identificacaoRps;
+  private RpsIdentificacaoBetha identificacaoRps;
 
   @Element(name = "DataEmissao")
   @NotNull
@@ -22,13 +22,13 @@ public class RpsInfoIdentificacao extends AbstractRPS {
   @NotNull
   private RpsStatus status;
 
-  public RpsInfoIdentificacao(RpsIdentificacao identificacaoRps, LocalDate dataEmissao, RpsStatus status) {
+  public RpsInfoIdentificacaoBetha(RpsIdentificacaoBetha identificacaoRps, LocalDate dataEmissao, RpsStatus status) {
     this.identificacaoRps = identificacaoRps;
     this.dataEmissao = dataEmissao;
     this.status = status;
   }
 
-  public RpsIdentificacao getIdentificacaoRps() {
+  public RpsIdentificacaoBetha getIdentificacaoRps() {
     return identificacaoRps;
   }
 

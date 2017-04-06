@@ -4,21 +4,21 @@ import org.simpleframework.xml.Element;
 
 import javax.validation.constraints.Size;
 
-public class RpsTomadorIdentificacao extends AbstractRPS {
+public class RpsTomadorIdentificacaoBetha extends AbstractRPS {
 
   @Element(name="CpfCnpj", required = false)
-  private RpsCpfCnpj cpfCnpj;
+  private RpsCpfCnpjBetha cpfCnpj;
 
   @Element(name="InscricaoMunicipal", required = false)
   @Size(min=1, max=15)
   private String inscricaoMunicipal;
 
-  public RpsTomadorIdentificacao(RpsCpfCnpj cpfCnpj, String inscricaoMunicipal) {
+  public RpsTomadorIdentificacaoBetha(RpsCpfCnpjBetha cpfCnpj, String inscricaoMunicipal) {
     this.cpfCnpj = cpfCnpj;
     this.inscricaoMunicipal = inscricaoMunicipal;
   }
 
-  public RpsCpfCnpj getCpfCnpj() {
+  public RpsCpfCnpjBetha getCpfCnpj() {
     return cpfCnpj;
   }
 

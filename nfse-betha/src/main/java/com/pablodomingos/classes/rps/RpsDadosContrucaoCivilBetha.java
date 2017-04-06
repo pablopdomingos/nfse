@@ -1,12 +1,12 @@
 package com.pablodomingos.classes.rps;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import com.pablodomingos.classes.rps.builders.ConstrucaoCivilBuilder;
 import org.simpleframework.xml.Element;
 
-public class RpsDadosContrucaoCivil extends AbstractRPS {
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+public class RpsDadosContrucaoCivilBetha extends AbstractRPS {
 
   @Element(name="CodigoObra")
   @NotNull
@@ -18,7 +18,7 @@ public class RpsDadosContrucaoCivil extends AbstractRPS {
   @Size(min=1, max=15)
   private String art;
 
-  public RpsDadosContrucaoCivil(ConstrucaoCivilBuilder builder) {
+  public RpsDadosContrucaoCivilBetha(ConstrucaoCivilBuilder builder) {
     this.codigoObra = builder.getCodigoObra();
     this.art = builder.getArt();
   }

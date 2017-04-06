@@ -10,7 +10,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
-public class RpsValores extends AbstractRPS {
+public class RpsValoresBetha extends AbstractRPS {
 
   @Element(name="ValorServicos")
   @NotNull
@@ -74,7 +74,7 @@ public class RpsValores extends AbstractRPS {
   @Digits(integer=13, fraction=2)
   private Double descontoCondicionado;
 
-  public RpsValores(ValoresBuilder builder) {
+  public RpsValoresBetha(ValoresBuilder builder) {
     this.valorServicos = builder.getValorServicos();
     this.valorDeducoes = builder.getValorDeducoes();
     this.valorPis = builder.getValorPis();

@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
-public class RpsInfo extends AbstractRPS {
+public class RpsInfoBetha extends AbstractRPS {
 
   @Attribute(name = "Id")
   @NotNull
@@ -22,7 +22,7 @@ public class RpsInfo extends AbstractRPS {
   @Element(name = "Rps")
   @NotNull
   @Valid
-  private RpsInfoIdentificacao rps;
+  private RpsInfoIdentificacaoBetha rps;
 
   @Element(name = "Competencia")
   @NotNull
@@ -30,29 +30,29 @@ public class RpsInfo extends AbstractRPS {
 
   @Element(name = "RpsSubstituido", required = false)
   @Valid
-  private RpsIdentificacao rpsSubstituido;
+  private RpsIdentificacaoBetha rpsSubstituido;
 
   @Element(name = "Servico")
   @NotNull
   @Valid
-  private RpsServico servico;
+  private RpsServicoBetha servico;
 
   @Element(name = "Prestador")
   @NotNull
   @Valid
-  private RpsPrestador prestador;
+  private RpsPrestadorBetha prestador;
 
   @Element(name = "Tomador", required = false)
   @Valid
-  private RpsTomador tomador;
+  private RpsTomadorBetha tomador;
 
   @Element(name = "IntermediarioServico", required = false)
   @Valid
-  private RpsIntermediario intermediario;
+  private RpsIntermediarioBetha intermediario;
 
   @Element(name = "ConstrucaoCivil", required = false)
   @Valid
-  private RpsDadosContrucaoCivil construcaoCivil;
+  private RpsDadosContrucaoCivilBetha construcaoCivil;
 
   @Element(name = "RegimeEspecialTributacao", required = false)
   private RegimeEspecialTributacao regimeEspecialTributacao;
@@ -65,57 +65,57 @@ public class RpsInfo extends AbstractRPS {
   @NotNull
   private IncentivadorCultural incentivadorCultural;
 
-  public RpsInfo(RpsInfoBuilder builder) {
+  public RpsInfoBetha(RpsInfoBuilder builder) {
     competencia = LocalDate.now();
     id = builder.getId();
-    rps = new RpsInfoIdentificacao(
-        new RpsIdentificacao(builder.getId(), builder.getSerie()),
+    rps = new RpsInfoIdentificacaoBetha(
+        new RpsIdentificacaoBetha(builder.getId(), builder.getSerie()),
         builder.getDataEmissao().toLocalDate(),
         builder.getStatus()
     );
     if (builder.getContrucaoCivil() != null)
-      construcaoCivil = new RpsDadosContrucaoCivil(builder.getContrucaoCivil());
+      construcaoCivil = new RpsDadosContrucaoCivilBetha(builder.getContrucaoCivil());
     regimeEspecialTributacao = builder.getRegimeEspecialTributacao();
     optanteSimplesNacional = builder.getOptanteSimplesNacional();
     incentivadorCultural = builder.getIncentivadorCultural();
-    servico = new RpsServico(builder.getServico());
-    prestador = new RpsPrestador(builder.getPrestador());
-    tomador = new RpsTomador(builder.getTomador());
+    servico = new RpsServicoBetha(builder.getServico());
+    prestador = new RpsPrestadorBetha(builder.getPrestador());
+    tomador = new RpsTomadorBetha(builder.getTomador());
     if (builder.getIntermediario() != null)
-      intermediario = new RpsIntermediario(builder.getIntermediario());
+      intermediario = new RpsIntermediarioBetha(builder.getIntermediario());
     if (builder.getIdSubstituido() != null && builder.getSerieSubstituido() != null)
-      rpsSubstituido = new RpsIdentificacao(builder.getIdSubstituido(), builder.getSerieSubstituido());
+      rpsSubstituido = new RpsIdentificacaoBetha(builder.getIdSubstituido(), builder.getSerieSubstituido());
   }
 
   public String getId() {
     return id;
   }
 
-  public RpsServico getServico() {
+  public RpsServicoBetha getServico() {
     return servico;
   }
 
-  public RpsPrestador getPrestador() {
+  public RpsPrestadorBetha getPrestador() {
     return prestador;
   }
 
-  public RpsTomador getTomador() {
+  public RpsTomadorBetha getTomador() {
     return tomador;
   }
 
-  public RpsIntermediario getIntermediario() {
+  public RpsIntermediarioBetha getIntermediario() {
     return intermediario;
   }
 
-  public RpsIdentificacao getRpsSubstituido() {
+  public RpsIdentificacaoBetha getRpsSubstituido() {
     return rpsSubstituido;
   }
 
-  public RpsDadosContrucaoCivil getConstrucaoCivil() {
+  public RpsDadosContrucaoCivilBetha getConstrucaoCivil() {
     return construcaoCivil;
   }
 
-  public RpsInfoIdentificacao getRps() {
+  public RpsInfoIdentificacaoBetha getRps() {
     return rps;
   }
 

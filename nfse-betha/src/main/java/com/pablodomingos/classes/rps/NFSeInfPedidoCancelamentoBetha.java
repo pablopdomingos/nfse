@@ -7,7 +7,7 @@ import org.simpleframework.xml.Element;
 
 import javax.validation.constraints.NotNull;
 
-public class NFSeInfPedidoCancelamento extends AbstractRPS {
+public class NFSeInfPedidoCancelamentoBetha extends AbstractRPS {
 
     @Attribute(name="Id")
     @NotNull
@@ -15,15 +15,15 @@ public class NFSeInfPedidoCancelamento extends AbstractRPS {
 
     @Element(name="IdentificacaoNfse")
     @NotNull
-    private NFSeIdentificacao nfseIdentificacao;
+    private NFSeIdentificacaoBetha nfseIdentificacao;
 
     @Element(name="CodigoCancelamento")
     @NotNull
     private CodigoCancelamento codigoCancelamento;
 
-    public NFSeInfPedidoCancelamento(PedidoCancelamentoInfBuilder builder) {
+    public NFSeInfPedidoCancelamentoBetha(PedidoCancelamentoInfBuilder builder) {
         this.id = builder.getId();
-        this.nfseIdentificacao = new NFSeIdentificacao(
+        this.nfseIdentificacao = new NFSeIdentificacaoBetha(
             builder.getNumero(),
             builder.getCnpj(),
             builder.getInscricaoMunicipal(),
@@ -36,7 +36,7 @@ public class NFSeInfPedidoCancelamento extends AbstractRPS {
     return id;
     }
 
-    public NFSeIdentificacao getNfseIdentificacao() {
+    public NFSeIdentificacaoBetha getNfseIdentificacao() {
     return nfseIdentificacao;
     }
 

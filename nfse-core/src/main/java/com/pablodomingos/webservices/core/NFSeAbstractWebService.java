@@ -11,7 +11,7 @@ public class NFSeAbstractWebService {
   }
   public static <T>T fromXml(Class<? extends T> clazz, String xml) throws Exception {
     Serializer serializer = new NFPersister();
-    System.out.println("xml = " + xml);
+    System.out.println(xml);
     return serializer.read(clazz, new StringReader(xml));
   }
 }

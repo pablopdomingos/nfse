@@ -3,9 +3,10 @@ package com.pablodomingos.classes.rps;
 import com.pablodomingos.classes.rps.builders.LoteRpsBuilder;
 import com.pablodomingos.classes.rps.builders.RpsInfoBuilder;
 import com.pablodomingos.classes.rps.enums.LoteRpsVersao;
-import org.hibernate.validator.constraints.br.CNPJ;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -15,7 +16,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LoteRps extends AbstractRPS {
+@Root(name = "LoteRps")
+public class LoteRpsBetha extends AbstractRPS {
   @Attribute(name = "Id")
   @NotNull
   private String id;
@@ -31,11 +33,9 @@ public class LoteRps extends AbstractRPS {
   @Size(min = 1, max = 15)
   private String numeroLote;
 
-  @Element(name = "Cnpj")
+  @Element(name = "CpfCnpj")
   @NotNull
-  @CNPJ
-  @Size(min = 14, max = 14)
-  private String cnpj;
+  private RpsCpfCnpjBetha cpfCnpj;
 
   @Element(name = "InscricaoMunicipal")
   @NotNull
@@ -46,21 +46,21 @@ public class LoteRps extends AbstractRPS {
   @NotNull
   private int quantidadeRps;
 
-  @Element(name = "ListaRps")
+  @ElementList(name = "ListaRps", type = RpsBetha.class)
   @NotNull
   @Valid
-  private final List<Rps> listaRps = new ArrayList<>();
+  private final ArrayList<RpsBetha> listaRps = new ArrayList<>();
 
-  public LoteRps(LoteRpsBuilder builder) {
+  public LoteRpsBetha(LoteRpsBuilder builder) {
     this.id = builder.getId();
     this.versao = builder.getVersao();
     this.numeroLote = builder.getNumeroLote();
-    this.cnpj = builder.getCnpj();
+    this.cpfCnpj = new RpsCpfCnpjBetha(builder.getCpf(), builder.getCnpj());
     this.inscricaoMunicipal = builder.getInscricaoMunicipal();
     this.quantidadeRps = builder.getQuantidadeRps();
 
     for (RpsInfoBuilder rpsInfoBuilder : builder.getListaRps()) {
-      this.listaRps.add(new Rps(rpsInfoBuilder));
+      this.listaRps.add(new RpsBetha(rpsInfoBuilder));
     }
 
   }
@@ -77,8 +77,8 @@ public class LoteRps extends AbstractRPS {
     return numeroLote;
   }
 
-  public String getCnpj() {
-    return cnpj;
+  public RpsCpfCnpjBetha getCpfCnpj() {
+    return cpfCnpj;
   }
 
   public String getInscricaoMunicipal() {
@@ -89,7 +89,7 @@ public class LoteRps extends AbstractRPS {
     return quantidadeRps;
   }
 
-  public List<Rps> getRps() {
+  public List<RpsBetha> getRps() {
     return Collections.unmodifiableList(listaRps);
   }
 

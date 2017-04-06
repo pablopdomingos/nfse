@@ -1,6 +1,6 @@
 package com.pablodomingos.classes.rps.servicos;
 
-import com.pablodomingos.classes.rps.Rps;
+import com.pablodomingos.classes.rps.RpsBetha;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -8,16 +8,16 @@ import org.simpleframework.xml.Root;
 import javax.validation.Valid;
 
 @Root(name = "GerarNfseEnvio")
-public class RpsEnvio extends AbstractServiceBetha {
+public class RpsEnvioBetha extends AbstractServiceBetha {
 
     @Attribute(name = "xmlns")
     private String xmlns = "http://www.betha.com.br/e-nota-contribuinte-ws";
 
-    @Element(name = "Rps")
+    @Element(name = "RpsBetha")
     @Valid
-    private Rps rps;
+    private RpsBetha rps;
 
-    public RpsEnvio(Rps rps) {
+    public RpsEnvioBetha(RpsBetha rps) {
         this.rps = rps;
     }
 

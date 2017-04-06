@@ -1,12 +1,12 @@
 package com.pablodomingos.classes.rps;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import com.pablodomingos.classes.rps.builders.IntermediarioBuilder;
 import org.simpleframework.xml.Element;
 
-public class RpsIntermediario extends AbstractRPS {
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+public class RpsIntermediarioBetha extends AbstractRPS {
 
   @Element(name="RazaoSocial")
   @NotNull
@@ -15,17 +15,17 @@ public class RpsIntermediario extends AbstractRPS {
   
   @Element(name="CpfCnpj")
   @NotNull
-  private RpsCpfCnpj cpfCnpj;
+  private RpsCpfCnpjBetha cpfCnpj;
   
   @Element(name="InscricaoMunicipal")
   @Size(min=1, max=15)
   private String inscricaoMunicipal;
   
-  public RpsIntermediario(IntermediarioBuilder builder){
+  public RpsIntermediarioBetha(IntermediarioBuilder builder){
     if (builder == null)
       return;
     this.nome = builder.getNome();
-    this.cpfCnpj = new RpsCpfCnpj(builder.getCpf(), builder.getCnpj());
+    this.cpfCnpj = new RpsCpfCnpjBetha(builder.getCpf(), builder.getCnpj());
     this.inscricaoMunicipal = builder.getInscricaoMunicipal();
   }
 
@@ -33,7 +33,7 @@ public class RpsIntermediario extends AbstractRPS {
     return nome;
   }
 
-  public RpsCpfCnpj getCpfCnpj() {
+  public RpsCpfCnpjBetha getCpfCnpj() {
     return cpfCnpj;
   }
 

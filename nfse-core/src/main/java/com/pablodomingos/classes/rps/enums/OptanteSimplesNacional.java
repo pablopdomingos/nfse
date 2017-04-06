@@ -1,8 +1,5 @@
 package com.pablodomingos.classes.rps.enums;
 
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
-
 public enum OptanteSimplesNacional {
 
   SIM(1, "Sim"), NAO(2, "Nao");
@@ -22,7 +19,7 @@ public enum OptanteSimplesNacional {
   public String getDescricao() {
     return this.descricao;
   }
-  
+
   public static OptanteSimplesNacional fromInt(int codigo) {
     for (OptanteSimplesNacional optanteSimplesNacional : OptanteSimplesNacional
         .values()) {

@@ -36,7 +36,6 @@ public class RpsIdentificacao extends AbstractRPS {
   }
 
   public RpsIdentificacao(String numero, RpsSerie serie) {
-    System.out.println("numero = " + numero);
     this.numero = numero;
     if (serie != null)
       this.serie = serie;

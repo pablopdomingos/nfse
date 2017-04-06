@@ -7,7 +7,7 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 
 
-public class PeriodoEmissao extends AbstractRPS {
+public class PeriodoEmissaoBetha extends AbstractRPS {
   @Element(name = "DataInicial")
   @NotNull
   private LocalDate dataInicial;
@@ -16,7 +16,7 @@ public class PeriodoEmissao extends AbstractRPS {
   @NotNull
   private LocalDate dataFinal;
 
-  public PeriodoEmissao(LocalDate dataInicial, LocalDate dataFinal) {
+  public PeriodoEmissaoBetha(LocalDate dataInicial, LocalDate dataFinal) {
     this.dataInicial = dataInicial;
     if (dataFinal.isAfter(LocalDate.now())) {
       throw new DateTimeException("Data final nao pode ser maior que a atual");

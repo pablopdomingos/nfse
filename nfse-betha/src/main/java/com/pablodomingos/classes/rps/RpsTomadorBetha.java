@@ -7,10 +7,10 @@ import org.simpleframework.xml.Element;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class RpsTomador extends AbstractRPS {
+public class RpsTomadorBetha extends AbstractRPS {
 
     @Element(name = "IdentificacaoTomador")
-    private RpsTomadorIdentificacao identificacaoTomador;
+    private RpsTomadorIdentificacaoBetha identificacaoTomador;
 
     @Element(name = "RazaoSocial")
     @Size(min = 1, max = 115)
@@ -18,18 +18,18 @@ public class RpsTomador extends AbstractRPS {
 
     @Element(name = "Endereco")
     @NotNull
-    private RpsTomadorEndereco endereco;
+    private RpsTomadorEnderecoBetha endereco;
 
     @Element(name = "Contato")
-    private RpsTomadorContato contato;
+    private RpsTomadorContatoBetha contato;
 
-    public RpsTomador(TomadorBuilder builder) {
-        this.contato = new RpsTomadorContato(builder.getTelefone(), builder.getEmail());
-        this.identificacaoTomador = new RpsTomadorIdentificacao(
-                new RpsCpfCnpj(builder.getCpf(), builder.getCnpj()),
+    public RpsTomadorBetha(TomadorBuilder builder) {
+        this.contato = new RpsTomadorContatoBetha(builder.getTelefone(), builder.getEmail());
+        this.identificacaoTomador = new RpsTomadorIdentificacaoBetha(
+                new RpsCpfCnpjBetha(builder.getCpf(), builder.getCnpj()),
                 builder.getInscricaoMunicipal()
         );
-        this.endereco = new RpsTomadorEndereco(
+        this.endereco = new RpsTomadorEnderecoBetha(
                 builder.getLogradouro(),
                 builder.getNumero(),
                 builder.getComplemento(),
@@ -41,7 +41,7 @@ public class RpsTomador extends AbstractRPS {
         this.nome = builder.getNome();
     }
 
-    public RpsTomadorEndereco getEndereco() {
+    public RpsTomadorEnderecoBetha getEndereco() {
         return endereco;
     }
 
@@ -49,11 +49,11 @@ public class RpsTomador extends AbstractRPS {
         return nome;
     }
 
-    public RpsTomadorIdentificacao getIdentificacaoTomador() {
+    public RpsTomadorIdentificacaoBetha getIdentificacaoTomador() {
         return identificacaoTomador;
     }
 
-    public RpsTomadorContato getContato() {
+    public RpsTomadorContatoBetha getContato() {
         return contato;
     }
 

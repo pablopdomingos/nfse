@@ -1,9 +1,5 @@
 package com.pablodomingos.classes.rps.enums;
 
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
-
-@XStreamConverter(EnumToStringConverter.class)
 public enum UfEstados {
 
   AC("AC", "Acre"),
@@ -49,14 +45,14 @@ public enum UfEstados {
   public String getNomeUf() {
     return this.nome;
   }
-  
+
   public static UfEstados fromUf(String uf) {
-      for (UfEstados ufEstado : UfEstados.values()) {
-        if (ufEstado.getUf().equals(String.valueOf(uf))) {
-          return ufEstado;
-        }
+    for (UfEstados ufEstado : UfEstados.values()) {
+      if (ufEstado.getUf().equals(String.valueOf(uf))) {
+        return ufEstado;
       }
-    
+    }
+
     return null;
   }
 

@@ -55,6 +55,7 @@ public class FabricaDeBuildersFake {
   public static RpsInfoBuilder getRpsInfoBuilder(){
     return new RpsInfoBuilder("1")
         .comId("1")
+        .comSerie("A")
         .comNaturezaOperacao(NaturezaOperacao.TRIBUTACAO_MUNICIPIO)
         .optanteSimplesNacional(true)
         .comPrestador(getRpsPrestadorBuilder())
@@ -66,9 +67,9 @@ public class FabricaDeBuildersFake {
 
   public static LoteRpsBuilder getLoteRpsBuilder(){
     return new LoteRpsBuilder("1")
-        .comId("id")
-        .comDocumento("12345678901230")
-        .comInscricaoMunicipal("000000000000000")
+        .comId("rps1")
+        .comDocumento("45111111111100")
+        .comInscricaoMunicipal("123498")
         .comVersao(LoteRpsVersao.V1_00)
         .addRps(getRpsInfoBuilder());
   }

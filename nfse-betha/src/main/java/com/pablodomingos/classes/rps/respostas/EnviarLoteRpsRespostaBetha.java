@@ -5,20 +5,20 @@ import org.simpleframework.xml.Root;
 
 import java.time.LocalDateTime;
 
-@Root(name = "EnviarLoteRpsResposta")
-public class EnviarLoteRpsResposta {
+@Root(name = "EnviarLoteRpsRespostaBetha")
+public class EnviarLoteRpsRespostaBetha {
   @Element(name = "NumeroLote")
-  private Integer numeroLote;
+  private String numeroLote;
   @Element(name = "DataRecebimento")
   private LocalDateTime dataRecebimento;
   @Element(name = "Protocolo")
   private String protocolo;
 
-  public Integer getNumeroLote() {
+  public String getNumeroLote() {
     return numeroLote;
   }
 
-  public void setNumeroLote(Integer numeroLote) {
+  public void setNumeroLote(String numeroLote) {
     this.numeroLote = numeroLote;
   }
 

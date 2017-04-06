@@ -9,11 +9,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class RpsServico extends AbstractRPS {
+public class RpsServicoBetha extends AbstractRPS {
 
   @Element(name="Valores")
   @NotNull
-  private RpsValores valores;
+  private RpsValoresBetha valores;
 
   @Element(name="IssRetido")
   @NotNull
@@ -62,8 +62,8 @@ public class RpsServico extends AbstractRPS {
   @Size(max = 30)
   private String numeroProcesso;
 
-  public RpsServico(ServicoBuilder builder) {
-    this.valores = new RpsValores(builder.getValores());
+  public RpsServicoBetha(ServicoBuilder builder) {
+    this.valores = new RpsValoresBetha(builder.getValores());
     this.codigoItemListaServico = builder.getCodigoItemListaServico();
     this.codigoCnae = builder.getCodigoCnae();
     this.codigoTributacaoMunicipio = builder.getCodigoTributacaoMunicipio();
@@ -73,7 +73,7 @@ public class RpsServico extends AbstractRPS {
     this.exigibilidadeISS = builder.getExigibilidadeIss();
   }
 
-  public RpsValores getValores() {
+  public RpsValoresBetha getValores() {
     return valores;
   }
 

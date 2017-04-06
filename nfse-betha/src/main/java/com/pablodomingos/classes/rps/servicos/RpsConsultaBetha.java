@@ -1,7 +1,7 @@
 package com.pablodomingos.classes.rps.servicos;
 
-import com.pablodomingos.classes.rps.RpsIdentificacao;
-import com.pablodomingos.classes.rps.RpsPrestador;
+import com.pablodomingos.classes.rps.RpsIdentificacaoBetha;
+import com.pablodomingos.classes.rps.RpsPrestadorBetha;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -9,30 +9,30 @@ import org.simpleframework.xml.Root;
 import javax.validation.constraints.NotNull;
 
 @Root(name="ConsultarNfseRpsEnvio")
-public class RpsConsulta extends AbstractServiceBetha {
+public class RpsConsultaBetha extends AbstractServiceBetha {
 
   @Attribute(name="xmlns")
   private String xmlns = "http://www.betha.com.br/e-nota-contribuinte-ws";
 
   @Element(name="IdentificacaoRps")
   @NotNull
-  private RpsIdentificacao identificacaoRps;
+  private RpsIdentificacaoBetha identificacaoRps;
 
   @Element(name="Prestador")
   @NotNull
-  private RpsPrestador prestador;
+  private RpsPrestadorBetha prestador;
 
-  public RpsConsulta(RpsIdentificacao identificacaoRps, RpsPrestador prestador) {
+  public RpsConsultaBetha(RpsIdentificacaoBetha identificacaoRps, RpsPrestadorBetha prestador) {
     super();
     this.identificacaoRps = identificacaoRps;
     this.prestador = prestador;
   }
 
-  public RpsIdentificacao getIdentificacaoRps() {
+  public RpsIdentificacaoBetha getIdentificacaoRps() {
     return identificacaoRps;
   }
 
-  public RpsPrestador getPrestador() {
+  public RpsPrestadorBetha getPrestador() {
     return prestador;
   }
 }

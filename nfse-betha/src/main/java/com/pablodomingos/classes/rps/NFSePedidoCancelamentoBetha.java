@@ -4,17 +4,17 @@ import org.simpleframework.xml.Element;
 
 import javax.validation.constraints.NotNull;
 
-public class NFSePedidoCancelamento extends AbstractRPS {
+public class NFSePedidoCancelamentoBetha extends AbstractRPS {
 
     @Element(name = "InfPedidoCancelamento")
     @NotNull
-    private NFSeInfPedidoCancelamento infPedidoCancelamento;
+    private NFSeInfPedidoCancelamentoBetha infPedidoCancelamento;
 
-    public NFSePedidoCancelamento(NFSeInfPedidoCancelamento infPedidoCancelamento) {
+    public NFSePedidoCancelamentoBetha(NFSeInfPedidoCancelamentoBetha infPedidoCancelamento) {
         this.infPedidoCancelamento = infPedidoCancelamento;
     }
 
-    public NFSeInfPedidoCancelamento getInfPedidoCancelamento() {
+    public NFSeInfPedidoCancelamentoBetha getInfPedidoCancelamento() {
         return infPedidoCancelamento;
     }
 }

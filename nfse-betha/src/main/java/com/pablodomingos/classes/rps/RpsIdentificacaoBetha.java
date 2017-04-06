@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class RpsIdentificacao extends AbstractRPS {
+public class RpsIdentificacaoBetha extends AbstractRPS {
 
   @Element(name="Numero")
   @NotNull
@@ -23,12 +23,11 @@ public class RpsIdentificacao extends AbstractRPS {
   @NotNull
   private RpsTipo tipo = RpsTipo.RPS;
 
-  public RpsIdentificacao(String numero) {
+  public RpsIdentificacaoBetha(String numero) {
     this.numero = numero;
   }
 
-  public RpsIdentificacao(String numero, String serie) {
-    System.out.println("numero = " + numero);
+  public RpsIdentificacaoBetha(String numero, String serie) {
     this.numero = numero;
     if (serie != null)
       this.serie = serie;

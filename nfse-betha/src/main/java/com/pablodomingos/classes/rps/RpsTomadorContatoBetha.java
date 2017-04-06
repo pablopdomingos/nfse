@@ -5,7 +5,7 @@ import org.simpleframework.xml.Element;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class RpsTomadorContato extends AbstractRPS {
+public class RpsTomadorContatoBetha extends AbstractRPS {
 
   @Element(name="Telefone")
   @Pattern(regexp = "\\d+")
@@ -17,7 +17,7 @@ public class RpsTomadorContato extends AbstractRPS {
   @Size(min=1, max=80)
   private String email;
 
-  public RpsTomadorContato(String telefone, String email) {
+  public RpsTomadorContatoBetha(String telefone, String email) {
     this.telefone = telefone;
     this.email = email;
   }

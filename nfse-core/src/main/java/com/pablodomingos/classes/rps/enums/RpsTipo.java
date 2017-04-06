@@ -1,13 +1,9 @@
 package com.pablodomingos.classes.rps.enums;
 
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
-
-@XStreamConverter(EnumToStringConverter.class)
 public enum RpsTipo {
 
-  RPS(1, "Recibo Provisorio de Servicos"), 
-  MISTA(2, "RPS Nota Fiscal Conjugada (Mista)"), 
+  RPS(1, "Recibo Provisorio de Servicos"),
+  MISTA(2, "RPS Nota Fiscal Conjugada (Mista)"),
   CUPOM(3, "Cupom");
 
   private int codigo;
@@ -21,7 +17,7 @@ public enum RpsTipo {
   public String getCodigo() {
     return String.valueOf(this.codigo);
   }
-  
+
   public String getDescricao() {
     return this.descricao;
   }

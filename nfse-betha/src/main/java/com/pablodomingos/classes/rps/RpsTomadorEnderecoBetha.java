@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class RpsTomadorEndereco extends AbstractRPS {
+public class RpsTomadorEnderecoBetha extends AbstractRPS {
 
     @Element(name = "Endereco")
     @NotNull
@@ -44,7 +44,7 @@ public class RpsTomadorEndereco extends AbstractRPS {
     @Size(min = 8, max = 8)
     private String cep;
 
-    public RpsTomadorEndereco(String endereco, String numero, String complemento, String bairro, String codigoMunicipio, String uf, String cep) {
+    public RpsTomadorEnderecoBetha(String endereco, String numero, String complemento, String bairro, String codigoMunicipio, String uf, String cep) {
         this.endereco = endereco;
         this.numero = numero;
         this.complemento = complemento;

@@ -1,29 +1,27 @@
 package com.pablodomingos.classes.rps;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.br.CNPJ;
-
 import com.pablodomingos.classes.rps.builders.PrestadorBuilder;
 import org.simpleframework.xml.Element;
 
-public class RpsPrestador extends AbstractRPS {
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+public class RpsPrestadorBetha extends AbstractRPS {
 
   @Element(name="CpfCnpj")
   @NotNull
-  private RpsCpfCnpj cnpj;
+  private RpsCpfCnpjBetha cnpj;
 
   @Element(name="InscricaoMunicipal")
   @Size(min = 1, max = 15)
   private String inscricaoMunicipal;
 
-  public RpsPrestador(PrestadorBuilder builder) {
-    this.cnpj = new RpsCpfCnpj(builder.getCpf(), builder.getCnpj());
+  public RpsPrestadorBetha(PrestadorBuilder builder) {
+    this.cnpj = new RpsCpfCnpjBetha(builder.getCpf(), builder.getCnpj());
     this.inscricaoMunicipal = builder.getInscricaoMunicipal();
   }
 
-  public RpsCpfCnpj getCnpj() {
+  public RpsCpfCnpjBetha getCnpj() {
     return cnpj;
   }
 

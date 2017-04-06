@@ -5,8 +5,8 @@ import org.simpleframework.xml.Root;
 
 import java.util.ArrayList;
 
-@Root(name = "CancelarNfseResposta")
-public class CancelarNfseResposta {
+@Root(name = "CancelarNfseRespostaBetha")
+public class CancelarNfseRespostaBetha {
   @ElementList(name = "ListaMensagemRetorno", required = false)
   private ArrayList<MensagemRetornoResposta> mensagens;
 

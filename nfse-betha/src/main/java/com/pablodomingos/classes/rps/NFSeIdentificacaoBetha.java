@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class NFSeIdentificacao extends AbstractRPS {
+public class NFSeIdentificacaoBetha extends AbstractRPS {
 
     @Element(name = "Numero")
     @NotNull
@@ -16,7 +16,7 @@ public class NFSeIdentificacao extends AbstractRPS {
 
     @Element(name = "CpfCnpj")
     @NotNull
-    private RpsCpfCnpj cpfCnpj;
+    private RpsCpfCnpjBetha cpfCnpj;
 
     @Element(name = "InscricaoMunicipal", required = false)
     @Size(min = 1, max = 15)
@@ -27,9 +27,9 @@ public class NFSeIdentificacao extends AbstractRPS {
     @Size(min = 1, max = 7)
     private String codigoMunicipioIbge;
 
-    public NFSeIdentificacao(String numero, String cnpj, String inscricaoMunicipal, String codigoMunicipioIbge) {
+    public NFSeIdentificacaoBetha(String numero, String cnpj, String inscricaoMunicipal, String codigoMunicipioIbge) {
         this.numero = numero;
-        this.cpfCnpj = new RpsCpfCnpj(cnpj);
+        this.cpfCnpj = new RpsCpfCnpjBetha(cnpj);
         this.inscricaoMunicipal = inscricaoMunicipal;
         this.codigoMunicipioIbge = codigoMunicipioIbge;
     }
@@ -38,7 +38,7 @@ public class NFSeIdentificacao extends AbstractRPS {
         return numero;
     }
 
-    public RpsCpfCnpj getCnpj() {
+    public RpsCpfCnpjBetha getCnpj() {
         return cpfCnpj;
     }
 
