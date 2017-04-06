@@ -2,8 +2,6 @@ package com.pablodomingos.classes.rps;
 
 import com.pablodomingos.classes.rps.builders.RpsInfoBuilder;
 import com.pablodomingos.classes.rps.enums.*;
-import com.pablodomingos.conversores.LocalDateTimeConversor;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
@@ -14,64 +12,63 @@ import java.time.LocalDateTime;
 
 public class RpsInfo extends AbstractRPS {
 
-  @Element(name="Id")
+  @Element(name = "Id")
   @Attribute
   @NotNull
-  @Size(min=1, max=255)
+  @Size(min = 1, max = 255)
   private String id;
 
-  @Element(name="IdentificacaoRps")
+  @Element(name = "IdentificacaoRps")
   @NotNull
   @Valid
   private RpsIdentificacao identificacaoRps;
 
-  @Element(name="DataEmissao")
-  @XStreamConverter(LocalDateTimeConversor.class)
+  @Element(name = "DataEmissao")
   @NotNull
   private LocalDateTime dataEmissao;
 
-  @Element(name="NaturezaOperacao")
+  @Element(name = "NaturezaOperacao")
   @NotNull
   private NaturezaOperacao naturezaOperacao;
 
-  @Element(name="RegimeEspecialTributacao")
+  @Element(name = "RegimeEspecialTributacao")
   private RegimeEspecialTributacao regimeEspecialTributacao;
 
-  @Element(name="OptanteSimplesNacional")
+  @Element(name = "OptanteSimplesNacional")
   @NotNull
   private OptanteSimplesNacional optanteSimplesNacional;
 
-  @Element(name="IncentivadorCultural")
+  @Element(name = "IncentivadorCultural")
   @NotNull
   private IncentivadorCultural incentivadorCultural;
 
-  @Element(name="Status")
+  @Element(name = "Status")
   @NotNull
   private RpsStatus status;
 
-  @Element(name="RpsSubstituido")
+  @Element(name = "RpsSubstituido")
   @Valid
   private RpsIdentificacao rpsSubstituido;
-  
-  @Element(name="Servico")
+
+  @Element(name = "Servico")
   @NotNull
   @Valid
   private RpsServico servico;
 
-  @Element(name="Prestador")
+  @Element(name = "Prestador")
   @NotNull
   @Valid
   private RpsPrestador prestador;
 
-  @Element(name="Tomador")
+  @Element(name = "Tomador")
   @Valid
   private RpsTomador tomador;
 
-  @Element(name="IntermediarioServico")
+  @Element(name = "IntermediarioServico")
   @Valid
   private RpsIntermediario intermediario;
-  
-  @Element(name="ConstrucaoCivil")
+
+  @Element(name = "ConstrucaoCivil")
   @Valid
   private RpsDadosContrucaoCivil construcaoCivil;
 

@@ -1,8 +1,6 @@
 package com.pablodomingos.classes.rps;
 
 import com.pablodomingos.classes.rps.enums.RpsStatus;
-import com.pablodomingos.conversores.LocalDateConversor;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
 import org.simpleframework.xml.Element;
 
 import javax.validation.Valid;
@@ -11,17 +9,16 @@ import java.time.LocalDate;
 
 public class RpsInfoIdentificacao extends AbstractRPS {
 
-  @Element(name="IdentificacaoRps")
+  @Element(name = "IdentificacaoRps")
   @NotNull
   @Valid
   private RpsIdentificacao identificacaoRps;
 
-  @Element(name="DataEmissao")
-  @XStreamConverter(LocalDateConversor.class)
+  @Element(name = "DataEmissao")
   @NotNull
   private LocalDate dataEmissao;
 
-  @Element(name="Status")
+  @Element(name = "Status")
   @NotNull
   private RpsStatus status;
 

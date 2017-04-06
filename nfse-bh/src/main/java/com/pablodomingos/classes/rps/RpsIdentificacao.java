@@ -1,12 +1,12 @@
 package com.pablodomingos.classes.rps;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
 import com.pablodomingos.classes.rps.enums.RpsSerie;
 import com.pablodomingos.classes.rps.enums.RpsTipo;
 import org.simpleframework.xml.Element;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class RpsIdentificacao extends AbstractRPS {
 
@@ -26,6 +26,13 @@ public class RpsIdentificacao extends AbstractRPS {
 
   public RpsIdentificacao(String numero) {
     this.numero = numero;
+  }
+
+  public RpsIdentificacao(String numero, String serie) {
+    this.numero = numero;
+    if (serie != null) {
+      this.serie = RpsSerie.fromString(serie);
+    }
   }
 
   public RpsIdentificacao(String numero, RpsSerie serie) {

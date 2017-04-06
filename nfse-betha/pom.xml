@@ -61,7 +61,6 @@
 	</distributionManagement>
 
 	<dependencies>
-		<!-- XML -->
 		<dependency>
 			<groupId>com.github.pablopdomingos</groupId>
 			<artifactId>nfse-core</artifactId>
@@ -78,11 +77,6 @@
 			<version>5.3.0.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.axis</groupId>
-			<artifactId>axis</artifactId>
-			<version>1.4</version>
-		</dependency>
-		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
@@ -96,11 +90,6 @@
 			<groupId>commons-discovery</groupId>
 			<artifactId>commons-discovery</artifactId>
 			<version>0.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>el-impl</artifactId>
-			<version>2.2</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

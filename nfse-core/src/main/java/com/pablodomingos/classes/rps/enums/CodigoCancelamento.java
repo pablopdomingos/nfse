@@ -1,7 +1,6 @@
 package com.pablodomingos.classes.rps.enums;
 
 public enum  CodigoCancelamento {
-  //Bh nao aceita cancelar via webservice NFSe com erro na emissao //fixme
   ERRO_NA_EMISSAO(1, "Erro na emissao"),
   SERVICO_NAO_CONCLUIDO(2, "Servico nao concluido");
 

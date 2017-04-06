@@ -1,23 +1,18 @@
 package com.pablodomingos.classes.rps;
 
+import org.simpleframework.xml.Element;
+
+import javax.validation.constraints.NotNull;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 
-import javax.validation.constraints.NotNull;
-
-import com.pablodomingos.conversores.LocalDateConversor;
-import org.simpleframework.xml.Element;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-
 
 public class PeriodoEmissao extends AbstractRPS {
-  @Element(name="DataInicial")
-  @XStreamConverter(LocalDateConversor.class)
+  @Element(name = "DataInicial")
   @NotNull
   private LocalDate dataInicial;
 
-  @Element(name="DataFinal")
-  @XStreamConverter(LocalDateConversor.class)
+  @Element(name = "DataFinal")
   @NotNull
   private LocalDate dataFinal;
 

@@ -6,7 +6,6 @@ import org.apache.axis.AxisFault;
 import org.apache.axis.NoEndPointException;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Stub;
-import org.apache.axis.encoding.ser.*;
 import org.apache.axis.soap.SOAPConstants;
 
 import javax.xml.namespace.QName;
@@ -28,40 +27,13 @@ public abstract class NFSeAbstractStub extends Stub {
         super.cachedEndpoint = endpointURL;
     }
 
-    public NFSeAbstractStub(Service service) throws org.apache.axis.AxisFault { //fixme
+    public NFSeAbstractStub(Service service) throws AxisFault {
         if (service == null) {
             super.service = new org.apache.axis.client.Service();
         } else {
             super.service = service;
         }
         ((org.apache.axis.client.Service)super.service).setTypeMappingVersion("1.2");
-        Class cls;
-        javax.xml.namespace.QName qName;
-        javax.xml.namespace.QName qName2;
-        Class beansf = BeanSerializerFactory.class;
-        Class beandf = BeanDeserializerFactory.class;
-        Class enumsf = EnumSerializerFactory.class;
-        Class enumdf = EnumDeserializerFactory.class;
-        Class arraysf = ArraySerializerFactory.class;
-        Class arraydf = ArrayDeserializerFactory.class;
-        Class simplesf = SimpleSerializerFactory.class;
-        Class simpledf = SimpleDeserializerFactory.class;
-        Class simplelistsf = SimpleListSerializerFactory.class;
-        Class simplelistdf = SimpleListDeserializerFactory.class;
-//        qName = new javax.xml.namespace.QName("http://ws.bhiss.pbh.gov.br", "input");
-//        cachedSerQNames.add(qName);
-//        cls = com.pablodomingos.webservices.pbh.Input.class;
-//        cachedSerClasses.add(cls);
-//        cachedSerFactories.add(beansf);
-//        cachedDeserFactories.add(beandf);
-//
-//        qName = new javax.xml.namespace.QName("http://ws.bhiss.pbh.gov.br", "output");
-//        cachedSerQNames.add(qName);
-//        cls = Output.class;
-//        cachedSerClasses.add(cls);
-//        cachedSerFactories.add(beansf);
-//        cachedDeserFactories.add(beandf);
-
     }
 
     private Object genericCall(Call _call, Object... parameters) throws RemoteException {
@@ -77,20 +49,12 @@ public abstract class NFSeAbstractStub extends Stub {
             }
             else {
                 extractAttachments(_call);
-                try {
-                    return _resp;
-                } catch (Exception _exception) {
-                    System.out.println("ERRR2 = " + _exception.getMessage());
-                    _exception.printStackTrace(); //fixme
-//                    callback.callback(JavaUtils.convert(_resp, T.class));
-//                    return (Output) org.apache.axis.utils.JavaUtils.convert(_resp, Output.class);
-                }
+                return _resp;
             }
         } catch (AxisFault axisFaultException) {
             System.out.println("ERRR = " + axisFaultException.getMessage());
             throw axisFaultException;
         }
-        return null;
     }
 
     public Object cancelarNfse(Object... parameters) throws RemoteException {

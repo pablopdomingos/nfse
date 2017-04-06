@@ -1,18 +1,15 @@
 package com.pablodomingos.classes.rps;
 
+import com.pablodomingos.classes.rps.builders.ValoresBuilder;
+import com.pablodomingos.classes.rps.enums.IssRetido;
+import com.pablodomingos.util.DoubleUtil;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Transient;
+
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
-import com.pablodomingos.classes.rps.builders.ValoresBuilder;
-import com.pablodomingos.classes.rps.enums.IssRetido;
-import com.pablodomingos.conversores.DoubleConversor;
-import com.pablodomingos.util.DoubleUtil;
-import org.simpleframework.xml.Element;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
-
-@XStreamConverter(DoubleConversor.class)
 public class RpsValores extends AbstractRPS {
 
   @Element(name="ValorServicos")
@@ -44,10 +41,6 @@ public class RpsValores extends AbstractRPS {
   @Element(name="ValorCsll")
   @Digits(integer=13, fraction=2)
   private Double valorCsll;
-
-  @XStreamOmitField
-  @Digits(integer=13, fraction=2) //fixme
-  private Double valorIssRetido;
   
   @Element(name="OutrasRetencoes")
   @Digits(integer=13, fraction=2)
@@ -56,20 +49,22 @@ public class RpsValores extends AbstractRPS {
   @Element(name="ValorIss")
   @Digits(integer=13, fraction=2)
   private Double valorIss;
-
-  @XStreamOmitField
-  @Digits(integer=13, fraction=2) //fixme
-  private Double baseCalculo;
   
   @Element(name="Aliquota")
   @Digits(integer=13, fraction=2)
   private Double aliquota;
 
-  @XStreamOmitField
-  @NotNull//fixme
+  @Transient
+  @NotNull
   @Digits(integer=13, fraction=2)
   @DecimalMin("0.01")
   private Double valorLiquido;
+
+  @Transient
+  @NotNull
+  @Digits(integer=13, fraction=2)
+  @DecimalMin("0.01")
+  private Double valorIssRetido;
   
   @Element(name="DescontoIncondicionado")
   @Digits(integer=13, fraction=2)
@@ -97,8 +92,6 @@ public class RpsValores extends AbstractRPS {
     }else {
       this.valorIssRetido = DoubleUtil.arredondarDuasCasas(calcularIss());
     }
-
-    this.baseCalculo = DoubleUtil.arredondarDuasCasas(calcularBaseCalculo());
     this.valorLiquido = DoubleUtil.arredondarDuasCasas(calcularValorLiquido());
   }
 
@@ -154,10 +147,6 @@ public class RpsValores extends AbstractRPS {
     return valorIssRetido;
   }
 
-  public Double getBaseCalculo() {
-    return baseCalculo;
-  }
-
   public Double getValorLiquido() {
     return valorLiquido;
   }
@@ -178,12 +167,4 @@ public class RpsValores extends AbstractRPS {
             (this.descontoCondicionado == null ? 0 : this.descontoCondicionado) -
             (this.descontoIncondicionado == null ? 0 : this.descontoIncondicionado);
   }
-  
-  private Double calcularBaseCalculo() {
-    return  this.valorServicos - 
-            (this.valorDeducoes == null ? 0 : this.valorDeducoes) -
-            (this.descontoIncondicionado == null ? 0 : this.descontoIncondicionado);
-  }
-  
-
 }
