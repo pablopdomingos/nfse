@@ -4,35 +4,35 @@ import com.pablodomingos.classes.rps.*;
 
 public class FabricaDeObjetosFake {
 
-  public static RpsTomador getRpsTomador() {
-    return new RpsTomador(FabricaDeBuildersFake.getTomadorBuilder());
+  public static RpsTomadorBH getRpsTomador() {
+    return new RpsTomadorBH(FabricaDeBuildersFake.getTomadorBuilder());
   }
 
-  public static RpsPrestador getRpsPrestador(){
-    return new RpsPrestador(FabricaDeBuildersFake.getRpsPrestadorBuilder());
+  public static RpsPrestadorBH getRpsPrestador(){
+    return new RpsPrestadorBH(FabricaDeBuildersFake.getRpsPrestadorBuilder());
   }
   
-  public static RpsIntermediario getRpsIntermediario(){
-    return new RpsIntermediario(FabricaDeBuildersFake.getIntermediarioBuilder());
+  public static RpsIntermediarioBH getRpsIntermediario(){
+    return new RpsIntermediarioBH(FabricaDeBuildersFake.getIntermediarioBuilder());
   }
 
-  public static RpsValores getRpsValores(){
-    return new RpsValores(FabricaDeBuildersFake.getValoresBuilder());
+  public static RpsValoresBH getRpsValores(){
+    return new RpsValoresBH(FabricaDeBuildersFake.getValoresBuilder());
   }
 
-  public static RpsServico getRpsServico(){
-    return new RpsServico(FabricaDeBuildersFake.getServicoBuilder());
+  public static RpsServicoBH getRpsServico(){
+    return new RpsServicoBH(FabricaDeBuildersFake.getServicoBuilder());
   }
   
-  public static Rps getRps(){
-    return new Rps(FabricaDeBuildersFake.getRpsInfoBuilder());
+  public static RpsBH getRps(){
+    return new RpsBH(FabricaDeBuildersFake.getRpsInfoBuilder());
   }
   
-  public static LoteRps getLoteRps(){
-    return new LoteRps(FabricaDeBuildersFake.getLoteRpsBuilder());
+  public static LoteRpsBH getLoteRps(){
+    return new LoteRpsBH(FabricaDeBuildersFake.getLoteRpsBuilder());
   }
 
-  public static NFSeInfPedidoCancelamento getNFSeInfPedidoCancelamento(){
-    return new NFSeInfPedidoCancelamento(FabricaDeBuildersFake.getPedidoCancelamentoInfBuilder());
+  public static NFSeInfPedidoCancelamentoBH getNFSeInfPedidoCancelamento(){
+    return new NFSeInfPedidoCancelamentoBH(FabricaDeBuildersFake.getPedidoCancelamentoInfBuilder());
   }
 }
