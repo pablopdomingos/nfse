@@ -1,7 +1,8 @@
-package com.pablodomingos.webservices.bhiss;
+package com.pablodomingos.webservices.bh;
 
 import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
 import com.pablodomingos.classes.rps.respostas.EnviarLoteRpsRespostaBH;
+import com.pablodomingos.classes.rps.respostas.GerarNfseResposta;
 import com.pablodomingos.config.CertificadoConfig;
 import com.pablodomingos.webservices.core.NFSeAbstractStub;
 import com.pablodomingos.webservices.core.NFSeAbstractWebService;
@@ -21,6 +22,9 @@ public class WebServiceBH extends NFSeAbstractWebService {
 
     public static EnviarLoteRpsRespostaBH enviarLoteRps(String xml, CertificadoConfig configCertificado) throws Exception {
         return fromXml(EnviarLoteRpsRespostaBH.class, ((OutputBH) webService(configCertificado).recepcionarLoteRps(new InputBH(CABECALHO, xml))).getOutputXML());
+    }
+    public static GerarNfseResposta gerarNfse(String xml, CertificadoConfig configCertificado) throws Exception {
+        return fromXml(GerarNfseResposta.class, ((OutputBH) webService(configCertificado).gerarNfse(new InputBH(CABECALHO, xml))).getOutputXML());
     }
 
     private static NFSeAbstractStub webService(CertificadoConfig configCertificado) throws ServiceException{

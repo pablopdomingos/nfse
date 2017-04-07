@@ -12,7 +12,7 @@ public class RpsPrestadorBetha extends AbstractRPS {
   @NotNull
   private RpsCpfCnpjBetha cnpj;
 
-  @Element(name="InscricaoMunicipal")
+  @Element(name="InscricaoMunicipal", required = false)
   @Size(min = 1, max = 15)
   private String inscricaoMunicipal;
 

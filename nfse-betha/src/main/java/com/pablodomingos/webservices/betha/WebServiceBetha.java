@@ -32,11 +32,8 @@ public class WebServiceBetha extends NFSeAbstractWebService {
     return webService(configCertificado).consultarSituacaoLoteRps(xml).toString();
   }
 
-  public static String gerarNfse(String xml, CertificadoConfig configCertificado)
-      throws ServiceException, KeyStoreException, NoSuchAlgorithmException, CertificateException,
-      IOException {
-
-    return ((String) webService(configCertificado).gerarNfse(CABECALHO, xml));
+  public static CancelarNfseRespostaBetha gerarNfse(String xml, CertificadoConfig configCertificado) throws Exception {
+    return fromXml(CancelarNfseRespostaBetha.class, webService(configCertificado).gerarNfse(CABECALHO, xml));
   }
 
   public static CancelarNfseRespostaBetha cancelarNfse(String xml, CertificadoConfig configCertificado) throws Exception {

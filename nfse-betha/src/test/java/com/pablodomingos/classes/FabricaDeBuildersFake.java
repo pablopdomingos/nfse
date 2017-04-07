@@ -6,7 +6,7 @@ import com.pablodomingos.classes.rps.enums.*;
 public class FabricaDeBuildersFake {
 
   public static TomadorBuilder getTomadorBuilder() {
-    return new TomadorBuilder("12345678909")
+    return new TomadorBuilder("85386860000168")
       .comNome("Nome Tomador")
       .comLogradouro("Logradouro")
       .comNumeroEndereco("1234")
@@ -20,8 +20,8 @@ public class FabricaDeBuildersFake {
   }
 
   public static PrestadorBuilder getRpsPrestadorBuilder() {
-    return new PrestadorBuilder("45111111111100")
-        .comInscricaoMunicipal("123498");
+    return new PrestadorBuilder("85386860000168");
+//        .comInscricaoMunicipal("123498");
   }
   
   public static IntermediarioBuilder getIntermediarioBuilder(){
@@ -30,25 +30,25 @@ public class FabricaDeBuildersFake {
   }
 
   public static ValoresBuilder getValoresBuilder(){
-      return new ValoresBuilder(100.00, 1.0)
-          .comValorPis(2.00)
-          .comValorCofins(3.00)
-          .comValorInss(4.00)
-          .comValorIr(5.00)
-          .comValorCsll(6.00)
-          .comValorDeducoes(7.00)
-          .comDescontoCondicionado(8.00)
-          .comDescontoIncondicionado(9.00)
-          .comOutrasRetencoes(10.00)
+      return new ValoresBuilder(100.00)
+//          .comValorPis(2.00)
+//          .comValorCofins(3.00)
+//          .comValorInss(4.00)
+//          .comValorIr(5.00)
+//          .comValorCsll(6.00)
+//          .comValorDeducoes(7.00)
+//          .comDescontoCondicionado(8.00)
+//          .comDescontoIncondicionado(9.00)
+//          .comOutrasRetencoes(10.00)
           .comIssRetido(false);
   }
 
   public static ServicoBuilder getServicoBuilder() {
-    return new ServicoBuilder(getValoresBuilder(), "01.01")
-      .comCodigoCnae(12345)
-      .comCodigoMunicipio(3106200)
+    return new ServicoBuilder(getValoresBuilder(), "0101")
+      .comCodigoMunicipio(4204608)
+      .comMunicipioIncidencia(4204608)
       .comCodigoTributacaoMunicipio("110200188")
-      .comDiscriminacao("Discriminacao teste")
+      .comDiscriminacao("Prog.")
       .comExigibilidadeISS(ExigibilidadeIss.EXIGIVEL);
   }
 
@@ -56,7 +56,7 @@ public class FabricaDeBuildersFake {
     return new RpsInfoBuilder("1")
         .comId("1")
         .comSerie("A")
-        .comNaturezaOperacao(NaturezaOperacao.TRIBUTACAO_MUNICIPIO)
+//        .comNaturezaOperacao(NaturezaOperacao.TRIBUTACAO_MUNICIPIO)
         .optanteSimplesNacional(true)
         .comPrestador(getRpsPrestadorBuilder())
         .comRegimeEspecialTributacao(RegimeEspecialTributacao.ME_EPP_SIMPLES_NACIONAL)
@@ -66,7 +66,7 @@ public class FabricaDeBuildersFake {
   }
 
   public static LoteRpsBuilder getLoteRpsBuilder(){
-    return new LoteRpsBuilder("1")
+    return new LoteRpsBuilder("366")
         .comId("rps1")
         .comDocumento("45111111111100")
         .comInscricaoMunicipal("123498")

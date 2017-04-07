@@ -13,7 +13,7 @@ public class RpsEnvioBetha extends AbstractServiceBetha {
     @Attribute(name = "xmlns")
     private String xmlns = "http://www.betha.com.br/e-nota-contribuinte-ws";
 
-    @Element(name = "RpsBetha")
+    @Element(name = "Rps")
     @Valid
     private RpsBetha rps;
 

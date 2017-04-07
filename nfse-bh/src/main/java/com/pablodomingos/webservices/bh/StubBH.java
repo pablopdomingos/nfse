@@ -1,4 +1,4 @@
-package com.pablodomingos.webservices.bhiss;
+package com.pablodomingos.webservices.bh;
 
 import com.pablodomingos.webservices.core.NFSeAbstractStub;
 import org.apache.axis.AxisFault;

@@ -14,9 +14,13 @@ public class ValoresBuilder extends AbstractBuilder {
   private Double valorCsll;
   private IssRetido issRetido = IssRetido.NAO;
   private Double outrasRetencoes;
-  private Double aliquota = 0.0;
+  private Double aliquota;
   private Double descontoIncondicionado;
   private Double descontoCondicionado;
+
+  public ValoresBuilder(Double valorServicos) {
+    this.valorServicos = DoubleUtil.arredondarDuasCasas(valorServicos);
+  }
 
   public ValoresBuilder(Double valorServicos, Double aliquota) {
     this.aliquota = DoubleUtil.arredondarDuasCasas(aliquota / 100.0);

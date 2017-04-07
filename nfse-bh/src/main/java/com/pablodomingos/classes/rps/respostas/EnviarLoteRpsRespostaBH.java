@@ -6,7 +6,7 @@ import org.simpleframework.xml.Root;
 import java.time.LocalDateTime;
 
 @Root(name = "EnviarLoteRpsResposta")
-public class EnviarLoteRpsRespostaBH {
+public class EnviarLoteRpsRespostaBH extends RespostaAbstract {
   @Element(name = "NumeroLote")
   private Integer numeroLote;
   @Element(name = "DataRecebimento")

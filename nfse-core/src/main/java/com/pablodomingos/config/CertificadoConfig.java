@@ -68,43 +68,43 @@ public class CertificadoConfig {
     }
   }
 
-  public void carregarCertificados(){
+  public void carregarCertificados() {
     try {
       this.getCertificadoKeyStore();
     } catch (KeyStoreException e) {
       e.printStackTrace();
     }
-    System.clearProperty("javax.net.ssl.keyStore");  
-    System.clearProperty("javax.net.ssl.keyStorePassword");  
-    System.clearProperty("javax.net.ssl.trustStore");  
-    
-    if(this.getTipoCertificado().equals(TipoCertificado.A1)){
-      
-      System.setProperty("java.protocol.handler.pkgs", "com.sun.net.ssl.internal.www.protocol");  
-      Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());  
+    System.clearProperty("javax.net.ssl.keyStore");
+    System.clearProperty("javax.net.ssl.keyStorePassword");
+    System.clearProperty("javax.net.ssl.trustStore");
 
-      System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");  
-      System.setProperty("javax.net.ssl.keyStore", this.getCaminhoParaCertificado());  
-      System.setProperty("javax.net.ssl.keyStorePassword", this.getSenhaCertificado());  
-      
-    }else if(this.getTipoCertificado().equals(TipoCertificado.A3_CARD)){
-      
-      System.setProperty("javax.net.ssl.keyStore", "NONE");  
-      System.setProperty("javax.net.ssl.keyStoreType", "PKCS11");  
-      System.setProperty("javax.net.ssl.keyStoreProvider", "SunPKCS11-SmartCard"); 
-      
-    }else if(this.getTipoCertificado().equals(TipoCertificado.A3_TOKEN)){
-      
-      System.setProperty("javax.net.ssl.keyStore", "NONE");  
-      System.setProperty("javax.net.ssl.keyStoreType", "PKCS11");  
-      System.setProperty("javax.net.ssl.keyStoreProvider", "SunPKCS11-eToken"); 
-      
+    if (this.getTipoCertificado().equals(TipoCertificado.A1)) {
+
+      System.setProperty("java.protocol.handler.pkgs", "com.sun.net.ssl.internal.www.protocol");
+      Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+
+      System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
+      System.setProperty("javax.net.ssl.keyStore", this.getCaminhoParaCertificado());
+      System.setProperty("javax.net.ssl.keyStorePassword", this.getSenhaCertificado());
+
+    } else if (this.getTipoCertificado().equals(TipoCertificado.A3_CARD)) {
+
+      System.setProperty("javax.net.ssl.keyStore", "NONE");
+      System.setProperty("javax.net.ssl.keyStoreType", "PKCS11");
+      System.setProperty("javax.net.ssl.keyStoreProvider", "SunPKCS11-SmartCard");
+
+    } else if (this.getTipoCertificado().equals(TipoCertificado.A3_TOKEN)) {
+
+      System.setProperty("javax.net.ssl.keyStore", "NONE");
+      System.setProperty("javax.net.ssl.keyStoreType", "PKCS11");
+      System.setProperty("javax.net.ssl.keyStoreProvider", "SunPKCS11-eToken");
+
     }
-    
-    System.setProperty("javax.net.ssl.trustStoreType", "JKS");  
+
+    System.setProperty("javax.net.ssl.trustStoreType", "JKS");
     System.setProperty("javax.net.ssl.trustStore", this.getCaminhoParaCadeiaCertificado());
   }
-  
+
   public TipoCertificado getTipoCertificado() {
     return tipoCertificado;
   }
@@ -120,7 +120,7 @@ public class CertificadoConfig {
   public String getCaminhoParaCertificado() {
     return caminhoParaCertificado;
   }
-  
+
   public String getCaminhoParaCadeiaCertificado() {
     return caminhoParaCadeiaCertificado;
   }
@@ -164,12 +164,12 @@ public class CertificadoConfig {
       this.caminhoParaCadeiaCertificado = caminhoParaCadeiaCertificado;
       return this;
     }
-    
+
     public CertificadoConfigBuilder comAmbiente(NFSeAmbiente ambiente) {
       this.ambiente = ambiente;
       return this;
     }
-    
+
     public CertificadoConfig build() {
       return new CertificadoConfig(this);
     }

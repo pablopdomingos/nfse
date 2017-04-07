@@ -8,7 +8,7 @@ import org.simpleframework.xml.Root;
 import java.util.List;
 
 @Root(name = "ConsultarLoteRpsRespostaBetha")
-public class ConsultarLoteRpsRespostaBetha {
+public class ConsultarLoteRpsRespostaBetha extends RespostaAbstract {
   @Element(name = "Situacao")
   private SituacaoLoteRps situacao;
 

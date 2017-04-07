@@ -6,6 +6,7 @@ import com.pablodomingos.classes.rps.enums.LoteRpsVersao;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -46,10 +47,10 @@ public class LoteRpsBH extends AbstractRPS {
   @NotNull
   private int quantidadeRps;
 
-  @Element(name = "ListaRps")
+  @ElementList(name = "ListaRps")
   @NotNull
   @Valid
-  private final List<RpsBH> listaRps = new ArrayList<>();
+  private final ArrayList<RpsBH> listaRps = new ArrayList<>();
 
   public LoteRpsBH(LoteRpsBuilder builder) {
     this.id = builder.getId();

@@ -118,8 +118,8 @@ public abstract class AssinaturaDigital {
     ArrayList<Transform> transformList = new ArrayList<Transform>();
     TransformParameterSpec tps = null;
     Transform envelopedTransform = signatureFactory.newTransform(Transform.ENVELOPED, tps);
-    Transform c14NTransform =
-        signatureFactory.newTransform("http://www.w3.org/TR/2001/REC-xml-c14n-20010315", tps);
+    Transform c14NTransform = signatureFactory.newTransform("http://www.w3.org/TR/2001/REC-xml-c14n-20010315", tps);
+//    Transform c14NTransform = signatureFactory.newTransform("http://www.w3.org/2001/10/xml-exc-c14n#", tps);
 
     transformList.add(envelopedTransform);
     transformList.add(c14NTransform);

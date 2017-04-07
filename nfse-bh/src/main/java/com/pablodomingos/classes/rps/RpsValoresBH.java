@@ -17,27 +17,27 @@ public class RpsValoresBH extends AbstractRPS {
   @DecimalMin("0.01")
   private Double valorServicos;
 
-  @Element(name = "ValorDeducoes")
+  @Element(name = "ValorDeducoes", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double valorDeducoes;
 
-  @Element(name = "ValorPis")
+  @Element(name = "ValorPis", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double valorPis;
 
-  @Element(name = "ValorCofins")
+  @Element(name = "ValorCofins", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double valorCofins;
 
-  @Element(name = "ValorInss")
+  @Element(name = "ValorInss", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double valorInss;
 
-  @Element(name = "ValorIr")
+  @Element(name = "ValorIr", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double valorIr;
 
-  @Element(name = "ValorCsll")
+  @Element(name = "ValorCsll", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double valorCsll;
 
@@ -45,23 +45,23 @@ public class RpsValoresBH extends AbstractRPS {
   @NotNull
   private IssRetido issRetido;
 
-  @Element(name = "ValorIss")
+  @Element(name = "ValorIss", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double valorIss;
 
-  @Element(name = "ValorIssRetido")
+  @Element(name = "ValorIssRetido", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double valorIssRetido;
 
-  @Element(name = "OutrasRetencoes")
+  @Element(name = "OutrasRetencoes", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double outrasRetencoes;
 
-  @Element(name = "BaseCalculo")
+  @Element(name = "BaseCalculo", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double baseCalculo;
 
-  @Element(name = "Aliquota")
+  @Element(name = "Aliquota", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double aliquota;
 
@@ -71,11 +71,11 @@ public class RpsValoresBH extends AbstractRPS {
   @DecimalMin("0.01")
   private Double valorLiquido;
 
-  @Element(name = "DescontoIncondicionado")
+  @Element(name = "DescontoIncondicionado", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double descontoIncondicionado;
 
-  @Element(name = "DescontoCondicionado")
+  @Element(name = "DescontoCondicionado", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double descontoCondicionado;
 

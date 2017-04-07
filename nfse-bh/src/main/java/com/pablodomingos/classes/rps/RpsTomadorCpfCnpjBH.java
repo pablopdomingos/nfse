@@ -8,12 +8,12 @@ import javax.validation.constraints.Size;
 
 public class RpsTomadorCpfCnpjBH extends AbstractRPS {
 
-  @Element(name="Cnpj")
+  @Element(name="Cnpj", required = false)
   @CNPJ
   @Size(min = 14, max = 14)
   private String cnpj;
 
-  @Element(name="Cpf")
+  @Element(name="Cpf", required = false)
   @CPF
   @Size(min = 11, max = 11)
   private String cpf;

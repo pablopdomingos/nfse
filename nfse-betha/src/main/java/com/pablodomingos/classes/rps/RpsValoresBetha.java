@@ -12,66 +12,64 @@ import javax.validation.constraints.NotNull;
 
 public class RpsValoresBetha extends AbstractRPS {
 
-  @Element(name="ValorServicos")
+  @Element(name = "ValorServicos")
   @NotNull
-  @Digits(integer=13, fraction=2)
+  @Digits(integer = 13, fraction = 2)
   @DecimalMin("0.01")
   private Double valorServicos;
 
-  @Element(name="ValorDeducoes")
-  @Digits(integer=13, fraction=2)
+  @Element(name = "ValorDeducoes", required = false)
+  @Digits(integer = 13, fraction = 2)
   private Double valorDeducoes;
 
-  @Element(name="ValorPis")
-  @Digits(integer=13, fraction=2)
+  @Element(name = "ValorPis", required = false)
+  @Digits(integer = 13, fraction = 2)
   private Double valorPis;
 
-  @Element(name="ValorCofins")
-  @Digits(integer=13, fraction=2)
+  @Element(name = "ValorCofins", required = false)
+  @Digits(integer = 13, fraction = 2)
   private Double valorCofins;
 
-  @Element(name="ValorInss")
-  @Digits(integer=13, fraction=2)
+  @Element(name = "ValorInss", required = false)
+  @Digits(integer = 13, fraction = 2)
   private Double valorInss;
 
-  @Element(name="ValorIr")
-  @Digits(integer=13, fraction=2)
+  @Element(name = "ValorIr", required = false)
+  @Digits(integer = 13, fraction = 2)
   private Double valorIr;
 
-  @Element(name="ValorCsll")
-  @Digits(integer=13, fraction=2)
+  @Element(name = "ValorCsll", required = false)
+  @Digits(integer = 13, fraction = 2)
   private Double valorCsll;
-  
-  @Element(name="OutrasRetencoes")
-  @Digits(integer=13, fraction=2)
+
+  @Element(name = "OutrasRetencoes", required = false)
+  @Digits(integer = 13, fraction = 2)
   private Double outrasRetencoes;
 
-  @Element(name="ValorIss")
-  @Digits(integer=13, fraction=2)
+  @Element(name = "ValorIss", required = false)
+  @Digits(integer = 13, fraction = 2)
   private Double valorIss;
-  
-  @Element(name="Aliquota")
-  @Digits(integer=13, fraction=2)
+
+  @Element(name = "Aliquota", required = false)
+  @Digits(integer = 13, fraction = 2)
   private Double aliquota;
 
   @Transient
   @NotNull
-  @Digits(integer=13, fraction=2)
-  @DecimalMin("0.01")
+  @Digits(integer = 13, fraction = 2)
   private Double valorLiquido;
 
   @Transient
   @NotNull
-  @Digits(integer=13, fraction=2)
-  @DecimalMin("0.01")
+  @Digits(integer = 13, fraction = 2)
   private Double valorIssRetido;
-  
-  @Element(name="DescontoIncondicionado")
-  @Digits(integer=13, fraction=2)
+
+  @Element(name = "DescontoIncondicionado", required = false)
+  @Digits(integer = 13, fraction = 2)
   private Double descontoIncondicionado;
 
-  @Element(name="DescontoCondicionado")
-  @Digits(integer=13, fraction=2)
+  @Element(name = "DescontoCondicionado", required = false)
+  @Digits(integer = 13, fraction = 2)
   private Double descontoCondicionado;
 
   public RpsValoresBetha(ValoresBuilder builder) {
@@ -87,9 +85,9 @@ public class RpsValoresBetha extends AbstractRPS {
     this.descontoIncondicionado = builder.getDescontoIncondicionado();
     this.descontoCondicionado = builder.getDescontoCondicionado();
 
-    if(builder.getIssRetido().equals(IssRetido.NAO)){
+    if (builder.getIssRetido().equals(IssRetido.NAO)) {
       this.valorIss = DoubleUtil.arredondarDuasCasas(calcularIss());
-    }else {
+    } else {
       this.valorIssRetido = DoubleUtil.arredondarDuasCasas(calcularIss());
     }
     this.valorLiquido = DoubleUtil.arredondarDuasCasas(calcularValorLiquido());
@@ -152,19 +150,23 @@ public class RpsValoresBetha extends AbstractRPS {
   }
 
   private Double calcularIss() {
-      return this.valorServicos * this.aliquota;
+    if (this.valorServicos == null || this.aliquota == null)
+    {
+      return null;
+    }
+    return this.valorServicos * this.aliquota;
   }
-  
+
   private Double calcularValorLiquido() {
-    return  this.valorServicos - 
-            (this.valorPis == null ? 0 : this.valorPis) -
-            (this.valorCofins == null ? 0 : this.valorCofins) -
-            (this.valorInss == null ? 0 : this.valorInss) -
-            (this.valorIr == null ? 0 : this.valorIr) -
-            (this.valorCsll == null ? 0 : this.valorCsll) -
-            (this.outrasRetencoes == null ? 0 : this.outrasRetencoes) -
-            (this.valorIssRetido == null ? 0 : this.valorIssRetido) -
-            (this.descontoCondicionado == null ? 0 : this.descontoCondicionado) -
-            (this.descontoIncondicionado == null ? 0 : this.descontoIncondicionado);
+    return this.valorServicos -
+        (this.valorPis == null ? 0 : this.valorPis) -
+        (this.valorCofins == null ? 0 : this.valorCofins) -
+        (this.valorInss == null ? 0 : this.valorInss) -
+        (this.valorIr == null ? 0 : this.valorIr) -
+        (this.valorCsll == null ? 0 : this.valorCsll) -
+        (this.outrasRetencoes == null ? 0 : this.outrasRetencoes) -
+        (this.valorIssRetido == null ? 0 : this.valorIssRetido) -
+        (this.descontoCondicionado == null ? 0 : this.descontoCondicionado) -
+        (this.descontoIncondicionado == null ? 0 : this.descontoIncondicionado);
   }
 }

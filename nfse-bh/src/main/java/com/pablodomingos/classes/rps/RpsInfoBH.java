@@ -12,8 +12,7 @@ import java.time.LocalDateTime;
 
 public class RpsInfoBH extends AbstractRPS {
 
-  @Element(name = "Id")
-  @Attribute
+  @Attribute(name = "Id")
   @NotNull
   @Size(min = 1, max = 255)
   private String id;
@@ -31,7 +30,7 @@ public class RpsInfoBH extends AbstractRPS {
   @NotNull
   private NaturezaOperacao naturezaOperacao;
 
-  @Element(name = "RegimeEspecialTributacao")
+  @Element(name = "RegimeEspecialTributacao", required = false)
   private RegimeEspecialTributacao regimeEspecialTributacao;
 
   @Element(name = "OptanteSimplesNacional")
@@ -46,7 +45,7 @@ public class RpsInfoBH extends AbstractRPS {
   @NotNull
   private RpsStatus status;
 
-  @Element(name = "RpsSubstituido")
+  @Element(name = "RpsSubstituido", required = false)
   @Valid
   private RpsIdentificacaoBH rpsSubstituido;
 
@@ -60,15 +59,15 @@ public class RpsInfoBH extends AbstractRPS {
   @Valid
   private RpsPrestadorBH prestador;
 
-  @Element(name = "Tomador")
+  @Element(name = "Tomador", required = false)
   @Valid
   private RpsTomadorBH tomador;
 
-  @Element(name = "IntermediarioServico")
+  @Element(name = "IntermediarioServico", required = false)
   @Valid
   private RpsIntermediarioBH intermediario;
 
-  @Element(name = "ConstrucaoCivil")
+  @Element(name = "ConstrucaoCivil", required = false)
   @Valid
   private RpsDadosContrucaoCivilBH construcaoCivil;
 

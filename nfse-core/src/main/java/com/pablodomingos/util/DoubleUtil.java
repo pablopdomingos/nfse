@@ -8,6 +8,8 @@ import java.util.Locale;
 public class DoubleUtil {
   
   public static Double arredondarDuasCasas(Double valor){
+    if (valor == null)
+      return null;
     DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
     DecimalFormat df = new DecimalFormat("###.##", symbols);
     df.setRoundingMode(RoundingMode.HALF_EVEN);

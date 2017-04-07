@@ -6,10 +6,10 @@ import javax.validation.constraints.Size;
 
 public class RpsTomadorIdentificacaoBH extends AbstractRPS {
 
-  @Element(name="CpfCnpj")
+  @Element(name="CpfCnpj", required = false)
   private RpsTomadorCpfCnpjBH cpfCnpj;
 
-  @Element(name="InscricaoMunicipal")
+  @Element(name="InscricaoMunicipal", required = false)
   @Size(min=1, max=15)
   private String inscricaoMunicipal;
 

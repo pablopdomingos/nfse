@@ -47,7 +47,7 @@ public class RpsServicoBetha extends AbstractRPS {
   @Element(name="CodigoPais", required = false)
   @Pattern(regexp = "\\d+")
   @Size(min = 1, max = 4)
-  private String codigoPais = "1058"; //fixo Brasil
+  private String codigoPais;
 
   @Element(name="ExigibilidadeISS")
   @NotNull
@@ -71,6 +71,9 @@ public class RpsServicoBetha extends AbstractRPS {
     this.codigoMunicipioIbge = builder.getCodigoMunicipio();
     this.issRetido = builder.getValores().getIssRetido();
     this.exigibilidadeISS = builder.getExigibilidadeIss();
+    this.codigoPais = builder.getCodigoPais();
+    this.municipioIncidencia = builder.getMunicipioIncidencia();
+    this.numeroProcesso = builder.getNumeroProcesso();
   }
 
   public RpsValoresBetha getValores() {
