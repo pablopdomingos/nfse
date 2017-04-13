@@ -13,6 +13,7 @@ public class NFRegistryMatcher extends RegistryMatcher {
         super.bind(ExigibilidadeIss.class, new NFExigibilidadeIssTransformer());
         super.bind(IncentivadorCultural.class, new NFIncentivadorCulturalTransformer());
         super.bind(IssRetido.class, new NFIssRetidoTransformer());
+        super.bind(ResponsavelRetencao.class, new NFReponsavelRetencaoTransformer());
         super.bind(LocalDateTime.class, new NFLocalDateTimeTransformer());
         super.bind(LocalDate.class, new NFLocalDateTransformer());
         super.bind(LoteRpsVersao.class, new NFLoteRpsVersaoTransformer());

@@ -6,7 +6,7 @@ import com.pablodomingos.classes.rps.enums.*;
 public class FabricaDeBuildersFake {
 
   public static TomadorBuilder getTomadorBuilder() {
-    return new TomadorBuilder("85386860000168")
+    return new TomadorBuilder("45111111111100")
       .comNome("Nome Tomador")
       .comLogradouro("Logradouro")
       .comNumeroEndereco("1234")
@@ -20,8 +20,8 @@ public class FabricaDeBuildersFake {
   }
 
   public static PrestadorBuilder getRpsPrestadorBuilder() {
-    return new PrestadorBuilder("85386860000168");
-//        .comInscricaoMunicipal("123498");
+    return new PrestadorBuilder("45111111111100")
+        .comInscricaoMunicipal("123498");
   }
   
   public static IntermediarioBuilder getIntermediarioBuilder(){
@@ -30,16 +30,16 @@ public class FabricaDeBuildersFake {
   }
 
   public static ValoresBuilder getValoresBuilder(){
-      return new ValoresBuilder(100.00)
-//          .comValorPis(2.00)
-//          .comValorCofins(3.00)
-//          .comValorInss(4.00)
-//          .comValorIr(5.00)
-//          .comValorCsll(6.00)
-//          .comValorDeducoes(7.00)
-//          .comDescontoCondicionado(8.00)
-//          .comDescontoIncondicionado(9.00)
-//          .comOutrasRetencoes(10.00)
+      return new ValoresBuilder(100.00, 1.0)
+          .comValorPis(2.00)
+          .comValorCofins(3.00)
+          .comValorInss(4.00)
+          .comValorIr(5.00)
+          .comValorCsll(6.00)
+          .comValorDeducoes(7.00)
+          .comDescontoCondicionado(8.00)
+          .comDescontoIncondicionado(9.00)
+          .comOutrasRetencoes(10.00)
           .comIssRetido(false);
   }
 

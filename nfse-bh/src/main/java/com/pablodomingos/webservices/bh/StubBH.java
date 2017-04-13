@@ -19,9 +19,8 @@ public class StubBH extends NFSeAbstractStub {
     super(endpointURL, service);
   }
 
-  @Override
-  protected Call recepcionarLoteRpsCall() throws RemoteException {
-    Call call = super.recepcionarLoteRpsCall();
+  public Object recepcionarLoteRps(Object... parameters) throws RemoteException {
+    Call call = super.createCall();
     OperationDesc operationDesc = new OperationDesc();
     operationDesc.setName("RecepcionarLoteRps");
     ParameterDesc param = new ParameterDesc(new QName("http://ws.bhiss.pbh.gov.br", "RecepcionarLoteRpsRequest"), ParameterDesc.IN, new QName("http://ws.bhiss.pbh.gov.br", "input"), InputBH.class, false, false);
@@ -36,12 +35,11 @@ public class StubBH extends NFSeAbstractStub {
     call.setOperation(operationDesc);
     call.setSOAPActionURI("http://ws.bhiss.pbh.gov.br/RecepcionarLoteRps");
     _call.setOperationName(new QName("", "RecepcionarLoteRps"));
-    return call;
+    return genericCall(call, parameters);
   }
 
-  @Override
-  public Call consultarLoteRpsCall() throws RemoteException {
-    Call call = super.consultarLoteRpsCall();
+  public Object consultarLoteRps(Object... parameters) throws RemoteException {
+    Call call = super.createCall();
 
     OperationDesc operationDesc = new OperationDesc();
     operationDesc.setName("ConsultarLoteRps");
@@ -56,12 +54,11 @@ public class StubBH extends NFSeAbstractStub {
     call.setOperation(operationDesc);
     call.setSOAPActionURI("http://ws.bhiss.pbh.gov.br/GerarNfse");
     _call.setOperationName(new QName("", "GerarNfse"));
-    return call;
+    return genericCall(call, parameters);
   }
 
-  @Override
-  public Call gerarNfseCall() throws RemoteException {
-    Call call = super.gerarNfseCall();
+  public Object gerarNfse(Object... parameters) throws RemoteException {
+    Call call = super.createCall();
 
     OperationDesc operationDesc = new OperationDesc();
     operationDesc.setName("GerarNfse");
@@ -76,6 +73,6 @@ public class StubBH extends NFSeAbstractStub {
     call.setOperation(operationDesc);
     call.setSOAPActionURI("http://ws.bhiss.pbh.gov.br/GerarNfse");
     _call.setOperationName(new QName("", "GerarNfse"));
-    return call;
+    return genericCall(call, parameters);
   }
 }

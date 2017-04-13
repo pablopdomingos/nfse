@@ -5,8 +5,8 @@ import com.pablodomingos.assinatura.TipoCertificado;
 import com.pablodomingos.classes.FabricaDeBuildersFake;
 import com.pablodomingos.classes.rps.LoteRpsBH;
 import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
-import com.pablodomingos.classes.rps.respostas.GerarNfseResposta;
-import com.pablodomingos.classes.rps.servicos.RpsEnvioBH;
+import com.pablodomingos.classes.respostas.GerarNfseRespostaBH;
+import com.pablodomingos.classes.servicos.RpsEnvioBH;
 import com.pablodomingos.config.CertificadoConfig;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
@@ -40,7 +40,7 @@ public class WebServiceBHTest {
             .comCaminhoCadeiaDeCertificados(WebServiceBHTest.class.getClassLoader().getResource("nfse-bh.cacerts").getPath())
             .comAmbiente(NFSeAmbiente.HOMOLOGACAO));
 
-    GerarNfseResposta gerarNfseResposta = null;
+    GerarNfseRespostaBH gerarNfseResposta = null;
 //    LoteRpsBetha loteRpsBetha = new LoteRpsBetha(FabricaDeBuildersFake.getLoteRpsBuilder());
 //    LoteRpsEnvioBetha loteRpsEnvio = new LoteRpsEnvioBetha(loteRpsBetha);
 //    String xml = loteRpsEnvio.converterParaXml();

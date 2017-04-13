@@ -32,7 +32,7 @@ public class FabricaDeObjetosFake {
     return new LoteRpsBetha(FabricaDeBuildersFake.getLoteRpsBuilder());
   }
 
-  public static NFSeInfPedidoCancelamentoBetha getNFSeInfPedidoCancelamento(){
-    return new NFSeInfPedidoCancelamentoBetha(FabricaDeBuildersFake.getPedidoCancelamentoInfBuilder());
+  public static NfseInfPedidoCancelamentoBetha getNFSeInfPedidoCancelamento(){
+    return new NfseInfPedidoCancelamentoBetha(FabricaDeBuildersFake.getPedidoCancelamentoInfBuilder());
   }
 }

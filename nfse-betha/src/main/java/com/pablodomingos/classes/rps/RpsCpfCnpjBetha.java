@@ -18,6 +18,9 @@ public class RpsCpfCnpjBetha extends AbstractRPS {
   @Size(min = 11, max = 11)
   private String cpf;
 
+  public RpsCpfCnpjBetha() {
+  }
+
   public RpsCpfCnpjBetha(String documento) {
     if (documento != null)
     {

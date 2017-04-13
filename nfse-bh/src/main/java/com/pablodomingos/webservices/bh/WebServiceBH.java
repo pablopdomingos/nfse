@@ -1,9 +1,10 @@
 package com.pablodomingos.webservices.bh;
 
 import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
-import com.pablodomingos.classes.rps.respostas.EnviarLoteRpsRespostaBH;
-import com.pablodomingos.classes.rps.respostas.GerarNfseResposta;
+import com.pablodomingos.classes.respostas.EnviarLoteRpsRespostaBH;
+import com.pablodomingos.classes.respostas.GerarNfseRespostaBH;
 import com.pablodomingos.config.CertificadoConfig;
+import com.pablodomingos.util.XmlUtil;
 import com.pablodomingos.webservices.core.NFSeAbstractStub;
 import com.pablodomingos.webservices.core.NFSeAbstractWebService;
 import com.pablodomingos.webservices.core.NFSeLocator;
@@ -21,13 +22,13 @@ public class WebServiceBH extends NFSeAbstractWebService {
             + "</cabecalho>";
 
     public static EnviarLoteRpsRespostaBH enviarLoteRps(String xml, CertificadoConfig configCertificado) throws Exception {
-        return fromXml(EnviarLoteRpsRespostaBH.class, ((OutputBH) webService(configCertificado).recepcionarLoteRps(new InputBH(CABECALHO, xml))).getOutputXML());
+        return XmlUtil.fromXml(EnviarLoteRpsRespostaBH.class, ((OutputBH) webService(configCertificado).recepcionarLoteRps(new InputBH(CABECALHO, xml))).getOutputXML());
     }
-    public static GerarNfseResposta gerarNfse(String xml, CertificadoConfig configCertificado) throws Exception {
-        return fromXml(GerarNfseResposta.class, ((OutputBH) webService(configCertificado).gerarNfse(new InputBH(CABECALHO, xml))).getOutputXML());
+    public static GerarNfseRespostaBH gerarNfse(String xml, CertificadoConfig configCertificado) throws Exception {
+        return XmlUtil.fromXml(GerarNfseRespostaBH.class, ((OutputBH) webService(configCertificado).gerarNfse(new InputBH(CABECALHO, xml))).getOutputXML());
     }
 
-    private static NFSeAbstractStub webService(CertificadoConfig configCertificado) throws ServiceException{
+    private static StubBH webService(CertificadoConfig configCertificado) throws ServiceException{
         configCertificado.carregarCertificados();
 
         NFSeWebService _service = new NFSeLocator(configCertificado) {
@@ -59,6 +60,6 @@ public class WebServiceBH extends NFSeAbstractWebService {
             }
         };
 
-        return _service.getSOAP();
+        return (StubBH) _service.getSOAP();
     }
 }

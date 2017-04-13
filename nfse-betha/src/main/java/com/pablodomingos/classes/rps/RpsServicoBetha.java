@@ -3,6 +3,7 @@ package com.pablodomingos.classes.rps;
 import com.pablodomingos.classes.rps.builders.ServicoBuilder;
 import com.pablodomingos.classes.rps.enums.ExigibilidadeIss;
 import com.pablodomingos.classes.rps.enums.IssRetido;
+import com.pablodomingos.classes.rps.enums.ResponsavelRetencao;
 import org.simpleframework.xml.Element;
 
 import javax.validation.constraints.NotNull;
@@ -11,13 +12,17 @@ import javax.validation.constraints.Size;
 
 public class RpsServicoBetha extends AbstractRPS {
 
-  @Element(name="Valores")
+  @Element(name="Valores", required = false)
   @NotNull
   private RpsValoresBetha valores;
 
-  @Element(name="IssRetido")
+  @Element(name="IssRetido", required = false)
   @NotNull
   private IssRetido issRetido;
+
+  @Element(name="ResponsavelRetencao", required = false)
+  @NotNull
+  private ResponsavelRetencao responsavelRetencao;
 
   @Element(name="ItemListaServico")
   @NotNull
@@ -33,12 +38,12 @@ public class RpsServicoBetha extends AbstractRPS {
   @Size(min = 1, max = 20)
   private String codigoTributacaoMunicipio;
 
-  @Element(name="Discriminacao")
+  @Element(name="Discriminacao", required = false)
   @NotNull
   @Size(min = 1, max = 2000)
   private String discriminacao;
 
-  @Element(name="CodigoMunicipio")
+  @Element(name="CodigoMunicipio", required = false)
   @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min = 1, max = 7)
@@ -49,7 +54,7 @@ public class RpsServicoBetha extends AbstractRPS {
   @Size(min = 1, max = 4)
   private String codigoPais;
 
-  @Element(name="ExigibilidadeISS")
+  @Element(name="ExigibilidadeISS", required = false)
   @NotNull
   private ExigibilidadeIss exigibilidadeISS;
 
@@ -61,6 +66,9 @@ public class RpsServicoBetha extends AbstractRPS {
   @Element(name="NumeroProcesso", required = false)
   @Size(max = 30)
   private String numeroProcesso;
+
+  public RpsServicoBetha() {
+  }
 
   public RpsServicoBetha(ServicoBuilder builder) {
     this.valores = new RpsValoresBetha(builder.getValores());
@@ -102,5 +110,29 @@ public class RpsServicoBetha extends AbstractRPS {
 
   public IssRetido getIssRetido() {
     return issRetido;
+  }
+
+  public ResponsavelRetencao getResponsavelRetencao() {
+    return responsavelRetencao;
+  }
+
+  public String getCodigoMunicipioIbge() {
+    return codigoMunicipioIbge;
+  }
+
+  public String getCodigoPais() {
+    return codigoPais;
+  }
+
+  public ExigibilidadeIss getExigibilidadeISS() {
+    return exigibilidadeISS;
+  }
+
+  public String getMunicipioIncidencia() {
+    return municipioIncidencia;
+  }
+
+  public String getNumeroProcesso() {
+    return numeroProcesso;
   }
 }

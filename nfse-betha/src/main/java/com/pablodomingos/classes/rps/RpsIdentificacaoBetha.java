@@ -9,19 +9,22 @@ import javax.validation.constraints.Size;
 
 public class RpsIdentificacaoBetha extends AbstractRPS {
 
-  @Element(name="Numero")
+  @Element(name="Numero", required = false)
   @NotNull
   @Pattern(regexp = "\\d+")
   @Size(min=1, max=15)
   private String numero;
 
-  @Element(name="Serie")
+  @Element(name="Serie", required = false)
   @NotNull
   private String serie;
 
-  @Element(name="Tipo")
+  @Element(name="Tipo", required = false)
   @NotNull
   private RpsTipo tipo = RpsTipo.RPS;
+
+  public RpsIdentificacaoBetha() {
+  }
 
   public RpsIdentificacaoBetha(String numero) {
     this.numero = numero;

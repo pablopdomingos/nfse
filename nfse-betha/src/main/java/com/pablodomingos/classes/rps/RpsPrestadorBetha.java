@@ -16,6 +16,9 @@ public class RpsPrestadorBetha extends AbstractRPS {
   @Size(min = 1, max = 15)
   private String inscricaoMunicipal;
 
+  public RpsPrestadorBetha() {
+  }
+
   public RpsPrestadorBetha(PrestadorBuilder builder) {
     this.cnpj = new RpsCpfCnpjBetha(builder.getCpf(), builder.getCnpj());
     this.inscricaoMunicipal = builder.getInscricaoMunicipal();

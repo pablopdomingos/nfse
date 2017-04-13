@@ -14,17 +14,17 @@ import java.time.LocalDate;
 
 public class RpsInfoBetha extends AbstractRPS {
 
-  @Attribute(name = "Id")
+  @Attribute(name = "Id", required = false)
   @NotNull
   @Size(min = 1, max = 255)
   private String id;
 
-  @Element(name = "Rps")
+  @Element(name = "Rps", required = false)
   @NotNull
   @Valid
   private RpsInfoIdentificacaoBetha rps;
 
-  @Element(name = "Competencia")
+  @Element(name = "Competencia", required = false)
   @NotNull
   private LocalDate competencia;
 
@@ -32,12 +32,12 @@ public class RpsInfoBetha extends AbstractRPS {
   @Valid
   private RpsIdentificacaoBetha rpsSubstituido;
 
-  @Element(name = "Servico")
+  @Element(name = "Servico", required = false)
   @NotNull
   @Valid
   private RpsServicoBetha servico;
 
-  @Element(name = "Prestador")
+  @Element(name = "Prestador", required = false)
   @NotNull
   @Valid
   private RpsPrestadorBetha prestador;
@@ -57,13 +57,16 @@ public class RpsInfoBetha extends AbstractRPS {
   @Element(name = "RegimeEspecialTributacao", required = false)
   private RegimeEspecialTributacao regimeEspecialTributacao;
 
-  @Element(name = "OptanteSimplesNacional")
+  @Element(name = "OptanteSimplesNacional", required = false)
   @NotNull
   private OptanteSimplesNacional optanteSimplesNacional;
 
-  @Element(name = "IncentivoFiscal")
+  @Element(name = "IncentivoFiscal", required = false)
   @NotNull
   private IncentivadorCultural incentivadorCultural;
+
+  public RpsInfoBetha() {
+  }
 
   public RpsInfoBetha(RpsInfoBuilder builder) {
     competencia = LocalDate.now();

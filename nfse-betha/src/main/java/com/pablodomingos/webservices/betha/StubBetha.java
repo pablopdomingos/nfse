@@ -19,9 +19,8 @@ public class StubBetha extends NFSeAbstractStub {
         super(endpointURL, service);
     }
 
-    @Override
-    public Call cancelarNfseCall() throws RemoteException {
-        Call call = super.consultarLoteRpsCall();
+    public Object cancelarNfse(Object... parameters) throws RemoteException {
+        Call call = super.createCall();
 
         OperationDesc operationDesc = new OperationDesc();
         operationDesc.setName("CancelarNfse");
@@ -40,13 +39,10 @@ public class StubBetha extends NFSeAbstractStub {
         call.setOperation(operationDesc);
         call.setSOAPActionURI("CancelarNfseEnvio");
         call.setOperationName(new QName("http://www.betha.com.br/e-nota-contribuinte-ws", "CancelarNfse"));
-        return call;
+        return genericCall(call, parameters);
     }
-
-
-    @Override
-    public Call consultarLoteRpsCall() throws RemoteException {
-        Call call = super.consultarLoteRpsCall();
+    public Object consultarLoteRps(Object... parameters) throws RemoteException {
+        Call call = super.createCall();
 
         OperationDesc operationDesc = new OperationDesc();
         operationDesc.setName("ConsultarLoteRps");
@@ -65,12 +61,64 @@ public class StubBetha extends NFSeAbstractStub {
         call.setOperation(operationDesc);
         call.setSOAPActionURI("ConsultarLoteRpsEnvio");
         call.setOperationName(new QName("http://www.betha.com.br/e-nota-contribuinte-ws", "ConsultarLoteRps"));
-        return call;
+        return genericCall(call, parameters);
+    }
+//    public Object consultarNfseFaixa(Object... parameters) throws RemoteException {
+//        return genericCall(consultarNfseFaixaCall(), parameters);
+//    }
+//    public Object consultarNfsePorRps(Object... parameters) throws RemoteException {
+//        return genericCall(consultarNfsePorRpsCall(), parameters);
+//    }
+    public Object consultarNfseServicoPrestado(Object... parameters) throws RemoteException {
+        Call call = super.createCall();
+
+        OperationDesc operationDesc = new OperationDesc();
+        operationDesc.setName("ConsultarNfseServicoPrestado");
+        ParameterDesc param = new ParameterDesc(new QName("", "nfseCabecMsg"), ParameterDesc.IN, new QName("http://www.w3.org/2001/XMLSchema", "string"), String.class, false, false);
+        param.setOmittable(true);
+        operationDesc.addParameter(param);
+        param = new ParameterDesc(new QName("", "nfseDadosMsg"), ParameterDesc.IN, new QName("http://www.w3.org/2001/XMLSchema", "string"), String.class, false, false);
+        param.setOmittable(true);
+        operationDesc.addParameter(param);
+        operationDesc.setReturnType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
+        operationDesc.setReturnClass(String.class);
+        operationDesc.setReturnQName(new QName("", "return"));
+        operationDesc.setStyle(Style.WRAPPED);
+        operationDesc.setUse(Use.LITERAL);
+
+        call.setOperation(operationDesc);
+        call.setSOAPActionURI("ConsultarNfseServicoPrestadoEnvio");
+        call.setOperationName(new QName("http://www.betha.com.br/e-nota-contribuinte-ws", "ConsultarNfseServicoPrestado"));
+        return genericCall(call, parameters);
     }
 
-    @Override
-    public Call gerarNfseCall() throws RemoteException {
-        Call call = super.gerarNfseCall();
+    public Object consultarNfseServicoTomado(Object... parameters) throws RemoteException {
+        Call call = super.createCall();
+
+        OperationDesc operationDesc = new OperationDesc();
+        operationDesc.setName("ConsultarNfseServicoTomado");
+        ParameterDesc param = new ParameterDesc(new QName("", "nfseCabecMsg"), ParameterDesc.IN, new QName("http://www.w3.org/2001/XMLSchema", "string"), String.class, false, false);
+        param.setOmittable(true);
+        operationDesc.addParameter(param);
+        param = new ParameterDesc(new QName("", "nfseDadosMsg"), ParameterDesc.IN, new QName("http://www.w3.org/2001/XMLSchema", "string"), String.class, false, false);
+        param.setOmittable(true);
+        operationDesc.addParameter(param);
+        operationDesc.setReturnType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
+        operationDesc.setReturnClass(String.class);
+        operationDesc.setReturnQName(new QName("", "return"));
+        operationDesc.setStyle(Style.WRAPPED);
+        operationDesc.setUse(Use.LITERAL);
+
+        call.setOperation(operationDesc);
+        call.setSOAPActionURI("ConsultarNfseServicoTomadoEnvio");
+        call.setOperationName(new QName("http://www.betha.com.br/e-nota-contribuinte-ws", "ConsultarNfseServicoTomado"));
+        return genericCall(call, parameters);
+    }
+//    public Object consultarSituacaoLoteRps(Object... parameters) throws RemoteException {
+//        return genericCall(consultarSituacaoLoteRpsCall(), parameters);
+//    }
+    public Object gerarNfse(Object... parameters) throws RemoteException {
+        Call call = super.createCall();
 
         OperationDesc operationDesc = new OperationDesc();
         operationDesc.setName("GerarNfse");
@@ -89,12 +137,10 @@ public class StubBetha extends NFSeAbstractStub {
         call.setOperation(operationDesc);
         call.setSOAPActionURI("GerarNfseEnvio");
         call.setOperationName(new QName("http://www.betha.com.br/e-nota-contribuinte-ws", "GerarNfse"));
-        return call;
+        return genericCall(call, parameters);
     }
-
-    @Override
-    public Call recepcionarLoteRpsCall() throws RemoteException {
-        Call call = super.gerarNfseCall();
+    public Object recepcionarLoteRps(Object... parameters) throws RemoteException {
+        Call call = super.createCall();
 
         OperationDesc operationDesc = new OperationDesc();
         operationDesc.setName("RecepcionarLoteRps");
@@ -113,6 +159,12 @@ public class StubBetha extends NFSeAbstractStub {
         call.setOperation(operationDesc);
         call.setSOAPActionURI("RecepcionarLoteRps");
         call.setOperationName(new QName("http://www.betha.com.br/e-nota-contribuinte-ws", "RecepcionarLoteRps"));
-        return call;
+        return genericCall(call, parameters);
     }
+//    public Object recepcionarLoteRpsSincrono(Object... parameters) throws RemoteException {
+//        return genericCall(recepcionarLoteRpsSincronoCall(), parameters);
+//    }
+//    public Object substituirNfse(Object... parameters) throws RemoteException {
+//        return genericCall(substituirNfseCall(), parameters);
+//    }
 }

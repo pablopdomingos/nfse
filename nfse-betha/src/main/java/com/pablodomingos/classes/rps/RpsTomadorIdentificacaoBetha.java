@@ -13,6 +13,9 @@ public class RpsTomadorIdentificacaoBetha extends AbstractRPS {
   @Size(min=1, max=15)
   private String inscricaoMunicipal;
 
+  public RpsTomadorIdentificacaoBetha() {
+  }
+
   public RpsTomadorIdentificacaoBetha(RpsCpfCnpjBetha cpfCnpj, String inscricaoMunicipal) {
     this.cpfCnpj = cpfCnpj;
     this.inscricaoMunicipal = inscricaoMunicipal;

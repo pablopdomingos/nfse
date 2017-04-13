@@ -18,18 +18,21 @@ public class RpsTomadorBetha extends AbstractRPS {
 
     @Element(name = "Endereco")
     @NotNull
-    private RpsTomadorEnderecoBetha endereco;
+    private EnderecoBetha endereco;
 
     @Element(name = "Contato")
-    private RpsTomadorContatoBetha contato;
+    private ContatoBetha contato;
+
+    public RpsTomadorBetha() {
+    }
 
     public RpsTomadorBetha(TomadorBuilder builder) {
-        this.contato = new RpsTomadorContatoBetha(builder.getTelefone(), builder.getEmail());
+        this.contato = new ContatoBetha(builder.getTelefone(), builder.getEmail());
         this.identificacaoTomador = new RpsTomadorIdentificacaoBetha(
                 new RpsCpfCnpjBetha(builder.getCpf(), builder.getCnpj()),
                 builder.getInscricaoMunicipal()
         );
-        this.endereco = new RpsTomadorEnderecoBetha(
+        this.endereco = new EnderecoBetha(
                 builder.getLogradouro(),
                 builder.getNumero(),
                 builder.getComplemento(),
@@ -41,7 +44,7 @@ public class RpsTomadorBetha extends AbstractRPS {
         this.nome = builder.getNome();
     }
 
-    public RpsTomadorEnderecoBetha getEndereco() {
+    public EnderecoBetha getEndereco() {
         return endereco;
     }
 
@@ -53,7 +56,7 @@ public class RpsTomadorBetha extends AbstractRPS {
         return identificacaoTomador;
     }
 
-    public RpsTomadorContatoBetha getContato() {
+    public ContatoBetha getContato() {
         return contato;
     }
 

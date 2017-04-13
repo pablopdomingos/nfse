@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 
 public class RpsValoresBetha extends AbstractRPS {
 
-  @Element(name = "ValorServicos")
+  @Element(name = "ValorServicos", required = false)
   @NotNull
   @Digits(integer = 13, fraction = 2)
   @DecimalMin("0.01")
@@ -54,6 +54,14 @@ public class RpsValoresBetha extends AbstractRPS {
   @Digits(integer = 13, fraction = 2)
   private Double aliquota;
 
+  @Element(name="ValorLiquidoNfse", required = false)
+  @Digits(integer = 13, fraction = 2)
+  private Double valorLiquidoNfse;
+
+  @Element(name="BaseCalculo", required = false)
+  @Digits(integer = 13, fraction = 2)
+  private String baseCalculo;
+
   @Transient
   @NotNull
   @Digits(integer = 13, fraction = 2)
@@ -71,6 +79,9 @@ public class RpsValoresBetha extends AbstractRPS {
   @Element(name = "DescontoCondicionado", required = false)
   @Digits(integer = 13, fraction = 2)
   private Double descontoCondicionado;
+
+  public RpsValoresBetha() {
+  }
 
   public RpsValoresBetha(ValoresBuilder builder) {
     this.valorServicos = builder.getValorServicos();

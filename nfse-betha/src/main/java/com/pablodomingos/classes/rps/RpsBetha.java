@@ -9,9 +9,12 @@ import javax.validation.Valid;
 @Root(name = "Rps")
 public class RpsBetha extends AbstractRPS {
 
-  @Element(name = "InfDeclaracaoPrestacaoServico")
+  @Element(name = "InfDeclaracaoPrestacaoServico", required = false)
   @Valid
   private RpsInfoBetha rpsInfo;
+
+  public RpsBetha() {
+  }
 
   public RpsBetha(RpsInfoBuilder builder) {
     this.rpsInfo = new RpsInfoBetha(builder);

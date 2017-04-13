@@ -18,13 +18,11 @@ public class CertificadoConfigFake {
       String senha = "";
       try (FileInputStream inputStream = new FileInputStream("/tmp/senha.txt")) {
         senha = IOUtils.toString(inputStream);
-        // do something with everything string
       } catch (FileNotFoundException e) {
         e.printStackTrace();
       } catch (IOException e) {
         e.printStackTrace();
       }
-      System.out.println("senha = " + senha);
       certificadoConfig = new CertificadoConfig(
           new CertificadoConfig.CertificadoConfigBuilder(TipoCertificado.A1, senha)
               .comCaminhoCertificadoCliente("/tmp/certificado.pfx")
