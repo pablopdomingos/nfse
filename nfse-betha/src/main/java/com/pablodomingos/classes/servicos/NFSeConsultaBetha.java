@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Root(name="ConsultarNfseEnvio")
-public class NFSeConsultaBetha extends AbstractServiceBetha {
+public class NFSeConsultaBetha<T> extends AbstractServiceBetha {
 
   @Attribute(name="xmlns")
   private String xmlns = "http://www.betha.com.br/e-nota-contribuinte-ws";
@@ -35,6 +35,9 @@ public class NFSeConsultaBetha extends AbstractServiceBetha {
 
   @Element(name="IntermediarioServico", required = false)
   private RpsIntermediarioBetha intermediario;
+
+  @Element(name="Pagina", required = false)
+  private Integer pagina;
   
   public NFSeConsultaBetha(RpsPrestadorBetha prestador, LocalDate dataInicial, LocalDate dataFinal) {
     super();
@@ -42,18 +45,51 @@ public class NFSeConsultaBetha extends AbstractServiceBetha {
     this.periodoEmissao = new PeriodoEmissaoBetha(dataInicial, dataFinal);
   }
 
-  public NFSeConsultaBetha comTomador(RpsTomadorIdentificacaoBetha tomador){
-    this.tomador = tomador;
-    return this;
-  }
-  
-  public NFSeConsultaBetha comIntermediario(RpsIntermediarioBetha intermediario){
-    this.intermediario = intermediario;
-    return this;
-  }
-  
   public RpsPrestadorBetha getPrestador() {
     return prestador;
   }
 
+  public void setPrestador(RpsPrestadorBetha prestador) {
+    this.prestador = prestador;
+  }
+
+  public String getNumeroNFSe() {
+    return numeroNFSe;
+  }
+
+  public void setNumeroNFSe(String numeroNFSe) {
+    this.numeroNFSe = numeroNFSe;
+  }
+
+  public PeriodoEmissaoBetha getPeriodoEmissao() {
+    return periodoEmissao;
+  }
+
+  public void setPeriodoEmissao(PeriodoEmissaoBetha periodoEmissao) {
+    this.periodoEmissao = periodoEmissao;
+  }
+
+  public RpsTomadorIdentificacaoBetha getTomador() {
+    return tomador;
+  }
+
+  public void setTomador(RpsTomadorIdentificacaoBetha tomador) {
+    this.tomador = tomador;
+  }
+
+  public RpsIntermediarioBetha getIntermediario() {
+    return intermediario;
+  }
+
+  public void setIntermediario(RpsIntermediarioBetha intermediario) {
+    this.intermediario = intermediario;
+  }
+
+  public Integer getPagina() {
+    return pagina;
+  }
+
+  public void setPagina(Integer pagina) {
+    this.pagina = pagina;
+  }
 }

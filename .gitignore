@@ -5,6 +5,10 @@
 target/
 .idea/
 *.iml
+**/password
+**/*.xml
+**/*.cacerts
+**/*.pfx
 .DS_Store
 bin/
 RemoteSystemsTempFiles/

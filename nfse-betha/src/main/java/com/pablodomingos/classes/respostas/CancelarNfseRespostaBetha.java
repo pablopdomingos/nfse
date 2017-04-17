@@ -4,7 +4,7 @@ import com.pablodomingos.classes.rps.RetornoCancelamentoBetha;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
-@Root(name = "CancelarNfseRespostaBetha")
+@Root(name = "CancelarNfseResposta")
 public class CancelarNfseRespostaBetha extends RespostaAbstract {
 
   @Element(name="RetCancelamento", required = false)

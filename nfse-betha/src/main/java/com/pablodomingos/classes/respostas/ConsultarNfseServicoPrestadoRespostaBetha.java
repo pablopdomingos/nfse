@@ -6,7 +6,7 @@ import org.simpleframework.xml.Root;
 
 import java.util.ArrayList;
 
-@Root(name = "GerarNfseRespostaBetha")
+@Root(name = "ConsultarNfseServicoPrestadoResposta")
 public class ConsultarNfseServicoPrestadoRespostaBetha extends RespostaAbstract {
   @ElementList(name = "ListaNfse", required = false)
   ArrayList<CompNfse> listaNfse = new ArrayList<>();

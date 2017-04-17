@@ -6,20 +6,21 @@ import org.simpleframework.xml.Root;
 
 import java.time.LocalDate;
 
-@Root(name = "ConsultarNfseServicoPrestadoEnvio")
+@Root(name = "ConsultarNfseServicoTomadoEnvio")
 public class NFSeConsultaServicoTomadoBetha extends NFSeConsultaBetha {
-  @Element(name="Pagina", required = false)
-  private Integer pagina;
+
+  @Element(name = "Consulente", required = false)
+  RpsPrestadorBetha consulente;
 
   public NFSeConsultaServicoTomadoBetha(RpsPrestadorBetha prestador, LocalDate dataInicial, LocalDate dataFinal) {
     super(prestador, dataInicial, dataFinal);
   }
 
-  public Integer getPagina() {
-    return pagina;
+  public RpsPrestadorBetha getConsulente() {
+    return consulente;
   }
 
-  public void setPagina(Integer pagina) {
-    this.pagina = pagina;
+  public void setConsulente(RpsPrestadorBetha consulente) {
+    this.consulente = consulente;
   }
 }

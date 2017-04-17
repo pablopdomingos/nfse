@@ -42,18 +42,35 @@ public class NFSeConsultaBH extends AbstractServiceBH {
     this.periodoEmissao = new PeriodoEmissaoBH(dataInicial, dataFinal);
   }
 
-  public NFSeConsultaBH comTomador(RpsTomadorIdentificacaoBH tomador){
-    this.tomador = tomador;
-    return this;
-  }
-  
-  public NFSeConsultaBH comIntermediario(RpsIntermediarioBH intermediario){
-    this.intermediario = intermediario;
-    return this;
-  }
-  
   public RpsPrestadorBH getPrestador() {
     return prestador;
   }
 
+  public String getNumeroNFSe() {
+    return numeroNFSe;
+  }
+
+  public void setNumeroNFSe(String numeroNFSe) {
+    this.numeroNFSe = numeroNFSe;
+  }
+
+  public PeriodoEmissaoBH getPeriodoEmissao() {
+    return periodoEmissao;
+  }
+
+  public RpsTomadorIdentificacaoBH getTomador() {
+    return tomador;
+  }
+
+  public void setTomador(RpsTomadorIdentificacaoBH tomador) {
+    this.tomador = tomador;
+  }
+
+  public RpsIntermediarioBH getIntermediario() {
+    return intermediario;
+  }
+
+  public void setIntermediario(RpsIntermediarioBH intermediario) {
+    this.intermediario = intermediario;
+  }
 }

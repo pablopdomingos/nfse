@@ -16,7 +16,7 @@ public class CertificadoConfigFake {
   public static CertificadoConfig get() {
     if (certificadoConfig == null) {
       String senha = "";
-      try (FileInputStream inputStream = new FileInputStream("/tmp/senha.txt")) {
+      try (FileInputStream inputStream = new FileInputStream("password")) {
         senha = IOUtils.toString(inputStream);
       } catch (FileNotFoundException e) {
         e.printStackTrace();
