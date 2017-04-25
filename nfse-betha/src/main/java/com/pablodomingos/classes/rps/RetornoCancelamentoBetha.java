@@ -1,13 +1,12 @@
 package com.pablodomingos.classes.rps;
 
-import com.pablodomingos.classes.servicos.NFSeCancelamentoBetha;
 import org.simpleframework.xml.Element;
 
 public class RetornoCancelamentoBetha {
   @Element(name="NfseCancelamento", required = false)
-  NFSeCancelamentoBetha nfseCancelamento;
+  NfseRetornoCancelamentoBetha nfseCancelamento;
 
-  public NFSeCancelamentoBetha getNfseCancelamento() {
+  public NfseRetornoCancelamentoBetha getNfseCancelamento() {
     return nfseCancelamento;
   }
 }

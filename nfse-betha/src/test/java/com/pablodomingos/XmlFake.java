@@ -1,4 +1,4 @@
-package com.pablodomingos.classes;
+package com.pablodomingos;
 
 import org.apache.commons.io.IOUtils;
 

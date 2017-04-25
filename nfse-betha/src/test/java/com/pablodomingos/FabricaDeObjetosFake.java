@@ -1,4 +1,4 @@
-package com.pablodomingos.classes;
+package com.pablodomingos;
 
 import com.pablodomingos.classes.rps.*;
 

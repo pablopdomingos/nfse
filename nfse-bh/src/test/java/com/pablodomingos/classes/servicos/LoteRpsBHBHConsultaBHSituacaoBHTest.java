@@ -1,6 +1,6 @@
 package com.pablodomingos.classes.servicos;
 
-import com.pablodomingos.classes.FabricaDeObjetosFake;
+import com.pablodomingos.FabricaDeObjetosFake;
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Test;

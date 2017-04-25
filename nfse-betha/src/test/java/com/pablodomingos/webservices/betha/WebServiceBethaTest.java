@@ -1,14 +1,10 @@
-package com.pablodomingos.classes.webservices.betha;
+package com.pablodomingos.webservices.betha;
 
 import com.pablodomingos.assinatura.AssinaturaDigitalBetha;
-import com.pablodomingos.classes.CertificadoConfigFake;
-import com.pablodomingos.classes.FabricaDeBuildersFake;
-import com.pablodomingos.classes.XmlFake;
+import com.pablodomingos.CertificadoConfigFake;
+import com.pablodomingos.XmlFake;
 import com.pablodomingos.classes.respostas.*;
-import com.pablodomingos.classes.rps.LoteRpsBetha;
-import com.pablodomingos.classes.servicos.LoteRpsEnvioBetha;
 import com.pablodomingos.utils.NFSeGeraCadeiaCertificadosBetha;
-import com.pablodomingos.webservices.betha.WebServiceBetha;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,9 +35,9 @@ public class WebServiceBethaTest {
     int numero = random.nextInt(Integer.MAX_VALUE);
     try {
       xml = xml.replace("{NUMERO}", String.valueOf(numero));
-      AssinaturaDigitalBetha assinatura = new AssinaturaDigitalBetha(CertificadoConfigFake.get());
+      AssinaturaDigitalBetha assinatura = new AssinaturaDigitalBetha(new CertificadoConfigFake());
       xml = assinatura.assinarXML(xml);
-      gerarNfseRespostaBetha = WebServiceBetha.gerarNfse(xml, CertificadoConfigFake.get());
+      gerarNfseRespostaBetha = WebServiceBetha.gerarNfse(xml, new CertificadoConfigFake());
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -61,9 +57,9 @@ public class WebServiceBethaTest {
     try {
       xml = xml.replace("{LOTE}", String.valueOf(lote));
       xml = xml.replace("{NUMERO}", String.valueOf(numero));
-      AssinaturaDigitalBetha assinatura = new AssinaturaDigitalBetha(CertificadoConfigFake.get());
+      AssinaturaDigitalBetha assinatura = new AssinaturaDigitalBetha(new CertificadoConfigFake());
       xml = assinatura.assinarXML(xml);
-      enviarLoteRpsRespostaBetha = WebServiceBetha.enviarLoteRps(xml, CertificadoConfigFake.get());
+      enviarLoteRpsRespostaBetha = WebServiceBetha.enviarLoteRps(xml, new CertificadoConfigFake());
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -79,29 +75,13 @@ public class WebServiceBethaTest {
       return;
     }
     try {
-      AssinaturaDigitalBetha assinatura = new AssinaturaDigitalBetha(CertificadoConfigFake.get());
+      AssinaturaDigitalBetha assinatura = new AssinaturaDigitalBetha(new CertificadoConfigFake());
       xml = assinatura.assinarXML(xml);
-      cancelarNfseRespostaBetha = WebServiceBetha.cancelarNfse(xml, CertificadoConfigFake.get());
+      cancelarNfseRespostaBetha = WebServiceBetha.cancelarNfse(xml, new CertificadoConfigFake());
     } catch (Exception e) {
       e.printStackTrace();
     }
     Assert.assertNotNull(cancelarNfseRespostaBetha);
-  }
-
-  @Test
-  public void testaGeracaoLote() {
-    EnviarLoteRpsRespostaBetha enviarLoteRpsRespostaBetha = null;
-    LoteRpsBetha loteRpsBetha = new LoteRpsBetha(FabricaDeBuildersFake.getLoteRpsBuilder());
-    LoteRpsEnvioBetha loteRpsEnvio = new LoteRpsEnvioBetha(loteRpsBetha);
-    String xml = loteRpsEnvio.converterParaXml();
-    AssinaturaDigitalBetha assinatura = new AssinaturaDigitalBetha(CertificadoConfigFake.get());
-    try {
-      xml = assinatura.assinarXML(xml);
-      enviarLoteRpsRespostaBetha = WebServiceBetha.enviarLoteRps(xml, CertificadoConfigFake.get());
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    Assert.assertEquals(enviarLoteRpsRespostaBetha.getNumeroLote(), loteRpsBetha.getNumeroLote());
   }
 
   @Test
@@ -113,7 +93,7 @@ public class WebServiceBethaTest {
       return;
     }
     try {
-      consultarNfseServicoPrestadoRespostaBetha = WebServiceBetha.consultarNfseServicoPrestado(xml, CertificadoConfigFake.get());
+      consultarNfseServicoPrestadoRespostaBetha = WebServiceBetha.consultarNfseServicoPrestado(xml, new CertificadoConfigFake());
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -129,7 +109,7 @@ public class WebServiceBethaTest {
       return;
     }
     try {
-      consultarNfseServicoTomadoRespostaBetha = WebServiceBetha.consultarNfseServicoTomado(xml, CertificadoConfigFake.get());
+      consultarNfseServicoTomadoRespostaBetha = WebServiceBetha.consultarNfseServicoTomado(xml, new CertificadoConfigFake());
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -145,7 +125,7 @@ public class WebServiceBethaTest {
       return;
     }
     try {
-      consultarLoteRpsRespostaBetha = WebServiceBetha.consultarLoteRps(xml, CertificadoConfigFake.get());
+      consultarLoteRpsRespostaBetha = WebServiceBetha.consultarLoteRps(xml, new CertificadoConfigFake());
     } catch (Exception e) {
       e.printStackTrace();
     }

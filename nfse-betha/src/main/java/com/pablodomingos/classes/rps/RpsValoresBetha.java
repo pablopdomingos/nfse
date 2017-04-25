@@ -165,7 +165,7 @@ public class RpsValoresBetha extends AbstractRPS {
     {
       return null;
     }
-    return this.valorServicos * this.aliquota;
+    return this.valorServicos * (this.aliquota / 100);
   }
 
   private Double calcularValorLiquido() {

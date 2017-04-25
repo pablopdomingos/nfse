@@ -29,15 +29,15 @@ public class InfNfse {
   private Double valorCredito;
 
   @Element(name = "PrestadorServico", required = false)
-  PrestadorServicoBetha prestadorServico;
+  private PrestadorServicoBetha prestadorServico;
 
 
   @Element(name = "OrgaoGerador", required = false)
-  OrgaoGeradorBetha orgaoGerador;
+  private OrgaoGeradorBetha orgaoGerador;
 
 
   @Element(name = "DeclaracaoPrestacaoServico", required = false)
-  RpsBetha declaracaoPrestacaoServico;
+  private RpsBetha declaracaoPrestacaoServico;
 
   public String getNumero() {
     return numero;

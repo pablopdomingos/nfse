@@ -45,7 +45,7 @@ public abstract class AssinaturaDigital {
     String certificateAlias = config.getAliasCertificado() != null ? config.getAliasCertificado()
         : config.getCertificadoKeyStore().aliases().nextElement();
     KeyStore.PasswordProtection passwordProtection =
-        new KeyStore.PasswordProtection(this.config.getSenhaCertificado().toCharArray());
+        new KeyStore.PasswordProtection(this.config.getCertificadoSenha().toCharArray());
     KeyStore.PrivateKeyEntry pkEntry = (KeyStore.PrivateKeyEntry) config.getCertificadoKeyStore()
         .getEntry(certificateAlias, passwordProtection);
 

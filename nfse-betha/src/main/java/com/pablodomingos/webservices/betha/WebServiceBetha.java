@@ -12,7 +12,13 @@ import org.apache.axis.AxisFault;
 import org.apache.axis.client.Service;
 
 import javax.xml.rpc.ServiceException;
+import java.io.IOException;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
 
 public class WebServiceBetha extends NFSeAbstractWebService {
   private static final String CABECALHO = "<?xml version='1.0' encoding='UTF-8'?>"
@@ -52,7 +58,7 @@ public class WebServiceBetha extends NFSeAbstractWebService {
   }
 
 
-  private static StubBetha webService(CertificadoConfig configCertificado) throws ServiceException {
+  private static StubBetha webService(CertificadoConfig configCertificado) throws ServiceException, CertificateException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
     configCertificado.carregarCertificados();
 
     NFSeWebService _service = new NFSeLocator(configCertificado) {
