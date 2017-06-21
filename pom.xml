@@ -41,7 +41,9 @@
 	</properties>
 
 	<modules>
-     <module>nfse-bh</module>
+		<module>nfse-core</module>
+		<module>nfse-bh</module>
+		<module>nfse-betha</module>
 	</modules>
 
 	<developers>
@@ -53,6 +55,13 @@
 			<organization>Sentinela Rastreamento</organization>
      		<organizationUrl>https://sentinela.net</organizationUrl>
      		<timezone>-3</timezone>
+		</developer>
+		<developer>
+			<id>rafaelzomer</id>
+			<name>Rafael Zomer Antunes</name>
+			<url>https://github.com/rafaelzomer</url>
+			<email>rafaelzomer@gmail.com</email>
+			<timezone>-3</timezone>
 		</developer>
 	</developers>
 
@@ -66,7 +75,51 @@
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
-	
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.3.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml</groupId>
+			<artifactId>jaxrpc-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-discovery</groupId>
+			<artifactId>commons-discovery</artifactId>
+			<version>0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>el-impl</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
