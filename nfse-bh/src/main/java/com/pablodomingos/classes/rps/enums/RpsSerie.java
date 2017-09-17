@@ -6,6 +6,6 @@ import com.thoughtworks.xstream.converters.enums.EnumToStringConverter;
 @XStreamConverter(EnumToStringConverter.class)
 public enum RpsSerie {
 
-  NFE, A;
+  NFE, A, U;
 
 }
