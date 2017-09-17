@@ -9,8 +9,8 @@ public class EnviarLoteRpsRespostaTest {
 
   @Test
   public void quandoSucessoPojoDeveSerGeradoCorretamente() throws IOException {
-    String xmlTest =
-        IOUtils.toString(getClass().getClassLoader().getResourceAsStream("enviarLoteRpsResposta.xml"));
+    String xmlTest = IOUtils
+        .toString(getClass().getClassLoader().getResourceAsStream("enviarLoteRpsResposta.xml"));
 
     EnviarLoteRpsResposta pojo = EnviarLoteRpsResposta.toPojo(xmlTest);
     assertEquals("1", pojo.getNumeroLote().toString());
@@ -18,13 +18,13 @@ public class EnviarLoteRpsRespostaTest {
     assertEquals("Ak0591217L2009q000000006", pojo.getProtocolo());
 
   }
-  
+
   @Test
   public void quandoErroPojoDeveSerGeradoCorretamente() throws IOException {
-    String xmlTest =
-        IOUtils.toString(getClass().getClassLoader().getResourceAsStream("erroEnviarLoteRpsResposta.xml"));
+    String xmlTest = IOUtils
+        .toString(getClass().getClassLoader().getResourceAsStream("erroEnviarLoteRpsResposta.xml"));
 
-    GerarNFSeResposta pojo = GerarNFSeResposta.toPojo(xmlTest);
+    EnviarLoteRpsResposta pojo = EnviarLoteRpsResposta.toPojo(xmlTest);
     assertNotNull(pojo.getListaMensagemRetorno());
 
   }
