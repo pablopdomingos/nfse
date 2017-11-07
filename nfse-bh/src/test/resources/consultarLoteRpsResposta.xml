@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ConsultarLoteRpsResposta xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<ListaNfse>
+		<CompNfse xmlns="http://www.abrasf.org.br/nfse.xsd">
+			<Nfse xmlns="http://www.abrasf.org.br/nfse.xsd" versao="1.00">
+				<InfNfse Id="999999990001911733160024200900000000428">
+					<Numero>200900000000428</Numero>
+					<CodigoVerificacao>f9989</CodigoVerificacao>
+					<DataEmissao>2009-09-28T09:36:40</DataEmissao>
+					<IdentificacaoRps>
+						<Numero>1</Numero>
+						<Serie>A</Serie>
+						<Tipo>1</Tipo>
+					</IdentificacaoRps>
+					<DataEmissaoRps>2009-06-16</DataEmissaoRps>
+					<NaturezaOperacao>1</NaturezaOperacao>
+					<RegimeEspecialTributacao>6</RegimeEspecialTributacao>
+					<OptanteSimplesNacional>1</OptanteSimplesNacional>
+					<IncentivadorCultural>2</IncentivadorCultural>
+					<Competencia>2009-06-16T21:00:00</Competencia>
+					<OutrasInformacoes>NFS-e gerada em ambiente de teste. N?O TEM
+						VALOR JUR?DICO NEM FISCAL.</OutrasInformacoes>
+					<Servico>
+						<Valores>
+							<ValorServicos>1000.00</ValorServicos>
+							<ValorDeducoes>10.00</ValorDeducoes>
+							<ValorPis>10.00</ValorPis>
+							<ValorCofins>10.00</ValorCofins>
+							<ValorInss>10.00</ValorInss>
+							<ValorIr>10.00</ValorIr>
+							<ValorCsll>10.00</ValorCsll>
+							<IssRetido>1</IssRetido>
+							<ValorIss>49.00</ValorIss>
+							<ValorIssRetido>49.00</ValorIssRetido>
+							<OutrasRetencoes>10.00</OutrasRetencoes>
+							<BaseCalculo>980.00</BaseCalculo>
+							<Aliquota>5</Aliquota>
+							<ValorLiquidoNfse>871.00</ValorLiquidoNfse>
+							<DescontoIncondicionado>10.00</DescontoIncondicionado>
+							<DescontoCondicionado>10.00</DescontoCondicionado>
+						</Valores>
+						<ItemListaServico>11.01</ItemListaServico>
+						<CodigoTributacaoMunicipio>522310000
+						</CodigoTributacaoMunicipio>
+						<Discriminacao>Teste.</Discriminacao>
+						<CodigoMunicipio>3106200</CodigoMunicipio>
+					</Servico>
+					<PrestadorServico>
+						<IdentificacaoPrestador>
+							<Cnpj>99999999000191</Cnpj>
+							<InscricaoMunicipal>1733160024</InscricaoMunicipal>
+						</IdentificacaoPrestador>
+						<RazaoSocial>INSCRICAO DE TESTE SIATU - D'AGUA -
+							PAULINO'S</RazaoSocial>
+						<NomeFantasia>SIATU - TESTE DE NOME FAN</NomeFantasia>
+						<Endereco>
+							<Endereco>DA BAHIA</Endereco>
+							<Numero>200</Numero>
+							<Complemento>G 1,5 ANDAR 14</Complemento>
+							<Bairro>CENTRO</Bairro>
+							<CodigoMunicipio>3106200</CodigoMunicipio>
+							<Uf>MG</Uf>
+							<Cep>30160010</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>3131331232</Telefone>
+							<Email>zxc123@hotmail.com</Email>
+						</Contato>
+					</PrestadorServico>
+					<TomadorServico>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cnpj>99999999000191</Cnpj>
+							</CpfCnpj>
+							<InscricaoMunicipal>1733160032</InscricaoMunicipal>
+						</IdentificacaoTomador>
+						<RazaoSocial>INSCRICAO DE TESTE SIATU - D'AGUA -PAULINO'S
+						</RazaoSocial>
+						<Endereco>
+							<Endereco>DA BAHIA</Endereco>
+							<Numero>200</Numero>
+							<Complemento>ANDAR 14</Complemento>
+							<Bairro>CENTRO</Bairro>
+							<Cep>30160010</Cep>
+						</Endereco>
+					</TomadorServico>
+					<IntermediarioServico>
+						<RazaoSocial>INSCRICAO DE TESTE SIATU - D'AGUA -PAULINO'S
+						</RazaoSocial>
+						<CpfCnpj>
+							<Cnpj>99999999000191</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>8041700010</InscricaoMunicipal>
+					</IntermediarioServico>
+					<OrgaoGerador>
+						<CodigoMunicipio>3106200</CodigoMunicipio>
+						<Uf>MG</Uf>
+					</OrgaoGerador>
+					<ConstrucaoCivil>
+						<CodigoObra>1234</CodigoObra>
+						<Art>1234</Art>
+					</ConstrucaoCivil>
+				</InfNfse>
+				<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"
+					Id="NfseAssSMF_999999990001911733160024200900000000428">
+					<SignedInfo>
+						<CanonicalizationMethod
+							Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"></CanonicalizationMethod>
+						<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></SignatureMethod>
+						<Reference URI="#999999990001911733160024200900000000428">
+							<Transforms>
+								<Transform
+									Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></Transform>
+							</Transforms>
+							<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></DigestMethod>
+							<DigestValue>oh35i/pIZk09iuRPt5EOSPZwF3I=
+							</DigestValue>
+						</Reference>
+					</SignedInfo>
+					<SignatureValue>
+						fk8v2naT0xo9Ybms1aZzZcyYB9qXO0ue+qjDX3qbTJ+VQ2OD/FWkDHoNer6uR9z7/S50snDIsiUc
+						rr9oKi08qa4ltO7ZXKv/fiW2DpvJZzI5IJnw1pP+h/8unr55IaIp0DLnef1y833gi+iaY947rY7v
+						rrIG/XXkGXXl+NnVUVY=
+</SignatureValue>
+					<KeyInfo>
+						<X509Data>
+							<X509Certificate>
+								MIIGezCCBWOgAwIBAgIQNlmpCPJC8BqiAoTeMYk6PzANBgkqhkiG9w0BAQUFADCBhjELMAkGA1UE
+								BhMCQlIxEzARBgNVBAoTCklDUC1CcmFzaWwxSTBHBgNVBAsTQENvbXBhbmhpYSBkZSBUZWNub2xv
+								Z2lhIGRhIEluZm9ybWFjYW8gZG8gRXN0YWRvIGRlIE1HIC0gUFJPREVNR0UxFzAVBgNVBAMTDkFD
+								IFBST0RFTUdFIEcyMB4XDTA5MDIxOTAwMDAwMFoXDTEwMDIxODIzNTk1OVowgfExCzAJBgNVBAYT
+								AkJSMRMwEQYDVQQKFApJQ1AtQnJhc2lsMRQwEgYDVQQLFAtJRCAtIDM0ODM3OTEkMCIGA1UECxQb
+								QXV0ZW50aWNhZG8gcG9yIEFSIFByb2RlbWdlMRswGQYDVQQLFBJBc3NpbmF0dXJhIFRpcG8gQTEx
+								EzARBgNVBAsUCnByZWZlaXR1cmExFDASBgNVBAsUCyhlbSBicmFuY28pMSUwIwYDVQQDExxQcmVm
+								ZWl0dXJhIGRlIEJlbG8gSG9yaXpvbnRlMSIwIAYJKoZIhvcNAQkBFhNldWdlbmlvdkB1YWkuY29t
+								LmJyMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCkexO7dF5akjfJesgukuo0p9RbdLpJAaUN
+								VkuspA5dCRJQW1F1uplpJZp5DWf89KIreVKSpVX9MX4T8SBkTf3C+O3c8cKEQbXjy7Fhoh1qM2uI
+								KESBDE4hzjbA+7pMUNYv5jh2YXRSTD8rp0xYijQMqD2ElsOwGrPzsy9o8qU9nQIDAQABo4IC+jCC
+								AvYwgcIGA1UdEQSBujCBt6A9BgVgTAEDBKA0BDIyODA4MTk2MTQ5NjA2NTMwNjA0MDAwMDAwMDAw
+								MDAwMDAwMDE5OTkxNTQ3NjRTU1BNR6AtBgVgTAEDAqAkBCJFVUdFTklPIEVVU1RBUVVJTyBWRUxP
+								U08gRkVSTkFOREVToBkGBWBMAQMDoBAEDjE4NzE1MzgzMDAwMTQwoBcGBWBMAQMHoA4EDDAwMDAw
+								MDAwMDAwMIETZXVnZW5pb3ZAdWFpLmNvbS5icjAJBgNVHRMEAjAAMB8GA1UdIwQYMBaAFJ6ELc8S
+								nsT/zFUGJY6gFsaegEjgMA4GA1UdDwEB/wQEAwIF4DCCAQkGA1UdHwSCAQAwgf0wU6BRoE+GTWh0
+								dHA6Ly9pY3AtYnJhc2lsLmNlcnRpc2lnbi5jb20uYnIvcmVwb3NpdG9yaW8vbGNyL0FDUFJPREVN
+								R0VHMi9MYXRlc3RDUkwuY3JsMFKgUKBOhkxodHRwOi8vaWNwLWJyYXNpbC5vdXRyYWxjci5jb20u
+								YnIvcmVwb3NpdG9yaW8vbGNyL0FDUFJPREVNR0VHMi9MYXRlc3RDUkwuY3JsMFKgUKBOhkxodHRw
+								Oi8vcmVwb3NpdG9yaW8uaWNwYnJhc2lsLmdvdi5ici9sY3IvQ2VydGlzaWduL0FDUFJPREVNR0VH
+								Mi9MYXRlc3RDUkwuY3JsMFsGA1UdIARUMEwwSgYGYEwBAgEPMEAwPgYIKwYBBQUHAgEWMmh0dHA6
+								Ly9pY3AtYnJhc2lsLmNlcnRpc2lnbi5jb20uYnIvcmVwb3NpdG9yaW8vZHBjAAAAAAAAMB0GA1Ud
+								JQQWMBQGCCsGAQUFBwMEBggrBgEFBQcDAjBqBggrBgEFBQcBAQReMFwwWgYIKwYBBQUHMAKGTmh0
+								dHA6Ly9pY3AtYnJhc2lsLmNlcnRpc2lnbi5jb20uYnIvcmVwb3NpdG9yaW8vY2VydGlmaWNhZG9z
+								L0FDX1BST0RFTUdFX0cyLnA3YzANBgkqhkiG9w0BAQUFAAOCAQEAgJIJ1ap7ye0PDU2b7+zwQBnv
+								zej3/3QYpwLa8KzcsWbqKv6R9Uo0I1F6t/Aj0TnHqDkkvlrt2/FlgQBkz4vTRWDm+Fbx6LF1sIVM
+								gTFYyTNz+XAMFuVpuFvCieWFlCJjOE9Sv2gKiqKVQIHqJKr9+WtXr0kYD1dduY71m/JMvO23DHtE
+								woCfBK7SooDXuFr4nCMNU4AT3pfNu9/2GK1OJsD0hwM2DErUwzudtlvj1T1RbWX7KmCzjZD20vfr
+								selc7eH5t2mmEv8OjkfgqWUVPT0LqrpxsumBbS9aSnkCryJOuBwEU1r9HxBHEqd6IxaLbMwpMbEc
+								tuiDk3Gp9Anl9Q==
+</X509Certificate>
+						</X509Data>
+					</KeyInfo>
+				</Signature>
+			</Nfse>
+		</CompNfse>
+	</ListaNfse>
+</ConsultarLoteRpsResposta>

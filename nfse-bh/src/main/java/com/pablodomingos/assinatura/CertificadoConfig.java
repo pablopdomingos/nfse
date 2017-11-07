@@ -10,9 +10,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.Provider;
 import java.security.Security;
 import java.security.cert.CertificateException;
-
+import java.util.Arrays;
 import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
-
 
 public class CertificadoConfig {
 
@@ -23,7 +22,8 @@ public class CertificadoConfig {
   private String caminhoParaCadeiaCertificado;
   private KeyStore keyStoreCertificado;
   private NFSeAmbiente ambiente;
-  
+  private InputStream inputStream;
+
   public CertificadoConfig(CertificadoConfigBuilder builder) {
     super();
     this.senhaCertificado = builder.senhaCertificado;
@@ -32,36 +32,24 @@ public class CertificadoConfig {
     this.caminhoParaCertificado = builder.caminhoParaCertificado;
     this.caminhoParaCadeiaCertificado = builder.caminhoParaCadeiaCertificado;
     this.ambiente = builder.ambiente;
-    
+
   }
 
   public KeyStore getCertificadoKeyStore() throws KeyStoreException {
     try {
       if (keyStoreCertificado == null) {
-        InputStream certificadoStream = null;
-
-        if (tipoCertificado.equals(TipoCertificado.A3_TOKEN)) {
-
-          InputStream inputFile = getClass().getClassLoader().getResourceAsStream("Token.cfg");
-          Provider provider = new sun.security.pkcs11.SunPKCS11(inputFile);
-          Security.addProvider(provider);
-          this.keyStoreCertificado = KeyStore.getInstance("pkcs11", provider);
-
-        } else if (tipoCertificado.equals(TipoCertificado.A3_CARD)) {
-
-          InputStream inputFile = getClass().getClassLoader().getResourceAsStream("SmartCard.cfg");
-          Provider provider = new sun.security.pkcs11.SunPKCS11(inputFile);
-          Security.addProvider(provider);
-          this.keyStoreCertificado = KeyStore.getInstance("pkcs11", provider);
+        if (Arrays.asList(TipoCertificado.A3_TOKEN, TipoCertificado.A3_CARD)
+            .contains(tipoCertificado)) {
+          this.inputStream = getClass().getClassLoader()
+              .getResourceAsStream(tipoCertificado.getArquivoConfiguracao());
+          this.carregarModuloPKCS11();
 
         } else if (tipoCertificado.equals(TipoCertificado.A1)) {
-
-          certificadoStream = new FileInputStream(caminhoParaCertificado);
+          this.inputStream = new FileInputStream(caminhoParaCertificado);
           this.keyStoreCertificado = KeyStore.getInstance("pkcs12");
-
         }
 
-        this.keyStoreCertificado.load(certificadoStream, this.getSenhaCertificado().toCharArray());
+        this.keyStoreCertificado.load(inputStream, this.getSenhaCertificado().toCharArray());
 
       }
 
@@ -72,43 +60,58 @@ public class CertificadoConfig {
     }
   }
 
-  public void carregarCertificados(){
+  @SuppressWarnings("restriction")
+  private void carregarModuloPKCS11() throws KeyStoreException {
+    try {
+      KeyStore keystoreInstance = KeyStore.getInstance("pkcs11");
+      if (keystoreInstance != null && keystoreInstance.getProvider() != null) {
+        this.keyStoreCertificado = keystoreInstance;
+      }
+    } catch (KeyStoreException ke) {
+      Provider provider = new sun.security.pkcs11.SunPKCS11(this.inputStream);
+      Security.addProvider(provider);
+      this.keyStoreCertificado = KeyStore.getInstance("pkcs11", provider);
+    }
+  }
+
+  @SuppressWarnings("restriction")
+  public void carregarCertificados() {
     try {
       this.getCertificadoKeyStore();
     } catch (KeyStoreException e) {
       e.printStackTrace();
     }
-    System.clearProperty("javax.net.ssl.keyStore");  
-    System.clearProperty("javax.net.ssl.keyStorePassword");  
-    System.clearProperty("javax.net.ssl.trustStore");  
-    
-    if(this.getTipoCertificado().equals(TipoCertificado.A1)){
-      
-      System.setProperty("java.protocol.handler.pkgs", "com.sun.net.ssl.internal.www.protocol");  
-      Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());  
+    System.clearProperty("javax.net.ssl.keyStore");
+    System.clearProperty("javax.net.ssl.keyStorePassword");
+    System.clearProperty("javax.net.ssl.trustStore");
 
-      System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");  
-      System.setProperty("javax.net.ssl.keyStore", this.getCaminhoParaCertificado());  
-      System.setProperty("javax.net.ssl.keyStorePassword", this.getSenhaCertificado());  
-      
-    }else if(this.getTipoCertificado().equals(TipoCertificado.A3_CARD)){
-      
-      System.setProperty("javax.net.ssl.keyStore", "NONE");  
-      System.setProperty("javax.net.ssl.keyStoreType", "PKCS11");  
-      System.setProperty("javax.net.ssl.keyStoreProvider", "SunPKCS11-SmartCard"); 
-      
-    }else if(this.getTipoCertificado().equals(TipoCertificado.A3_TOKEN)){
-      
-      System.setProperty("javax.net.ssl.keyStore", "NONE");  
-      System.setProperty("javax.net.ssl.keyStoreType", "PKCS11");  
-      System.setProperty("javax.net.ssl.keyStoreProvider", "SunPKCS11-eToken"); 
-      
+    if (this.getTipoCertificado().equals(TipoCertificado.A1)) {
+
+      System.setProperty("java.protocol.handler.pkgs", "com.sun.net.ssl.internal.www.protocol");
+      Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+
+      System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
+      System.setProperty("javax.net.ssl.keyStore", this.getCaminhoParaCertificado());
+      System.setProperty("javax.net.ssl.keyStorePassword", this.getSenhaCertificado());
+
+    } else if (this.getTipoCertificado().equals(TipoCertificado.A3_CARD)) {
+
+      System.setProperty("javax.net.ssl.keyStore", "NONE");
+      System.setProperty("javax.net.ssl.keyStoreType", "PKCS11");
+      System.setProperty("javax.net.ssl.keyStoreProvider", "SunPKCS11-SmartCard");
+
+    } else if (this.getTipoCertificado().equals(TipoCertificado.A3_TOKEN)) {
+
+      System.setProperty("javax.net.ssl.keyStore", "NONE");
+      System.setProperty("javax.net.ssl.keyStoreType", "PKCS11");
+      System.setProperty("javax.net.ssl.keyStoreProvider", "SunPKCS11-eToken");
+
     }
-    
-    System.setProperty("javax.net.ssl.trustStoreType", "JKS");  
+
+    System.setProperty("javax.net.ssl.trustStoreType", "JKS");
     System.setProperty("javax.net.ssl.trustStore", this.getCaminhoParaCadeiaCertificado());
   }
-  
+
   public TipoCertificado getTipoCertificado() {
     return tipoCertificado;
   }
@@ -124,7 +127,7 @@ public class CertificadoConfig {
   public String getCaminhoParaCertificado() {
     return caminhoParaCertificado;
   }
-  
+
   public String getCaminhoParaCadeiaCertificado() {
     return caminhoParaCadeiaCertificado;
   }
@@ -142,9 +145,11 @@ public class CertificadoConfig {
     private TipoCertificado tipoCertificado;
     private String senhaCertificado;
     private String aliasCertificado = null;
-    private String caminhoParaCertificado = Paths.get("/certificado/certificado.pfx").toAbsolutePath().toString();
-    private String caminhoParaCadeiaCertificado = Paths.get("/certificado/nfse-bh.cacerts").toAbsolutePath().toString();
-    private NFSeAmbiente ambiente = NFSeAmbiente.HOMOLOGACAO; 
+    private String caminhoParaCertificado =
+        Paths.get("/certificado/certificado.pfx").toAbsolutePath().toString();
+    private String caminhoParaCadeiaCertificado =
+        Paths.get("/certificado/nfse-bh.cacerts").toAbsolutePath().toString();
+    private NFSeAmbiente ambiente = NFSeAmbiente.HOMOLOGACAO;
 
     public CertificadoConfigBuilder(TipoCertificado tipoCertificado, String senhaCertificado) {
 
@@ -165,19 +170,29 @@ public class CertificadoConfig {
       return this;
     }
 
-    public CertificadoConfigBuilder comCaminhoCadeiaDeCertificados(String caminhoParaCadeiaCertificado) {
+    public CertificadoConfigBuilder comCaminhoCadeiaDeCertificados(
+        String caminhoParaCadeiaCertificado) {
       this.caminhoParaCadeiaCertificado = caminhoParaCadeiaCertificado;
       return this;
     }
-    
+
     public CertificadoConfigBuilder comAmbiente(NFSeAmbiente ambiente) {
       this.ambiente = ambiente;
       return this;
     }
-    
+
     public CertificadoConfig build() {
       return new CertificadoConfig(this);
     }
 
+  }
+
+
+  public void fechar() {
+    try {
+      this.inputStream.close();
+    } catch (Exception e) {
+      /* ignore */
+    }
   }
 }

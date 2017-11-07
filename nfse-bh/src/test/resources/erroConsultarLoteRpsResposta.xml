@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ConsultarLoteRpsResposta xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<ListaMensagemRetornoLote>
+		<MensagemRetorno>
+			<IdentificacaoRps>
+				<Numero>2</Numero>
+				<Serie>A</Serie>
+				<Tipo>1</Tipo>
+			</IdentificacaoRps>
+			<Codigo>E10</Codigo>
+			<Mensagem>RPS já informado.</Mensagem>
+		</MensagemRetorno>
+	</ListaMensagemRetornoLote>
+</ConsultarLoteRpsResposta>

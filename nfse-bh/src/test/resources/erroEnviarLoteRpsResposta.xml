@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<EnviarLoteRpsResposta xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<ListaMensagemRetorno>
+		<MensagemRetorno>
+			<Codigo>E69</Codigo>
+			<Mensagem>Quantidade de RPS incorreta</Mensagem>
+		</MensagemRetorno>
+	</ListaMensagemRetorno>
+</EnviarLoteRpsResposta>
+

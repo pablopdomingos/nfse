@@ -1,11 +1,24 @@
 package com.pablodomingos.assinatura;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import javax.xml.crypto.dsig.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.KeyStore;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
+import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import javax.xml.crypto.dsig.CanonicalizationMethod;
+import javax.xml.crypto.dsig.DigestMethod;
+import javax.xml.crypto.dsig.Reference;
+import javax.xml.crypto.dsig.SignatureMethod;
+import javax.xml.crypto.dsig.SignedInfo;
+import javax.xml.crypto.dsig.Transform;
+import javax.xml.crypto.dsig.XMLSignature;
+import javax.xml.crypto.dsig.XMLSignatureFactory;
 import javax.xml.crypto.dsig.dom.DOMSignContext;
 import javax.xml.crypto.dsig.keyinfo.KeyInfo;
 import javax.xml.crypto.dsig.keyinfo.KeyInfoFactory;
@@ -14,24 +27,20 @@ import javax.xml.crypto.dsig.spec.C14NMethodParameterSpec;
 import javax.xml.crypto.dsig.spec.TransformParameterSpec;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.KeyStore;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 public class AssinaturaDigital {
   private static String INFRPS = "InfRps";
-  private static String[] ELEMENTOS_ASSINAVEIS = new String[]{"LoteRps", "InfPedidoCancelamento"};
+  private static String[] ELEMENTOS_ASSINAVEIS = new String[] {"LoteRps", "InfPedidoCancelamento"};
   private CertificadoConfig config;
 
   public AssinaturaDigital(CertificadoConfig config) {
@@ -57,48 +66,60 @@ public class AssinaturaDigital {
     X509Data x509Data = keyInfoFactory.newX509Data(x509Content);
     KeyInfo keyInfo = keyInfoFactory.newKeyInfo(Collections.singletonList(x509Data));
 
-    Document document = documentFactory(xml);
+    Document document = documentFactory(removeAcentos(xml));
 
-    //Assinando todos RPS
+    // Assinando todos RPS
     NodeList elements = document.getElementsByTagName(INFRPS);
     for (int i = 0; i < elements.getLength(); i++) {
       Element element = (Element) elements.item(i);
-      
+
       String id = element.getAttribute("Id");
       element.setIdAttribute("Id", true);
 
-      Reference reference = signatureFactory.newReference("#" + id, signatureFactory.newDigestMethod(DigestMethod.SHA1, null), transformList, null, null);
-      SignedInfo signedInfo = signatureFactory.newSignedInfo( signatureFactory.newCanonicalizationMethod(CanonicalizationMethod.INCLUSIVE,
-              (C14NMethodParameterSpec) null), signatureFactory.newSignatureMethod(SignatureMethod.RSA_SHA1, null),
+      Reference reference = signatureFactory.newReference("#" + id,
+          signatureFactory.newDigestMethod(DigestMethod.SHA1, null), transformList, null, null);
+      SignedInfo signedInfo = signatureFactory.newSignedInfo(
+          signatureFactory.newCanonicalizationMethod(CanonicalizationMethod.INCLUSIVE,
+              (C14NMethodParameterSpec) null),
+          signatureFactory.newSignatureMethod(SignatureMethod.RSA_SHA1, null),
           Collections.singletonList(reference));
 
       XMLSignature signature = signatureFactory.newXMLSignature(signedInfo, keyInfo);
       signature.sign(new DOMSignContext(pkEntry.getPrivateKey(), element.getParentNode()));
     }
- 
+
     Document documentAssinado = documentFactory(converteDocParaXml(document));
-    
-    //Assinando o Lote de RPS
+
+    // Assinando o Lote de RPS
     for (final String elementoAssinavel : AssinaturaDigital.ELEMENTOS_ASSINAVEIS) {
-      NodeList elementsAssinado = documentAssinado.getDocumentElement().getElementsByTagName(elementoAssinavel);
+      NodeList elementsAssinado =
+          documentAssinado.getDocumentElement().getElementsByTagName(elementoAssinavel);
       for (int i = 0; i < elementsAssinado.getLength(); i++) {
         Element element = (Element) elementsAssinado.item(i);
-        
+
         String id = element.getAttribute("Id");
         element.setIdAttribute("Id", true);
 
-        Reference reference = signatureFactory.newReference("#" + id, signatureFactory.newDigestMethod(DigestMethod.SHA1, null), transformList, null, null);
-        SignedInfo signedInfo = signatureFactory.newSignedInfo( signatureFactory.newCanonicalizationMethod(CanonicalizationMethod.INCLUSIVE,
-                (C14NMethodParameterSpec) null), signatureFactory.newSignatureMethod(SignatureMethod.RSA_SHA1, null),
+        Reference reference = signatureFactory.newReference("#" + id,
+            signatureFactory.newDigestMethod(DigestMethod.SHA1, null), transformList, null, null);
+        SignedInfo signedInfo = signatureFactory.newSignedInfo(
+            signatureFactory.newCanonicalizationMethod(CanonicalizationMethod.INCLUSIVE,
+                (C14NMethodParameterSpec) null),
+            signatureFactory.newSignatureMethod(SignatureMethod.RSA_SHA1, null),
             Collections.singletonList(reference));
 
         XMLSignature signature = signatureFactory.newXMLSignature(signedInfo, keyInfo);
         signature.sign(new DOMSignContext(pkEntry.getPrivateKey(), element.getParentNode()));
       }
     }
-    
-    
+
     return converteDocParaXml(documentAssinado);
+  }
+
+  public static String removeAcentos(String str) {
+    CharSequence cs = new StringBuilder(str == null ? "" : str);
+    return Normalizer.normalize(cs, Normalizer.Form.NFKD)
+        .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
   }
 
   private Document documentFactory(String xml)
@@ -122,12 +143,12 @@ public class AssinaturaDigital {
     transformList.add(c14NTransform);
     return transformList;
   }
-  
+
   private String converteDocParaXml(Document doc) throws TransformerException {
     ByteArrayOutputStream os = new ByteArrayOutputStream();
     Transformer trans = TransformerFactory.newInstance().newTransformer();
     trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
     trans.transform(new DOMSource(doc), new StreamResult(os));
     return os.toString();
-}
+  }
 }
