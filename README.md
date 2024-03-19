@@ -43,6 +43,8 @@ dependencies {
 
 ### Changelog
 
+1.0.2 - Atualização URLs para os ambientes de homologação e produção
+
 1.0.1 - Lançamento para ambiente de produção
 
 1.0 - Lançamento Inicial (Suporte somente ao ambiente de homologação)

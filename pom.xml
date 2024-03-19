@@ -4,7 +4,7 @@
 	<groupId>com.github.pablopdomingos</groupId>
 	<artifactId>nfse</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 
 	<name>NFSe</name>
 	<description>Api para geração, transmissão e assinatura da Nota Fiscal de Serviços</description>

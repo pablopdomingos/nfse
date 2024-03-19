@@ -12,14 +12,14 @@ import com.pablodomingos.classes.rps.enums.NFSeAmbiente;
 public class NfseWSServiceLocator extends org.apache.axis.client.Service implements com.pablodomingos.webservices.pbh.NfseWSService {
     
     private NFSeAmbiente ambiente = NFSeAmbiente.HOMOLOGACAO;
-    private java.lang.String nfseSOAP_address = "https://bhisshomologa.pbh.gov.br:443/bhiss-ws/nfse";
+    private java.lang.String nfseSOAP_address = "https://bhisshomologaws.pbh.gov.br:443/bhiss-ws/nfse";
     
     public NfseWSServiceLocator() {
     }
 
     public NfseWSServiceLocator(NFSeAmbiente ambiente) {
       if(ambiente.equals(NFSeAmbiente.PRODUCAO)){
-        nfseSOAP_address = "https://bhissdigital.pbh.gov.br:443/bhiss-ws/nfse";
+        nfseSOAP_address = "https:///bhissdigitalws.pbh.gov.br:443/bhiss-ws/nfse";
       }
       this.ambiente = ambiente;
     }
