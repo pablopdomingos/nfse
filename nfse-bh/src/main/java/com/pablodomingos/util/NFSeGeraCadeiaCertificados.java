@@ -20,11 +20,11 @@ public class NFSeGeraCadeiaCertificados {
   public static byte[] geraCadeiaCertificados(String senha) throws Exception {
     
     KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());  
-    ks.load(null, senha.toCharArray());   
-      
-    get("bhisshomologa.pbh.gov.br", PORT, ks); 
-    get("bhissdigital.pbh.gov.br", PORT, ks); 
-    
+    ks.load(null, senha.toCharArray());
+
+    get("bhisshomologaws.pbh.gov.br", PORT, ks);
+    get("bhissdigitalws.pbh.gov.br", PORT, ks);
+
     ByteArrayOutputStream out = new ByteArrayOutputStream(); 
     ks.store(out, senha.toCharArray());
     
